@@ -16,6 +16,15 @@ public class Medicine {
  String SaltComposition;
  int units;
  String Type;
+
+    public String getDisease() {
+        return Disease;
+    }
+
+    public void setDisease(String Disease) {
+        this.Disease = Disease;
+    }
+ String Disease;
 private static int cnt = 1;    
  
  public Medicine()
@@ -72,7 +81,10 @@ private static int cnt = 1;
         this.Type = Type;
     }
  
- 
+    public String toString()
+            {
+                return getSaltname();
+            }
  
        
 }
