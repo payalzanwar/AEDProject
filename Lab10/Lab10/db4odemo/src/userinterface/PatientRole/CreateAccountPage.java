@@ -18,14 +18,12 @@ public class CreateAccountPage extends javax.swing.JPanel {
     /**
      * Creates new form CreateAccountJPanel
      */
-    private PatientDirectory patientDirectory;
     private JPanel rightPanel;
     public CreateAccountPage(JPanel rightPanel) 
     {
         initComponents();
         this.rightPanel = rightPanel;
-        this.patientDirectory = patientDirectory;
-        
+        PatientDirectory pd = new PatientDirectory();
     }
 
         
@@ -590,6 +588,8 @@ public class CreateAccountPage extends javax.swing.JPanel {
         jPanel5.setEnabled(false);
         jPanel6.setEnabled(false);
         jPanel7.setEnabled(false);
+        
+
     }//GEN-LAST:event_CreateAccountBtnActionPerformed
 
     private void PatientPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientPasswordActionPerformed
