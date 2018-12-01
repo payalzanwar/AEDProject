@@ -9,8 +9,10 @@ import Business.Enterprise.Enterprise;
 import Business.Medicine.MedicineDirectory;
 import Business.Pharmacy.Pharmacy;
 import Business.Pharmacy.PharmacyDirectory;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.PatientRole.ViewMedicineDetailsPage;
 
 /**
  *
@@ -57,6 +59,7 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         diseasename = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
         jLabel1.setText("         Add Medicines");
 
@@ -68,7 +71,7 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Type");
 
-        TypeCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        TypeCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tablet", "Syrup", "Capsule", " " }));
 
         jLabel6.setText("Number of Units");
 
@@ -93,6 +96,13 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
         });
 
         jLabel7.setText("Disease Name");
+
+        jButton3.setText("View");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -123,11 +133,13 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SaltNametxt)
                             .addComponent(PriceTxt)
-                            .addComponent(Noofunitstxt, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                            .addComponent(Noofunitstxt, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                             .addComponent(TypeCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(SaltCompositionTxt, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(diseasename))))
-                .addGap(238, 238, 238))
+                .addGap(52, 52, 52)
+                .addComponent(jButton3)
+                .addGap(93, 93, 93))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,7 +173,8 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
                 .addContainerGap())
         );
 
@@ -226,6 +239,14 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_SaltCompositionTxtActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        ViewMedicineDetailsPage view = new ViewMedicineDetailsPage(userProcessContainer,phar);
+        userProcessContainer.add("ViewProductDetailJPanelSupplier", view);
+   CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Noofunitstxt;
@@ -236,6 +257,7 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField diseasename;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
