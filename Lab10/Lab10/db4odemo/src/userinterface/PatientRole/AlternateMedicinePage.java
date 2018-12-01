@@ -5,8 +5,11 @@
  */
 package userinterface.PatientRole;
 
+import Business.Enterprise.Enterprise;
 import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
+import Business.Pharmacy.Pharmacy;
+import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
@@ -25,11 +28,17 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     private MedicineDirectory med;
     private JPanel RightPaneldashboard;
     private ArrayList<Medicine> list;
-    public AlternateMedicinePage(JPanel Rightpaneldashboard, MedicineDirectory med) {
+      private UserAccount account;
+   private Enterprise enterprise;
+   private Pharmacy phar;
+    public AlternateMedicinePage(JPanel Rightpaneldashboard, MedicineDirectory med,Pharmacy phar,UserAccount account,Enterprise enterprise) {
         initComponents();
         this.RightPaneldashboard = Rightpaneldashboard;
         this.med=med; 
        list = new ArrayList<Medicine>();
+       this.account = account;
+       this.enterprise=enterprise;
+       this.phar=phar;
     }
 
     /**
@@ -52,13 +61,19 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         ConsultDoctorBtn = new javax.swing.JButton();
         SearchSaltOrMedicineTxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Search For Alternate Medicine");
 
         jLabel2.setText("Select Disease");
 
-        DiseaseListComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        DiseaseListComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "ColdNflu", "Malaria", "Typhoid", "Cancer" }));
+        DiseaseListComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DiseaseListComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Search By Salt or Medicine Name");
 
@@ -91,7 +106,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 
         ViewDetailsBtn.setText("View Details");
 
-        ConsultDoctorBtn.setText("Consult Physician");
+        ConsultDoctorBtn.setText("Request Pharmacist");
         ConsultDoctorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConsultDoctorBtnActionPerformed(evt);
@@ -108,6 +123,13 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Consult Doctor");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -147,6 +169,10 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(SearchSaltOrMedicineTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(72, 72, 72))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(295, 295, 295)
+                .addComponent(jButton2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,7 +195,9 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ConsultDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ViewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -177,11 +205,15 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     
     private void ConsultDoctorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultDoctorBtnActionPerformed
         // TODO add your handling code here:
-        ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, list);
-        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
-        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
-        layout.next(RightPaneldashboard);
+//        ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, list,account,enterprise);
+//        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
+//        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
+//        layout.next(RightPaneldashboard);
         
+        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(RightPaneldashboard,account,enterprise);
+        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", pmed);
+        CardLayout layout1 = (CardLayout)RightPaneldashboard.getLayout();
+        layout1.next(RightPaneldashboard);
     }//GEN-LAST:event_ConsultDoctorBtnActionPerformed
 
     private void SearchSaltOrMedicineTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSaltOrMedicineTxtActionPerformed
@@ -190,12 +222,13 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+         DefaultTableModel model = (DefaultTableModel) AlternateMedicineTable.getModel();
         String medname = SearchSaltOrMedicineTxt.getText();
         String disease = (String) DiseaseListComboBox.getSelectedItem();
-         DefaultTableModel model = (DefaultTableModel) AlternateMedicineTable.getModel();
-        
         model.setRowCount(0);
-         for(Medicine medi : med.getMedicineList())
+        
+         for(Medicine medi : this.phar.getMed().getMedicineList())
              if(medname.equals(medi.getSaltname())&& disease.equals(medi.getDisease()))
              {
                 Object[] row = new Object[5];
@@ -216,6 +249,18 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 //        layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void DiseaseListComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiseaseListComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DiseaseListComboBoxActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, list,account,enterprise);
+        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
+        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
+        layout.next(RightPaneldashboard);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AlternateMedicineTable;
@@ -225,6 +270,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     private javax.swing.JTextField SearchSaltOrMedicineTxt;
     private javax.swing.JButton ViewDetailsBtn;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -5,6 +5,11 @@
  */
 package userinterface.PatientRole;
 
+import Business.Medicine.Medicine;
+import Business.Pharmacy.Pharmacy;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author mantr
@@ -14,10 +19,34 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
     /**
      * Creates new form ViewMedicineDetailsJPanel
      */
-    public ViewMedicineDetailsPage() {
+    private JPanel userProcessContainer;
+    private Pharmacy phar;
+    public ViewMedicineDetailsPage(JPanel userProcessContainer, Pharmacy phar) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.phar=phar;
+        populateTable();
     }
 
+    public void populateTable()
+    {
+    
+DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
+
+       model.setRowCount(0);
+        for(Medicine medi : phar.getMed().getMedicineList())
+            
+            {
+                MedicineNameTxt.setText(medi.getSaltname());
+               Object[] row = new Object[2];
+           row[0] = medi;
+           row[1] = medi.getSaltComposition();
+           
+
+                      model.addRow(row);
+            }
+    }
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,7 +63,7 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
         AddToCartBtn = new javax.swing.JButton();
         BackBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        SaltTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         BuyNowBtn = new javax.swing.JButton();
@@ -64,7 +93,7 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        SaltTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -87,7 +116,7 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(SaltTable);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -200,13 +229,13 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
     private javax.swing.JButton BackBtn;
     private javax.swing.JButton BuyNowBtn;
     private javax.swing.JTextField MedicineNameTxt;
+    private javax.swing.JTable SaltTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

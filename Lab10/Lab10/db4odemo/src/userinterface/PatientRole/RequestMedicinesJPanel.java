@@ -30,12 +30,12 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestMedicinesJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise) {
+    public RequestMedicinesJPanel(JPanel userProcessContainer, UserAccount userAccount, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        this.userAccount = account;
+        this.userAccount = userAccount;
         valueLabel.setText(enterprise.getName());
     }
 
