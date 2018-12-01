@@ -4,6 +4,7 @@
  */
 package Business.Pharmacy;
 
+import Business.Medicine.MedicineDirectory;
 import Business.Role.DoctorRole;
 import Business.Role.Role;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
  * @author raunak
  */
 public class Pharmacy {
+
     private String Pharmacy_name;
     private int id;
     private static int count = 1;
@@ -22,6 +24,7 @@ public class Pharmacy {
     private String Location;
     private int WalletId;
     private String zip;
+    private MedicineDirectory Med;
 
     public String getZip() {
         return zip;
@@ -30,14 +33,21 @@ public class Pharmacy {
     public void setZip(String zip) {
         this.zip = zip;
     }
-    public Pharmacy()  {
+
+    public Pharmacy() {
         id = count;
-        WalletId=count;
+        WalletId = count;
         count++;
+        Med = new MedicineDirectory();
     }
-    
-    
-    
+
+    public MedicineDirectory getMed() {
+        return Med;
+    }
+
+    public void setMed(MedicineDirectory Med) {
+        this.Med = Med;
+    }
 
     public String getPharmacy_name() {
         return Pharmacy_name;
@@ -103,6 +113,4 @@ public class Pharmacy {
         this.WalletId = WalletId;
     }
 
-    
-     
 }

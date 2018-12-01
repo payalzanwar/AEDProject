@@ -22,7 +22,10 @@ public abstract class Enterprise extends Organization{
     }
     
     public enum EnterpriseType{
-        Hospital("Hospital");
+        Hospital("Hospital"),
+        Pharmacy("Pharmacy"),
+        Manufacturer("Manufacturer"),
+        Supplier("Supplier");
         
         private String value;
         
