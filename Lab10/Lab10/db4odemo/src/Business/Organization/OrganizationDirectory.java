@@ -46,6 +46,11 @@ public class OrganizationDirectory {
             
             
         }
+        else if(type.getValue().equals(Type.Patient.getValue())){
+            organization = new PatientOrganization();
+            organizationList.add(organization);
+            
+        }
         return organization;
-    }
+    }   
 }
