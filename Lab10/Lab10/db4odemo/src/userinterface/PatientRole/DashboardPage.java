@@ -5,8 +5,10 @@
  */
 package userinterface.PatientRole;
 
+import Business.EcoSystem;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userinterface.MainJFrame;
 
 /**
  *
@@ -18,12 +20,14 @@ public class DashboardPage extends javax.swing.JFrame {
      * Creates new form Dashboard_CreateJFrame
      */
     AlternateMedicinePage alternateMedicinePage;
+    
     //JPanel Rightpaneldashboard;
     public DashboardPage()
     {
         initComponents();
         this.Rightpaneldashboard = Rightpaneldashboard;
         this.alternateMedicinePage = alternateMedicinePage;
+        
     }
 
     /**
@@ -42,11 +46,12 @@ public class DashboardPage extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        LogoutJButton = new javax.swing.JButton();
         DashboardRightPanel = new javax.swing.JPanel();
         Rightpaneldashboard = new javax.swing.JPanel();
         AlternateMedicinesBtn = new javax.swing.JButton();
         OverthecounterBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,7 +78,12 @@ public class DashboardPage extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Logout");
+        LogoutJButton.setText("Logout");
+        LogoutJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutJButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout DashboardLeftPanelLayout = new javax.swing.GroupLayout(DashboardLeftPanel);
         DashboardLeftPanel.setLayout(DashboardLeftPanelLayout);
@@ -88,7 +98,7 @@ public class DashboardPage extends javax.swing.JFrame {
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(LogoutJButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         DashboardLeftPanelLayout.setVerticalGroup(
@@ -103,7 +113,7 @@ public class DashboardPage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LogoutJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -111,35 +121,22 @@ public class DashboardPage extends javax.swing.JFrame {
 
         DashboardRightPanel.setLayout(new java.awt.CardLayout());
 
+        Rightpaneldashboard.setLayout(null);
+
         AlternateMedicinesBtn.setText("Shop for Alternate Medicines");
         AlternateMedicinesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AlternateMedicinesBtnActionPerformed(evt);
             }
         });
+        Rightpaneldashboard.add(AlternateMedicinesBtn);
+        AlternateMedicinesBtn.setBounds(91, 88, 414, 73);
 
         OverthecounterBtn.setText("Shop for Over The Counter Medicines");
-
-        javax.swing.GroupLayout RightpaneldashboardLayout = new javax.swing.GroupLayout(Rightpaneldashboard);
-        Rightpaneldashboard.setLayout(RightpaneldashboardLayout);
-        RightpaneldashboardLayout.setHorizontalGroup(
-            RightpaneldashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RightpaneldashboardLayout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addGroup(RightpaneldashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(OverthecounterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AlternateMedicinesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        RightpaneldashboardLayout.setVerticalGroup(
-            RightpaneldashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RightpaneldashboardLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(AlternateMedicinesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111)
-                .addComponent(OverthecounterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
-        );
+        Rightpaneldashboard.add(OverthecounterBtn);
+        OverthecounterBtn.setBounds(91, 272, 414, 73);
+        Rightpaneldashboard.add(jLabel1);
+        jLabel1.setBounds(0, 0, 540, 440);
 
         DashboardRightPanel.add(Rightpaneldashboard, "card2");
 
@@ -198,6 +195,26 @@ public class DashboardPage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_AlternateMedicinesBtnActionPerformed
 
+    private void LogoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutJButtonActionPerformed
+        // TODO add your handling code here:
+//        logoutJButton.setEnabled(false);
+//        userNameJTextField.setEnabled(true);
+//        passwordField.setEnabled(true);
+//        loginJButton.setEnabled(true);
+//
+//        userNameJTextField.setText("");
+//        passwordField.setText("");
+//
+//        container.removeAll();
+//        JPanel blankJP = new JPanel();
+//        container.add("blank", blankJP);
+//        CardLayout crdLyt = (CardLayout) container.getLayout();
+//        crdLyt.next(container);
+//        dB4OUtil.storeSystem(system);
+        
+        MainJFrame m = new MainJFrame();
+    }//GEN-LAST:event_LogoutJButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -215,13 +232,14 @@ public class DashboardPage extends javax.swing.JFrame {
     private javax.swing.JButton AlternateMedicinesBtn;
     private javax.swing.JPanel DashboardLeftPanel;
     private javax.swing.JPanel DashboardRightPanel;
+    private javax.swing.JButton LogoutJButton;
     private javax.swing.JButton OverthecounterBtn;
     private javax.swing.JPanel Rightpaneldashboard;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSplitPane jSplitPane2;
     // End of variables declaration//GEN-END:variables

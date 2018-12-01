@@ -5,6 +5,17 @@
  */
 package userinterface.PatientRole;
 
+import Business.Enterprise.Enterprise;
+import static Business.Enterprise.Enterprise.EnterpriseType.Pharmacy;
+import Business.Medicine.Medicine;
+import Business.Medicine.MedicineDirectory;
+import Business.Network.Network;
+import static Business.Organization.Organization.Type.Pharmacy;
+import Business.Pharmacy.Pharmacy;
+import Business.Pharmacy.PharmacyDirectory;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author mantr
@@ -14,9 +25,68 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
     /**
      * Creates new form ViewMedicineDetailsJPanel
      */
-    public ViewMedicineDetailsPage() {
+    
+    private JPanel rightPanel;
+    private MedicineDirectory medicineDirectory;
+    private PharmacyDirectory p;
+    
+    public ViewMedicineDetailsPage(JPanel rightPanel,MedicineDirectory medicineDirectory ) 
+    {
         initComponents();
-    }
+        this.rightPanel = rightPanel;
+        this.medicineDirectory = medicineDirectory;
+        
+        //for(Medicine m: medicineDirectory.getMedicineDirectory()){
+        //  custBox.addItem(c);
+        //}
+        
+            populateSaltTable();
+            populatePriceTable();
+        }
+        
+        
+     
+        public void populateSaltTable()
+        {
+        
+        DefaultTableModel model = (DefaultTableModel) saltTable.getModel();
+
+       model.setRowCount(0);
+        for(Medicine medi : medicineDirectory.getMedicineList())
+
+            {
+               Object[] row = new Object[3];
+           row[0] = medi;
+           row[1] = medi.getSaltname();
+           row[2] = medi.getSaltComposition();
+
+                      model.addRow(row);
+            }
+        }
+        
+        public void populatePriceTable()
+        {
+        
+        DefaultTableModel model = (DefaultTableModel) PriceTable.getModel();
+
+       model.setRowCount(0);
+       for(Pharmacy pp : p.getPharmacyList())
+        for(Medicine m : pp.getMed().getMedicineList())
+           
+
+            {
+                Object[] row = new Object[3];
+                row[0] = pp;
+                row[1] = pp.getLocation();
+                row[2] = m.getPrice();
+
+                      model.addRow(row);
+            }
+        }
+    
+        
+                
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,9 +104,9 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
         AddToCartBtn = new javax.swing.JButton();
         BackBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        saltTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        PriceTable = new javax.swing.JTable();
         BuyNowBtn = new javax.swing.JButton();
         MedicineNameTxt = new javax.swing.JTextField();
 
@@ -64,7 +134,7 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        saltTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -87,9 +157,9 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(saltTable);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        PriceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -112,12 +182,18 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(PriceTable);
 
         BuyNowBtn.setText("Buy Now");
         BuyNowBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuyNowBtnActionPerformed(evt);
+            }
+        });
+
+        MedicineNameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MedicineNameTxtActionPerformed(evt);
             }
         });
 
@@ -169,11 +245,11 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(103, 103, 103)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 51, Short.MAX_VALUE)
+                .addGap(18, 84, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AddToCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,7 +268,13 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_BackBtnActionPerformed
+
+    private void MedicineNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicineNameTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MedicineNameTxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -200,13 +282,13 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
     private javax.swing.JButton BackBtn;
     private javax.swing.JButton BuyNowBtn;
     private javax.swing.JTextField MedicineNameTxt;
+    private javax.swing.JTable PriceTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable saltTable;
     // End of variables declaration//GEN-END:variables
 }
