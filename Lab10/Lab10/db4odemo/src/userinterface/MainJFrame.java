@@ -187,6 +187,10 @@ public class MainJFrame extends javax.swing.JFrame {
             CardLayout layout=(CardLayout)container.getLayout();
             container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system));
             layout.next(container);
+            
+            
+            
+            
         }
         
         loginJButton.setEnabled(false);
@@ -215,12 +219,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void CreateAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAccountBtnActionPerformed
         // TODO add your handling code here:
         
-         /*CreateAirplanePage createAirplanePage = new CreateAirplanePage(rightPanel,airlineDirectory);
-        rightPanel.add("AirlineLandingPageJPanel",createAirplanePage);
-        CardLayout layout = (CardLayout)rightPanel.getLayout();
-        layout.next(rightPanel);
-        */
-        
+                
        CreateAccountPage createAccountPage = new CreateAccountPage(container);
        container.add("CreateAccountPageJPanel",createAccountPage);
        CardLayout layout = (CardLayout)container.getLayout();

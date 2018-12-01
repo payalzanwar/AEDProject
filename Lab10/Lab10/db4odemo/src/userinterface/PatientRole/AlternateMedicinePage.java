@@ -5,6 +5,8 @@
  */
 package userinterface.PatientRole;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author mantr
@@ -14,7 +16,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     /**
      * Creates new form AlternateMedicineJPanel
      */
-    public AlternateMedicinePage() {
+    public AlternateMedicinePage(AlternateMedicinePage alternateMedicinePage, JPanel Rightpaneldashboard) {
         initComponents();
     }
 

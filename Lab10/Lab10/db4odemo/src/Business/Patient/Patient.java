@@ -12,6 +12,9 @@ package Business.Patient;
 public class Patient {
     private String CustomerId;
     private String WalletId;
+    private String PatientUserId;
+    private String PatientPassword;
+    private String ReenterPatientPassword;
     private String FirstName;
     private String LastName;
     private int Age;
@@ -49,6 +52,30 @@ public class Patient {
 
     public void setWalletId(String WalletId) {
         this.WalletId = WalletId;
+    }
+
+    public String getPatientUserId() {
+        return PatientUserId;
+    }
+
+    public void setPatientUserId(String PatientUserId) {
+        this.PatientUserId = PatientUserId;
+    }
+
+    public String getPatientPassword() {
+        return PatientPassword;
+    }
+
+    public void setPatientPassword(String PatientPassword) {
+        this.PatientPassword = PatientPassword;
+    }
+
+    public String getReenterPatientPassword() {
+        return ReenterPatientPassword;
+    }
+
+    public void setReenterPatientPassword(String ReenterPatientPassword) {
+        this.ReenterPatientPassword = ReenterPatientPassword;
     }
 
     public String getFirstName() {

@@ -20,6 +20,8 @@ public abstract class Role {
         Admin("Admin"),
         Doctor("Doctor"),
         LabAssistant("Lab Assistant");
+       // Patient("Patient");
+        
         
         private String value;
         private RoleType(String value){
@@ -40,7 +42,9 @@ public abstract class Role {
             UserAccount account, 
             Organization organization, 
             Enterprise enterprise, 
-            EcoSystem business);
+            EcoSystem business
+            //Customer customer
+            );
 
     @Override
     public String toString() {
