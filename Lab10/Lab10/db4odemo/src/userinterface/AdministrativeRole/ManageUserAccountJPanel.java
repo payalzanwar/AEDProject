@@ -13,6 +13,7 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.DoctorRole.DoctorLoginFormJPanel;
 import userinterface.pharmacistRole.PharmacistLoginFormJPanel;
 
 /**
@@ -231,6 +232,14 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 PharmacistLoginFormJPanel pharmLogin = new PharmacistLoginFormJPanel(container, organization, employee, role);
                 //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
                 container.add("PharmLoginJPanel", pharmLogin);
+                CardLayout layout = (CardLayout) container.getLayout();
+                layout.next(container);
+            }
+            else
+            {
+                DoctorLoginFormJPanel docLogin = new DoctorLoginFormJPanel(container, organization, employee, role);
+                //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+                container.add("docLoginJPanel", docLogin);
                 CardLayout layout = (CardLayout) container.getLayout();
                 layout.next(container);
             }
