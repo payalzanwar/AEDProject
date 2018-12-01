@@ -78,6 +78,7 @@ public class DoctorLoginFormJPanel extends javax.swing.JPanel {
 
         PContainer.setLayout(new java.awt.CardLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("                           Doctor Sign Up");
 
         CredJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Credentials"));
@@ -276,7 +277,7 @@ public class DoctorLoginFormJPanel extends javax.swing.JPanel {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(PContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 169, Short.MAX_VALUE)))
+                        .addGap(0, 8, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -290,25 +291,16 @@ public class DoctorLoginFormJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void confirmpswdtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmpswdtxtActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_confirmpswdtxtActionPerformed
-
-    private void passwordtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordtxtActionPerformed
-
-    private void nametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nametxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nametxtActionPerformed
-
-    private void hospnametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospnametxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hospnametxtActionPerformed
+        PContainer.remove(this);
+        CardLayout layout = (CardLayout) PContainer.getLayout();
+        layout.previous(PContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void submitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbtnActionPerformed
         // TODO add your handling code here:
-        
+
         String Hospname = hospnametxt.getText();
         String HospLoc = hospLoctxt.getText();
         String zip = Zipcodetxt.getText();
@@ -316,19 +308,27 @@ public class DoctorLoginFormJPanel extends javax.swing.JPanel {
         String userName = usernametxt.getText();
         String password = passwordtxt.getText();
         String repassword = confirmpswdtxt.getText();
-        
-        
+
         hospDir.createHospital(Hospname,HospLoc,emailId,zip);
         this.organization.getUserAccountDirectory().createUserAccount(userName, password, this.employee, this.role);
         JOptionPane.showMessageDialog(PContainer, "Doctor created successfully!");
     }//GEN-LAST:event_submitbtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void hospnametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospnametxtActionPerformed
         // TODO add your handling code here:
-        PContainer.remove(this);
-        CardLayout layout = (CardLayout) PContainer.getLayout();
-        layout.previous(PContainer);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_hospnametxtActionPerformed
+
+    private void nametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nametxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nametxtActionPerformed
+
+    private void confirmpswdtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmpswdtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmpswdtxtActionPerformed
+
+    private void passwordtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordtxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

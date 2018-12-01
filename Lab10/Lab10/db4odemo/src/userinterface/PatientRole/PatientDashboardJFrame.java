@@ -53,6 +53,11 @@ public class PatientDashboardJFrame extends javax.swing.JFrame {
         RequestHistoryBtn.setText("Request History");
 
         AlternateMedicineBtn.setText("Requst for Alternate Medicine");
+        AlternateMedicineBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AlternateMedicineBtnActionPerformed(evt);
+            }
+        });
 
         OverTheCounterBtn.setText("Shop for Over The Counter Medicine");
 
@@ -61,11 +66,11 @@ public class PatientDashboardJFrame extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(OverTheCounterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AlternateMedicineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(OverTheCounterBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                    .addComponent(AlternateMedicineBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,6 +138,11 @@ public class PatientDashboardJFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void AlternateMedicineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternateMedicineBtnActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_AlternateMedicineBtnActionPerformed
 
     /**
      * @param args the command line arguments

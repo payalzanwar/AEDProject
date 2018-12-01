@@ -32,7 +32,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DoctorOrganization organization, Enterprise enterprise) {
         initComponents();
-        
+//        populateTable();
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = enterprise;
