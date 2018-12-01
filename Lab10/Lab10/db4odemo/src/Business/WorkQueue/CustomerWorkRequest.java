@@ -8,16 +8,16 @@ package Business.WorkQueue;
  *
  * @author raunak
  */
-public class LabTestWorkRequest extends WorkRequest{
+public class CustomerWorkRequest extends WorkRequest{
     
-    private String testResult;
+    private String MedicineOrder;
 
     public String getTestResult() {
-        return testResult;
+        return MedicineOrder;
     }
 
-    public void setTestResult(String testResult) {
-        this.testResult = testResult;
+    public void setTestResult(String MedicineOrder) {
+        this.MedicineOrder = MedicineOrder;
     }
     
     

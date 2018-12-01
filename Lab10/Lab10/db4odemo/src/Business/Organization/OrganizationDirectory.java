@@ -28,10 +28,20 @@ public class OrganizationDirectory {
         if (type.getValue().equals(Type.Doctor.getValue())){
             organization = new DoctorOrganization();
             organizationList.add(organization);
+            
         }
-        else if (type.getValue().equals(Type.Lab.getValue())){
-            organization = new LabOrganization();
+//        else if (type.getValue().equals(Type.Lab.getValue())){
+//            organization = new LabOrganization();
+//            organizationList.add(organization);
+//            
+//            
+//        }
+        
+        else if (type.getValue().equals(Type.Pharmacy.getValue())){
+            organization = new PharmacistOrganization();
             organizationList.add(organization);
+            
+            
         }
         return organization;
     }
