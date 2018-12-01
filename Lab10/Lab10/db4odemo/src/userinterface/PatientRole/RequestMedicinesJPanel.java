@@ -2,12 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.DoctorRole;
+package userinterface.PatientRole;
 
+import userinterface.DoctorRole.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-//import Business.Organization.LabOrganization;
+
 import Business.Organization.Organization;
+import Business.Organization.PharmacistOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerWorkRequest;
 import java.awt.CardLayout;
@@ -20,7 +22,7 @@ import javax.swing.JPanel;
  *
  * @author raunak
  */
-public class RequestLabTestJPanel extends javax.swing.JPanel {
+public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private Enterprise enterprise;
@@ -28,7 +30,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise) {
+    public RequestMedicinesJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -55,7 +57,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        requestTestJButton.setText("Request Test");
+        requestTestJButton.setText("Order Medicines");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
@@ -87,22 +89,22 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         
         String message = messageJTextField.getText();
         
-//        LabTestWorkRequest request = new LabTestWorkRequest();
-//        request.setMessage(message);
-//        request.setSender(userAccount);
-//        request.setStatus("Sent");
-//        
-//        Organization org = null;
-//        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-//            if (organization instanceof LabOrganization){
-//                org = organization;
-//                break;
-//            }
-//        }
-//        if (org!=null){
-//            org.getWorkQueue().getWorkRequestList().add(request);
-//            userAccount.getWorkQueue().getWorkRequestList().add(request);
-//        }
+        CustomerWorkRequest request = new CustomerWorkRequest();
+        request.setMessage(message);
+        request.setSender(userAccount);
+        request.setStatus("Sent");
+        
+        Organization org = null;
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+            if (organization instanceof PharmacistOrganization){
+                org = organization;
+                break;
+            }
+        }
+        if (org!=null){
+            org.getWorkQueue().getWorkRequestList().add(request);
+            userAccount.getWorkQueue().getWorkRequestList().add(request);
+        }
         
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 

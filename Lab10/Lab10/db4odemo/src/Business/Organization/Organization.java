@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public abstract class Organization {
 
     private String name;
+    private String org_name;
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
@@ -24,7 +25,7 @@ public abstract class Organization {
     private static int counter=0;
     
     public enum Type{
-        Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization");
+        Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization"),Pharmacy("Pharmacy Organizantion");
         private String value;
         private Type(String value) {
             this.value = value;
@@ -32,15 +33,25 @@ public abstract class Organization {
         public String getValue() {
             return value;
         }
+        
     }
 
     public Organization(String name) {
         this.name = name;
+        this.org_name=org_name;
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         organizationID = counter;
         ++counter;
+    }
+
+    public String getOrg_name() {
+        return org_name;
+    }
+
+    public void setOrg_name(String org_name) {
+        this.org_name = org_name;
     }
 
     public abstract ArrayList<Role> getSupportedRole();
