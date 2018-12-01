@@ -5,6 +5,11 @@
  */
 package userinterface.PatientRole;
 
+import Business.Medicine.Medicine;
+import java.util.ArrayList;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author mantr
@@ -14,8 +19,13 @@ public class ConsultDoctorPage extends javax.swing.JPanel {
     /**
      * Creates new form ConsultDoctorJPanel
      */
-    public ConsultDoctorPage() {
+    private JPanel rightPanel;
+     private ArrayList<Medicine> list;
+     
+    public ConsultDoctorPage(JPanel rightPanel, ArrayList<Medicine> list) {
         initComponents();
+        this.rightPanel = rightPanel;
+        this.list=list;
     }
 
     /**
@@ -39,6 +49,8 @@ public class ConsultDoctorPage extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         SearchHospitalTxt = new javax.swing.JTextField();
         RequestDoctorApprovalBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -112,6 +124,15 @@ public class ConsultDoctorPage extends javax.swing.JPanel {
 
         RequestDoctorApprovalBtn.setText("Request Doctor's Approval");
 
+        jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Search");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,6 +150,8 @@ public class ConsultDoctorPage extends javax.swing.JPanel {
                             .addComponent(jScrollPane2)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(SearchDoctorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(64, 64, 64)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -138,6 +161,8 @@ public class ConsultDoctorPage extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(SearchHospitalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(56, 56, 56)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE))))
                 .addContainerGap())
@@ -154,7 +179,8 @@ public class ConsultDoctorPage extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SearchHospitalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SearchHospitalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,7 +188,8 @@ public class ConsultDoctorPage extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SearchDoctorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SearchDoctorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,6 +200,28 @@ public class ConsultDoctorPage extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String hospname = SearchHospitalTxt.getText();
+        
+         DefaultTableModel model = (DefaultTableModel) HospitalListTable.getModel();
+        
+//        model.setRowCount(0);
+//         for(Medicine medi : med.getMedicineList())
+//             if(medname.equals(medi.getSaltname())&& disease.equals(medi.getDisease()))
+//             {
+//                Object[] row = new Object[5];
+//            row[0] = medi;
+//            row[1] = medi.getSaltComposition();
+//            row[2] = medi.getPrice();
+//            row[3] = medi.getType();
+//            row[4]=medi.getDisease();
+//      
+//            list.add(medi);
+//            model.addRow(row);
+//             }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable DoctorListTable;
@@ -180,6 +229,8 @@ public class ConsultDoctorPage extends javax.swing.JPanel {
     private javax.swing.JButton RequestDoctorApprovalBtn;
     private javax.swing.JTextField SearchDoctorTxt;
     private javax.swing.JTextField SearchHospitalTxt;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
