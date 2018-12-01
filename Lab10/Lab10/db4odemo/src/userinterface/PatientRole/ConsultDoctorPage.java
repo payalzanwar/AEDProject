@@ -9,12 +9,12 @@ package userinterface.PatientRole;
  *
  * @author mantr
  */
-public class ConsultDoctorJPanel extends javax.swing.JPanel {
+public class ConsultDoctorPage extends javax.swing.JPanel {
 
     /**
      * Creates new form ConsultDoctorJPanel
      */
-    public ConsultDoctorJPanel() {
+    public ConsultDoctorPage() {
         initComponents();
     }
 

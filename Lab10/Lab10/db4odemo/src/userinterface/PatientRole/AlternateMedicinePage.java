@@ -9,12 +9,12 @@ package userinterface.PatientRole;
  *
  * @author mantr
  */
-public class AlternateMedicineJPanel extends javax.swing.JPanel {
+public class AlternateMedicinePage extends javax.swing.JPanel {
 
     /**
      * Creates new form AlternateMedicineJPanel
      */
-    public AlternateMedicineJPanel() {
+    public AlternateMedicinePage() {
         initComponents();
     }
 
@@ -136,11 +136,11 @@ public class AlternateMedicineJPanel extends javax.swing.JPanel {
                     .addComponent(SearchSaltOrMedicineTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ConsultDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ViewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
