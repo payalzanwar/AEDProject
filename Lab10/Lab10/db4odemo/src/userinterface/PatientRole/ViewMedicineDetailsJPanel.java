@@ -238,10 +238,10 @@ public class ViewMedicineDetailsJPanel extends javax.swing.JPanel {
 
     private void BuyNowBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyNowBtnActionPerformed
         // TODO add your handling code here:
-        RequestMedicinesJPanel requestJPanel=new RequestMedicinesJPanel(userProcessContainer, account,enterprise);
-        userProcessContainer.add("manageEnterpriseJPanel",requestJPanel);
-        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+//       // RequestMedicinesJPanel requestJPanel=new RequestMedicinesJPanel(userProcessContainer, account,enterprise);
+//        userProcessContainer.add("manageEnterpriseJPanel",requestJPanel);
+//        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
     }//GEN-LAST:event_BuyNowBtnActionPerformed
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
