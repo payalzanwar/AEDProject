@@ -13,8 +13,10 @@ import Business.Pharmacy.Pharmacy;
 import Business.Pharmacy.PharmacyDirectory;
 import Business.Role.Role;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
 
 /**
  *
@@ -169,13 +171,9 @@ public class PharmacistLoginFormJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(BasicInfoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BasicInfoJPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(Emailidtxt))
-                    .addGroup(BasicInfoJPanelLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
-                        .addComponent(nametxt))
+                        .addComponent(nametxt, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BasicInfoJPanelLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -183,9 +181,11 @@ public class PharmacistLoginFormJPanel extends javax.swing.JPanel {
                     .addGroup(BasicInfoJPanelLayout.createSequentialGroup()
                         .addGroup(BasicInfoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(22, 22, 22)
                         .addGroup(BasicInfoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Emailidtxt)
                             .addComponent(Zipcodetxt)
                             .addComponent(PharmLoctxt))))
                 .addGap(90, 90, 90))
@@ -209,11 +209,11 @@ public class PharmacistLoginFormJPanel extends javax.swing.JPanel {
                 .addGroup(BasicInfoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Zipcodetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(BasicInfoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Emailidtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         submitbtn.setText("Submit");
@@ -223,7 +223,7 @@ public class PharmacistLoginFormJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("<<Back");
+        jButton1.setText(">>Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -287,7 +287,7 @@ public class PharmacistLoginFormJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(PContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -327,15 +327,16 @@ public class PharmacistLoginFormJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        
         PContainer.remove(this);
+        Component[] componentArray = PContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+     //   AdminWorkAreaJPanel dwjp = (AdminWorkAreaJPanel) component;
+        
         CardLayout layout = (CardLayout) PContainer.getLayout();
         layout.previous(PContainer);
-//        BasicInfoJPanel.remove(this);
-//        CardLayout layoutA = (CardLayout) BasicInfoJPanel.getLayout();
-//        layoutA.previous(BasicInfoJPanel);
-//        CredJPanel.remove(this);
-//        CardLayout layoutB = (CardLayout) BasicInfoJPanel.getLayout();
-//        layoutB.previous(BasicInfoJPanel);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

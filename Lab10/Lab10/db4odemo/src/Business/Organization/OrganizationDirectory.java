@@ -4,6 +4,8 @@
  */
 package Business.Organization;
 
+import Business.Enterprise.Enterprise;
+import Business.Enterprise.Enterprise.EnterpriseType;
 import Business.Organization.Organization.Type;
 import java.util.ArrayList;
 
@@ -23,8 +25,9 @@ public class OrganizationDirectory {
         return organizationList;
     }
     
-    public Organization createOrganization(Type type){
+    public Organization createOrganization(Type type,EnterpriseType EnterpriseType){
         Organization organization = null;
+//        if(EnterpriseType.getValue().equals(EnterpriseType.Hospital.getValue()))
         if (type.getValue().equals(Type.Doctor.getValue())){
             organization = new DoctorOrganization();
             organizationList.add(organization);
