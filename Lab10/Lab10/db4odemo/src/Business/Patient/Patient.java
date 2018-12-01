@@ -10,8 +10,8 @@ package Business.Patient;
  * @author mantr
  */
 public class Patient {
-    private String CustomerId;
-    private String WalletId;
+    public static int CustomerId = 0;
+    private static int WalletId = 0;
     private String PatientUserId;
     private String PatientPassword;
     private String ReenterPatientPassword;
@@ -33,24 +33,24 @@ public class Patient {
     private String ProviderName;
     private String ProviderAddress;
 
-    public Patient(String CustomerId, String WalletId) {
-        this.CustomerId = CustomerId;
-        this.WalletId = WalletId;
+    public Patient() {
+        CustomerId++;
+        WalletId++;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return CustomerId;
     }
 
-    public void setCustomerId(String CustomerId) {
+    public void setCustomerId(int CustomerId) {
         this.CustomerId = CustomerId;
     }
 
-    public String getWalletId() {
+    public int getWalletId() {
         return WalletId;
     }
 
-    public void setWalletId(String WalletId) {
+    public void setWalletId(int WalletId) {
         this.WalletId = WalletId;
     }
 

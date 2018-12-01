@@ -180,7 +180,7 @@ public class MainJFrame extends javax.swing.JFrame {
         }
         
         if(userAccount==null){
-            JOptionPane.showMessageDialog(null, "Invalid credentials");
+            JOptionPane.showMessageDialog(null, "Account details do not exist.");
             return;
         }
         else{

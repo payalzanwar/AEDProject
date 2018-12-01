@@ -6,7 +6,10 @@
 package userinterface.PatientRole;
 
 import Business.Patient.PatientDirectory;
+import Business.Role.Role;
+import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -19,11 +22,15 @@ public class CreateAccountPage extends javax.swing.JPanel {
      * Creates new form CreateAccountJPanel
      */
     private JPanel rightPanel;
+    private PatientDirectory pd;
+    private UserAccountDirectory ud;
+   // private Role role;
     public CreateAccountPage(JPanel rightPanel) 
     {
+       
         initComponents();
         this.rightPanel = rightPanel;
-        PatientDirectory pd = new PatientDirectory();
+        pd = new PatientDirectory();
     }
 
         
@@ -248,7 +255,7 @@ public class CreateAccountPage extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(AddLine1Txt, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(AddLine1Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 24, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -265,7 +272,7 @@ public class CreateAccountPage extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CountryTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                            .addComponent(CountryTxt, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -301,13 +308,13 @@ public class CreateAccountPage extends javax.swing.JPanel {
                         .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(InsuranceIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(InsuranceTypeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 119, Short.MAX_VALUE)
                             .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -531,7 +538,7 @@ public class CreateAccountPage extends javax.swing.JPanel {
                     .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 783, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 810, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -565,7 +572,7 @@ public class CreateAccountPage extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -580,7 +587,7 @@ public class CreateAccountPage extends javax.swing.JPanel {
         //       CardLayout layout = (CardLayout)container.getLayout();
         //       layout.next(container);
 
-        DashboardPage dashboardPage = new DashboardPage();
+        //DashboardPage dashboardPage = new DashboardPage();
 
         jPanel2.setEnabled(false);
         jPanel3.setEnabled(false);
@@ -589,7 +596,35 @@ public class CreateAccountPage extends javax.swing.JPanel {
         jPanel6.setEnabled(false);
         jPanel7.setEnabled(false);
         
-
+        String userID = PatientUserId.getText();
+        String password = new String(PatientPassword.getPassword());
+        String zip = ZipcodeTxt.getText();
+        String repassword = new String(ReenterPatientPassword.getPassword());
+        String emailId = EmailTxt.getText();
+        String FName = FirstNameTxt.getText();
+        String LName = LastNameTxt.getText();
+        String Age = AgeTxt.getText();
+        String gender = GenderComboBox.getSelectedItem().toString();
+        String Height = HeightTxt.getText();
+        String Weight = WeightTxt.getText();
+        String AddLine1 = AddLine1Txt.getText();
+        String AddLine2 = AddLine2Txt.getText();
+        String City = CityTxt.getText();
+        String State = StateTxt.getText();
+        String Country = CountryTxt.getText();
+        String Phone = PhoneTxt.getText();
+        String Email = EmailTxt.getText();
+        String InsuranceId = InsuranceIdTxt.getText();
+        String InsuranceType = InsuranceTypeTxt.getText();
+        String ProviderName = ProviderNameTxt.getText();
+        String ProviderAdd = ProviderAddTxt.getText();
+        pd.createPatient(userID,  password,  FName,  LName, emailId);
+        JOptionPane.showMessageDialog(null, "Customer created successfully!");
+        System.out.println( "Username: "+ userID+" Password: "+ password);
+        
+        ud = new UserAccountDirectory();
+        ud.createUserAccount(userID, password,null,null);
+        System.out.println("User Account Created: "+ud.getUserAccountList());
     }//GEN-LAST:event_CreateAccountBtnActionPerformed
 
     private void PatientPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientPasswordActionPerformed
