@@ -5,8 +5,11 @@
  */
 package userinterface.PatientRole;
 
+import Business.Employee.Employee;
+import Business.Organization.Organization;
 import Business.Patient.PatientDirectory;
 import Business.Role.Role;
+import static Business.Role.Role.RoleType.Patient;
 import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -16,7 +19,7 @@ import javax.swing.JPanel;
  *
  * @author mantr
  */
-public class CreateAccountPage extends javax.swing.JPanel {
+public class PatientLoginFormJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form CreateAccountJPanel
@@ -24,13 +27,19 @@ public class CreateAccountPage extends javax.swing.JPanel {
     private JPanel rightPanel;
     private PatientDirectory pd;
     private UserAccountDirectory ud;
+    private Employee employee;
+    private Role role;
+    private Organization organization;
    // private Role role;
-    public CreateAccountPage(JPanel rightPanel) 
+    public PatientLoginFormJPanel(JPanel rightPanel, Organization organization,Employee employee,Role role) 
     {
        
         initComponents();
         this.rightPanel = rightPanel;
         pd = new PatientDirectory();
+        this.organization = organization;
+        this.employee=employee;
+        this.role=role;
     }
 
         
@@ -582,7 +591,7 @@ public class CreateAccountPage extends javax.swing.JPanel {
 
     private void CreateAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAccountBtnActionPerformed
         // TODO add your handling code here:
-        //         CreateAccountPage createAccountPage = new CreateAccountPage(container);
+        //         PatientLoginFormJPanel createAccountPage = new PatientLoginFormJPanel(container);
         //       container.add("CreateAccountPageJPanel",createAccountPage);
         //       CardLayout layout = (CardLayout)container.getLayout();
         //       layout.next(container);
@@ -622,9 +631,13 @@ public class CreateAccountPage extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Customer created successfully!");
         System.out.println( "Username: "+ userID+" Password: "+ password);
         
-        ud = new UserAccountDirectory();
-        ud.createUserAccount(userID, password,null,null);
-        System.out.println("User Account Created: "+ud.getUserAccountList());
+//        ud = new UserAccountDirectory();
+//        ud.createUserAccount(userID, password,this.employee, this.role);
+//        System.out.println("User Account Created: "+ud.getUserAccountList());
+        
+     //   pharmDir.createPharmacy(Pharname,PharmLoc,emailId,zip);
+        organization.getUserAccountDirectory().createUserAccount(userID, password, this.employee, this.role);
+        JOptionPane.showMessageDialog(rightPanel, "Pharmacy created successfully!");
     }//GEN-LAST:event_CreateAccountBtnActionPerformed
 
     private void PatientPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientPasswordActionPerformed

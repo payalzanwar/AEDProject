@@ -35,6 +35,10 @@ public class EnterpriseDirectory {
             enterprise=new HospitalEnterprise(name);
             enterpriseList.add(enterprise);
         }
+        else if(type==Enterprise.EnterpriseType.Patient){
+            enterprise=new PatientEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
         return enterprise;
     }
 }
