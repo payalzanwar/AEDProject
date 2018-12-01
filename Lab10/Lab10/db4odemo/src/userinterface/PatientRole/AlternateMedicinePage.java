@@ -5,8 +5,6 @@
  */
 package userinterface.PatientRole;
 
-import java.awt.CardLayout;
-
 import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
 import Business.WorkQueue.WorkRequest;
@@ -131,13 +129,18 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         jPanel1.add(SearchSaltOrMedicineTxt);
         SearchSaltOrMedicineTxt.setBounds(474, 196, 203, 33);
 
-<<<<<<< HEAD
         javax.swing.GroupLayout alternatemedrightpanelLayout = new javax.swing.GroupLayout(alternatemedrightpanel);
         alternatemedrightpanel.setLayout(alternatemedrightpanelLayout);
         alternatemedrightpanelLayout.setHorizontalGroup(
             alternatemedrightpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
-=======
+        jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("Search");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,15 +184,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(SearchSaltOrMedicineTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(72, 72, 72))))
->>>>>>> origin/master
         );
-<<<<<<< HEAD
-        alternatemedrightpanelLayout.setVerticalGroup(
-            alternatemedrightpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(alternatemedrightpanelLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-=======
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -212,8 +207,82 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
                     .addComponent(ConsultDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ViewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(49, Short.MAX_VALUE))
->>>>>>> origin/master
+    }// </editor-fold>//GEN-END:initComponents
+    
+    
+    private void ConsultDoctorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultDoctorBtnActionPerformed
+        // TODO add your handling code here:
+        ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, list);
+        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
+        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
+        layout.next(RightPaneldashboard);
+        
+//        int productId = Integer.parseInt(idField.getText());
+//        product = supplier.getProductCatalog().searchProduct(productId);
+//        ViewProductDetailJPanel vpdjp = new ViewProductDetailJPanel(userProcessContainer, product);
+//        userProcessContainer.add("ViewProductDetailJPanelSupplier", vpdjp);
+//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+                        .addContainerGap()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         );
+        alternatemedrightpanelLayout.setVerticalGroup(
+            alternatemedrightpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(alternatemedrightpanelLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        );
+
+
 
         add(alternatemedrightpanel, "card2");
     }// </editor-fold>//GEN-END:initComponents
@@ -263,6 +332,12 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
             list.add(medi);
             model.addRow(row);
              }
+
+
+
+
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -273,11 +348,11 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     private javax.swing.JLabel DisplayNameTxt;
     private javax.swing.JTextField SearchSaltOrMedicineTxt;
     private javax.swing.JButton ViewDetailsBtn;
-<<<<<<< HEAD
+
     private javax.swing.JPanel alternatemedrightpanel;
 =======
     private javax.swing.JButton jButton1;
->>>>>>> origin/master
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
