@@ -6,7 +6,14 @@
 package userinterface.PatientRole;
 
 import java.awt.CardLayout;
+
+import Business.Medicine.Medicine;
+import Business.Medicine.MedicineDirectory;
+import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,8 +24,14 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     /**
      * Creates new form AlternateMedicineJPanel
      */
-    public AlternateMedicinePage(AlternateMedicinePage alternateMedicinePage, JPanel Rightpaneldashboard) {
+    private MedicineDirectory med;
+    private JPanel RightPaneldashboard;
+    private ArrayList<Medicine> list;
+    public AlternateMedicinePage(JPanel Rightpaneldashboard, MedicineDirectory med) {
         initComponents();
+        this.RightPaneldashboard = Rightpaneldashboard;
+        this.med=med; 
+       list = new ArrayList<Medicine>();
     }
 
     /**
@@ -42,6 +55,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         ViewDetailsBtn = new javax.swing.JButton();
         ConsultDoctorBtn = new javax.swing.JButton();
         SearchSaltOrMedicineTxt = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
@@ -72,7 +86,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Medicine Name", "Containing salts", "Price", "Medicine Type", "Disease Name"
+                "Medicine Name", "SaltComposition", "Price", "Medicine Type", "Disease Name"
             }
         ) {
             Class[] types = new Class [] {
@@ -117,22 +131,95 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         jPanel1.add(SearchSaltOrMedicineTxt);
         SearchSaltOrMedicineTxt.setBounds(474, 196, 203, 33);
 
+<<<<<<< HEAD
         javax.swing.GroupLayout alternatemedrightpanelLayout = new javax.swing.GroupLayout(alternatemedrightpanel);
         alternatemedrightpanel.setLayout(alternatemedrightpanelLayout);
         alternatemedrightpanelLayout.setHorizontalGroup(
             alternatemedrightpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
+=======
+        jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(DisplayNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(ConsultDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(86, 86, 86)
+                        .addComponent(ViewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(DiseaseListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(SearchSaltOrMedicineTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(72, 72, 72))))
+>>>>>>> origin/master
         );
+<<<<<<< HEAD
         alternatemedrightpanelLayout.setVerticalGroup(
             alternatemedrightpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(alternatemedrightpanelLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+=======
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(DisplayNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchSaltOrMedicineTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DiseaseListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ConsultDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ViewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
+>>>>>>> origin/master
         );
 
         add(alternatemedrightpanel, "card2");
     }// </editor-fold>//GEN-END:initComponents
+    
 
+    
     private void ConsultDoctorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultDoctorBtnActionPerformed
         // TODO add your handling code here:
 
@@ -143,11 +230,40 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 
         ConsultDoctorPage consultDoctorPage = new ConsultDoctorPage();
       //  alternatemedrightpanel.add("");
+
+        ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, list);
+        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
+        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
+        layout.next(RightPaneldashboard);
+        
+
     }//GEN-LAST:event_ConsultDoctorBtnActionPerformed
 
     private void SearchSaltOrMedicineTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSaltOrMedicineTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchSaltOrMedicineTxtActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String medname = SearchSaltOrMedicineTxt.getText();
+        String disease = (String) DiseaseListComboBox.getSelectedItem();
+         DefaultTableModel model = (DefaultTableModel) AlternateMedicineTable.getModel();
+        
+        model.setRowCount(0);
+         for(Medicine medi : med.getMedicineList())
+             if(medname.equals(medi.getSaltname())&& disease.equals(medi.getDisease()))
+             {
+                Object[] row = new Object[5];
+            row[0] = medi;
+            row[1] = medi.getSaltComposition();
+            row[2] = medi.getPrice();
+            row[3] = medi.getType();
+            row[4]=medi.getDisease();
+      
+            list.add(medi);
+            model.addRow(row);
+             }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -157,7 +273,11 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     private javax.swing.JLabel DisplayNameTxt;
     private javax.swing.JTextField SearchSaltOrMedicineTxt;
     private javax.swing.JButton ViewDetailsBtn;
+<<<<<<< HEAD
     private javax.swing.JPanel alternatemedrightpanel;
+=======
+    private javax.swing.JButton jButton1;
+>>>>>>> origin/master
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
