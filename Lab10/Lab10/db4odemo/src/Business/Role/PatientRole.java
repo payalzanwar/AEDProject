@@ -9,14 +9,20 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
+import Business.Organization.PatientOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.DoctorRole.DoctorWorkAreaJPanel;
-import userinterface.PatientRole.DashboardPage;
+import userinterface.PatientRole.PatientWorkAreaJPanel;
+import userinterface.PatientRole.dashboard;
 
-/**
- *
- * @author mantr
- */
+public class PatientRole extends Role{
 
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
+        return new PatientWorkAreaJPanel(userProcessContainer, account, (PatientOrganization)organization, enterprise);
+    }
+    
+    
+}
 

@@ -12,13 +12,26 @@ import java.util.ArrayList;
  * @author mantr
  */
 public class PatientDirectory {
-    private ArrayList<Patient> PatientList;
+    
+    private ArrayList<Patient> patientList;
 
     public PatientDirectory() {
-        PatientList = new ArrayList();
+        patientList= new ArrayList();
+        
     }
 
-    public ArrayList<Patient> getUserAccountList() {
-        return PatientList;
+    public ArrayList<Patient> getPatientList() {
+        return patientList;
+    }
+    
+    public Patient createPatient(String PatientUserId, String PatientPassword, String FirstName, String LastName, String emailId){
+        Patient p = new Patient();
+        p.setPatientUserId(PatientUserId);
+        p.setPatientPassword(PatientPassword);
+        p.setFirstName(FirstName);
+        p.setLastName(LastName);
+        p.setEmail(emailId);
+        patientList.add(p);
+        return p;
     }
 }

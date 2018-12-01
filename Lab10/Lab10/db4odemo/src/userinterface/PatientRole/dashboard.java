@@ -5,6 +5,9 @@
  */
 package userinterface.PatientRole;
 
+import Business.Enterprise.Enterprise;
+import Business.Organization.PatientOrganization;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -12,14 +15,14 @@ import javax.swing.JPanel;
  *
  * @author mantr
  */
-public class DashboardPage extends javax.swing.JFrame {
+public class dashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form Dashboard_CreateJFrame
      */
     AlternateMedicinePage alternateMedicinePage;
     //JPanel Rightpaneldashboard;
-    public DashboardPage()
+    public dashboard(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise)
     {
         initComponents();
         this.Rightpaneldashboard = Rightpaneldashboard;
@@ -201,15 +204,7 @@ public class DashboardPage extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DashboardPage().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AlternateMedicinesBtn;
