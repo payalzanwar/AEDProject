@@ -44,7 +44,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = account;
         
-        
+       phar=new Pharmacy();
        pharmacynametxt.setText(enterprise.getName());
        
        populateTable();
@@ -268,7 +268,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ManageMedicineJPanel managemed = new ManageMedicineJPanel(userProcessContainer, enterprise);
+        ManageMedicineJPanel managemed = new ManageMedicineJPanel(userProcessContainer, phar);
         userProcessContainer.add("processWorkRequestJPanel", managemed);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
