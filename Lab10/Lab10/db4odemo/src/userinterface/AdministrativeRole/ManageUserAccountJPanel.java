@@ -14,6 +14,7 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.DoctorRole.DoctorLoginFormJPanel;
+
 import userinterface.pharmacistRole.PharmacistLoginFormJPanel;
 
 /**
@@ -243,7 +244,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 CardLayout layout = (CardLayout) container.getLayout();
                 layout.next(container);
             }
-           
+    
 
             
 
