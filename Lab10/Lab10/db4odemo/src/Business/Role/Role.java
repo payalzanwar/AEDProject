@@ -19,7 +19,7 @@ public abstract class Role {
     public enum RoleType{
         Admin("Admin"),
         Doctor("Doctor"),
-        LabAssistant("Lab Assistant"),
+        //LabAssistant("Lab Assistant"),
         Pharmacist("Pharmacist");
         private String value;
         private RoleType(String value){
@@ -40,9 +40,7 @@ public abstract class Role {
             UserAccount account, 
             Organization organization, 
             Enterprise enterprise, 
-            EcoSystem business
-            //Customer customer
-            );
+            EcoSystem business);
 
     @Override
     public String toString() {
