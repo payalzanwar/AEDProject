@@ -228,36 +228,43 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         Employee employee = (Employee) employeeJComboBox.getSelectedItem();
         Role role = (Role) roleJComboBox.getSelectedItem();
 
-        for (Type type : Organization.Type.values()) {
+        for (Type type : Organization.Type.values()) 
+        
             if (type.getValue().equals(Type.Pharmacy.getValue())) {      //  organizationJComboBox.addItem(type);
-
+System.out.println(type.getValue()+""+Type.Pharmacy.getValue());
                 PharmacistLoginFormJPanel pharmLogin = new PharmacistLoginFormJPanel(container, organization, employee, role);
                 //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
                 container.add("PharmLoginJPanel", pharmLogin);
                 CardLayout layout = (CardLayout) container.getLayout();
                 layout.next(container);
+                break;
             }
             else if(type.getValue().equals(Type.Doctor.getValue()))
             {
+System.out.println(type.getValue()+""+Type.Doctor.getValue());
                 DoctorLoginFormJPanel docLogin = new DoctorLoginFormJPanel(container, organization, employee, role);
                 //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
                 container.add("docLoginJPanel", docLogin);
                 CardLayout layout = (CardLayout) container.getLayout();
                 layout.next(container);
+                break;
             }
             else if(type.getValue().equals(Type.Patient.getValue()))
             {
+System.out.println(type.getValue()+""+Type.Patient.getValue());
                  PatientLoginFormJPanel docLogin = new PatientLoginFormJPanel(container, organization, employee, role);
                 //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
                 container.add("PatientLoginJPanel", docLogin);
                 CardLayout layout = (CardLayout) container.getLayout();
-                layout.next(container);   
+                layout.next(container); 
+                break;
                     }
+            //continue;
 
-            
+        
 
     }//GEN-LAST:event_createUserJButtonActionPerformed
-    }
+    
     private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed
         // TODO add your handling code here:
         container.remove(this);
