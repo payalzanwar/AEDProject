@@ -206,7 +206,7 @@ public class MainJFrame extends javax.swing.JFrame {
             layout.next(container);
             
             
-            
+           
             
         }
         
@@ -235,10 +235,12 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         PatientLoginFormJPanel createAccountPage = new PatientLoginFormJPanel(container,system);
                container.add("CreateAccountPageJPanel",createAccountPage);
                CardLayout layout = (CardLayout)container.getLayout();
                layout.next(container);
+               
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

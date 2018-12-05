@@ -229,7 +229,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         Role role = (Role) roleJComboBox.getSelectedItem();
 
         for (Type type : Organization.Type.values()) {
-            if (type.getValue().equals(Type.Pharmacy.getValue())) {      //  organizationJComboBox.addItem(type);
+            if (type.getValue().equals(Type.Pharmacist.getValue())) {      //  organizationJComboBox.addItem(type);
 
                 PharmacistLoginFormJPanel pharmLogin = new PharmacistLoginFormJPanel(container, organization, employee, role);
                 //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
