@@ -24,6 +24,7 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
     private Pharmacy phar;
   public ViewMedicineDetailsPage(JPanel userProcessContainer, Pharmacy phar) {
     
+      
         initComponents();
         this.userProcessContainer = userProcessContainer;
        this.phar=phar;
