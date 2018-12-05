@@ -29,7 +29,8 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private UserAccount account;
     private PatientOrganization organization;
     private Enterprise enterprise;
-    public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
+  //  public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
+     public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account){ 
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;
@@ -63,6 +64,11 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         OverthecounterBtn.setText("Shop for Over The Counter Medicines");
+        OverthecounterBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OverthecounterBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -118,6 +124,14 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(Rightpaneldashboard);
 
     }//GEN-LAST:event_AlternateMedicinesBtnActionPerformed
+
+    private void OverthecounterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverthecounterBtnActionPerformed
+        // TODO add your handling code here:
+        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(Rightpaneldashboard,account,enterprise);
+        Rightpaneldashboard.add("ViewProductDetailJPanelSupplier", pmed);
+        CardLayout layout1 = (CardLayout)Rightpaneldashboard.getLayout();
+        layout1.next(Rightpaneldashboard);
+    }//GEN-LAST:event_OverthecounterBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

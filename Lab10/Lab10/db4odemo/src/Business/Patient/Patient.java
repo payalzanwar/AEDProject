@@ -5,6 +5,8 @@
  */
 package Business.Patient;
 
+import Business.UserAccount.UserAccountDirectory;
+
 /**
  *
  * @author mantr
@@ -33,9 +35,12 @@ public class Patient {
     private String ProviderName;
     private String ProviderAddress;
 
+    
+    private UserAccountDirectory user;
     public Patient() {
         CustomerId++;
         WalletId++;
+         user = new UserAccountDirectory();
     }
 
     public int getCustomerId() {

@@ -224,7 +224,7 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
         
       
        
-     phar.getMed().AddMedicine(SaltName, Price, SaltName, units, type,disease);
+     phar.getMed().AddMedicine(SaltName, Price, saltc, units, type,disease);
         
         JOptionPane.showMessageDialog(userProcessContainer, "Medicines added successfully!");
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -241,7 +241,7 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        ViewMedicineDetailsPage view = new ViewMedicineDetailsPage(userProcessContainer,phar);
+       ViewMedicineDetailsPage view = new ViewMedicineDetailsPage(userProcessContainer,phar);
         userProcessContainer.add("ViewProductDetailJPanelSupplier", view);
    CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
