@@ -5,11 +5,16 @@
  */
 package userinterface.PatientRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Medicine.MedicineDirectory;
 import Business.Organization.PatientOrganization;
+import Business.Patient.PatientDirectory;
+import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userinterface.AdministrativeRole.ManageOrganizationJPanel;
 
 /**
  *
@@ -21,12 +26,20 @@ public class dashboard extends javax.swing.JFrame {
      * Creates new form Dashboard_CreateJFrame
      */
     AlternateMedicinePage alternateMedicinePage;
-    //JPanel Rightpaneldashboard;
-    public dashboard(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise)
+    PatientDirectory patientDirectory;
+    private MedicineDirectory med;
+    private Pharmacy phar;
+    private EcoSystem system;
+    private UserAccount account;
+    
+    
+    
+    public dashboard(JPanel RightJPanel, UserAccount account, PatientOrganization organization, Enterprise enterprise, PatientDirectory patientDirectory)
     {
         initComponents();
-        this.Rightpaneldashboard = Rightpaneldashboard;
+        this.RightJPanel = RightJPanel;
         this.alternateMedicinePage = alternateMedicinePage;
+        this.patientDirectory = patientDirectory;
     }
 
     /**
@@ -41,72 +54,69 @@ public class dashboard extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
         DashboardLeftPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        MyAccountBtn = new javax.swing.JButton();
+        OrderHistoryBtn = new javax.swing.JButton();
+        RequestHistoryBtn = new javax.swing.JButton();
+        MyCartBtn = new javax.swing.JButton();
+        LogoutBtn = new javax.swing.JButton();
         DashboardRightPanel = new javax.swing.JPanel();
-        Rightpaneldashboard = new javax.swing.JPanel();
+        RightJPanel = new javax.swing.JPanel();
         AlternateMedicinesBtn = new javax.swing.JButton();
         OverthecounterBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("My Account");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        MyAccountBtn.setText("My Account");
+        MyAccountBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                MyAccountBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Order History");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        OrderHistoryBtn.setText("Order History");
+        OrderHistoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                OrderHistoryBtnActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Request History");
+        RequestHistoryBtn.setText("Request History");
 
-        jButton4.setText("Cart");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        MyCartBtn.setText("Cart");
+        MyCartBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                MyCartBtnActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Logout");
+        LogoutBtn.setText("Logout");
 
         javax.swing.GroupLayout DashboardLeftPanelLayout = new javax.swing.GroupLayout(DashboardLeftPanel);
         DashboardLeftPanel.setLayout(DashboardLeftPanelLayout);
         DashboardLeftPanelLayout.setHorizontalGroup(
             DashboardLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DashboardLeftPanelLayout.createSequentialGroup()
-                .addGroup(DashboardLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DashboardLeftPanelLayout.createSequentialGroup()
-                        .addGroup(DashboardLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(DashboardLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(LogoutBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MyCartBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MyAccountBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(OrderHistoryBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(RequestHistoryBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         DashboardLeftPanelLayout.setVerticalGroup(
             DashboardLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DashboardLeftPanelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MyAccountBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(OrderHistoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RequestHistoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MyCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -123,20 +133,20 @@ public class dashboard extends javax.swing.JFrame {
 
         OverthecounterBtn.setText("Shop for Over The Counter Medicines");
 
-        javax.swing.GroupLayout RightpaneldashboardLayout = new javax.swing.GroupLayout(Rightpaneldashboard);
-        Rightpaneldashboard.setLayout(RightpaneldashboardLayout);
-        RightpaneldashboardLayout.setHorizontalGroup(
-            RightpaneldashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RightpaneldashboardLayout.createSequentialGroup()
+        javax.swing.GroupLayout RightJPanelLayout = new javax.swing.GroupLayout(RightJPanel);
+        RightJPanel.setLayout(RightJPanelLayout);
+        RightJPanelLayout.setHorizontalGroup(
+            RightJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RightJPanelLayout.createSequentialGroup()
                 .addGap(91, 91, 91)
-                .addGroup(RightpaneldashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(RightJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(OverthecounterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AlternateMedicinesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        RightpaneldashboardLayout.setVerticalGroup(
-            RightpaneldashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RightpaneldashboardLayout.createSequentialGroup()
+        RightJPanelLayout.setVerticalGroup(
+            RightJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RightJPanelLayout.createSequentialGroup()
                 .addGap(88, 88, 88)
                 .addComponent(AlternateMedicinesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(111, 111, 111)
@@ -144,7 +154,7 @@ public class dashboard extends javax.swing.JFrame {
                 .addContainerGap(95, Short.MAX_VALUE))
         );
 
-        DashboardRightPanel.add(Rightpaneldashboard, "card2");
+        DashboardRightPanel.add(RightJPanel, "card2");
 
         jSplitPane2.setRightComponent(DashboardRightPanel);
 
@@ -173,17 +183,23 @@ public class dashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void OrderHistoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderHistoryBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_OrderHistoryBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void MyAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MyAccountBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        
+        MyAccountPage myAccountpage = new MyAccountPage(RightJPanel, patientDirectory );
+        RightJPanel.add("myAccountpage", myAccountpage);
+        CardLayout layout = (CardLayout) RightJPanel.getLayout();
+        layout.next(RightJPanel);
+    }//GEN-LAST:event_MyAccountBtnActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void MyCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MyCartBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_MyCartBtnActionPerformed
 
     private void AlternateMedicinesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternateMedicinesBtnActionPerformed
         // TODO add your handling code here:
@@ -192,10 +208,10 @@ public class dashboard extends javax.swing.JFrame {
 //       CardLayout layout = (CardLayout)container.getLayout();
 //       layout.next(container);
         
-        //AlternateMedicinePage alternateMedicinePage = new AlternateMedicinePage(Rightpaneldashboard);
-        Rightpaneldashboard.add("AlternateMedicinePageJpanel", alternateMedicinePage);
-        CardLayout layout = (CardLayout)Rightpaneldashboard.getLayout();
-        layout.next(Rightpaneldashboard);
+       AlternateMedicinePage alternateMedicinePage = new AlternateMedicinePage(RightJPanel, med, phar, account, system);
+        RightJPanel.add("AlternateMedicinePageJpanel", alternateMedicinePage);
+        CardLayout layout = (CardLayout)RightJPanel.getLayout();
+        layout.next(RightJPanel);
         
         
         
@@ -210,13 +226,13 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JButton AlternateMedicinesBtn;
     private javax.swing.JPanel DashboardLeftPanel;
     private javax.swing.JPanel DashboardRightPanel;
+    private javax.swing.JButton LogoutBtn;
+    private javax.swing.JButton MyAccountBtn;
+    private javax.swing.JButton MyCartBtn;
+    private javax.swing.JButton OrderHistoryBtn;
     private javax.swing.JButton OverthecounterBtn;
-    private javax.swing.JPanel Rightpaneldashboard;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton RequestHistoryBtn;
+    private javax.swing.JPanel RightJPanel;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSplitPane jSplitPane2;
     // End of variables declaration//GEN-END:variables
