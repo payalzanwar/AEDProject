@@ -30,12 +30,12 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestMedicinesJPanel(JPanel userProcessContainer, UserAccount userAccount, Enterprise enterprise) {
+    public RequestMedicinesJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        this.userAccount = userAccount;
+        this.userAccount = account;
         valueLabel.setText(enterprise.getName());
     }
 
@@ -65,8 +65,8 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         });
         add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 95, -1, -1));
 
-        jLabel1.setText("Message");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 40, -1, -1));
+        jLabel1.setText("Medicine");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 40, 70, -1));
         add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 37, 89, -1));
 
         backJButton.setText("<<Back");
