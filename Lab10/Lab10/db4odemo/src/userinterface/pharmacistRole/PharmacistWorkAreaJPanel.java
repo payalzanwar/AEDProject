@@ -208,14 +208,11 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(assignJButton)
                     .addComponent(processJButton))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jButton2)))
-                .addContainerGap(339, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(352, Short.MAX_VALUE))
         );
 
         container.add(jPanel2, "card2");

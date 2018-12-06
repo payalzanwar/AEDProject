@@ -14,6 +14,9 @@ import Business.Role.Role;
 import Business.Role.Role.RoleType;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.PatientRole.PatientLoginFormJPanel;
@@ -30,10 +33,12 @@ public class MainJFrame extends javax.swing.JFrame {
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 
-    public MainJFrame() {
+    public MainJFrame() throws IOException {
         initComponents();
         system = dB4OUtil.retrieveSystem();
         this.setSize(1680, 1050);
+        DataGenerator generator = DataGenerator.getInstance();
+        
     }
 
     /**
@@ -273,7 +278,11 @@ public class MainJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainJFrame().setVisible(true);
+                try {
+                    new MainJFrame().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

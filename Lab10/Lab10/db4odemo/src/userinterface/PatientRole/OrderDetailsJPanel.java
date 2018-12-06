@@ -5,6 +5,17 @@
  */
 package userinterface.PatientRole;
 
+import Business.EcoSystem;
+import Business.Medicine.Medicine;
+import Business.Order.Order;
+import Business.Order.OrderDirectory;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import userinterface.DoctorRole.DoctorWorkAreaJPanel;
+
 /**
  *
  * @author Payal Zanwar
@@ -14,10 +25,36 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form OrderDetailsJPanel
      */
-    public OrderDetailsJPanel() {
+    private JPanel userProcessContainer;
+    private OrderDirectory orderD;
+    private UserAccount account;
+    private EcoSystem system;
+    public OrderDetailsJPanel(JPanel userProcessContainer,OrderDirectory orderD,UserAccount userAccount,EcoSystem system) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.orderD=orderD;
+        this.account = userAccount;
+        this.system = system;
+     //   populateTable();
     }
 
+    
+    public void populateTable()
+    {
+    
+        DefaultTableModel model = (DefaultTableModel) OrderTable.getModel();
+
+        model.setRowCount(0);
+        for (Order order : orderD.getOrderList()) {
+
+            Object[] row = new Object[3];
+            row[0] = order.getItem().getProduct_name();
+            row[1] = order.getItem().getQuantity();
+            row[2] = order.getItem().getSalesPrice();
+
+            model.addRow(row);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,7 +68,7 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        OrderTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -39,7 +76,7 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("                   Order Details");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        OrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -58,11 +95,11 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane1.setViewportView(OrderTable);
+        if (OrderTable.getColumnModel().getColumnCount() > 0) {
+            OrderTable.getColumnModel().getColumn(0).setResizable(false);
+            OrderTable.getColumnModel().getColumn(1).setResizable(false);
+            OrderTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jLabel2.setText("Total Price");
@@ -70,6 +107,11 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
         jButton1.setText("CheckOut");
 
         jButton2.setText(">>Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -148,8 +190,17 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+       
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable OrderTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -157,7 +208,6 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

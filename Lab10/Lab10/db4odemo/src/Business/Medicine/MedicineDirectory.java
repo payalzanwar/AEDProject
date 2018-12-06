@@ -14,24 +14,30 @@ import java.util.ArrayList;
  * @author Payal Zanwar
  */
 public class MedicineDirectory {
-    private ArrayList<Medicine> MedicineList;
+    public static ArrayList<Medicine> MedicineList;
 
     public MedicineDirectory() {
         MedicineList = new ArrayList();
     }
 
-    public ArrayList<Medicine> getMedicineList() {
+    public static ArrayList<Medicine> getMedicineList() {
         return MedicineList;
     }
     
-    public Medicine AddMedicine(String saltname,int Price, String SaltComposition, int units, String Type,String disease){
+    public static Medicine AddMedicine(String[] metadata){
         Medicine med = new Medicine();
-        med.setSaltname(saltname);
-        med.setSaltComposition(SaltComposition);
-        med.setPrice(Price);
-        med.setType(Type);
-        med.setUnits(units);
-        med.setDisease(disease);
+        
+       
+        
+        med.setSaltname(metadata[0]);
+        int p = Integer.parseInt(metadata[1]);
+        med.setPrice(p);
+        med.setSaltComposition(metadata[2]);
+        int unit = Integer.parseInt(metadata[3]);
+        med.setUnits(unit);
+        med.setType(metadata[4]);
+
+        med.setDisease(metadata[5]);
         MedicineList.add(med);
         return med;
     }
