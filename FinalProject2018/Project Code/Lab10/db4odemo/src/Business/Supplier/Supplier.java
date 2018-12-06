@@ -18,6 +18,11 @@ public class Supplier {
     private static int count = 1;
     private MedicineDirectory Med;
 
+    public Supplier(){
+        this.supplierID = this.count;
+        count++;
+        Med = new MedicineDirectory();
+    }
     public MedicineDirectory getMed() {
         return Med;
     }
@@ -26,11 +31,7 @@ public class Supplier {
         this.Med = Med;
     }
     
-    public Supplier(){
-        this.supplierID = this.count;
-        count++;
-        Med = new MedicineDirectory();
-    }
+    
     public int getSupplierID() {
         return supplierID;
     }

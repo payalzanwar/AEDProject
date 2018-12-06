@@ -48,6 +48,11 @@ public class OrganizationDirectory {
             organization = new SupplyManagerOrganization();
             organizationList.add(organization);     
         }
+        
+        else if (type.getValue().equals(Type.ManufacturingManager.getValue())){
+            organization = new ManufacturingManagerOrganization();
+            organizationList.add(organization);     
+        }
         return organization;
     }   
 }

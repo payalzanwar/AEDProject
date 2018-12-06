@@ -14,6 +14,7 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.DoctorRole.DoctorLoginFormJPanel;
+import userinterface.ManufacturingManagerRole.ManufacturingManagerLoginFormJPanel;
 import userinterface.PatientRole.PatientLoginFormJPanel;
 import userinterface.SupplyManagerRole.SupplyManagerLoginFormJPanel;
 
@@ -254,7 +255,14 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 CardLayout layout = (CardLayout) container.getLayout();
                 layout.next(container);   
                     }
-
+            else if(type.getValue().equals(Type.ManufacturingManager.getValue()))
+            {
+                 ManufacturingManagerLoginFormJPanel manLogin = new ManufacturingManagerLoginFormJPanel(container, organization, employee, role);
+                //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+                container.add("ManufacturingManagerLoginJPanel", manLogin);
+                CardLayout layout = (CardLayout) container.getLayout();
+                layout.next(container);   
+                    }
             
 
     }//GEN-LAST:event_createUserJButtonActionPerformed

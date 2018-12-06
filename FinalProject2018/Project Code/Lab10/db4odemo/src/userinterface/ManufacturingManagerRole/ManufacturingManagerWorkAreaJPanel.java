@@ -1,11 +1,11 @@
-package userinterface.SupplyManagerRole;
+package userinterface.ManufacturingManagerRole;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Enterprise.EnterpriseType;
-import static Business.Organization.Organization.Type.SupplyManager;
-import Business.Organization.SupplyManagerOrganization;
-import Business.Supplier.Supplier;
+import Business.Manufacturer.Manufacturer;
+import Business.Organization.ManufacturingManagerOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerWorkRequest;
+import Business.WorkQueue.MedicineSupplyWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -21,20 +21,20 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Payal Zanwar
  */
-public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
+public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form SupplyManagerWorkAreaJPanel
      */
     
     private JPanel userProcessContainer;
-    private SupplyManagerOrganization organization;
+    private ManufacturingManagerOrganization organization;
     private Enterprise enterprise;
     private UserAccount userAccount;
-    private Supplier supp;
+    private Manufacturer man;
    
     
-    public SupplyManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, SupplyManagerOrganization organization, Enterprise enterprise) {
+    public ManufacturingManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ManufacturingManagerOrganization organization, Enterprise enterprise) {
         initComponents();
     
         this.userProcessContainer = userProcessContainer;
@@ -42,8 +42,8 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = account;
         
-       supp=new Supplier();
-       suppliernametxt.setText(enterprise.getName());
+       man=new Manufacturer();
+       manufacturernametxt.setText(enterprise.getName());
        
        populateTable();
     }
@@ -81,11 +81,8 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
         assignJButton = new javax.swing.JButton();
         supplyBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        addMedToInventoryBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        suppliernametxt = new javax.swing.JTextField();
-        viewInventoryBtn = new javax.swing.JButton();
-        reqSupplyFromManufacturerBtn = new javax.swing.JButton();
+        manufacturernametxt = new javax.swing.JTextField();
 
         container.setLayout(new java.awt.CardLayout());
 
@@ -138,34 +135,13 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("           Supply Manager Work Area");
+        jLabel1.setText("          MAnufacturing Manager Work Area");
 
-        addMedToInventoryBtn.setText("Add Medicines");
-        addMedToInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setText("Manufacturer ");
+
+        manufacturernametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addMedToInventoryBtnActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Supplier ");
-
-        suppliernametxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                suppliernametxtActionPerformed(evt);
-            }
-        });
-
-        viewInventoryBtn.setText("View Inventory");
-        viewInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewInventoryBtnActionPerformed(evt);
-            }
-        });
-
-        reqSupplyFromManufacturerBtn.setText("Request Supply from Manufacturer");
-        reqSupplyFromManufacturerBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reqSupplyFromManufacturerBtnActionPerformed(evt);
+                manufacturernametxtActionPerformed(evt);
             }
         });
 
@@ -180,61 +156,42 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(suppliernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(manufacturernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                         .addComponent(refreshJButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(86, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(199, 199, 199)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(reqSupplyFromManufacturerBtn)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(addMedToInventoryBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(assignJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(supplyBtn)
-                                .addGap(102, 102, 102))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(78, 78, 78)
-                                .addComponent(viewInventoryBtn)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addComponent(assignJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(supplyBtn)
+                .addGap(102, 102, 102))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(suppliernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(refreshJButton)))
-                .addGap(30, 30, 30)
+                        .addComponent(refreshJButton))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(manufacturernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel2)))
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(assignJButton)
                     .addComponent(supplyBtn))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addMedToInventoryBtn)
-                    .addComponent(viewInventoryBtn))
-                .addGap(38, 38, 38)
-                .addComponent(reqSupplyFromManufacturerBtn)
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addContainerGap(428, Short.MAX_VALUE))
         );
 
         container.add(jPanel2, "card2");
@@ -280,52 +237,25 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
         if (selectedRow < 0){
             return;
         }
-        CustomerWorkRequest request = (CustomerWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        MedicineSupplyWorkRequest request = (MedicineSupplyWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
         request.setStatus("Completed");
     }//GEN-LAST:event_supplyBtnActionPerformed
 
-    private void addMedToInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMedToInventoryBtnActionPerformed
+    private void manufacturernametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manufacturernametxtActionPerformed
         // TODO add your handling code here:
-        SupplyManagerManageMedicineJPanel managemed = new SupplyManagerManageMedicineJPanel(userProcessContainer, supp);
-        userProcessContainer.add("processWorkRequestJPanel", managemed);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_addMedToInventoryBtnActionPerformed
-
-    private void suppliernametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppliernametxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_suppliernametxtActionPerformed
-
-    private void viewInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInventoryBtnActionPerformed
-        // TODO add your handling code here:
-        SuplyManagerViewMedicineDetailsPage view = new SuplyManagerViewMedicineDetailsPage(userProcessContainer,supp);
-        userProcessContainer.add("ViewProductDetailJPanelSupplier", view);
-   CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_viewInventoryBtnActionPerformed
-
-    private void reqSupplyFromManufacturerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqSupplyFromManufacturerBtnActionPerformed
-        // TODO add your handling code here:
-        SupplyManagerRequestSupplyJPanel reqMed = new SupplyManagerRequestSupplyJPanel(userProcessContainer,userAccount, organization,enterprise);
-        userProcessContainer.add("processWorkRequestJPanel", reqMed);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_reqSupplyFromManufacturerBtnActionPerformed
+    }//GEN-LAST:event_manufacturernametxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addMedToInventoryBtn;
     private javax.swing.JButton assignJButton;
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField manufacturernametxt;
     private javax.swing.JButton refreshJButton;
-    private javax.swing.JButton reqSupplyFromManufacturerBtn;
-    private javax.swing.JTextField suppliernametxt;
     private javax.swing.JButton supplyBtn;
-    private javax.swing.JButton viewInventoryBtn;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }
