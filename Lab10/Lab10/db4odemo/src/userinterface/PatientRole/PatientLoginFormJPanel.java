@@ -5,9 +5,12 @@
  */
 package userinterface.PatientRole;
 
+import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Organization.Organization;
+import Business.Patient.Patient;
 import Business.Patient.PatientDirectory;
+import Business.Role.PatientRole;
 import Business.Role.Role;
 import static Business.Role.Role.RoleType.Patient;
 import Business.UserAccount.UserAccountDirectory;
@@ -30,8 +33,10 @@ public class PatientLoginFormJPanel extends javax.swing.JPanel {
     private Employee employee;
     private Role role;
     private Organization organization;
+    private EcoSystem system;
    // private Role role;
-    public PatientLoginFormJPanel(JPanel rightPanel, Organization organization,Employee employee,Role role) 
+   // public PatientLoginFormJPanel(JPanel rightPanel, Organization organization,Employee employee,Role role) 
+            public PatientLoginFormJPanel(JPanel rightPanel, EcoSystem system) 
     {
        
         initComponents();
@@ -40,6 +45,7 @@ public class PatientLoginFormJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.employee=employee;
         this.role=role;
+        this.system=system;
     }
 
         
@@ -628,6 +634,9 @@ public class PatientLoginFormJPanel extends javax.swing.JPanel {
         String ProviderName = ProviderNameTxt.getText();
         String ProviderAdd = ProviderAddTxt.getText();
         pd.createPatient(userID,  password,  FName,  LName, emailId);
+      
+        system.getUserAccountDirectory().createUserAccount(userID, password, null, new PatientRole());
+        
         JOptionPane.showMessageDialog(null, "Customer created successfully!");
         System.out.println( "Username: "+ userID+" Password: "+ password);
         
@@ -636,8 +645,9 @@ public class PatientLoginFormJPanel extends javax.swing.JPanel {
 //        System.out.println("User Account Created: "+ud.getUserAccountList());
         
      //   pharmDir.createPharmacy(Pharname,PharmLoc,emailId,zip);
-        organization.getUserAccountDirectory().createUserAccount(userID, password, this.employee, this.role);
-        JOptionPane.showMessageDialog(rightPanel, "Pharmacy created successfully!");
+     //   organization.getUserAccountDirectory().createUserAccount(userID, password, this.employee, this.role);
+        
+       
     }//GEN-LAST:event_CreateAccountBtnActionPerformed
 
     private void PatientPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientPasswordActionPerformed

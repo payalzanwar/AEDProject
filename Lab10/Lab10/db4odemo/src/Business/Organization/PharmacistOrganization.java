@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class PharmacistOrganization extends Organization{
 
    public PharmacistOrganization() {
-        super(Organization.Type.Pharmacy.getValue());
+        super(Organization.Type.Pharmacist.getValue());
     }
     
     @Override

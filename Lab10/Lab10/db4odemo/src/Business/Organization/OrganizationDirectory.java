@@ -40,7 +40,7 @@ public class OrganizationDirectory {
 //            
 //        }
         
-        else if (type.getValue().equals(Type.Pharmacy.getValue())){
+        else if (type.getValue().equals(Type.Pharmacist.getValue())){
             organization = new PharmacistOrganization();
             organizationList.add(organization);
             

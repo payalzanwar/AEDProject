@@ -25,69 +25,40 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
     /**
      * Creates new form ViewMedicineDetailsJPanel
      */
+    private JPanel userProcessContainer;
+    private Pharmacy phar;
+  public ViewMedicineDetailsPage(JPanel userProcessContainer, Pharmacy phar) {
     
-    private JPanel rightPanel;
-    private MedicineDirectory medicineDirectory;
-    private PharmacyDirectory p;
-    
-    public ViewMedicineDetailsPage(JPanel rightPanel,MedicineDirectory medicineDirectory ) 
-    {
+      
         initComponents();
-        this.rightPanel = rightPanel;
-        this.medicineDirectory = medicineDirectory;
-        
-        //for(Medicine m: medicineDirectory.getMedicineDirectory()){
-        //  custBox.addItem(c);
-        //}
-        
-            populateSaltTable();
-            populatePriceTable();
-        }
-        
-        
-     
-        public void populateSaltTable()
-        {
-        
-        DefaultTableModel model = (DefaultTableModel) saltTable.getModel();
+        this.userProcessContainer = userProcessContainer;
+       this.phar=phar;
+      
+        populateTable();
+    }
+
+    public void populateTable()
+    {
+    
+DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
        model.setRowCount(0);
-        for(Medicine medi : medicineDirectory.getMedicineList())
-
+        for(Medicine medi : phar.getMed().getMedicineList())
+            
             {
-               Object[] row = new Object[3];
+                MedicineNameTxt.setText(medi.getSaltname());
+               Object[] row = new Object[6];
            row[0] = medi;
-           row[1] = medi.getSaltname();
-           row[2] = medi.getSaltComposition();
+           row[1] = medi.getSaltComposition();
+           row[2]=medi.getPrice();
+           row[3]=medi.getType();
+           row[4]=medi.getDisease();
+           row[5]=medi.getUnits();
 
                       model.addRow(row);
             }
-        }
-        
-        public void populatePriceTable()
-        {
-        
-        DefaultTableModel model = (DefaultTableModel) PriceTable.getModel();
-
-       model.setRowCount(0);
-       for(Pharmacy pp : p.getPharmacyList())
-        for(Medicine m : pp.getMed().getMedicineList())
-           
-
-            {
-                Object[] row = new Object[3];
-                row[0] = pp;
-                row[1] = pp.getLocation();
-                row[2] = m.getPrice();
-
-                      model.addRow(row);
-            }
-        }
-    
-        
-                
-    
-
+    }
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,9 +75,9 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
         AddToCartBtn = new javax.swing.JButton();
         BackBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        saltTable = new javax.swing.JTable();
+        SaltTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        PriceTable = new javax.swing.JTable();
+        PharmacyTable = new javax.swing.JTable();
         BuyNowBtn = new javax.swing.JButton();
         MedicineNameTxt = new javax.swing.JTextField();
 
@@ -134,19 +105,19 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
             }
         });
 
-        saltTable.setModel(new javax.swing.table.DefaultTableModel(
+        SaltTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Salt Name", "Composition"
+                "Salt Name", "Composition", "Pricel", "Type", "Disease", "No of Units"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -157,9 +128,9 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(saltTable);
+        jScrollPane1.setViewportView(SaltTable);
 
-        PriceTable.setModel(new javax.swing.table.DefaultTableModel(
+        PharmacyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -182,7 +153,7 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(PriceTable);
+        jScrollPane2.setViewportView(PharmacyTable);
 
         BuyNowBtn.setText("Buy Now");
         BuyNowBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -210,15 +181,14 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(27, Short.MAX_VALUE)
+                        .addContainerGap(16, Short.MAX_VALUE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1)
-                        .addComponent(jScrollPane2))
-                    .addComponent(MedicineNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MedicineNameTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,9 +208,9 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(MedicineNameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MedicineNameTxt))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,8 +238,9 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
         // TODO add your handling code here:
-        
-        
+         userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_BackBtnActionPerformed
 
     private void MedicineNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicineNameTxtActionPerformed
@@ -282,13 +253,13 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
     private javax.swing.JButton BackBtn;
     private javax.swing.JButton BuyNowBtn;
     private javax.swing.JTextField MedicineNameTxt;
-    private javax.swing.JTable PriceTable;
+    private javax.swing.JTable PharmacyTable;
+    private javax.swing.JTable SaltTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable saltTable;
     // End of variables declaration//GEN-END:variables
 }
