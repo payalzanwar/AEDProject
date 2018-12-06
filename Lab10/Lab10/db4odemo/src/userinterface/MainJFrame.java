@@ -9,6 +9,7 @@ import Business.DB4OUtil.DB4OUtil;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
+import Business.Organization.PatientOrganization;
 import Business.Patient.PatientDirectory;
 import Business.Role.Role;
 import Business.Role.Role.RoleType;
@@ -17,6 +18,7 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.PatientRole.PatientLoginFormJPanel;
+import userinterface.PatientRole.PatientWorkAreaJPanel11;
 
 /**
  *
@@ -29,6 +31,11 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private JPanel RightJPanel;
+    private UserAccount account;
+    private PatientOrganization organization;
+    private Enterprise enterprise;
+    private PatientDirectory patientDirectory;
 
     public MainJFrame() {
         initComponents();
@@ -54,7 +61,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         loginJLabel = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        CreateAccountBtn = new javax.swing.JButton();
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,10 +85,10 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Create Account");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        CreateAccountBtn.setText("Create Account");
+        CreateAccountBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                CreateAccountBtnActionPerformed(evt);
             }
         });
 
@@ -95,7 +102,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(passwordField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(userNameJTextField)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftJPanelLayout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(CreateAccountBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(loginJLabel))
                     .addGroup(leftJPanelLayout.createSequentialGroup()
@@ -126,7 +133,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(loginJLabel))
                     .addGroup(leftJPanelLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(jButton1)))
+                        .addComponent(CreateAccountBtn)))
                 .addGap(77, 77, 77)
                 .addComponent(logoutJButton)
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -143,7 +150,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
-        // Get user name
+         // Get user name
         String userName = userNameJTextField.getText();
         // Get Password
         char[] passwordCharArray = passwordField.getPassword();
@@ -193,6 +200,9 @@ public class MainJFrame extends javax.swing.JFrame {
         }
          else if(userAccount.getRole().equals(RoleType.Patient))
         {
+            
+             
+              
             CardLayout layout=(CardLayout)container.getLayout();
             container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, null, null, system));
             layout.next(container);
@@ -233,7 +243,7 @@ public class MainJFrame extends javax.swing.JFrame {
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void CreateAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAccountBtnActionPerformed
         // TODO add your handling code here:
         
         PatientLoginFormJPanel createAccountPage = new PatientLoginFormJPanel(container,system);
@@ -241,7 +251,7 @@ public class MainJFrame extends javax.swing.JFrame {
                CardLayout layout = (CardLayout)container.getLayout();
                layout.next(container);
                
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_CreateAccountBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,8 +288,8 @@ public class MainJFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CreateAccountBtn;
     private javax.swing.JPanel container;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSplitPane jSplitPane1;
