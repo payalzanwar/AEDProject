@@ -94,7 +94,7 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Status"
+                "Salt Name", "Sender", "Receiver", "Status"
             }
         ) {
             Class[] types = new Class [] {

@@ -1,7 +1,11 @@
 package userinterface.DoctorRole;
 
 import Business.Enterprise.Enterprise;
+import static Business.Enterprise.Enterprise.EnterpriseType.Hospital;
+import Business.Hospital.Hospital;
 import Business.Organization.DoctorOrganization;
+import static Business.Organization.Organization.Type.Doctor;
+import static Business.Role.Role.RoleType.Doctor;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerWorkRequest;
 //import Business.WorkQueue.LabTestWorkRequest;
@@ -31,15 +35,17 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private DoctorOrganization organization;
     private Enterprise enterprise;
     private UserAccount userAccount;
+    private DoctorOrganization doc;
     public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DoctorOrganization organization, Enterprise enterprise) {
         initComponents();
-//        populateTable();
-        this.userProcessContainer = userProcessContainer;
+ this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = enterprise;
         this.userAccount = account;
-       // valueLabel.setText(enterprise.getName());
-       // populateRequestTable();
+        
+       doc=new DoctorOrganization();
+       
+       populateTable();
     }
 
     public void populateTable(){
@@ -53,11 +59,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             row[1] = request.getSender().getEmployee().getName();
             row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
             row[3] = request.getStatus();
-            row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-      //    String result = ((LabTestWorkRequest) request).getTestResult();
-        //    row[3] = result == null ? "Waiting" : result;
             
             model.addRow(row);
         }
@@ -174,11 +175,9 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
 
         int selectedRow = workRequestJTable.getSelectedRow();
-
         if (selectedRow < 0){
             return;
         }
-
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
         request.setReceiver(userAccount);
         request.setStatus("Pending");

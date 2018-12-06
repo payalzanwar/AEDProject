@@ -74,7 +74,7 @@ public class ManufacturingManagerLoginFormJPanel extends javax.swing.JPanel {
         PContainer.setLayout(new java.awt.CardLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("                           Supply Manager Sign Up");
+        jLabel1.setText("                           Manufacturing Manager Sign Up");
 
         CredJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Credentials"));
 
