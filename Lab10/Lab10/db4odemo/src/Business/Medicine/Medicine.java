@@ -80,7 +80,7 @@ private static int cnt = 1;
     public void setType(String Type) {
         this.Type = Type;
     }
- 
+    @Override
     public String toString()
             {
                 return getSaltname();

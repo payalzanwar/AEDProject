@@ -228,10 +228,9 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         Employee employee = (Employee) employeeJComboBox.getSelectedItem();
         Role role = (Role) roleJComboBox.getSelectedItem();
 
-        for (Type type : Organization.Type.values()) 
-        
-            if (type.getValue().equals(Type.Pharmacy.getValue())) {      //  organizationJComboBox.addItem(type);
-System.out.println(type.getValue()+""+Type.Pharmacy.getValue());
+        for (Type type : Organization.Type.values()) {
+            if (type.getValue().equals(Type.Pharmacist.getValue())) {      //  organizationJComboBox.addItem(type);
+
                 PharmacistLoginFormJPanel pharmLogin = new PharmacistLoginFormJPanel(container, organization, employee, role);
                 //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
                 container.add("PharmLoginJPanel", pharmLogin);
@@ -249,17 +248,14 @@ System.out.println(type.getValue()+""+Type.Doctor.getValue());
                 layout.next(container);
                 break;
             }
-            else if(type.getValue().equals(Type.Patient.getValue()))
-            {
-System.out.println(type.getValue()+""+Type.Patient.getValue());
-                 PatientLoginFormJPanel docLogin = new PatientLoginFormJPanel(container, organization, employee, role);
-                //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-                container.add("PatientLoginJPanel", docLogin);
-                CardLayout layout = (CardLayout) container.getLayout();
-                layout.next(container); 
-                break;
-                    }
-            //continue;
+//            else if(!type.getValue().equals(Type.Patient.getValue()))
+//            {
+//                 PatientLoginFormJPanel docLogin = new PatientLoginFormJPanel(container, organization, employee, role);
+//                //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+//                container.add("PatientLoginJPanel", docLogin);
+//                CardLayout layout = (CardLayout) container.getLayout();
+//                layout.next(container);   
+//                    }
 
         
 

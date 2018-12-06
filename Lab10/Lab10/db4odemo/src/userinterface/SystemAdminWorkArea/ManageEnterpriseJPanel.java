@@ -28,7 +28,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     public ManageEnterpriseJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.system = system;
+      this.system = system;
 
         populateTable();
         populateComboBox();
