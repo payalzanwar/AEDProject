@@ -45,7 +45,6 @@ public class DoctorProcessWorkRequestJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         resultJTextField = new javax.swing.JTextField();
         backJButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -72,11 +71,6 @@ public class DoctorProcessWorkRequestJPanel extends javax.swing.JPanel {
         });
         add(backJButton);
         backJButton.setBounds(53, 223, 65, 29);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/DoctorRole/Doctor-BackgroundImage.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        add(jLabel2);
-        jLabel2.setBounds(0, 0, 450, 320);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -98,7 +92,6 @@ public class DoctorProcessWorkRequestJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField resultJTextField;
     private javax.swing.JButton submitJButton;
     // End of variables declaration//GEN-END:variables

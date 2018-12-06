@@ -5,7 +5,6 @@
  */
 package userinterface.PatientRole;
 
-import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
@@ -32,8 +31,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
       private UserAccount account;
    private Enterprise enterprise;
    private Pharmacy phar;
-   private EcoSystem system;
-    public AlternateMedicinePage(JPanel Rightpaneldashboard, MedicineDirectory med,Pharmacy phar,UserAccount account,EcoSystem system) {
+    public AlternateMedicinePage(JPanel Rightpaneldashboard, MedicineDirectory med,Pharmacy phar,UserAccount account,Enterprise enterprise) {
         initComponents();
         this.RightPaneldashboard = Rightpaneldashboard;
         this.med=med; 
@@ -41,8 +39,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
        this.account = account;
        this.enterprise=enterprise;
        this.phar=phar;
-       this.system=system;
-    }   
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -213,7 +210,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 //        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
 //        layout.next(RightPaneldashboard);
         
-        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(RightPaneldashboard,account,system);
+        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(RightPaneldashboard,account,enterprise);
         RightPaneldashboard.add("ViewProductDetailJPanelSupplier", pmed);
         CardLayout layout1 = (CardLayout)RightPaneldashboard.getLayout();
         layout1.next(RightPaneldashboard);

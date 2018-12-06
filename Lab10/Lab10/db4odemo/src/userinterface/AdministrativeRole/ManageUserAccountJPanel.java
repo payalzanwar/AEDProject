@@ -14,7 +14,9 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.DoctorRole.DoctorLoginFormJPanel;
+import userinterface.ManufacturingManagerRole.ManufacturingManagerLoginFormJPanel;
 import userinterface.PatientRole.PatientLoginFormJPanel;
+import userinterface.SupplyManagerRole.SupplyManagerLoginFormJPanel;
 
 import userinterface.pharmacistRole.PharmacistLoginFormJPanel;
 
@@ -227,7 +229,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         Employee employee = (Employee) employeeJComboBox.getSelectedItem();
         Role role = (Role) roleJComboBox.getSelectedItem();
-
+        System.out.println(Organization.Type.values());
         for (Type type : Organization.Type.values()) {
             if (type.getValue().equals(Type.Pharmacist.getValue())) {      //  organizationJComboBox.addItem(type);
 
@@ -236,28 +238,32 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 container.add("PharmLoginJPanel", pharmLogin);
                 CardLayout layout = (CardLayout) container.getLayout();
                 layout.next(container);
-                break;
             }
             else if(type.getValue().equals(Type.Doctor.getValue()))
             {
-System.out.println(type.getValue()+""+Type.Doctor.getValue());
                 DoctorLoginFormJPanel docLogin = new DoctorLoginFormJPanel(container, organization, employee, role);
                 //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
                 container.add("docLoginJPanel", docLogin);
                 CardLayout layout = (CardLayout) container.getLayout();
                 layout.next(container);
-                break;
             }
-//            else if(!type.getValue().equals(Type.Patient.getValue()))
-//            {
-//                 PatientLoginFormJPanel docLogin = new PatientLoginFormJPanel(container, organization, employee, role);
-//                //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-//                container.add("PatientLoginJPanel", docLogin);
-//                CardLayout layout = (CardLayout) container.getLayout();
-//                layout.next(container);   
-//                    }
-
-        
+            else if(type.getValue().equals(Type.SupplyManager.getValue()))
+            {
+                 SupplyManagerLoginFormJPanel suppLogin = new SupplyManagerLoginFormJPanel(container, organization, employee, role);
+                //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+                container.add("SupplyManagerLoginJPanel", suppLogin);
+                CardLayout layout = (CardLayout) container.getLayout();
+                layout.next(container);   
+                    }
+            else if(type.getValue().equals(Type.ManufacturingManager.getValue()))
+            {
+                 ManufacturingManagerLoginFormJPanel manLogin = new ManufacturingManagerLoginFormJPanel(container, organization, employee, role);
+                //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+                container.add("ManufacturingManagerLoginJPanel", manLogin);
+                CardLayout layout = (CardLayout) container.getLayout();
+                layout.next(container);   
+                    }
+            
 
     }//GEN-LAST:event_createUserJButtonActionPerformed
     }
