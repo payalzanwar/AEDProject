@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  *
  * @author Vaishali Tripathi
  */
-public class PatientWorkAreaJPanel extends javax.swing.JPanel {
+public class PatientWorkAreaJPanel1 extends javax.swing.JPanel {
 
     /**
      * Creates new form test
@@ -32,7 +32,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private EcoSystem system;
     
   //  public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
-     public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account,EcoSystem system){ 
+     public PatientWorkAreaJPanel1(JPanel userProcessContainer, UserAccount account,EcoSystem system){ 
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;

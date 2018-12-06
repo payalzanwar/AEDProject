@@ -260,7 +260,7 @@ System.out.println(type.getValue()+""+Type.Doctor.getValue());
         
 
     }//GEN-LAST:event_createUserJButtonActionPerformed
-    
+    }
     private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed
         // TODO add your handling code here:
         container.remove(this);

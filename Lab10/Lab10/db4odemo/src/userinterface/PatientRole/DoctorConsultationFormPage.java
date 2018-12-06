@@ -90,8 +90,6 @@ public class DoctorConsultationFormPage extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addContainerGap(288, Short.MAX_VALUE))
         );
-
-        add(jPanel1, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
     private void MessagetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MessagetxtActionPerformed

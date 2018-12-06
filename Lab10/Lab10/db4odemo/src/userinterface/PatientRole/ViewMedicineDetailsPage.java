@@ -10,9 +10,9 @@ import static Business.Enterprise.Enterprise.EnterpriseType.Pharmacy;
 import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
 import Business.Network.Network;
-import static Business.Organization.Organization.Type.Pharmacy;
 import Business.Pharmacy.Pharmacy;
 import Business.Pharmacy.PharmacyDirectory;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
