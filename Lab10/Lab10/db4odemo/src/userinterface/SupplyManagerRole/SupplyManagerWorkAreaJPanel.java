@@ -1,11 +1,9 @@
-package userinterface.pharmacistRole;
-
+package userinterface.SupplyManagerRole;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Enterprise.EnterpriseType;
-import Business.Organization.DoctorOrganization;
-import Business.Organization.PharmacistOrganization;
-import Business.Pharmacy.Pharmacy;
-import Business.Pharmacy.PharmacyDirectory;
+import static Business.Organization.Organization.Type.SupplyManager;
+import Business.Organization.SupplyManagerOrganization;
+import Business.Supplier.Supplier;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -23,20 +21,20 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Payal Zanwar
  */
-public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
+public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form PharmacistWorkAreaJPanel
+     * Creates new form SupplyManagerWorkAreaJPanel
      */
     
     private JPanel userProcessContainer;
-    private PharmacistOrganization organization;
+    private SupplyManagerOrganization organization;
     private Enterprise enterprise;
     private UserAccount userAccount;
-    private Pharmacy phar;
+    private Supplier supp;
    
     
-    public PharmacistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PharmacistOrganization organization, Enterprise enterprise) {
+    public SupplyManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, SupplyManagerOrganization organization, Enterprise enterprise) {
         initComponents();
     
         this.userProcessContainer = userProcessContainer;
@@ -44,8 +42,8 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = account;
         
-       phar=new Pharmacy();
-       pharmacynametxt.setText(enterprise.getName());
+       supp=new Supplier();
+       suppliernametxt.setText(enterprise.getName());
        
        populateTable();
     }
@@ -81,11 +79,13 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         workRequestJTable = new javax.swing.JTable();
         refreshJButton = new javax.swing.JButton();
         assignJButton = new javax.swing.JButton();
-        processJButton = new javax.swing.JButton();
+        supplyBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        addMedToInventoryBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        pharmacynametxt = new javax.swing.JTextField();
+        suppliernametxt = new javax.swing.JTextField();
+        viewInventoryBtn = new javax.swing.JButton();
+        reqSupplyFromManufacturerBtn = new javax.swing.JButton();
 
         container.setLayout(new java.awt.CardLayout());
 
@@ -131,27 +131,41 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        processJButton.setText("Process");
-        processJButton.addActionListener(new java.awt.event.ActionListener() {
+        supplyBtn.setText("Supply");
+        supplyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                processJButtonActionPerformed(evt);
+                supplyBtnActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("           Pharmacist Work Area");
+        jLabel1.setText("           Supply Manager Work Area");
 
-        jButton1.setText("Add Medicines");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addMedToInventoryBtn.setText("Add Medicines");
+        addMedToInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addMedToInventoryBtnActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Pharmacy");
+        jLabel2.setText("Supplier ");
 
-        pharmacynametxt.addActionListener(new java.awt.event.ActionListener() {
+        suppliernametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pharmacynametxtActionPerformed(evt);
+                suppliernametxtActionPerformed(evt);
+            }
+        });
+
+        viewInventoryBtn.setText("View Inventory");
+        viewInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewInventoryBtnActionPerformed(evt);
+            }
+        });
+
+        reqSupplyFromManufacturerBtn.setText("Request Supply from Manufacturer");
+        reqSupplyFromManufacturerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reqSupplyFromManufacturerBtnActionPerformed(evt);
             }
         });
 
@@ -159,14 +173,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(199, 199, 199)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(assignJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(processJButton)
-                .addGap(102, 102, 102))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,11 +182,30 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(pharmacynametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(suppliernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
                         .addComponent(refreshJButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(199, 199, 199)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(reqSupplyFromManufacturerBtn)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(addMedToInventoryBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(assignJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(supplyBtn)
+                                .addGap(102, 102, 102))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(viewInventoryBtn)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +217,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pharmacynametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(suppliernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
@@ -202,10 +227,14 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(assignJButton)
-                    .addComponent(processJButton))
+                    .addComponent(supplyBtn))
                 .addGap(26, 26, 26)
-                .addComponent(jButton1)
-                .addContainerGap(373, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addMedToInventoryBtn)
+                    .addComponent(viewInventoryBtn))
+                .addGap(38, 38, 38)
+                .addComponent(reqSupplyFromManufacturerBtn)
+                .addContainerGap(306, Short.MAX_VALUE))
         );
 
         container.add(jPanel2, "card2");
@@ -235,11 +264,9 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
 
         int selectedRow = workRequestJTable.getSelectedRow();
-
         if (selectedRow < 0){
             return;
         }
-
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
         request.setReceiver(userAccount);
         request.setStatus("Pending");
@@ -247,49 +274,58 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_assignJButtonActionPerformed
 
-    private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
+    private void supplyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplyBtnActionPerformed
 
         int selectedRow = workRequestJTable.getSelectedRow();
-
         if (selectedRow < 0){
             return;
         }
-
         CustomerWorkRequest request = (CustomerWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        request.setStatus("Completed");
+    }//GEN-LAST:event_supplyBtnActionPerformed
 
-        request.setStatus("Processing");
-
-        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request);
-        userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-
-    }//GEN-LAST:event_processJButtonActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addMedToInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMedToInventoryBtnActionPerformed
         // TODO add your handling code here:
-        ManageMedicineJPanel managemed = new ManageMedicineJPanel(userProcessContainer, phar);
+        SupplyManagerManageMedicineJPanel managemed = new SupplyManagerManageMedicineJPanel(userProcessContainer, supp);
         userProcessContainer.add("processWorkRequestJPanel", managemed);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addMedToInventoryBtnActionPerformed
 
-    private void pharmacynametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pharmacynametxtActionPerformed
+    private void suppliernametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppliernametxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pharmacynametxtActionPerformed
+    }//GEN-LAST:event_suppliernametxtActionPerformed
+
+    private void viewInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInventoryBtnActionPerformed
+        // TODO add your handling code here:
+        SuplyManagerViewMedicineDetailsPage view = new SuplyManagerViewMedicineDetailsPage(userProcessContainer,supp);
+        userProcessContainer.add("ViewProductDetailJPanelSupplier", view);
+   CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_viewInventoryBtnActionPerformed
+
+    private void reqSupplyFromManufacturerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqSupplyFromManufacturerBtnActionPerformed
+        // TODO add your handling code here:
+        SupplyManagerRequestSupplyJPanel reqMed = new SupplyManagerRequestSupplyJPanel(userProcessContainer,userAccount, organization,enterprise);
+        userProcessContainer.add("processWorkRequestJPanel", reqMed);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_reqSupplyFromManufacturerBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addMedToInventoryBtn;
     private javax.swing.JButton assignJButton;
     private javax.swing.JPanel container;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField pharmacynametxt;
-    private javax.swing.JButton processJButton;
     private javax.swing.JButton refreshJButton;
+    private javax.swing.JButton reqSupplyFromManufacturerBtn;
+    private javax.swing.JTextField suppliernametxt;
+    private javax.swing.JButton supplyBtn;
+    private javax.swing.JButton viewInventoryBtn;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

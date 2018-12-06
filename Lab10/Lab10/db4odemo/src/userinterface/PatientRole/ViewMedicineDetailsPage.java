@@ -5,13 +5,8 @@
  */
 package userinterface.PatientRole;
 
-import Business.Enterprise.Enterprise;
-import static Business.Enterprise.Enterprise.EnterpriseType.Pharmacy;
 import Business.Medicine.Medicine;
-import Business.Medicine.MedicineDirectory;
-import Business.Network.Network;
 import Business.Pharmacy.Pharmacy;
-import Business.Pharmacy.PharmacyDirectory;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -29,7 +24,6 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
     private Pharmacy phar;
   public ViewMedicineDetailsPage(JPanel userProcessContainer, Pharmacy phar) {
     
-      
         initComponents();
         this.userProcessContainer = userProcessContainer;
        this.phar=phar;
@@ -162,12 +156,6 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
             }
         });
 
-        MedicineNameTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MedicineNameTxtActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -215,11 +203,11 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70)
+                .addGap(103, 103, 103)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 84, Short.MAX_VALUE)
+                .addGap(18, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AddToCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,10 +230,6 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_BackBtnActionPerformed
-
-    private void MedicineNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicineNameTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MedicineNameTxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

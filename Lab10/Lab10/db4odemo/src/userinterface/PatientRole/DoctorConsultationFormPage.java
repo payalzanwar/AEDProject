@@ -47,7 +47,7 @@ public class DoctorConsultationFormPage extends javax.swing.JPanel {
 
         Messagetxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        requestDoctorBtn = new javax.swing.JButton();
 
         Messagetxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,10 +57,10 @@ public class DoctorConsultationFormPage extends javax.swing.JPanel {
 
         jLabel1.setText("Alternative Medicines");
 
-        jButton1.setText("Request");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        requestDoctorBtn.setText("Request");
+        requestDoctorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                requestDoctorBtnActionPerformed(evt);
             }
         });
 
@@ -76,7 +76,7 @@ public class DoctorConsultationFormPage extends javax.swing.JPanel {
                 .addContainerGap(251, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(requestDoctorBtn)
                 .addGap(274, 274, 274))
         );
         layout.setVerticalGroup(
@@ -87,7 +87,7 @@ public class DoctorConsultationFormPage extends javax.swing.JPanel {
                     .addComponent(Messagetxt)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(49, 49, 49)
-                .addComponent(jButton1)
+                .addComponent(requestDoctorBtn)
                 .addContainerGap(288, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -96,12 +96,14 @@ public class DoctorConsultationFormPage extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_MessagetxtActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void requestDoctorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestDoctorBtnActionPerformed
         // TODO add your handling code here:
+        
         String message = Messagetxt.getText();
         
         CustomerWorkRequest request = new CustomerWorkRequest();
         request.setMessage(message);
+
         request.setSender(account);
         request.setStatus("Sent");
         
@@ -109,20 +111,23 @@ public class DoctorConsultationFormPage extends javax.swing.JPanel {
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
             if (organization instanceof DoctorOrganization){
                 org = organization;
+                System.out.println("Yeah bitches!!");
                 break;
             }
         }
         if (org!=null){
             org.getWorkQueue().getWorkRequestList().add(request);
             account.getWorkQueue().getWorkRequestList().add(request);
+            System.out.println("Yeah bitches!!");
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_requestDoctorBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Messagetxt;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton requestDoctorBtn;
     // End of variables declaration//GEN-END:variables
 }
