@@ -6,12 +6,18 @@
 package userinterface.pharmacistRole;
 
 import Business.Enterprise.Enterprise;
+import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
 import Business.Pharmacy.Pharmacy;
 import Business.Pharmacy.PharmacyDirectory;
 import java.awt.CardLayout;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.Book;
+import userinterface.BookDirectory;
+import userinterface.DataGenerator;
+import userinterface.DataReader;
 import userinterface.PatientRole.ViewMedicineDetailsPage;
 
 /**
@@ -26,13 +32,38 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
     
     private Enterprise enterprise;
     private Pharmacy phar;
-    public ManageMedicineJPanel(JPanel userProcessContainer,Pharmacy phar) {
+    private DataReader commentReader;
+    private MedicineDirectory b;
+    private BookDirectory b1;
+    public ManageMedicineJPanel(JPanel userProcessContainer,Pharmacy phar) throws IOException {
         initComponents();
         this.userProcessContainer=userProcessContainer;
        this.enterprise=enterprise;
        this.phar=phar;
+      // DataGenerator generator = DataGenerator.getInstance();
+//     for (Book b :b1.getBookList()) {
+//            System.out.println("Book\n"+b);
+//        }
+      
+       for(Medicine b1 :b.getMedicineList()) {
+            System.out.println("Medicine"+b1);
+       }
+      // commentReader = new DataReader(generator.getCommentFilePath());
     }
 
+    
+//     private void readData() throws IOException{
+//        String[] row;
+//        while((row = userReader.getNextRow()) != null ){
+//            generateUser(row);
+//        }
+//        while((row = commentReader.getNextRow()) != null ){
+//            Comment comment = generateComment(row);
+//            generatePost(row, comment);
+//        }
+        
+       
+   // }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,7 +128,7 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
 
         jLabel7.setText("Disease Name");
 
-        jButton3.setText("View");
+        jButton3.setText("View Inventory");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -133,7 +164,7 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SaltNametxt)
                             .addComponent(PriceTxt)
-                            .addComponent(Noofunitstxt, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                            .addComponent(Noofunitstxt)
                             .addComponent(TypeCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(SaltCompositionTxt, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(diseasename))))
@@ -222,10 +253,20 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
         int units = Integer.parseInt(Noofunitstxt.getText());
         String disease = diseasename.getText();
         
-      
        
-     phar.getMed().AddMedicine(SaltName, Price, saltc, units, type,disease);
-        
+         String[] s= new String[6];
+     s[0]=SaltName;
+     s[1]=String.valueOf(Price);
+     s[2]=saltc;
+     s[3]=String.valueOf(units);
+     s[4]=type;
+     s[5]=disease;
+       
+    // phar.getMed().AddMedicine(s);
+    
+        b.AddMedicine(s);
+        for(Medicine b1 :b.getMedicineList()) 
+            System.out.println("Medicine"+b1);
         JOptionPane.showMessageDialog(userProcessContainer, "Medicines added successfully!");
     }//GEN-LAST:event_jButton1ActionPerformed
    

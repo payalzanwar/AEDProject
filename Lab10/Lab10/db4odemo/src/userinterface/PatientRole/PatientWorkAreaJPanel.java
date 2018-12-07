@@ -23,8 +23,8 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
      * Creates new form test
      */
     private JPanel userProcessContainer;
-    private MedicineDirectory med;
-    private Pharmacy phar;
+   
+   
     private UserAccount account;
     private Enterprise enterprise;
   //  public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
@@ -115,7 +115,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         //       CardLayout layout = (CardLayout)container.getLayout();
         //       layout.next(container);
 
-        AlternateMedicinePage alternateMedicinePage = new AlternateMedicinePage(Rightpaneldashboard,med,phar,account,enterprise);
+        AlternateMedicinePage alternateMedicinePage = new AlternateMedicinePage(Rightpaneldashboard,account,system);
         Rightpaneldashboard.add("AlternateMedicinePageJpanel", alternateMedicinePage);
         CardLayout layout = (CardLayout)Rightpaneldashboard.getLayout();
         layout.next(Rightpaneldashboard);

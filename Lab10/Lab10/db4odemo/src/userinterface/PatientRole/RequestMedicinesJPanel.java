@@ -7,9 +7,13 @@ package userinterface.PatientRole;
 import userinterface.DoctorRole.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Medicine.Medicine;
+import Business.Network.Network;
+import Business.Order.OrderDirectory;
 
 import Business.Organization.Organization;
 import Business.Organization.PharmacistOrganization;
+import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerWorkRequest;
 import java.awt.CardLayout;
@@ -27,6 +31,9 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private UserAccount userAccount;
+    private EcoSystem system;
+    private Pharmacy phar;
+    private OrderDirectory orderD;
     /**
      * Creates new form RequestLabTestJPanel
      */
@@ -36,7 +43,19 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.userAccount = account;
-        valueLabel.setText(enterprise.getName());
+        this.system=system;
+        phar= new Pharmacy();
+        orderD = new OrderDirectory();
+       // valueLabel.setText(enterprise.getName());
+        populateComboBox();
+        for (Network network : system.getNetworkList()) {
+           //   RegionCombo.addItem(network);
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                Enterprise.EnterpriseType  type =enterprise.getEnterpriseType();
+            if(type.equals(type.Pharmacy))
+            enterpriseCombo.addItem(enterprise);
+            }
+        }
     }
 
     /**
@@ -49,11 +68,15 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         requestTestJButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        ChooseMedCombo = new javax.swing.JComboBox();
+        Medicinetxt = new javax.swing.JLabel();
+        Quantitytxt = new javax.swing.JLabel();
+        Qtyxt = new javax.swing.JTextField();
+        AddtoCart = new javax.swing.JButton();
+        BuyNow = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        messageJTextField = new javax.swing.JTextField();
-        backJButton = new javax.swing.JButton();
-        valueLabel = new javax.swing.JLabel();
-        enterpriseLabel = new javax.swing.JLabel();
+        Pricetxt = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -80,51 +103,209 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         valueLabel.setText("<value>");
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 130, -1));
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("EnterPrise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 120, 30));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("MedicineDetails"));
+
+        ChooseMedCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Acetaminophen", "ibuprofen", "Menthol throat lozenges", "Combiflam", "Crocine", "cetirizine" }));
+
+        Medicinetxt.setText("Choose Medicine");
+
+        Quantitytxt.setText("Quantity");
+
+        AddtoCart.setText("Add to Cart");
+        AddtoCart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddtoCartActionPerformed(evt);
+            }
+        });
+
+        BuyNow.setText("Buy Now");
+        BuyNow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuyNowActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Price");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(BuyNow))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Quantitytxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Medicinetxt, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(ChooseMedCombo, 0, 1, Short.MAX_VALUE)
+                        .addComponent(Qtyxt, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                    .addComponent(AddtoCart, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Pricetxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(152, 152, 152))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ChooseMedCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Medicinetxt))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Quantitytxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Qtyxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(Pricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AddtoCart)
+                    .addComponent(BuyNow))
+                .addGap(24, 24, 24))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(RegionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(enterpriseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(backJButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(requestTestJButton))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(43, 43, 43))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(189, 189, 189))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(enterpriseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(RegionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(backJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(requestTestJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
+        );
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 730, 540));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
         
-        String message = messageJTextField.getText();
+//        Enterprise e =(Enterprise) enterpriseCombo.getSelectedItem();
+//        String message = messageJTextField.getText();
+//        
+//        CustomerWorkRequest request = new CustomerWorkRequest();
+//        request.setMessage(message);
+//        request.setSender(userAccount);
+//        request.setStatus("Sent");
+//        
+//        Organization org = null;
+//        
+//        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
+//            if (organization instanceof PharmacistOrganization){
+//                org = organization;
+//                break;
+//            }
+//        }
+//        if (org!=null){
+//            org.getWorkQueue().getWorkRequestList().add(request);
+//            userAccount.getWorkQueue().getWorkRequestList().add(request);
+//        }
+//        
         
-        CustomerWorkRequest request = new CustomerWorkRequest();
-        request.setMessage(message);
-        request.setSender(userAccount);
-        request.setStatus("Sent");
-        
-        Organization org = null;
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof PharmacistOrganization){
-                org = organization;
-                break;
-            }
-        }
-        if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(request);
-            userAccount.getWorkQueue().getWorkRequestList().add(request);
-        }
-        
+        OrderDetailsJPanel orderDetail = new OrderDetailsJPanel(userProcessContainer,orderD,userAccount,system);
+        userProcessContainer.add("OrderDetailsPanel", orderDetail);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         
         userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        DoctorWorkAreaJPanel dwjp = (DoctorWorkAreaJPanel) component;
-        dwjp.populateTable();
+        
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
         
     }//GEN-LAST:event_backJButtonActionPerformed
 
+    private void AddtoCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddtoCartActionPerformed
+        // TODO add your handling code here:
+         int Price=0 ;
+        String Medicine = (String) ChooseMedCombo.getSelectedItem();
+        int qty = Integer.parseInt(Qtyxt.getText());
+         for(Medicine medi : phar.getMed().getMedicineList())
+         {
+             if(Medicine.equals(medi.getSaltname()))
+                 Price = medi.getPrice()*qty;
+                 Pricetxt.setText(String.valueOf(Price));
+         }  
+         orderD.AddOrder(Medicine, Price, qty);
+    }//GEN-LAST:event_AddtoCartActionPerformed
+
+    private void BuyNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyNowActionPerformed
+        // TODO add your handling code here:
+        
+        OrderDetailsJPanel orderDetail = new OrderDetailsJPanel(userProcessContainer,orderD,userAccount,system);
+        userProcessContainer.add("OrderDetailsPanel", orderDetail);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_BuyNowActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddtoCart;
+    private javax.swing.JButton BuyNow;
+    private javax.swing.JComboBox ChooseMedCombo;
+    private javax.swing.JLabel Medicinetxt;
+    private javax.swing.JTextField Pricetxt;
+    private javax.swing.JTextField Qtyxt;
+    private javax.swing.JLabel Quantitytxt;
+    private javax.swing.JComboBox RegionCombo;
     private javax.swing.JButton backJButton;
-    private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JComboBox enterpriseCombo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField messageJTextField;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton requestTestJButton;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
