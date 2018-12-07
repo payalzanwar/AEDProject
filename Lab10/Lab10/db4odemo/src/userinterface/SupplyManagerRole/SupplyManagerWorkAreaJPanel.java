@@ -1,11 +1,14 @@
 package userinterface.SupplyManagerRole;
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Enterprise.EnterpriseType;
+import Business.Network.Network;
 import static Business.Organization.Organization.Type.SupplyManager;
 import Business.Organization.SupplyManagerOrganization;
 import Business.Supplier.Supplier;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerWorkRequest;
+import Business.WorkQueue.MedicineSupplyWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -32,7 +35,7 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAccount;
     private Supplier supp;
-   
+    private EcoSystem system;
     
     public SupplyManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, SupplyManagerOrganization organization, Enterprise enterprise) {
         initComponents();
@@ -41,11 +44,14 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.enterprise = enterprise;
         this.userAccount = account;
-        
+        this.system=system;
        supp=new Supplier();
        suppliernametxt.setText(enterprise.getName());
        
        populateTable();
+       
+       
+      
     }
 
     public void populateTable(){
@@ -54,11 +60,14 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request;
-            row[1] = request.getSender().getEmployee().getName();
-            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[3] = request.getStatus();
+            Object[] row = new Object[7];
+            row[0] = ((MedicineSupplyWorkRequest) request);
+            row[1] = ((MedicineSupplyWorkRequest) request).getMedType();
+            row[2] = ((MedicineSupplyWorkRequest) request).getComposition();
+            row[3] = ((MedicineSupplyWorkRequest) request).getQuantity();
+            row[4] = request.getSender().getUsername();
+            row[5] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[6] = request.getStatus();
             
             model.addRow(row);
         }
