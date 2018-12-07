@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.DoctorRole;
+package userinterface.ManufacturingManagerRole;
 import Business.Employee.Employee;
+import Business.Manufacturer.ManufacturerDirectory;
 import Business.Organization.Organization;
-import static Business.Organization.Organization.Type.Doctor;
 import Business.Organization.OrganizationDirectory;
-import Business.Hospital.Hospital;
-import Business.Hospital.HospitalDirectory;
 import Business.Role.Role;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -19,7 +17,7 @@ import javax.swing.JPanel;
  *
  * @author Vaishali Tripathi
  */
-public class DoctorLoginFormJPanel extends javax.swing.JPanel {
+public class ManufacturingManagerLoginFormJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form DoctorLoginFormJPanel
@@ -28,16 +26,16 @@ public class DoctorLoginFormJPanel extends javax.swing.JPanel {
     private Organization organization;
     private Employee employee;
     private Role role;
-    private HospitalDirectory hospDir;
+    private ManufacturerDirectory manDir;
    
-    public DoctorLoginFormJPanel(JPanel PContainer, Organization organization,Employee employee,Role role) {
+    public ManufacturingManagerLoginFormJPanel(JPanel PContainer, Organization organization,Employee employee,Role role) {
     initComponents();
     this.setSize(800,800);
     this.employee=employee;
     this.PContainer=PContainer;
     this.role = role;
     this.organization=organization;
-    hospDir = new HospitalDirectory();
+    manDir = new ManufacturerDirectory();
     nametxt.setText(employee.getName());
     }
 
@@ -65,13 +63,9 @@ public class DoctorLoginFormJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         nametxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        hospnametxt = new javax.swing.JTextField();
+        suppliernametxt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        Emailidtxt = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        Zipcodetxt = new javax.swing.JTextField();
-        hospLoctxt = new javax.swing.JTextField();
+        supplierLoctxt = new javax.swing.JTextField();
         submitbtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -80,7 +74,7 @@ public class DoctorLoginFormJPanel extends javax.swing.JPanel {
         PContainer.setLayout(new java.awt.CardLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("                           Doctor Sign Up");
+        jLabel1.setText("                           Manufacturing Manager Sign Up");
 
         CredJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Credentials"));
 
@@ -147,19 +141,15 @@ public class DoctorLoginFormJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("Hospital Name");
+        jLabel3.setText("Supplier Name");
 
-        hospnametxt.addActionListener(new java.awt.event.ActionListener() {
+        suppliernametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hospnametxtActionPerformed(evt);
+                suppliernametxtActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Hospital Location");
-
-        jLabel4.setText("Zip Code");
-
-        jLabel9.setText("Email ID");
+        jLabel5.setText("Supplier Location");
 
         javax.swing.GroupLayout BasicInfoJPanelLayout = new javax.swing.GroupLayout(BasicInfoJPanel);
         BasicInfoJPanel.setLayout(BasicInfoJPanelLayout);
@@ -169,25 +159,17 @@ public class DoctorLoginFormJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(BasicInfoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BasicInfoJPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(Emailidtxt))
-                    .addGroup(BasicInfoJPanelLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
-                        .addComponent(nametxt))
+                        .addComponent(nametxt, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BasicInfoJPanelLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(hospnametxt))
+                        .addComponent(suppliernametxt))
                     .addGroup(BasicInfoJPanelLayout.createSequentialGroup()
-                        .addGroup(BasicInfoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
-                        .addGroup(BasicInfoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Zipcodetxt)
-                            .addComponent(hospLoctxt))))
+                        .addComponent(supplierLoctxt)))
                 .addGap(90, 90, 90))
         );
         BasicInfoJPanelLayout.setVerticalGroup(
@@ -199,21 +181,13 @@ public class DoctorLoginFormJPanel extends javax.swing.JPanel {
                     .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BasicInfoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hospnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(suppliernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BasicInfoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hospLoctxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(BasicInfoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Zipcodetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(BasicInfoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Emailidtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(supplierLoctxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         submitbtn.setText("Submit");
@@ -301,23 +275,20 @@ public class DoctorLoginFormJPanel extends javax.swing.JPanel {
 
     private void submitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbtnActionPerformed
         // TODO add your handling code here:
-
-        String Hospname = hospnametxt.getText();
-        String HospLoc = hospLoctxt.getText();
-        String zip = Zipcodetxt.getText();
-        String emailId = Emailidtxt.getText();
+        String manufacturerName = suppliernametxt.getText();
+        String manufacturerLocation = supplierLoctxt.getText();
         String userName = usernametxt.getText();
         String password = passwordtxt.getText();
         String repassword = confirmpswdtxt.getText();
 
-        hospDir.createHospital(Hospname,HospLoc,emailId,zip);
+        manDir.createManufacturer(manufacturerName,manufacturerLocation);
         this.organization.getUserAccountDirectory().createUserAccount(userName, password, this.employee, this.role);
-        JOptionPane.showMessageDialog(PContainer, "Doctor created successfully!");
+        JOptionPane.showMessageDialog(PContainer, "Manufacturing Manager created successfully!");
     }//GEN-LAST:event_submitbtnActionPerformed
 
-    private void hospnametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospnametxtActionPerformed
+    private void suppliernametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppliernametxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_hospnametxtActionPerformed
+    }//GEN-LAST:event_suppliernametxtActionPerformed
 
     private void nametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nametxtActionPerformed
         // TODO add your handling code here:
@@ -335,27 +306,23 @@ public class DoctorLoginFormJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BasicInfoJPanel;
     private javax.swing.JPanel CredJPanel;
-    private javax.swing.JTextField Emailidtxt;
     private javax.swing.JPanel PContainer;
     private javax.swing.JPanel ProcessContainer;
-    private javax.swing.JTextField Zipcodetxt;
     private javax.swing.JTextField confirmpswdtxt;
-    private javax.swing.JTextField hospLoctxt;
-    private javax.swing.JTextField hospnametxt;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nametxt;
     private javax.swing.JTextField passwordtxt;
     private javax.swing.JButton submitbtn;
+    private javax.swing.JTextField supplierLoctxt;
+    private javax.swing.JTextField suppliernametxt;
     private javax.swing.JTextField usernametxt;
     // End of variables declaration//GEN-END:variables
 }

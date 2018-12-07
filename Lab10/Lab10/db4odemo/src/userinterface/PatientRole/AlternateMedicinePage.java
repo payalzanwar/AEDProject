@@ -5,7 +5,6 @@
  */
 package userinterface.PatientRole;
 
-import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
@@ -215,7 +214,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 //        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
 //        layout.next(RightPaneldashboard);
         
-        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(RightPaneldashboard,account,system);
+        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(RightPaneldashboard,account,enterprise);
         RightPaneldashboard.add("ViewProductDetailJPanelSupplier", pmed);
         CardLayout layout1 = (CardLayout)RightPaneldashboard.getLayout();
         layout1.next(RightPaneldashboard);

@@ -29,7 +29,7 @@ import javax.swing.JPanel;
 public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    
+    private Enterprise enterprise;
     private UserAccount userAccount;
     private EcoSystem system;
     private Pharmacy phar;
@@ -37,11 +37,11 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestMedicinesJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
+    public RequestMedicinesJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
-       
+        this.enterprise = enterprise;
         this.userAccount = account;
         this.system=system;
         phar= new Pharmacy();
@@ -58,17 +58,6 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         }
     }
 
-    
-     private void populateComboBox() {
-        RegionCombo.removeAllItems();
-        enterpriseCombo.removeAllItems();
-
-        for (Network network : system.getNetworkList()) {
-            RegionCombo.addItem(network);
-        }
-
-      
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,13 +67,6 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        RegionCombo = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        enterpriseCombo = new javax.swing.JComboBox();
-        backJButton = new javax.swing.JButton();
         requestTestJButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         ChooseMedCombo = new javax.swing.JComboBox();
@@ -98,15 +80,17 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setText("            Over the Counter Medicines");
+        requestTestJButton.setText("Order Medicines");
+        requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestTestJButtonActionPerformed(evt);
+            }
+        });
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 95, -1, -1));
 
-        RegionCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel2.setText("Region");
-
-        jLabel3.setText("EnterPrise");
-
-        enterpriseCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel1.setText("Medicine");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 40, 70, -1));
+        add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 37, 89, -1));
 
         backJButton.setText("<<Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -114,13 +98,10 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 138, -1, -1));
 
-        requestTestJButton.setText("View Cart");
-        requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                requestTestJButtonActionPerformed(evt);
-            }
-        });
+        valueLabel.setText("<value>");
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 130, -1));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("MedicineDetails"));
 
@@ -326,5 +307,6 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton requestTestJButton;
+    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

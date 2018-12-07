@@ -5,10 +5,8 @@
  */
 package userinterface.PatientRole;
 
-import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Medicine.MedicineDirectory;
-import Business.Organization.PatientOrganization;
 import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -28,16 +26,14 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
    
    
     private UserAccount account;
-    private PatientOrganization organization;
-    private EcoSystem system;
-    
+    private Enterprise enterprise;
   //  public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
-     public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account,EcoSystem system){ 
+     public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account){ 
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;
-       
-        this.system=system;
+        this.enterprise=enterprise;
+        
                 
     }
 
@@ -128,7 +124,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
     private void OverthecounterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverthecounterBtnActionPerformed
         // TODO add your handling code here:
-        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(Rightpaneldashboard,account,system);
+        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(Rightpaneldashboard,account,enterprise);
         Rightpaneldashboard.add("ViewProductDetailJPanelSupplier", pmed);
         CardLayout layout1 = (CardLayout)Rightpaneldashboard.getLayout();
         layout1.next(Rightpaneldashboard);

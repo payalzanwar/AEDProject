@@ -7,21 +7,22 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
+import Business.Organization.SupplyManagerOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.DoctorRole.DoctorWorkAreaJPanel;
-import userinterface.PatientRole.PatientWorkAreaJPanel;
-import userinterface.PatientRole.dashboard;
+import userinterface.SupplyManagerRole.SupplyManagerWorkAreaJPanel;
 
-public class PatientRole extends Role{
+/**
+ *
+ * @author Vaishali Tripathi
+ */
+public class SupplyManagerRole extends Role{
+    
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new PatientWorkAreaJPanel(userProcessContainer, account);
+        return new SupplyManagerWorkAreaJPanel(userProcessContainer, account, (SupplyManagerOrganization)organization, enterprise);
     }
     
-    
 }
-

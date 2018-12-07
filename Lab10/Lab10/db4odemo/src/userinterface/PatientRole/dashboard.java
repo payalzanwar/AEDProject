@@ -6,7 +6,6 @@
 package userinterface.PatientRole;
 
 import Business.Enterprise.Enterprise;
-import Business.Organization.PatientOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -22,7 +21,7 @@ public class dashboard extends javax.swing.JFrame {
      */
     AlternateMedicinePage alternateMedicinePage;
     //JPanel Rightpaneldashboard;
-    public dashboard(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise)
+    public dashboard(JPanel userProcessContainer, UserAccount account,  Enterprise enterprise)
     {
         initComponents();
         this.Rightpaneldashboard = Rightpaneldashboard;
