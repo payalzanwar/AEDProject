@@ -14,13 +14,13 @@ import java.util.ArrayList;
  */
 public class UserAccountDirectory {
     
-    public static ArrayList<UserAccount> userAccountList;
+    private ArrayList<UserAccount> userAccountList;
 
     public UserAccountDirectory() {
         userAccountList = new ArrayList();
     }
 
-    public static ArrayList<UserAccount> getUserAccountList() {
+    public ArrayList<UserAccount> getUserAccountList() {
         return userAccountList;
     }
     
@@ -32,7 +32,7 @@ public class UserAccountDirectory {
         return null;
     }
     
-    public static UserAccount createUserAccount(String username, String password, Employee employee, Role role){
+    public UserAccount createUserAccount(String username, String password, Employee employee, Role role){
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
         userAccount.setPassword(password);
