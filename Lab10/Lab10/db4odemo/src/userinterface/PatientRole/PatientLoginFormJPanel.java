@@ -636,6 +636,7 @@ public class PatientLoginFormJPanel extends javax.swing.JPanel {
         pd.createPatient(userID,  password,  FName,  LName, emailId);
       
         system.getUserAccountDirectory().createUserAccount(userID, password, null, new PatientRole());
+        
         JOptionPane.showMessageDialog(null, "Customer created successfully!");
         System.out.println( "Username: "+ userID+" Password: "+ password);
         
@@ -646,7 +647,7 @@ public class PatientLoginFormJPanel extends javax.swing.JPanel {
      //   pharmDir.createPharmacy(Pharname,PharmLoc,emailId,zip);
      //   organization.getUserAccountDirectory().createUserAccount(userID, password, this.employee, this.role);
         
-        JOptionPane.showMessageDialog(rightPanel, "Patient created successfully!");
+       
     }//GEN-LAST:event_CreateAccountBtnActionPerformed
 
     private void PatientPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientPasswordActionPerformed

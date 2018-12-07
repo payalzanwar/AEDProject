@@ -225,7 +225,7 @@ public class SupplyManagerManageMedicineJPanel extends javax.swing.JPanel {
         
       
        
-     supp.getMed().AddMedicine(SaltName, Price, saltc, units, type,disease);
+     //supp.getMed().AddMedicine(SaltName, Price, saltc, units, type,disease);
         
         JOptionPane.showMessageDialog(userProcessContainer, "Medicines added successfully!");
         

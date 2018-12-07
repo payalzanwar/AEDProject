@@ -5,6 +5,7 @@
  */
 package userinterface.PatientRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
@@ -32,6 +33,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
    private Enterprise enterprise;
    private Pharmacy phar;
    private EcoSystem system;
+ 
     public AlternateMedicinePage(JPanel Rightpaneldashboard,UserAccount account,EcoSystem system) {
         initComponents();
         this.RightPaneldashboard = Rightpaneldashboard;
@@ -214,7 +216,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 //        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
 //        layout.next(RightPaneldashboard);
         
-        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(RightPaneldashboard,account,enterprise);
+        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(RightPaneldashboard,account,system);
         RightPaneldashboard.add("ViewProductDetailJPanelSupplier", pmed);
         CardLayout layout1 = (CardLayout)RightPaneldashboard.getLayout();
         layout1.next(RightPaneldashboard);
@@ -234,12 +236,12 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         String disease = (String) DiseaseListComboBox.getSelectedItem();
         model.setRowCount(0);
         
-         for(Medicine medi : phar.getMed().getMedicineList()){
+         for(Medicine medi : med.getMedicineList()){
              if(medname.equals(medi.getSaltname())){
                  if(disease.equals(medi.getDisease()))
              {
                 Object[] row = new Object[5];
-            row[0] = medi;
+            row[0] = medi.getSaltname();
             row[1] = medi.getSaltComposition();
             row[2] = medi.getPrice();
             row[3] = medi.getType();

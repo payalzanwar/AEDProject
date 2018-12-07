@@ -12,9 +12,11 @@ import Business.Order.OrderDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.DoctorRole.DoctorWorkAreaJPanel;
+import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  *
@@ -26,16 +28,18 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
      * Creates new form OrderDetailsJPanel
      */
     private JPanel userProcessContainer;
-    private OrderDirectory orderD;
+   // private OrderDirectory orderD;
     private UserAccount account;
     private EcoSystem system;
-    public OrderDetailsJPanel(JPanel userProcessContainer,OrderDirectory orderD,UserAccount userAccount,EcoSystem system) {
+    private List<Order> o;
+    public OrderDetailsJPanel(JPanel userProcessContainer,List<Order> o,UserAccount userAccount,EcoSystem system) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.orderD=orderD;
+        
         this.account = userAccount;
         this.system = system;
-     //   populateTable();
+        this.o=o;
+        populateTable();
     }
 
     
@@ -43,17 +47,21 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
     {
     
         DefaultTableModel model = (DefaultTableModel) OrderTable.getModel();
-
+        int Price=0;
         model.setRowCount(0);
-        for (Order order : orderD.getOrderList()) {
+        for (Order order : o) {
 
             Object[] row = new Object[3];
+            
+            
             row[0] = order.getItem().getProduct_name();
             row[1] = order.getItem().getQuantity();
             row[2] = order.getItem().getSalesPrice();
-
+            Price = Price + order.getItem().getSalesPrice();
             model.addRow(row);
         }
+        
+        TotalPricetxt.setText(String.valueOf(Price));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,7 +78,7 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         OrderTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TotalPricetxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -128,7 +136,7 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(TotalPricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jButton2)
@@ -147,7 +155,7 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
                 .addGap(51, 51, 51)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TotalPricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -193,7 +201,7 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
-       
+         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -201,6 +209,7 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable OrderTable;
+    private javax.swing.JTextField TotalPricetxt;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -208,6 +217,5 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

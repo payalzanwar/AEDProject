@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import userinterface.Book;
 import userinterface.BookDirectory;
 import userinterface.DataGenerator;
-import userinterface.DataReader;
+//import userinterface.DataReader;
 import userinterface.PatientRole.ViewMedicineDetailsPage;
 
 /**
@@ -32,10 +32,10 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
     
     private Enterprise enterprise;
     private Pharmacy phar;
-    private DataReader commentReader;
+    //private DataReader commentReader;
     private MedicineDirectory b;
     private BookDirectory b1;
-    public ManageMedicineJPanel(JPanel userProcessContainer,Pharmacy phar) throws IOException {
+    public ManageMedicineJPanel(JPanel userProcessContainer,Pharmacy phar) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
        this.enterprise=enterprise;
@@ -282,7 +282,7 @@ public class ManageMedicineJPanel extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-       ViewMedicineDetailsPage view = new ViewMedicineDetailsPage(userProcessContainer,phar);
+       ViewMedicineDetailsPage view = new ViewMedicineDetailsPage(userProcessContainer,b);
         userProcessContainer.add("ViewProductDetailJPanelSupplier", view);
    CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
