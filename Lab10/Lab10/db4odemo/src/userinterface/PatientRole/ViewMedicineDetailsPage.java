@@ -6,6 +6,7 @@
 package userinterface.PatientRole;
 
 import Business.Medicine.Medicine;
+import Business.Medicine.MedicineDirectory;
 import Business.Pharmacy.Pharmacy;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -21,12 +22,12 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
      * Creates new form ViewMedicineDetailsJPanel
      */
     private JPanel userProcessContainer;
-    private Pharmacy phar;
-  public ViewMedicineDetailsPage(JPanel userProcessContainer, Pharmacy phar) {
+    private MedicineDirectory b;
+  public ViewMedicineDetailsPage(JPanel userProcessContainer, MedicineDirectory phar) {
     
         initComponents();
         this.userProcessContainer = userProcessContainer;
-       this.phar=phar;
+       this.b=phar;
       
         populateTable();
     }
@@ -37,7 +38,7 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
 DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
        model.setRowCount(0);
-        for(Medicine medi : phar.getMed().getMedicineList())
+        for(Medicine medi : b.getMedicineList())
             
             {
                 MedicineNameTxt.setText(medi.getSaltname());

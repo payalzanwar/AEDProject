@@ -13,6 +13,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -146,7 +147,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        processJButton.setText("Process");
+        processJButton.setText("Ready For Shipping");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processJButtonActionPerformed(evt);
@@ -279,6 +280,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         int selectedRow = workRequestJTable.getSelectedRow();
 
         if (selectedRow < 0){
+            JOptionPane.showMessageDialog(container, "Please an order");
             return;
         }
 
@@ -294,12 +296,18 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         int selectedRow = workRequestJTable.getSelectedRow();
 
         if (selectedRow < 0){
+            JOptionPane.showMessageDialog(container, "Please select an order");
+            return;
+        }
+        WorkRequest request1 = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        if (!request1.getReceiver().equals(userAccount)){
+            JOptionPane.showMessageDialog(container, "This order is not assigned to you yet.");
             return;
         }
 
         CustomerWorkRequest request = (CustomerWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
 
-        request.setStatus("Processing");
+        request.setStatus("Ready For Shipping");
 
         ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request);
         userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
@@ -310,7 +318,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ManageMedicineJPanel managemed = new ManageMedicineJPanel(userProcessContainer, med);
+        ManageMedicineJPanel managemed = new ManageMedicineJPanel(userProcessContainer, phar);
         userProcessContainer.add("processWorkRequestJPanel", managemed);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
