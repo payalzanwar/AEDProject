@@ -3,6 +3,7 @@ package userinterface.pharmacistRole;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Enterprise.EnterpriseType;
+import Business.Medicine.MedicineDirectory;
 import Business.Network.Network;
 import Business.Organization.DoctorOrganization;
 import Business.Organization.PharmacistOrganization;
@@ -37,7 +38,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     private Pharmacy phar;
     private EcoSystem system;
-    
+    private MedicineDirectory med;
     public PharmacistWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PharmacistOrganization organization, Enterprise enterprise, EcoSystem system) {
         initComponents();
     
@@ -309,7 +310,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ManageMedicineJPanel managemed = new ManageMedicineJPanel(userProcessContainer, phar);
+        ManageMedicineJPanel managemed = new ManageMedicineJPanel(userProcessContainer, med);
         userProcessContainer.add("processWorkRequestJPanel", managemed);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

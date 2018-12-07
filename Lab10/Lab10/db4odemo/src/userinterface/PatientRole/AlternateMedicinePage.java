@@ -5,6 +5,7 @@
  */
 package userinterface.PatientRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
@@ -31,15 +32,19 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
       private UserAccount account;
    private Enterprise enterprise;
    private Pharmacy phar;
-    public AlternateMedicinePage(JPanel Rightpaneldashboard, MedicineDirectory med,Pharmacy phar,UserAccount account,Enterprise enterprise) {
+   private EcoSystem system;
+    public AlternateMedicinePage(JPanel Rightpaneldashboard,UserAccount account,EcoSystem system) {
         initComponents();
         this.RightPaneldashboard = Rightpaneldashboard;
-        this.med=med; 
-       list = new ArrayList<Medicine>();
        this.account = account;
-       this.enterprise=enterprise;
-       this.phar=phar;
-    }
+         this.system=system;
+         phar = new Pharmacy();
+       list = new ArrayList<Medicine>();
+       
+       
+      
+     
+    }   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -210,7 +215,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 //        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
 //        layout.next(RightPaneldashboard);
         
-        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(RightPaneldashboard,account,enterprise);
+        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(RightPaneldashboard,account,system);
         RightPaneldashboard.add("ViewProductDetailJPanelSupplier", pmed);
         CardLayout layout1 = (CardLayout)RightPaneldashboard.getLayout();
         layout1.next(RightPaneldashboard);
@@ -223,13 +228,16 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
+    
+        
          DefaultTableModel model = (DefaultTableModel) AlternateMedicineTable.getModel();
         String medname = SearchSaltOrMedicineTxt.getText();
         String disease = (String) DiseaseListComboBox.getSelectedItem();
         model.setRowCount(0);
         
-         for(Medicine medi : this.phar.getMed().getMedicineList())
-             if(medname.equals(medi.getSaltname())&& disease.equals(medi.getDisease()))
+         for(Medicine medi : phar.getMed().getMedicineList()){
+             if(medname.equals(medi.getSaltname())){
+                 if(disease.equals(medi.getDisease()))
              {
                 Object[] row = new Object[5];
             row[0] = medi;
@@ -241,6 +249,8 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
             list.add(medi);
             model.addRow(row);
              }
+             }
+         }
 //        int productId = Integer.parseInt(idField.getText());
 //        product = supplier.getProductCatalog().searchProduct(productId);
 //        ViewProductDetailJPanel vpdjp = new ViewProductDetailJPanel(userProcessContainer, product);

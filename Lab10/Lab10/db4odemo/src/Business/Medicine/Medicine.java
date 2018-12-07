@@ -83,7 +83,8 @@ private static int cnt = 1;
     @Override
     public String toString()
             {
-                return getSaltname();
+                return "Medicine [name=" + getSaltname() + ", price=" + getPrice() + ", SaltComp=" + getSaltComposition()
+                + "Type"+ getType()+ "Units"+ getUnits()+"Disease"+ getDisease()+"]";
             }
  
        

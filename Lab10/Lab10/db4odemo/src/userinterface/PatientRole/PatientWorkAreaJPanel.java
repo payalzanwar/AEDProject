@@ -5,6 +5,7 @@
  */
 package userinterface.PatientRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Medicine.MedicineDirectory;
 import Business.Pharmacy.Pharmacy;
@@ -23,17 +24,18 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
      * Creates new form test
      */
     private JPanel userProcessContainer;
-    private MedicineDirectory med;
-    private Pharmacy phar;
+   
+   
     private UserAccount account;
     private Enterprise enterprise;
+    private EcoSystem system;
   //  public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
-     public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account){ 
+     public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system){ 
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;
         this.enterprise=enterprise;
-        
+        this.system=system;
                 
     }
 
@@ -115,7 +117,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         //       CardLayout layout = (CardLayout)container.getLayout();
         //       layout.next(container);
 
-        AlternateMedicinePage alternateMedicinePage = new AlternateMedicinePage(Rightpaneldashboard,med,phar,account,enterprise);
+        AlternateMedicinePage alternateMedicinePage = new AlternateMedicinePage(Rightpaneldashboard,account,system);
         Rightpaneldashboard.add("AlternateMedicinePageJpanel", alternateMedicinePage);
         CardLayout layout = (CardLayout)Rightpaneldashboard.getLayout();
         layout.next(Rightpaneldashboard);
@@ -124,7 +126,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
     private void OverthecounterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverthecounterBtnActionPerformed
         // TODO add your handling code here:
-        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(Rightpaneldashboard,account,enterprise);
+        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(Rightpaneldashboard,account,system);
         Rightpaneldashboard.add("ViewProductDetailJPanelSupplier", pmed);
         CardLayout layout1 = (CardLayout)Rightpaneldashboard.getLayout();
         layout1.next(Rightpaneldashboard);

@@ -6,6 +6,7 @@
 package userinterface.SupplyManagerRole;
 
 import Business.Enterprise.Enterprise;
+import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
 import static Business.Organization.Organization.Type.SupplyManager;
 import Business.Supplier.Supplier;
@@ -27,11 +28,16 @@ public class SupplyManagerManageMedicineJPanel extends javax.swing.JPanel {
     
     private Enterprise enterprise;
     private Supplier supp;
+    private MedicineDirectory b;
     public SupplyManagerManageMedicineJPanel(JPanel userProcessContainer,Supplier supp) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
        this.enterprise=enterprise;
        this.supp=supp;
+       
+       for(Medicine b1 :b.getMedicineList()) {
+            System.out.println("Medicine"+b1);
+       }
     }
 
     /**
@@ -222,10 +228,45 @@ public class SupplyManagerManageMedicineJPanel extends javax.swing.JPanel {
         String type =  TypeCombo.getSelectedItem().toString();
         int units = Integer.parseInt(Noofunitstxt.getText());
         String disease = diseasename.getText();
+         String[] s= new String[6];
+     s[0]=SaltName;
+     s[1]=String.valueOf(Price);
+     s[2]=saltc;
+     s[3]=String.valueOf(units);
+     s[4]=type;
+     s[5]=disease;
+        /*
+        String SaltName = SaltNametxt.getText();
+        int Price = Integer.parseInt(PriceTxt.getText());
+        String saltc = SaltCompositionTxt.getText();
+        String type =  TypeCombo.getSelectedItem().toString();
+        int units = Integer.parseInt(Noofunitstxt.getText());
+        String disease = diseasename.getText();
+        
+       
+         String[] s= new String[6];
+     s[0]=SaltName;
+     s[1]=String.valueOf(Price);
+     s[2]=saltc;
+     s[3]=String.valueOf(units);
+     s[4]=type;
+     s[5]=disease;
+       
+    // phar.getMed().AddMedicine(s);
+    
+        b.AddMedicine(s);
+        for(Medicine b1 :b.getMedicineList()) 
+            System.out.println("Medicine"+b1);
+        JOptionPane.showMessageDialog(userProcessContainer, "Medicines added successfully!");
+        */
         
       
        
-     supp.getMed().AddMedicine(SaltName, Price, saltc, units, type,disease);
+     supp.getMed().AddMedicine(s);
+    
+        b.AddMedicine(s);
+        for(Medicine b1 :b.getMedicineList()) 
+            System.out.println("Medicine"+b1);
         
         JOptionPane.showMessageDialog(userProcessContainer, "Medicines added successfully!");
         
