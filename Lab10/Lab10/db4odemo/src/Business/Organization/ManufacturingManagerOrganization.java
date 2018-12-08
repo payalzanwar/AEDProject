@@ -14,8 +14,8 @@ import java.util.ArrayList;
  * @author Vaishali Tripathi
  */
 public class ManufacturingManagerOrganization extends Organization{
-    public ManufacturingManagerOrganization() {
-        super(Organization.Type.ManufacturingManager.getValue());
+    public ManufacturingManagerOrganization(String loc) {
+        super(Organization.Type.ManufacturingManager.getValue(),loc);
     }
     
     @Override

@@ -55,5 +55,11 @@ public class Order {
     public void setItem(Item item) {
         this.item = item;
     }
+
+    @Override
+    public String toString() {
+        return item.getProduct_name();
+    }
+    
     
 }

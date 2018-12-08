@@ -15,8 +15,8 @@ import java.util.ArrayList;
  */
 public class PharmacistOrganization extends Organization{
 
-   public PharmacistOrganization() {
-        super(Organization.Type.Pharmacist.getValue());
+   public PharmacistOrganization(String loc) {
+        super(Organization.Type.Pharmacist.getValue(),loc);
     }
     
     @Override

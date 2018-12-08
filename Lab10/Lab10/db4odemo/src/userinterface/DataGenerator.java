@@ -46,7 +46,7 @@ public class DataGenerator {
     
     private final String USER_CAT_PATH = "./UserCatalogue.csv";
     private static final String COMMENT_FILE_PATH = "./ProductCatalogue.csv";
-    
+    private final String USER_HEADER = "Brand,Medicine-Name,Salt-Comp1,Salt-Comp2,Salt-Comp3,Type,Disease,No-of-units,Price";
     private DataGenerator() throws IOException {
                 
        
@@ -113,9 +113,13 @@ try{
                 // each line of
                 // the file, using a comma as the delimiter
                 String[] attributes = line.split(",");
-                v.createBook(attributes);
+                for(int i=0;i<1;i++){
+                    System.out.println("attribute 1"+attributes[i]);
+                    if(!(attributes[i].equalsIgnoreCase("Brand"))){
+               
               b.AddMedicine(attributes);
-
+                    }
+                }
                 // adding book into ArrayList
                
 

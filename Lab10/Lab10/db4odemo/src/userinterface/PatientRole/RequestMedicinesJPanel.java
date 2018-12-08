@@ -78,15 +78,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
              ChooseMedCombo.addItem(medi);
              }
         
-//          Medicine medicine= (Medicine) ChooseMedCombo.getSelectedItem();
-//        
-//         for(Medicine medi : med.getMedicineList())
-//         {
-//             if(medicine.getSaltname().equals(medi.getSaltname())){
-//                 Price = medi.getPrice();
-//                 Pricetxt.setText(String.valueOf(Price)+"$  per medicine");
-//         }  
-//         }
+
          for (Network network : system.getNetworkList()) {
            //   RegionCombo.addItem(network);
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -127,15 +119,17 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setText("            Over the Counter Medicines");
-
-        RegionCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel4.setText("                      Order Medicines");
 
         jLabel2.setText("Region");
 
         jLabel3.setText("EnterPrise");
 
-        enterpriseCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        enterpriseCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enterpriseComboActionPerformed(evt);
+            }
+        });
 
         backJButton.setText("<<Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -379,6 +373,10 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
          }  
          }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void enterpriseComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_enterpriseComboActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddtoCart;

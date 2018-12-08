@@ -23,6 +23,7 @@ public class SuplyManagerViewMedicineDetailsPage extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private Supplier supp;
+    
   public SuplyManagerViewMedicineDetailsPage(JPanel userProcessContainer, Supplier supp) {
     
         initComponents();
@@ -43,12 +44,15 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
             {
                 
                Object[] row = new Object[6];
-           row[0] = medi;
-           row[1] = medi.getSaltComposition();
-           row[2]=medi.getPrice();
-           row[3]=medi.getType();
-           row[4]=medi.getDisease();
-           row[5]=medi.getUnits();
+           row[0] = medi.getBrand();
+           row[1]=medi.getSaltname();
+           row[2] = medi.getSaltComposition1();
+            row[3]= medi.getSaltComposition2();
+            row[4]=medi.getSaltComposition3();
+           row[5]=medi.getPrice();
+           row[6]=medi.getType();
+           row[7]=medi.getDisease();
+           row[8]=medi.getUnits();
 
                       model.addRow(row);
             }
@@ -84,14 +88,14 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
             },
             new String [] {
-                "Salt Name", "Composition", "Pricel", "Type", "Disease", "No of Units"
+                "Salt Name", "Composition", "Pricel", "Type", "Disease", "No of Units", "Sal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, true, true
+                false, false, true, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {

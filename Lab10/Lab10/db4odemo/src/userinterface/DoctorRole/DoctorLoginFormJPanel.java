@@ -159,7 +159,7 @@ public class DoctorLoginFormJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Zip Code");
 
-        jLabel9.setText("Email ID");
+        jLabel9.setText("Speciality");
 
         javax.swing.GroupLayout BasicInfoJPanelLayout = new javax.swing.GroupLayout(BasicInfoJPanel);
         BasicInfoJPanel.setLayout(BasicInfoJPanelLayout);

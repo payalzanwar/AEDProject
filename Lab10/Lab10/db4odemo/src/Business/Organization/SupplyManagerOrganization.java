@@ -14,8 +14,8 @@ import java.util.ArrayList;
  * @author Vaishali Tripathi
  */
 public class SupplyManagerOrganization extends Organization{
-    public SupplyManagerOrganization() {
-        super(Organization.Type.SupplyManager.getValue());
+    public SupplyManagerOrganization(String loc) {
+        super(Organization.Type.SupplyManager.getValue(),loc);
     }
     
     @Override
