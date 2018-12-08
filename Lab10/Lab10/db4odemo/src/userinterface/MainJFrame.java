@@ -35,10 +35,20 @@ public class MainJFrame extends javax.swing.JFrame {
 
     public MainJFrame() throws IOException {
         initComponents();
+        userNameJTextField.setEnabled(true);
+        passwordField.setEnabled(true);
+        loginJButton.setEnabled(true);
         system = dB4OUtil.retrieveSystem();
         this.setSize(1680, 1050);
         DataGenerator generator = DataGenerator.getInstance();
+       
         
+    }
+    public void resetPage(){
+    userNameJTextField.setEnabled(true);
+        passwordField.setEnabled(true);
+        loginJButton.setEnabled(true);
+        system = dB4OUtil.retrieveSystem();
     }
 
     /**
@@ -83,7 +93,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Create Account");
+        jButton1.setText("Create Customer Account");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -240,6 +250,9 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        userNameJTextField.setEnabled(false);
+        passwordField.setEnabled(false);
+        loginJButton.setEnabled(false);
         PatientLoginFormJPanel createAccountPage = new PatientLoginFormJPanel(container,system);
                container.add("CreateAccountPageJPanel",createAccountPage);
                CardLayout layout = (CardLayout)container.getLayout();

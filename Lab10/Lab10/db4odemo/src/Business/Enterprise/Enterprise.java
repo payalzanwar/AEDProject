@@ -55,5 +55,5 @@ public abstract class Enterprise extends Organization{
         organizationDirectory=new OrganizationDirectory();
     }
     
-    
+
 }

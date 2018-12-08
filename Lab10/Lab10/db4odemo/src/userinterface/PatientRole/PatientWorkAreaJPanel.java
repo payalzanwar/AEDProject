@@ -8,6 +8,7 @@ package userinterface.PatientRole;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Medicine.MedicineDirectory;
+//import Business.Organization.PatientOrganization;
 import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -27,14 +28,15 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
    
    
     private UserAccount account;
-    private Enterprise enterprise;
+   // private PatientOrganization organization;
     private EcoSystem system;
+    
   //  public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
-     public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system){ 
+     public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account,EcoSystem system){ 
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;
-        this.enterprise=enterprise;
+       
         this.system=system;
                 
     }

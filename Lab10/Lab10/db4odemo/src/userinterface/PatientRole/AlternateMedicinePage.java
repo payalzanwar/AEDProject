@@ -14,6 +14,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,6 +34,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
    private Enterprise enterprise;
    private Pharmacy phar;
    private EcoSystem system;
+ 
     public AlternateMedicinePage(JPanel Rightpaneldashboard,UserAccount account,EcoSystem system) {
         initComponents();
         this.RightPaneldashboard = Rightpaneldashboard;
@@ -87,29 +89,25 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Medicine Name", "SaltComposition", "Price", "Medicine Type", "Disease Name"
+                "Brand", "Medicine Name", "Salt Comp 1", "Salt comp 2", "Salt comp 3", "Price", "Disease Name"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
         });
-        AlternateMedicineTable.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(AlternateMedicineTable);
-        AlternateMedicineTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         ViewDetailsBtn.setText("View Details");
+        ViewDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewDetailsBtnActionPerformed(evt);
+            }
+        });
 
         ConsultDoctorBtn.setText("Request Pharmacist");
         ConsultDoctorBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -148,14 +146,14 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(DisplayNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addComponent(ConsultDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(86, 86, 86)
-                        .addComponent(ViewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addComponent(ViewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,16 +233,19 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         String disease = (String) DiseaseListComboBox.getSelectedItem();
         model.setRowCount(0);
         
-         for(Medicine medi : phar.getMed().getMedicineList()){
-             if(medname.equals(medi.getSaltname())){
+         for(Medicine medi : med.getMedicineList()){
+             if(medname.equals(medi.getSaltname())||(medname.equals(medi.getSaltComposition1())||(medname.equals(medi.getSaltComposition2())||(medname.equals(medi.getSaltComposition3()))))){
                  if(disease.equals(medi.getDisease()))
              {
-                Object[] row = new Object[5];
-            row[0] = medi;
-            row[1] = medi.getSaltComposition();
-            row[2] = medi.getPrice();
-            row[3] = medi.getType();
-            row[4]=medi.getDisease();
+                Object[] row = new Object[7];
+                row[0]=medi.getBrand();
+            row[1] = medi;
+            row[2] = medi.getSaltComposition1();
+            row[3]= medi.getSaltComposition2();
+            row[4]=medi.getSaltComposition3();
+            row[5] = medi.getPrice();
+           
+            row[6]=medi.getDisease();
       
             list.add(medi);
             model.addRow(row);
@@ -270,6 +271,22 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
         layout.next(RightPaneldashboard);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void ViewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewDetailsBtnActionPerformed
+        // TODO add your handling code here:
+        int row = AlternateMedicineTable.getSelectedRow();
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Medicine s = (Medicine)AlternateMedicineTable.getValueAt(row, 1);
+        
+        ViewMedicineDetailsPage vs = new ViewMedicineDetailsPage(RightPaneldashboard, s);
+        RightPaneldashboard.add("ViewSupplier", vs);
+        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
+        layout.next(RightPaneldashboard);
+    }//GEN-LAST:event_ViewDetailsBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

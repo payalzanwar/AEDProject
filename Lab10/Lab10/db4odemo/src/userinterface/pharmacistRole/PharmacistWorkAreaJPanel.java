@@ -1,5 +1,6 @@
 package userinterface.pharmacistRole;
 
+import userinterface.ManageMedicineInventory.RequestMedicineSupplyJPanel;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Enterprise.EnterpriseType;
@@ -16,6 +17,8 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.ManageMedicineInventory.AddToInventoryJPanel;
+import userinterface.ManageMedicineInventory.ViewMedicineInventoryPage;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -48,7 +51,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = account;
         this.system=system;
-       phar=new Pharmacy();
+       //phar=new Pharmacy();
        pharmacynametxt.setText(enterprise.getName());
        
        for (Network network : system.getNetworkList()) {
@@ -56,7 +59,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
                Enterprise.EnterpriseType  type =e.getEnterpriseType();
            if(type.equals(type.Pharmacy))
-           enterpriseCombo.addItem(enterprise.getName());
+           enterpriseCombo.addItem(e);
            }
        }
        
@@ -99,9 +102,10 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         pharmacynametxt = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        requestMedBtn = new javax.swing.JButton();
         regionCombo = new javax.swing.JComboBox<>();
         enterpriseCombo = new javax.swing.JComboBox<>();
+        viewInventoryBtn = new javax.swing.JButton();
 
         container.setLayout(new java.awt.CardLayout());
 
@@ -147,7 +151,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        processJButton.setText("Ready For Shipping");
+        processJButton.setText("Process");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processJButtonActionPerformed(evt);
@@ -171,16 +175,23 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Request Mediciene Supply");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        requestMedBtn.setText("Request Mediciene Supply");
+        requestMedBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                requestMedBtnActionPerformed(evt);
             }
         });
 
         regionCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         enterpriseCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        viewInventoryBtn.setText("View Inventory");
+        viewInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewInventoryBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -198,7 +209,14 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                                 .addComponent(pharmacynametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 332, Short.MAX_VALUE)
                         .addComponent(refreshJButton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jButton1)
+                            .addGap(42, 42, 42)
+                            .addComponent(requestMedBtn)
+                            .addGap(57, 57, 57)
+                            .addComponent(viewInventoryBtn))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(103, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(215, 215, 215)
@@ -206,12 +224,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(processJButton)
                 .addGap(102, 102, 102))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addComponent(jButton1)
-                .addGap(42, 42, 42)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(regionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,8 +254,9 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(processJButton))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(requestMedBtn)
+                    .addComponent(jButton1)
+                    .addComponent(viewInventoryBtn))
                 .addGap(93, 93, 93)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(regionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,7 +331,8 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ManageMedicineJPanel managemed = new ManageMedicineJPanel(userProcessContainer, phar);
+      
+        AddToInventoryJPanel managemed = new AddToInventoryJPanel(userProcessContainer, this.organization, enterprise, med);
         userProcessContainer.add("processWorkRequestJPanel", managemed);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -328,21 +342,28 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_pharmacynametxtActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void requestMedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestMedBtnActionPerformed
         // TODO add your handling code here:
-         PharmacistRequestSupplyJPanel managemed = new PharmacistRequestSupplyJPanel(userProcessContainer,userAccount, enterprise,system);
+         RequestMedicineSupplyJPanel managemed = new RequestMedicineSupplyJPanel(userProcessContainer, system, enterprise, med, system, userAccount);
         userProcessContainer.add("processWorkRequestJPanel", managemed);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_requestMedBtnActionPerformed
+
+    private void viewInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInventoryBtnActionPerformed
+        // TODO add your handling code here:
+        ViewMedicineInventoryPage managemed = new ViewMedicineInventoryPage(userProcessContainer, this.system, this.enterprise,med);
+        userProcessContainer.add("processWorkRequestJPanel", managemed);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_viewInventoryBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
     private javax.swing.JPanel container;
-    private javax.swing.JComboBox<String> enterpriseCombo;
+    private javax.swing.JComboBox<Object> enterpriseCombo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
@@ -350,7 +371,9 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField pharmacynametxt;
     private javax.swing.JButton processJButton;
     private javax.swing.JButton refreshJButton;
-    private javax.swing.JComboBox<String> regionCombo;
+    private javax.swing.JComboBox<Object> regionCombo;
+    private javax.swing.JButton requestMedBtn;
+    private javax.swing.JButton viewInventoryBtn;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }
