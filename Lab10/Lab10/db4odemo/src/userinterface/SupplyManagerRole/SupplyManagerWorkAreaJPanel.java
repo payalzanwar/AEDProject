@@ -1,15 +1,23 @@
 package userinterface.SupplyManagerRole;
+import userinterface.ManageMedicineInventory.AddToInventoryJPanel;
+import userinterface.ManageMedicineInventory.ViewMedicineInventoryPage;
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Enterprise.EnterpriseType;
+import Business.Medicine.MedicineDirectory;
+import Business.Network.Network;
 import static Business.Organization.Organization.Type.SupplyManager;
 import Business.Organization.SupplyManagerOrganization;
 import Business.Supplier.Supplier;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerWorkRequest;
+import Business.WorkQueue.MedicineSupplyWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.ManageMedicineInventory.RequestMedicineSupplyJPanel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,20 +40,22 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAccount;
     private Supplier supp;
-   
-    
-    public SupplyManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, SupplyManagerOrganization organization, Enterprise enterprise) {
+    private EcoSystem system;
+    private MedicineDirectory med;
+    public SupplyManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, SupplyManagerOrganization organization, Enterprise enterprise,EcoSystem system) {
         initComponents();
-    
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = enterprise;
         this.userAccount = account;
-        
-       supp=new Supplier();
+        this.system=system;
+       //supp=new Supplier();
        suppliernametxt.setText(enterprise.getName());
        
        populateTable();
+       
+       
+      
     }
 
     public void populateTable(){
@@ -54,12 +64,21 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request;
-            row[1] = request.getSender().getEmployee().getName();
-            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[3] = request.getStatus();
-            
+            Object[] row = new Object[11];
+            row[0] = ((MedicineSupplyWorkRequest) request);
+            row[1] = ((MedicineSupplyWorkRequest) request).getBrand();
+            row[2] = ((MedicineSupplyWorkRequest) request).getQuantity();
+            row[3] = ((MedicineSupplyWorkRequest) request).getPrice();
+            row[4] = ((MedicineSupplyWorkRequest) request).getSaltc1();
+            row[5] = ((MedicineSupplyWorkRequest) request).getSaltc3();
+            row[6] = ((MedicineSupplyWorkRequest) request).getSaltc3();
+            row[7] = ((MedicineSupplyWorkRequest) request).getDiseaseName();
+            row[8] = request.getSender();
+            row[9] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            if(request.getStatus().equalsIgnoreCase("sent"))
+                request.setStatus("Awaiting Response");
+            row[10] = request.getStatus();
+                        
             model.addRow(row);
         }
     }
@@ -75,8 +94,6 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         container = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        workRequestJTable = new javax.swing.JTable();
         refreshJButton = new javax.swing.JButton();
         assignJButton = new javax.swing.JButton();
         supplyBtn = new javax.swing.JButton();
@@ -86,36 +103,10 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
         suppliernametxt = new javax.swing.JTextField();
         viewInventoryBtn = new javax.swing.JButton();
         reqSupplyFromManufacturerBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        workRequestJTable = new javax.swing.JTable();
 
         container.setLayout(new java.awt.CardLayout());
-
-        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Message", "Sender", "Receiver", "Status"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, true, true, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(workRequestJTable);
 
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +160,34 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Medicine Name", "Brand", "Quantity", "Price", "Salt 1", "Salt 2", "Salt 3", "Disease", "Sender", "Receiver", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(workRequestJTable);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -176,16 +195,13 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(suppliernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
-                        .addComponent(refreshJButton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(suppliernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                .addComponent(refreshJButton)
                 .addContainerGap(86, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(199, 199, 199)
@@ -206,6 +222,10 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
                                 .addGap(78, 78, 78)
                                 .addComponent(viewInventoryBtn)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,9 +242,9 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(refreshJButton)))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(assignJButton)
                     .addComponent(supplyBtn))
@@ -265,28 +285,40 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         int selectedRow = workRequestJTable.getSelectedRow();
         if (selectedRow < 0){
+            JOptionPane.showMessageDialog(container, "Please select an order");
             return;
         }
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        request.setReceiver(userAccount);
+        if(request.getStatus().equalsIgnoreCase("completed"))
+            JOptionPane.showMessageDialog(container, "The request has already been completed");
+        else
+        {request.setReceiver(userAccount);
         request.setStatus("Pending");
-        populateTable();
+        populateTable();}
 
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void supplyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplyBtnActionPerformed
-
+        try {
+            
         int selectedRow = workRequestJTable.getSelectedRow();
         if (selectedRow < 0){
-            return;
-        }
-        CustomerWorkRequest request = (CustomerWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+            JOptionPane.showMessageDialog(container, "Please select an order");
+            return;}
+        MedicineSupplyWorkRequest request = (MedicineSupplyWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        if(request.getReceiver()==null)
+            JOptionPane.showMessageDialog(container,"The request is unassigned");
+        else
         request.setStatus("Completed");
+        populateTable();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(container, "Bhak! ye sab galat hai");
+        }
     }//GEN-LAST:event_supplyBtnActionPerformed
 
     private void addMedToInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMedToInventoryBtnActionPerformed
         // TODO add your handling code here:
-        SupplyManagerManageMedicineJPanel managemed = new SupplyManagerManageMedicineJPanel(userProcessContainer, supp);
+        AddToInventoryJPanel managemed = new AddToInventoryJPanel(userProcessContainer, system, enterprise, med);
         userProcessContainer.add("processWorkRequestJPanel", managemed);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -298,7 +330,7 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInventoryBtnActionPerformed
         // TODO add your handling code here:
-        SuplyManagerViewMedicineDetailsPage view = new SuplyManagerViewMedicineDetailsPage(userProcessContainer,supp);
+        ViewMedicineInventoryPage view = new ViewMedicineInventoryPage(userProcessContainer, system, enterprise, med);
         userProcessContainer.add("ViewProductDetailJPanelSupplier", view);
    CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -306,8 +338,8 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void reqSupplyFromManufacturerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqSupplyFromManufacturerBtnActionPerformed
         // TODO add your handling code here:
-        SupplyManagerRequestSupplyJPanel reqMed = new SupplyManagerRequestSupplyJPanel(userProcessContainer,userAccount, organization,enterprise);
-        userProcessContainer.add("processWorkRequestJPanel", reqMed);
+        RequestMedicineSupplyJPanel managemed = new RequestMedicineSupplyJPanel(userProcessContainer, organization, enterprise, med, system, userAccount);
+        userProcessContainer.add("processWorkRequestJPanel", managemed);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_reqSupplyFromManufacturerBtnActionPerformed

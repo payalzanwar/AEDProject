@@ -8,6 +8,7 @@ import Business.WorkQueue.CustomerWorkRequest;
 import Business.WorkQueue.MedicineSupplyWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -54,15 +55,21 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[7];
+            Object[] row = new Object[11];
             row[0] = ((MedicineSupplyWorkRequest) request);
-            row[1] = ((MedicineSupplyWorkRequest) request).getMedType();
-            row[2] = ((MedicineSupplyWorkRequest) request).getComposition();
-            row[3] = ((MedicineSupplyWorkRequest) request).getQuantity();
-            row[4] = request.getSender().getUsername();
-            row[5] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[6] = request.getStatus();
-            
+            row[1] = ((MedicineSupplyWorkRequest) request).getBrand();
+            row[2] = ((MedicineSupplyWorkRequest) request).getQuantity();
+            row[3] = ((MedicineSupplyWorkRequest) request).getPrice();
+            row[4] = ((MedicineSupplyWorkRequest) request).getSaltc1();
+            row[5] = ((MedicineSupplyWorkRequest) request).getSaltc3();
+            row[6] = ((MedicineSupplyWorkRequest) request).getSaltc3();
+            row[7] = ((MedicineSupplyWorkRequest) request).getDiseaseName();
+            row[8] = request.getSender();
+            row[9] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            if(request.getStatus().equalsIgnoreCase("sent"))
+                request.setStatus("Awaiting Response");
+            row[10] = request.getStatus();
+                        
             model.addRow(row);
         }
     }
@@ -122,20 +129,20 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Salt Name", "Type", "Composition", "Quantity", "Sender", "Receiver", "Status"
+                "Medicine Name", "Brand", "Quantity", "Price", "Salt 1", "Salt 2", "Salt 3", "Disease", "Sender", "Receiver", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, true, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -170,9 +177,9 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(supplyBtn)
                 .addGap(102, 102, 102))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,9 +196,9 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(jLabel2)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(assignJButton)
                     .addComponent(supplyBtn))
@@ -226,27 +233,36 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         int selectedRow = workRequestJTable.getSelectedRow();
         if (selectedRow < 0){
+            JOptionPane.showMessageDialog(container, "Please select an order");
             return;
         }
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        request.setReceiver(userAccount);
+        if(request.getStatus().equalsIgnoreCase("completed"))
+            JOptionPane.showMessageDialog(container, "The request has already been completed");
+        else
+        {request.setReceiver(userAccount);
         request.setStatus("Pending");
-        populateTable();
+        populateTable();}
 
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void supplyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplyBtnActionPerformed
 
+        try {
+            
         int selectedRow = workRequestJTable.getSelectedRow();
-
         if (selectedRow < 0){
-            return;
-        }
-
+            JOptionPane.showMessageDialog(container, "Please select an order");
+            return;}
         MedicineSupplyWorkRequest request = (MedicineSupplyWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        System.out.println("Bithes dont reach here!!!");
+        if(request.getReceiver()==null)
+            JOptionPane.showMessageDialog(container,"The request is unassigned");
+        else
         request.setStatus("Completed");
         populateTable();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(container, "Bhak! ye sab galat hai");
+        }
     }//GEN-LAST:event_supplyBtnActionPerformed
 
     private void manufacturernametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manufacturernametxtActionPerformed

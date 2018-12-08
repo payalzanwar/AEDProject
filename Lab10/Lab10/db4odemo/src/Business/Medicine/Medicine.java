@@ -13,7 +13,43 @@ public class Medicine {
  int med_id;
  String saltname;
  int price;
- String SaltComposition;
+ String SaltComposition1;
+ String SaltComposition2;
+
+ public enum MedicineType{
+        Tablet("Tablet"),
+        Syrup("Syrup"),
+        Capsule("Capsule"),
+        Injection("Injection");
+
+        
+        private String value;
+        
+        private MedicineType(String value){
+            this.value=value;
+        }
+        public String getValue() {
+            return value;
+        }
+    }
+ 
+ 
+    public String getSaltComposition2() {
+        return SaltComposition2;
+    }
+
+    public void setSaltComposition2(String SaltComposition2) {
+        this.SaltComposition2 = SaltComposition2;
+    }
+
+    public String getSaltComposition3() {
+        return SaltComposition3;
+    }
+
+    public void setSaltComposition3(String SaltComposition3) {
+        this.SaltComposition3 = SaltComposition3;
+    }
+ String SaltComposition3;
  int units;
  String Type;
 
@@ -21,10 +57,19 @@ public class Medicine {
         return Disease;
     }
 
+    public String getBrand() {
+        return Brand;
+    }
+
+    public void setBrand(String Brand) {
+        this.Brand = Brand;
+    }
+
     public void setDisease(String Disease) {
         this.Disease = Disease;
     }
  String Disease;
+ String Brand;
 private static int cnt = 1;    
  
  public Medicine()
@@ -57,12 +102,12 @@ private static int cnt = 1;
         this.price = price;
     }
 
-    public String getSaltComposition() {
-        return SaltComposition;
+    public String getSaltComposition1() {
+        return SaltComposition1;
     }
 
-    public void setSaltComposition(String SaltComposition) {
-        this.SaltComposition = SaltComposition;
+    public void setSaltComposition1(String SaltComposition1) {
+        this.SaltComposition1 = SaltComposition1;
     }
 
     public int getUnits() {
@@ -83,8 +128,9 @@ private static int cnt = 1;
     @Override
     public String toString()
             {
-                return "Medicine [name=" + getSaltname() + ", price=" + getPrice() + ", SaltComp=" + getSaltComposition()
-                + "Type"+ getType()+ "Units"+ getUnits()+"Disease"+ getDisease()+"]";
+//                return "Medicine [name=" + getSaltname() + ", price=" + getPrice() + ", SaltComp=" + getSaltComposition()
+//                + "Type"+ getType()+ "Units"+ getUnits()+"Disease"+ getDisease()+"]";
+                return getSaltname();
             }
  
        

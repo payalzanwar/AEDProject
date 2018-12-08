@@ -3,10 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.SupplyManagerRole;
+package userinterface.ManageMedicineInventory;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import userinterface.PatientRole.*;
 import Business.Medicine.Medicine;
+import Business.Medicine.MedicineDirectory;
+import Business.Organization.Organization;
+import Business.Organization.PharmacistOrganization;
+import Business.Organization.SupplyManagerOrganization;
 import Business.Supplier.Supplier;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -16,19 +22,22 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author mantr
  */
-public class SuplyManagerViewMedicineDetailsPage extends javax.swing.JPanel {
+public class ViewMedicineInventoryPage extends javax.swing.JPanel {
 
     /**
      * Creates new form ViewMedicineDetailsJPanel
      */
     private JPanel userProcessContainer;
-    private Supplier supp;
-  public SuplyManagerViewMedicineDetailsPage(JPanel userProcessContainer, Supplier supp) {
+    private Organization org;
+    private Enterprise e;
+    MedicineDirectory med;
+  public ViewMedicineInventoryPage(JPanel userProcessContainer, Organization org, Enterprise e, MedicineDirectory med) {
     
         initComponents();
         this.userProcessContainer = userProcessContainer;
-       this.supp=supp;
-      
+       this.org=org;
+       this.e = e;
+      this.med = med;
         populateTable();
     }
 
@@ -38,20 +47,55 @@ public class SuplyManagerViewMedicineDetailsPage extends javax.swing.JPanel {
 DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
        model.setRowCount(0);
-        for(Medicine medi : supp.getMed().getMedicineList())
+        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
+            if (organization instanceof SupplyManagerOrganization){
+                  for(Medicine medi : med.getSupplierMedicineList())
             
             {
                 
-               Object[] row = new Object[6];
-           row[0] = medi;
-           row[1] = medi.getSaltComposition();
-           row[2]=medi.getPrice();
-           row[3]=medi.getType();
-           row[4]=medi.getDisease();
-           row[5]=medi.getUnits();
+               Object[] row = new Object[9];
+           //row[0] = medi;
+           row[0] = medi.getBrand();
+           row[1]=medi;
+           row[2]=medi.getSaltComposition1();
+           row[3]=medi.getSaltComposition2();
+           row[4]=medi.getSaltComposition3();
+           row[5]=medi.getPrice();
+           row[6]=medi.getType();
+           row[7]=medi.getDisease();
+           row[8]=medi.getUnits();
+           
 
                       model.addRow(row);
             }
+                System.out.println("Yeah bitches!!");
+                break;
+            }
+            else if(organization instanceof PharmacistOrganization)
+            {
+                for(Medicine medi : med.getMedicineList())
+            
+            {
+                
+               Object[] row = new Object[9];
+           //row[0] = medi;
+           row[0] = medi.getBrand();
+           row[1]=medi;
+           row[2]=medi.getSaltComposition1();
+           row[3]=medi.getSaltComposition2();
+           row[4]=medi.getSaltComposition3();
+           row[5]=medi.getPrice();
+           row[6]=medi.getType();
+           row[7]=medi.getDisease();
+           row[8]=medi.getUnits();
+           
+
+                      model.addRow(row);
+            }
+                break;
+            }
+        }
+        
     }
   
     /**
@@ -84,14 +128,14 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
             },
             new String [] {
-                "Salt Name", "Composition", "Pricel", "Type", "Disease", "No of Units"
+                "Brand", "Salt Name", "Composition 1", "Composition 2", "Composition 2", "Price per unit", "Type", "Disease", "No of Units"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, true, true
+                false, false, true, false, true, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -111,23 +155,25 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(140, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(135, 135, 135)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(114, 114, 114)
+                                .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 641, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(265, 265, 265)
                 .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );

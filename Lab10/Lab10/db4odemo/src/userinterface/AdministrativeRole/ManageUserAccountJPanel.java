@@ -38,7 +38,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         this.container = container;
 
         popOrganizationComboBox();
-        // employeeJComboBox.removeAllItems();
+       // employeeJComboBox.removeAllItems();
         popData();
     }
 
@@ -49,21 +49,23 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             organizationJComboBox.addItem(organization);
         }
     }
+    
 
-    public void populateEmployeeComboBox(Organization organization) {
+    public void populateEmployeeComboBox(Organization organization){
         employeeJComboBox.removeAllItems();
-
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
+        
+        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
             employeeJComboBox.addItem(employee);
         }
     }
 
-    private void populateRoleComboBox(Organization organization) {
+    private void populateRoleComboBox(Organization organization){
         roleJComboBox.removeAllItems();
-        for (Role role : organization.getSupportedRole()) {
+        for (Role role : organization.getSupportedRole()){
             roleJComboBox.addItem(role);
         }
     }
+
 
     public void popData() {
 
@@ -234,7 +236,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             if (type.getValue().equals(Type.Pharmacist.getValue())) {      //  organizationJComboBox.addItem(type);
 
                 PharmacistLoginFormJPanel pharmLogin = new PharmacistLoginFormJPanel(container, organization, employee, role);
-                //   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+//                   organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
                 container.add("PharmLoginJPanel", pharmLogin);
                 CardLayout layout = (CardLayout) container.getLayout();
                 layout.next(container);
