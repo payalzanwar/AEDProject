@@ -58,8 +58,8 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
           //   RegionCombo.addItem(network);
            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
                Enterprise.EnterpriseType  type =e.getEnterpriseType();
-           if(type.equals(type.Pharmacy))
-           enterpriseCombo.addItem(e);
+//           if(type.equals(type.Pharmacy))
+          // enterpriseCombo.addItem(e);
            }
        }
        
@@ -103,8 +103,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         pharmacynametxt = new javax.swing.JTextField();
         requestMedBtn = new javax.swing.JButton();
-        regionCombo = new javax.swing.JComboBox<>();
-        enterpriseCombo = new javax.swing.JComboBox<>();
         viewInventoryBtn = new javax.swing.JButton();
 
         container.setLayout(new java.awt.CardLayout());
@@ -182,10 +180,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        regionCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        enterpriseCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         viewInventoryBtn.setText("View Inventory");
         viewInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,12 +218,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(processJButton)
                 .addGap(102, 102, 102))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(regionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(enterpriseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(292, 292, 292))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,11 +245,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(requestMedBtn)
                     .addComponent(jButton1)
                     .addComponent(viewInventoryBtn))
-                .addGap(93, 93, 93)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(regionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enterpriseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addContainerGap(370, Short.MAX_VALUE))
         );
 
         container.add(jPanel2, "card2");
@@ -362,7 +346,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
     private javax.swing.JPanel container;
-    private javax.swing.JComboBox<Object> enterpriseCombo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -371,7 +354,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField pharmacynametxt;
     private javax.swing.JButton processJButton;
     private javax.swing.JButton refreshJButton;
-    private javax.swing.JComboBox<Object> regionCombo;
     private javax.swing.JButton requestMedBtn;
     private javax.swing.JButton viewInventoryBtn;
     private javax.swing.JTable workRequestJTable;
