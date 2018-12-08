@@ -424,7 +424,7 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         request.setSaltc3(saltc3);
         request.setSender(user);
         request.setStatus("Sent");
-                System.out.println("chal yaha tak to aaya");
+                System.out.println("chal yaha tak to aaya "+this.org);
 
         Organization org = null;
         Enterprise e = (Enterprise) enterpriseList.getSelectedItem();
