@@ -93,7 +93,7 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         for (WorkRequest request : user.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[10];
+            Object[] row = new Object[11];
             row[0] = ((MedicineSupplyWorkRequest) request);
             row[1] = ((MedicineSupplyWorkRequest) request).getBrand();
             row[2] = ((MedicineSupplyWorkRequest) request).getQuantity();
@@ -101,9 +101,10 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
             row[4] = ((MedicineSupplyWorkRequest) request).getSaltc1();
             row[5] = ((MedicineSupplyWorkRequest) request).getSaltc3();
             row[6] = ((MedicineSupplyWorkRequest) request).getSaltc3();
-            row[7] = ((MedicineSupplyWorkRequest) request).getDiseaseName();
-            row[8] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[9] = request.getStatus();
+            row[7] = ((MedicineSupplyWorkRequest) request).getMedType();
+            row[8] = ((MedicineSupplyWorkRequest) request).getDiseaseName();
+            row[9] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[10] = request.getStatus();
                         
             model.addRow(row);
         }
@@ -146,6 +147,7 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         TypeCombo = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         enterpriseList = new javax.swing.JComboBox<>();
+        orgCombo = new javax.swing.JComboBox<>();
 
         jLabel1.setText("Request For Supply");
 
@@ -165,20 +167,20 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Medicine Name", "Brand", "Quantity", "Price", "Salt 1", "Salt 2", "Salt 3", "Disease", "Receiver", "Status"
+                "Medicine Name", "Brand", "Quantity", "Price", "Salt 1", "Salt 2", "Salt 3", "Type", "Disease", "Receiver", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -246,6 +248,18 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
 
         jLabel9.setText("Number of Units");
 
+        enterpriseList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enterpriseListActionPerformed(evt);
+            }
+        });
+
+        orgCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orgComboActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -306,10 +320,11 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                                                 .addGap(49, 49, 49)
                                                 .addComponent(enterpriseList, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(medNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(brandNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(composition3Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(composition3Txt, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                    .addComponent(orgCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -358,7 +373,8 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(netowrkListCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enterpriseList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(enterpriseList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(placeMedSuppReqBtn)
@@ -422,12 +438,14 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         request.setSaltc1(saltc1);
         request.setSaltc2(saltc2);
         request.setSaltc3(saltc3);
+        request.setMedType(type);
         request.setSender(user);
         request.setStatus("Sent");
                 System.out.println("chal yaha tak to aaya "+this.org);
 
         Organization org = null;
         Enterprise e = (Enterprise) enterpriseList.getSelectedItem();
+        Organization o = (Organization) orgCombo.getSelectedItem();
         for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
             
             if(this.org instanceof PharmacistOrganization && organization instanceof SupplyManagerOrganization)
@@ -439,12 +457,12 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(TypeCombo, "Order Placed!");
                 break;
             }
-            else if(this.org instanceof SupplyManagerOrganization && organization instanceof ManufacturingManagerOrganization)
+            else if(this.org instanceof SupplyManagerOrganization && o instanceof ManufacturingManagerOrganization)
                 
 //                if(organization instanceof ManufacturingManagerOrganization)
                 {
-                org = organization;
-                System.out.println("Yeah bitches!!");
+                org = o;
+                //System.out.println("Yeah bitches!!");
                 JOptionPane.showMessageDialog(TypeCombo, "Order Placed!");
                 break;
             }
@@ -523,6 +541,20 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_brandNameTxtActionPerformed
 
+    private void enterpriseListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseListActionPerformed
+        // TODO add your handling code here:
+        Enterprise e =  (Enterprise) enterpriseList.getSelectedItem();
+        for(Organization ent : e.getOrganizationDirectory().getOrganizationList()){
+             orgCombo.addItem(ent);
+             }
+    }//GEN-LAST:event_enterpriseListActionPerformed
+
+    private void orgComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orgComboActionPerformed
+        // TODO add your handling code here:
+//        Organization o = (Organization) orgCombo.getSelectedItem();
+        
+    }//GEN-LAST:event_orgComboActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Noofunitstxt;
@@ -549,6 +581,7 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField medNameTxt;
     private javax.swing.JComboBox<Object> netowrkListCombo;
+    private javax.swing.JComboBox<Object> orgCombo;
     private javax.swing.JButton placeMedSuppReqBtn;
     private javax.swing.JLabel suppliernametxt;
     private javax.swing.JTable workRequestJTable;

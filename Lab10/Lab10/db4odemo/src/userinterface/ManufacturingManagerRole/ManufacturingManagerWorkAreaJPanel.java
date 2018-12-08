@@ -1,7 +1,9 @@
 package userinterface.ManufacturingManagerRole;
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Enterprise.EnterpriseType;
 import Business.Manufacturer.Manufacturer;
+import Business.Medicine.MedicineDirectory;
 import Business.Organization.ManufacturingManagerOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerWorkRequest;
@@ -11,6 +13,8 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.ManageMedicineInventory.AddToInventoryJPanel;
+import userinterface.ManageMedicineInventory.ViewMedicineInventoryPage;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -33,9 +37,11 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAccount;
     private Manufacturer man;
+    private MedicineDirectory med;
+    private EcoSystem system;
    
     
-    public ManufacturingManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ManufacturingManagerOrganization organization, Enterprise enterprise) {
+    public ManufacturingManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ManufacturingManagerOrganization organization, Enterprise enterprise, EcoSystem system) {
         initComponents();
     
         this.userProcessContainer = userProcessContainer;
@@ -93,6 +99,8 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
         manufacturernametxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
+        addMedicineBtn = new javax.swing.JButton();
+        viewInvenBtn = new javax.swing.JButton();
 
         container.setLayout(new java.awt.CardLayout());
 
@@ -155,6 +163,20 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workRequestJTable);
 
+        addMedicineBtn.setText("Add to Inventory");
+        addMedicineBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addMedicineBtnActionPerformed(evt);
+            }
+        });
+
+        viewInvenBtn.setText("View Inventory");
+        viewInvenBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewInvenBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -171,15 +193,22 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(refreshJButton)
                 .addContainerGap(86, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(199, 199, 199)
-                .addComponent(assignJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(supplyBtn)
-                .addGap(102, 102, 102))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(199, 199, 199)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(addMedicineBtn)
+                        .addGap(214, 214, 214)
+                        .addComponent(viewInvenBtn)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(assignJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(supplyBtn)
+                        .addGap(102, 102, 102))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +231,11 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(assignJButton)
                     .addComponent(supplyBtn))
-                .addContainerGap(428, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addMedicineBtn)
+                    .addComponent(viewInvenBtn))
+                .addContainerGap(381, Short.MAX_VALUE))
         );
 
         container.add(jPanel2, "card2");
@@ -269,8 +302,25 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_manufacturernametxtActionPerformed
 
+    private void addMedicineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMedicineBtnActionPerformed
+        // TODO add your handling code here:
+        AddToInventoryJPanel managemed = new AddToInventoryJPanel(userProcessContainer, this.organization, enterprise, med);
+        userProcessContainer.add("processWorkRequestJPanel", managemed);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_addMedicineBtnActionPerformed
+
+    private void viewInvenBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInvenBtnActionPerformed
+        // TODO add your handling code here:
+        ViewMedicineInventoryPage view = new ViewMedicineInventoryPage(userProcessContainer, system, enterprise, med);
+        userProcessContainer.add("ViewProductDetailJPanelSupplier", view);
+   CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_viewInvenBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addMedicineBtn;
     private javax.swing.JButton assignJButton;
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
@@ -280,6 +330,7 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField manufacturernametxt;
     private javax.swing.JButton refreshJButton;
     private javax.swing.JButton supplyBtn;
+    private javax.swing.JButton viewInvenBtn;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

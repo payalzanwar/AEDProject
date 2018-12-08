@@ -99,7 +99,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         assignJButton = new javax.swing.JButton();
         processJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         pharmacynametxt = new javax.swing.JTextField();
         requestMedBtn = new javax.swing.JButton();
@@ -158,13 +157,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("           Pharmacist Work Area");
 
-        jButton1.setText("Add Medicines");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Pharmacy");
 
         pharmacynametxt.addActionListener(new java.awt.event.ActionListener() {
@@ -205,8 +197,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(refreshJButton))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jButton1)
-                            .addGap(42, 42, 42)
                             .addComponent(requestMedBtn)
                             .addGap(57, 57, 57)
                             .addComponent(viewInventoryBtn))
@@ -243,7 +233,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(requestMedBtn)
-                    .addComponent(jButton1)
                     .addComponent(viewInventoryBtn))
                 .addContainerGap(370, Short.MAX_VALUE))
         );
@@ -313,15 +302,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_processJButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-      
-        AddToInventoryJPanel managemed = new AddToInventoryJPanel(userProcessContainer, this.organization, enterprise, med);
-        userProcessContainer.add("processWorkRequestJPanel", managemed);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void pharmacynametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pharmacynametxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pharmacynametxtActionPerformed
@@ -346,7 +326,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
     private javax.swing.JPanel container;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;

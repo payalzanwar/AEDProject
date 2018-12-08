@@ -10,7 +10,9 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
+import static Business.Medicine.MedicineDirectory.ManufacturerMedicineList;
 import Business.Network.Network;
+import Business.Organization.ManufacturingManagerOrganization;
 import Business.Organization.Organization;
 import static Business.Organization.Organization.Type.SupplyManager;
 import Business.Organization.PharmacistOrganization;
@@ -33,49 +35,48 @@ public class AddToInventoryJPanel extends javax.swing.JPanel {
     /**
      * Creates new form AddToInventoryJPanel
      */
-    
- private Enterprise enterprise;
+    private Enterprise enterprise;
     //private Supplier supp;
     //private DataReader commentReader;
     private MedicineDirectory b;
     private BookDirectory b1;
     private Enterprise e;
     private Organization org;
-    public AddToInventoryJPanel(JPanel userProcessContainer,Organization org,Enterprise e, MedicineDirectory med) {
+
+    public AddToInventoryJPanel(JPanel userProcessContainer, Organization org, Enterprise e, MedicineDirectory med) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-       this.enterprise=enterprise;
-       this.e = e;
-       this.b = med;
-       this.org = org;
-       brandNameTxt.setEditable(false);
-       brandNameTxt.setForeground(Color.gray);
-       medNameTxt.setEditable(false);
-       medNameTxt.setForeground(Color.gray);
-       populateComboBox();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.e = e;
+        this.b = med;
+        this.org = org;
+        brandNameTxt.setEditable(false);
+        brandNameTxt.setForeground(Color.gray);
+        medNameTxt.setEditable(false);
+        medNameTxt.setForeground(Color.gray);
+        populateComboBox();
     }
-    
+
     private void populateComboBox() {
         brandNameCombo.removeAllItems();
-        
+
         SaltNameCombo.removeAllItems();
-        int Price=0;
-              
-        for(Medicine medi : b.getMedicineList()){
-             SaltNameCombo.addItem(medi);
-             }
+        int Price = 0;
+
+        for (Medicine medi : b.getManufacturerMedicineList()) {
+            SaltNameCombo.addItem(medi);
+        }
         SaltNameCombo.addItem("Other");
-        for(Medicine medi : b.getMedicineList()){
-             brandNameCombo.addItem(medi.getBrand());
-             }
+        for (Medicine medi : b.getManufacturerMedicineList()) {
+            brandNameCombo.addItem(medi.getBrand());
+        }
         brandNameCombo.addItem("Other");
-        
+
         for (Medicine.MedicineType type : Medicine.MedicineType.values()) {
-           TypeCombo.addItem(type);
-        } 
-              
+            TypeCombo.addItem(type);
+        }
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -316,95 +317,172 @@ public class AddToInventoryJPanel extends javax.swing.JPanel {
 
     private void addMedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMedBtnActionPerformed
         // TODO add your handling code here:
-try {        
-        String brand;
-        
-        if(String.valueOf(brandNameCombo.getSelectedItem()).equalsIgnoreCase("Other"))
-        { brandNameTxt.setEditable(true);
-            brand = brandNameTxt.getText();
-        brandNameTxt.setForeground(Color.black);
-            
-            }
-        else
-         brand = String.valueOf(brandNameCombo.getSelectedItem());
-        
-        
-        String SaltName;
-                if(String.valueOf(SaltNameCombo.getSelectedItem()).equals("Other"))
-                {medNameTxt.setEditable(true);
-                    SaltName = medNameTxt.getText();
-                 medNameTxt.setForeground(Color.black);}
-                else
-        SaltName = String.valueOf(SaltNameCombo.getSelectedItem());
-       
-                int Price = Integer.parseInt(PriceTxt.getText());
-        
-        
-        
-        String saltc1 = composition1Txt.getText();
-        String saltc2 = composition2Txt.getText();
-        String saltc3 = composition3Txt.getText();
-        
-        
-        String type =  TypeCombo.getSelectedItem().toString();
-        int units = Integer.parseInt(Noofunitstxt.getText());
-        String disease = diseasename.getText();
-        
-        
-        String[] s= new String[9];
-        
-        
-        
-     s[0]=brand;
-     s[1]=SaltName;
-     s[2]=saltc1;
-     s[3]=saltc2;
-     s[4]=saltc3;
-     s[5]=type;
-     s[6]=disease;
-     s[7]=String.valueOf(units);
-     s[8]=String.valueOf(Price);
+        try {
+            String brand;
 
-        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof SupplyManagerOrganization){
-                  b.AddSupplierMedicine(s);
-                System.out.println("Yeah bitches!!");
-                break;
+            if (String.valueOf(brandNameCombo.getSelectedItem()).equalsIgnoreCase("Other")) {
+                brandNameTxt.setEditable(true);
+                brand = brandNameTxt.getText();
+                brandNameTxt.setForeground(Color.black);
+
+            } else {
+                brand = String.valueOf(brandNameCombo.getSelectedItem());
             }
-            else if(organization instanceof PharmacistOrganization)
-            {
-                b.AddMedicine(s);
+
+            String SaltName;
+            if (String.valueOf(SaltNameCombo.getSelectedItem()).equals("Other")) {
+                medNameTxt.setEditable(true);
+                SaltName = medNameTxt.getText();
+                medNameTxt.setForeground(Color.black);
+            } else {
+                SaltName = String.valueOf(SaltNameCombo.getSelectedItem());
             }
+
+            int Price = Integer.parseInt(PriceTxt.getText());
+
+            String saltc1 = composition1Txt.getText();
+            String saltc2 = composition2Txt.getText();
+            String saltc3 = composition3Txt.getText();
+
+            String type = TypeCombo.getSelectedItem().toString();
+            int units = Integer.parseInt(Noofunitstxt.getText());
+            String disease = diseasename.getText();
+
+            String[] s = new String[9];
+
+            s[0] = brand;
+            s[1] = SaltName;
+            s[2] = saltc1;
+            s[3] = saltc2;
+            s[4] = saltc3;
+            s[5] = type;
+            s[6] = disease;
+            s[7] = String.valueOf(units);
+            s[8] = String.valueOf(Price);
+
+            for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof ManufacturingManagerOrganization) {
+                    boolean flag = false;
+                    for (Medicine m : b.getManufacturerMedicineList()) {
+
+                        if (m.getBrand().equalsIgnoreCase(brand)
+                                && m.getSaltComposition1().equalsIgnoreCase(saltc1)
+                                && m.getSaltComposition2().equalsIgnoreCase(saltc2)
+                                && m.getSaltComposition3().equalsIgnoreCase(saltc3)
+                                && m.getSaltname().equalsIgnoreCase(SaltName)
+                                && m.getDisease().equalsIgnoreCase(disease)
+                                && m.getType().equalsIgnoreCase(type)
+                                && m.getPrice() == (Price)) {
+                                m.setUnits(m.getUnits() + units);
+                                JOptionPane.showMessageDialog(this, "Units Updated");
+                                flag = true;
+                                break;
+                            }}
+                    if (flag == false){
+                    for (Medicine m : b.getManufacturerMedicineList()) {
+                        if (m.getBrand().equalsIgnoreCase(brand)
+                                && m.getSaltComposition1().equalsIgnoreCase(saltc1)
+                                && m.getSaltComposition2().equalsIgnoreCase(saltc2)
+                                && m.getSaltComposition3().equalsIgnoreCase(saltc3)
+                                && m.getSaltname().equalsIgnoreCase(SaltName)
+                                && m.getDisease().equalsIgnoreCase(disease)
+                                && m.getType().equalsIgnoreCase(type)
+                                && m.getPrice() != (Price)) {int selectionButton = JOptionPane.YES_NO_OPTION;
+                             int selectionResult = JOptionPane.showConfirmDialog(null, "Price has been changed. Do you want to update the inventory price?","Warning",selectionButton);
+                            if (selectionResult == JOptionPane.YES_OPTION) {
+                                m.setUnits(m.getUnits() + units);
+                                m.setPrice(Price);
+                                JOptionPane.showMessageDialog(this, "Units and price updated");
+                                flag = true;    
+                            }
+                            break;
+                            }}}
+                    if(flag==false){
+                        b.AddManufacturerMedicine(s);
+                        JOptionPane.showMessageDialog(this, "Medicines added successfully!");
+                    break;
+                        
+                    }
+                    
+                    }
+                    
+                    
+
+                 else if (organization instanceof PharmacistOrganization) {
+                    
+                    boolean flag = false;
+                    for (Medicine m : b.getMedicineList()) {
+
+                        if (m.getBrand().equalsIgnoreCase(brand)
+                                && m.getSaltComposition1().equalsIgnoreCase(saltc1)
+                                && m.getSaltComposition2().equalsIgnoreCase(saltc2)
+                                && m.getSaltComposition3().equalsIgnoreCase(saltc3)
+                                && m.getSaltname().equalsIgnoreCase(SaltName)
+                                && m.getDisease().equalsIgnoreCase(disease)
+                                && m.getType().equalsIgnoreCase(type)
+                                && m.getPrice() == (Price)) {
+
+                            
+                                m.setUnits(m.getUnits() + units);
+
+                                JOptionPane.showMessageDialog(this, "Units Updated");
+                                flag = true;
+                                break;
+                            }}
+                    if (flag == false){
+                    for (Medicine m : b.getMedicineList()) {
+                        if (m.getBrand().equalsIgnoreCase(brand)
+                                && m.getSaltComposition1().equalsIgnoreCase(saltc1)
+                                && m.getSaltComposition2().equalsIgnoreCase(saltc2)
+                                && m.getSaltComposition3().equalsIgnoreCase(saltc3)
+                                && m.getSaltname().equalsIgnoreCase(SaltName)
+                                && m.getDisease().equalsIgnoreCase(disease)
+                                && m.getType().equalsIgnoreCase(type)
+                                && m.getPrice() != (Price)) {int selectionButton = JOptionPane.YES_NO_OPTION;
+                             int selectionResult = JOptionPane.showConfirmDialog(null, "Price has been changed. Do you want to update the inventory price?","Warning",selectionButton);
+                            if (selectionResult == JOptionPane.YES_OPTION) {
+                                m.setUnits(m.getUnits() + units);
+                                m.setPrice(Price);
+                                JOptionPane.showMessageDialog(this, "Units and price updated");
+                                flag = true;    
+                            }
+                            break;
+                            }}}
+                    if(flag==false){
+                        b.AddMedicine(s);
+                        JOptionPane.showMessageDialog(this, "Medicines added successfully!");
+                    break;
+                        
+                    }
+                    
+                    
+                }
+            }
+
+        } catch (NumberFormatException e) {
+            if (medNameTxt.getText().equals("") || brandNameTxt.getText().equals("") || PriceTxt.getText().equals("") || composition1Txt.getText().equals("")
+                    || composition2Txt.getText().equals("") || composition3Txt.getText().equals("") || Noofunitstxt.getText().equals("") || diseasename.getText().equals("")) {
+                JOptionPane.showMessageDialog(TypeCombo, "All the details are required.");
+                return;
+            }
+            JOptionPane.showMessageDialog(TypeCombo, "Please check the input format.");
+
         }
-       
-    
-        
-        JOptionPane.showMessageDialog(userProcessContainer, "Medicines added successfully!");
-        
-}catch (NumberFormatException e) {
-        if(medNameTxt.getText().equals("")||brandNameTxt.getText().equals("")||PriceTxt.getText().equals("")||composition1Txt.getText().equals("")
-                ||composition2Txt.getText().equals("")||composition3Txt.getText().equals("")||Noofunitstxt.getText().equals("")||diseasename.getText().equals("")){
-            JOptionPane.showMessageDialog(TypeCombo, "All the details are required.");
-            return;
-        }
-        JOptionPane.showMessageDialog(TypeCombo, "Please check the input format.");
-        
-        }   
     }//GEN-LAST:event_addMedBtnActionPerformed
-   
+
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-        
+
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void viewInvenBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInvenBtnActionPerformed
         // TODO add your handling code here:
         ViewMedicineInventoryPage view = new ViewMedicineInventoryPage(userProcessContainer, org, e, b);
         userProcessContainer.add("ViewProductDetailJPanelSupplier", view);
-   CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_viewInvenBtnActionPerformed
 
@@ -423,33 +501,33 @@ try {
 
     private void brandNameComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandNameComboActionPerformed
         // TODO add your handling code here:
-        if(String.valueOf(brandNameCombo.getSelectedItem()).equalsIgnoreCase("Other"))
-        { brandNameTxt.setEnabled(true);
+        if (String.valueOf(brandNameCombo.getSelectedItem()).equalsIgnoreCase("Other")) {
+            brandNameTxt.setEnabled(true);
             brandNameTxt.setEditable(true);
-        brandNameCombo.setForeground(Color.gray);
-           brandNameTxt.setText("");
-           brandNameTxt.setForeground(Color.black);
-         }
-        else
-        {brandNameTxt.setText("Other");
-        brandNameTxt.setEnabled(false);
-        brandNameTxt.setForeground(Color.gray);}
+            brandNameCombo.setForeground(Color.gray);
+            brandNameTxt.setText("");
+            brandNameTxt.setForeground(Color.black);
+        } else {
+            brandNameTxt.setText("Other");
+            brandNameTxt.setEnabled(false);
+            brandNameTxt.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_brandNameComboActionPerformed
 
     private void SaltNameComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaltNameComboActionPerformed
         // TODO add your handling code here:
-        if(String.valueOf(SaltNameCombo.getSelectedItem()).equalsIgnoreCase("Other"))
-        { medNameTxt.setEnabled(true);
+        if (String.valueOf(SaltNameCombo.getSelectedItem()).equalsIgnoreCase("Other")) {
+            medNameTxt.setEnabled(true);
             medNameTxt.setEditable(true);
-        SaltNameCombo.setForeground(Color.gray);
-           medNameTxt.setText("");
-           medNameTxt.setForeground(Color.black);
-         }
-        else
-        { medNameTxt.setText("Other");
-        medNameTxt.setEnabled(false);
-        medNameTxt.setForeground(Color.gray);}
-            
+            SaltNameCombo.setForeground(Color.gray);
+            medNameTxt.setText("");
+            medNameTxt.setForeground(Color.black);
+        } else {
+            medNameTxt.setText("Other");
+            medNameTxt.setEnabled(false);
+            medNameTxt.setForeground(Color.gray);
+        }
+
     }//GEN-LAST:event_SaltNameComboActionPerformed
 
 

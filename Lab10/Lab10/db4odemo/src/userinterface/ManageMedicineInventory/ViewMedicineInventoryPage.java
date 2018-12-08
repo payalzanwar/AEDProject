@@ -10,9 +10,12 @@ import Business.Enterprise.Enterprise;
 import userinterface.PatientRole.*;
 import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
+import static Business.Medicine.MedicineDirectory.ManufacturerMedicineList;
+import Business.Organization.ManufacturingManagerOrganization;
 import Business.Organization.Organization;
 import Business.Organization.PharmacistOrganization;
 import Business.Organization.SupplyManagerOrganization;
+import Business.Role.ManufacturingManagerRole;
 import Business.Supplier.Supplier;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -30,7 +33,7 @@ public class ViewMedicineInventoryPage extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Organization org;
     private Enterprise e;
-    MedicineDirectory med;
+    private MedicineDirectory med;
   public ViewMedicineInventoryPage(JPanel userProcessContainer, Organization org, Enterprise e, MedicineDirectory med) {
     
         initComponents();
@@ -48,7 +51,33 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
        model.setRowCount(0);
         for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof SupplyManagerOrganization){
+            if (organization instanceof ManufacturingManagerOrganization){
+                System.out.println(med.getManufacturerMedicineList().size());
+                  for(Medicine medi : med.getManufacturerMedicineList())
+            
+            {
+                
+               Object[] row = new Object[9];
+           //row[0] = medi;
+           row[0] = medi.getBrand();
+           row[1]=medi;
+           row[2]=medi.getSaltComposition1();
+           row[3]=medi.getSaltComposition2();
+           row[4]=medi.getSaltComposition3();
+           row[5]=medi.getPrice();
+           row[6]=medi.getType();
+           row[7]=medi.getDisease();
+           row[8]=medi.getUnits();
+           
+
+                      model.addRow(row);
+            }
+                System.out.println("Yeah bitches!!");
+                break;
+            }
+            
+            else if (organization instanceof SupplyManagerOrganization){
+                System.out.println(med.getSupplierMedicineList().size());
                   for(Medicine medi : med.getSupplierMedicineList())
             
             {
@@ -71,6 +100,9 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
                 System.out.println("Yeah bitches!!");
                 break;
             }
+            
+            
+            
             else if(organization instanceof PharmacistOrganization)
             {
                 for(Medicine medi : med.getMedicineList())
@@ -114,7 +146,7 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Supplier Medicine Inventory");
+        jLabel1.setText(" Medicine Inventory");
 
         BackBtn.setText("Back");
         BackBtn.addActionListener(new java.awt.event.ActionListener() {
