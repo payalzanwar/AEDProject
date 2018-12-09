@@ -8,7 +8,7 @@ package userinterface.PatientRole;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Medicine.MedicineDirectory;
-import Business.Organization.PatientOrganization;
+//import Business.Organization.PatientOrganization;
 import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -25,15 +25,16 @@ public class PatientWorkAreaJPanel1 extends javax.swing.JPanel {
      * Creates new form test
      */
     private JPanel userProcessContainer;
-    private MedicineDirectory med;
-    private Pharmacy phar;
+   
+   
     private UserAccount account;
-    private PatientOrganization organization;
+   // private PatientOrganization organization;
     private EcoSystem system;
     
   //  public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
      public PatientWorkAreaJPanel1(JPanel userProcessContainer, UserAccount account,EcoSystem system){ 
         initComponents();
+        this.setSize(1680, 1050);
         this.userProcessContainer=userProcessContainer;
         this.account=account;
        
@@ -119,7 +120,7 @@ public class PatientWorkAreaJPanel1 extends javax.swing.JPanel {
         //       CardLayout layout = (CardLayout)container.getLayout();
         //       layout.next(container);
 
-        AlternateMedicinePage alternateMedicinePage = new AlternateMedicinePage(Rightpaneldashboard,med,phar,account,system);
+        AlternateMedicinePage alternateMedicinePage = new AlternateMedicinePage(Rightpaneldashboard,account,system);
         Rightpaneldashboard.add("AlternateMedicinePageJpanel", alternateMedicinePage);
         CardLayout layout = (CardLayout)Rightpaneldashboard.getLayout();
         layout.next(Rightpaneldashboard);

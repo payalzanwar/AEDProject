@@ -18,6 +18,7 @@ public abstract class Organization {
 
     private String name;
     private String org_name;
+    private String entloc;
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
@@ -25,7 +26,7 @@ public abstract class Organization {
     private static int counter=1;
     
     public enum Type{
-      Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization"),Pharmacist("Pharmacist Organizantion"),Patient("Patient Organization");
+      Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization"),Pharmacist("Pharmacist Organizantion"),SupplyManager("Supply Manager Organization"), ManufacturingManager("Manufacturing Manager Organization");
         private String value;
         private Type(String value) {
             this.value = value;
@@ -36,9 +37,10 @@ public abstract class Organization {
         
     }
 
-    public Organization(String name) {
+    public Organization(String name,String entloc) {
         this.name = name;
         this.org_name=org_name;
+        this.entloc=entloc;
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
@@ -52,6 +54,14 @@ public abstract class Organization {
 
     public void setOrg_name(String org_name) {
         this.org_name = org_name;
+    }
+
+    public String getEntloc() {
+        return entloc;
+    }
+
+    public void setEntloc(String entloc) {
+        this.entloc = entloc;
     }
 
    

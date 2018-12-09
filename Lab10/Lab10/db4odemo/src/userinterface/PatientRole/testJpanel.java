@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testPackage;
+package userinterface.PatientRole;
 
 /**
  *
  * @author mantr
  */
-public class testform extends javax.swing.JPanel {
+public class testJpanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form testform
+     * Creates new form testJpanel
      */
-    public testform() {
+    public testJpanel() {
         initComponents();
     }
 
@@ -31,11 +31,11 @@ public class testform extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 809, Short.MAX_VALUE)
+            .addGap(0, 998, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1778, Short.MAX_VALUE)
+            .addGap(0, 1790, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

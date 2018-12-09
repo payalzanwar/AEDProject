@@ -1,0 +1,6 @@
+Brand,Medicine-Name,Salt-Comp1,Salt-Comp2,Salt-Comp3,Type,Disease,No-of-Units,Price
+Crocin,Crocine,Paracetamol(100mg),Sulphate(10mg),Tartrate(5mg),Tablet,ColdNflu,6,17
+Voltaren,Dyclophenac,Acetate(50mg),Paracetamol(100mg),Sulfate(40mg),Capsule,Cancer,10,11
+Zyrtec,Cetrizine,Hydrochloride(100mg),magnesium stearate,Paracetamol(100mg),Tablet,ColdNflu,4,4
+Decold,Decold,Caffeine,Chloropheniramine,Phenylephrine,Capsule,ColdNflu,10,11
+Children's Cetrizine,Cetrizine,Paracetamol(50mg),magnesium stearate,Hydrochloride(100mg),Tablet,ColdNflu,4,4

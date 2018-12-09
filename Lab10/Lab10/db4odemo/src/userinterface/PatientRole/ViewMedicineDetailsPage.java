@@ -5,13 +5,9 @@
  */
 package userinterface.PatientRole;
 
-import Business.Enterprise.Enterprise;
-import static Business.Enterprise.Enterprise.EnterpriseType.Pharmacy;
 import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
-import Business.Network.Network;
 import Business.Pharmacy.Pharmacy;
-import Business.Pharmacy.PharmacyDirectory;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -26,13 +22,13 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
      * Creates new form ViewMedicineDetailsJPanel
      */
     private JPanel userProcessContainer;
-    private Pharmacy phar;
-  public ViewMedicineDetailsPage(JPanel userProcessContainer, Pharmacy phar) {
+    private Medicine med;
+  public ViewMedicineDetailsPage(JPanel userProcessContainer, Medicine med) {
     
-      
         initComponents();
+        this.setSize(1680, 1050);
         this.userProcessContainer = userProcessContainer;
-       this.phar=phar;
+       this.med=med;
       
         populateTable();
     }
@@ -43,20 +39,20 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
 DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
        model.setRowCount(0);
-        for(Medicine medi : phar.getMed().getMedicineList())
-            
-            {
-                MedicineNameTxt.setText(medi.getSaltname());
-               Object[] row = new Object[6];
-           row[0] = medi;
-           row[1] = medi.getSaltComposition();
-           row[2]=medi.getPrice();
-           row[3]=medi.getType();
-           row[4]=medi.getDisease();
-           row[5]=medi.getUnits();
-
+       
+                
+               Object[] row = new Object[7];
+           row[0] = med.getSaltname();
+           row[1] = med.getSaltComposition1();
+        
+            row[2]= med.getSaltComposition2();
+            row[3]=med.getSaltComposition3();
+           row[4]=med.getPrice();
+           row[5]=med.getType();
+           row[6]=med.getDisease();
+          
                       model.addRow(row);
-            }
+            
     }
   
     /**
@@ -69,7 +65,6 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         AddToCartBtn = new javax.swing.JButton();
@@ -79,13 +74,10 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
         jScrollPane2 = new javax.swing.JScrollPane();
         PharmacyTable = new javax.swing.JTable();
         BuyNowBtn = new javax.swing.JButton();
-        MedicineNameTxt = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Medicine Details");
-
-        jLabel2.setText("Medicine Name");
 
         jLabel3.setText("Salt Composition");
 
@@ -110,14 +102,14 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
             },
             new String [] {
-                "Salt Name", "Composition", "Pricel", "Type", "Disease", "No of Units"
+                "Brand", "Medicine Name", "Salt Comp1", "Salt Comp2", "Salt Comp3", "Type", "Disease", "Price"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, true, true
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -129,6 +121,16 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
             }
         });
         jScrollPane1.setViewportView(SaltTable);
+        if (SaltTable.getColumnModel().getColumnCount() > 0) {
+            SaltTable.getColumnModel().getColumn(0).setResizable(false);
+            SaltTable.getColumnModel().getColumn(1).setResizable(false);
+            SaltTable.getColumnModel().getColumn(2).setResizable(false);
+            SaltTable.getColumnModel().getColumn(3).setResizable(false);
+            SaltTable.getColumnModel().getColumn(4).setResizable(false);
+            SaltTable.getColumnModel().getColumn(5).setResizable(false);
+            SaltTable.getColumnModel().getColumn(6).setResizable(false);
+            SaltTable.getColumnModel().getColumn(7).setResizable(false);
+        }
 
         PharmacyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -162,69 +164,56 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
             }
         });
 
-        MedicineNameTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MedicineNameTxtActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AddToCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(132, 132, 132)
+                .addComponent(BuyNowBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(16, Short.MAX_VALUE)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MedicineNameTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 892, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91)
-                .addComponent(AddToCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BuyNowBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MedicineNameTxt))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 84, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AddToCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BuyNowBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(87, 87, 87))
+                    .addComponent(BuyNowBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(146, 146, 146))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -243,20 +232,14 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_BackBtnActionPerformed
 
-    private void MedicineNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicineNameTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MedicineNameTxtActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddToCartBtn;
     private javax.swing.JButton BackBtn;
     private javax.swing.JButton BuyNowBtn;
-    private javax.swing.JTextField MedicineNameTxt;
     private javax.swing.JTable PharmacyTable;
     private javax.swing.JTable SaltTable;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;

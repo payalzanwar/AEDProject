@@ -9,16 +9,17 @@ import Business.DB4OUtil.DB4OUtil;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
-import Business.Organization.PatientOrganization;
 import Business.Patient.PatientDirectory;
 import Business.Role.Role;
 import Business.Role.Role.RoleType;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.PatientRole.PatientLoginFormJPanel;
-import userinterface.PatientRole.PatientWorkAreaJPanel11;
 
 /**
  *
@@ -31,16 +32,13 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-    private JPanel RightJPanel;
-    private UserAccount account;
-    private PatientOrganization organization;
-    private Enterprise enterprise;
-    private PatientDirectory patientDirectory;
 
-    public MainJFrame() {
+    public MainJFrame() throws IOException {
         initComponents();
         system = dB4OUtil.retrieveSystem();
         this.setSize(1680, 1050);
+      
+        
     }
 
     /**
@@ -61,7 +59,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         loginJLabel = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
-        CreateAccountBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,10 +83,10 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        CreateAccountBtn.setText("Create Account");
-        CreateAccountBtn.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Create Account");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateAccountBtnActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -102,7 +100,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(passwordField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(userNameJTextField)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftJPanelLayout.createSequentialGroup()
-                        .addComponent(CreateAccountBtn)
+                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(loginJLabel))
                     .addGroup(leftJPanelLayout.createSequentialGroup()
@@ -133,7 +131,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(loginJLabel))
                     .addGroup(leftJPanelLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(CreateAccountBtn)))
+                        .addComponent(jButton1)))
                 .addGap(77, 77, 77)
                 .addComponent(logoutJButton)
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -150,11 +148,16 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
-         // Get user name
+        // Get user name
         String userName = userNameJTextField.getText();
         // Get Password
         char[] passwordCharArray = passwordField.getPassword();
         String password = String.valueOf(passwordCharArray);
+        try {
+            DataGenerator generator = DataGenerator.getInstance();
+        } catch (IOException ex) {
+            Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         //Step1: Check in the system admin user account directory if you have the user
         UserAccount userAccount=system.getUserAccountDirectory().authenticateUser(userName, password);
@@ -200,9 +203,6 @@ public class MainJFrame extends javax.swing.JFrame {
         }
          else if(userAccount.getRole().equals(RoleType.Patient))
         {
-            
-             
-              
             CardLayout layout=(CardLayout)container.getLayout();
             container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, null, null, system));
             layout.next(container);
@@ -216,7 +216,7 @@ public class MainJFrame extends javax.swing.JFrame {
             layout.next(container);
             
             
-           
+            
             
         }
         
@@ -243,15 +243,13 @@ public class MainJFrame extends javax.swing.JFrame {
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
-    private void CreateAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAccountBtnActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
         PatientLoginFormJPanel createAccountPage = new PatientLoginFormJPanel(container,system);
                container.add("CreateAccountPageJPanel",createAccountPage);
                CardLayout layout = (CardLayout)container.getLayout();
                layout.next(container);
-               
-    }//GEN-LAST:event_CreateAccountBtnActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,13 +281,17 @@ public class MainJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainJFrame().setVisible(true);
+                try {
+                    new MainJFrame().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CreateAccountBtn;
     private javax.swing.JPanel container;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSplitPane jSplitPane1;

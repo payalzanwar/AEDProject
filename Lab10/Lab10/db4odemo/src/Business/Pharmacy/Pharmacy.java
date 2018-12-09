@@ -38,7 +38,7 @@ public class Pharmacy {
         id = count;
         WalletId = count;
         count++;
-        Med = new MedicineDirectory();
+      //  Med = new MedicineDirectory();
     }
 
     public MedicineDirectory getMed() {

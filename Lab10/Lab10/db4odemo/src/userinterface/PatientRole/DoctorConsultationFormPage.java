@@ -30,6 +30,7 @@ public class DoctorConsultationFormPage extends javax.swing.JPanel {
     private Enterprise enterprise;
     public DoctorConsultationFormPage(JPanel rightPanel,ArrayList<Medicine> list,UserAccount account,Enterprise enterprise) {
         initComponents();
+        this.setSize(1680, 1050);
         this.rightPanel=rightPanel;
         this.list=list;
         this.account=account;
@@ -47,61 +48,41 @@ public class DoctorConsultationFormPage extends javax.swing.JPanel {
 
         Messagetxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        requestDoctorBtn = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Messagetxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MessagetxtActionPerformed(evt);
             }
         });
+        add(Messagetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 69, 165, -1));
 
         jLabel1.setText("Alternative Medicines");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 69, -1, 20));
 
-        jButton1.setText("Request");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        requestDoctorBtn.setText("Request");
+        requestDoctorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                requestDoctorBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(jLabel1)
-                .addGap(63, 63, 63)
-                .addComponent(Messagetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(251, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(274, 274, 274))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Messagetxt)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(49, 49, 49)
-                .addComponent(jButton1)
-                .addContainerGap(288, Short.MAX_VALUE))
-        );
+        add(requestDoctorBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(298, 138, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void MessagetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MessagetxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MessagetxtActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void requestDoctorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestDoctorBtnActionPerformed
         // TODO add your handling code here:
+        
         String message = Messagetxt.getText();
         
         CustomerWorkRequest request = new CustomerWorkRequest();
         request.setMessage(message);
+
         request.setSender(account);
         request.setStatus("Sent");
         
@@ -109,20 +90,23 @@ public class DoctorConsultationFormPage extends javax.swing.JPanel {
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
             if (organization instanceof DoctorOrganization){
                 org = organization;
+                System.out.println("Yeah bitches!!");
                 break;
             }
         }
         if (org!=null){
             org.getWorkQueue().getWorkRequestList().add(request);
             account.getWorkQueue().getWorkRequestList().add(request);
+            System.out.println("Yeah bitches!!");
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_requestDoctorBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Messagetxt;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton requestDoctorBtn;
     // End of variables declaration//GEN-END:variables
 }

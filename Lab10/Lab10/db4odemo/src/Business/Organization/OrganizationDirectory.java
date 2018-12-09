@@ -25,11 +25,11 @@ public class OrganizationDirectory {
         return organizationList;
     }
     
-    public Organization createOrganization(Type type,EnterpriseType EnterpriseType){
+    public Organization createOrganization(Type type,EnterpriseType EnterpriseType,String loc){
         Organization organization = null;
 //        if(EnterpriseType.getValue().equals(EnterpriseType.Hospital.getValue()))
         if (type.getValue().equals(Type.Doctor.getValue())){
-            organization = new DoctorOrganization();
+            organization = new DoctorOrganization(loc);
             organizationList.add(organization);
             
         }
@@ -41,15 +41,17 @@ public class OrganizationDirectory {
 //        }
         
         else if (type.getValue().equals(Type.Pharmacist.getValue())){
-            organization = new PharmacistOrganization();
-            organizationList.add(organization);
-            
-            
+            organization = new PharmacistOrganization(loc);
+            organizationList.add(organization);     
         }
-        else if(type.getValue().equals(Type.Patient.getValue())){
-            organization = new PatientOrganization();
-            organizationList.add(organization);
-            
+        else if (type.getValue().equals(Type.SupplyManager.getValue())){
+            organization = new SupplyManagerOrganization(loc);
+            organizationList.add(organization);     
+        }
+        
+        else if (type.getValue().equals(Type.ManufacturingManager.getValue())){
+            organization = new ManufacturingManagerOrganization(loc);
+            organizationList.add(organization);     
         }
         return organization;
     }   
