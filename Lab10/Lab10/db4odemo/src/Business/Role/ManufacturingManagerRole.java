@@ -12,7 +12,7 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.ManufacturingManagerRole.ManufacturingManagerWorkAreaJPanel;
-import userinterface.SupplyManagerRole.SupplyManagerWorkAreaJPanel;
+//import userinterface.SupplyManagerRole.SupplyManagerWorkAreaJPanel;
 
 /**
  *
@@ -23,7 +23,7 @@ public class ManufacturingManagerRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new ManufacturingManagerWorkAreaJPanel(userProcessContainer, account, (ManufacturingManagerOrganization) organization, enterprise,business);
+        return new ManufacturingManagerWorkAreaJPanel(userProcessContainer, account, (ManufacturingManagerOrganization) organization, enterprise, business);
     }
     
 }
