@@ -4,6 +4,9 @@ package userinterface.AdministrativeRole;
 
 import Business.Enterprise.Enterprise;
 import static Business.Enterprise.Enterprise.EnterpriseType.Pharmacy;
+import Business.Organization.DoctorOrganization;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
 import Business.WorkQueue.MedicineSupplyWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;

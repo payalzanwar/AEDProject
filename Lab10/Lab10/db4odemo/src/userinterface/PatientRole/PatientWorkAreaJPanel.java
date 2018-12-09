@@ -7,12 +7,10 @@ package userinterface.PatientRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Medicine.MedicineDirectory;
-//import Business.Organization.PatientOrganization;
-import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -22,23 +20,23 @@ import javax.swing.JPanel;
 public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form test
+     * Creates new form PatientWorkAreaJPanel
      */
-    private JPanel userProcessContainer;
-   
-   
-    private UserAccount account;
-   // private PatientOrganization organization;
+    AlternateMedicinePage alternateMedicinePage;
     private EcoSystem system;
-    
-  //  public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
-     public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account,EcoSystem system){ 
+    private UserAccount account;
+    private Enterprise enterprise;
+
+    //JPanel Rightpaneldashboard;
+
+    public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem system) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.account=account;
-       
-        this.system=system;
-                
+        this.setSize(1680, 1050);
+        this.Rightpaneldashboard = userProcessContainer;
+        this.account = account;
+        this.enterprise = enterprise;
+        this.alternateMedicinePage = alternateMedicinePage;
+        this.system = system;
     }
 
     /**
@@ -53,7 +51,6 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         Rightpaneldashboard = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
         AlternateMedicinesBtn = new javax.swing.JButton();
         OverthecounterBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -66,11 +63,12 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         progressbar = new javax.swing.JPanel();
         CheckStatusBtn = new javax.swing.JButton();
         JP_Progress = new ProgressBar.CustomPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
 
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jTabbedPane1.setForeground(new java.awt.Color(0, 51, 102));
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(1680, 1050));
 
@@ -85,7 +83,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
                 AlternateMedicinesBtnActionPerformed(evt);
             }
         });
-        Rightpaneldashboard.add(AlternateMedicinesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 414, 73));
+        Rightpaneldashboard.add(AlternateMedicinesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 414, 73));
 
         OverthecounterBtn.setBackground(new java.awt.Color(255, 255, 255));
         OverthecounterBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -96,37 +94,38 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
                 OverthecounterBtnActionPerformed(evt);
             }
         });
-        Rightpaneldashboard.add(OverthecounterBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 414, 73));
+        Rightpaneldashboard.add(OverthecounterBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 414, 73));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/dashboard.jpg"))); // NOI18N
-        Rightpaneldashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 490, 390));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
+        Rightpaneldashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 700, 520));
 
         jTabbedPane1.addTab("Dashboard", Rightpaneldashboard);
 
         jPanel2.setLayout(null);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/dashboard.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(0, 0, 480, 330);
+        jLabel3.setBounds(0, -10, 690, 510);
 
         jTabbedPane1.addTab("Account Details", jPanel2);
 
         jPanel3.setLayout(null);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/dashboard.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
         jPanel3.add(jLabel4);
-        jLabel4.setBounds(0, 0, 480, 330);
+        jLabel4.setBounds(0, 0, 690, 500);
 
         jTabbedPane1.addTab("Order Details", jPanel3);
 
         jPanel5.setLayout(null);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/dashboard.jpg"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
         jPanel5.add(jLabel5);
-        jLabel5.setBounds(0, 0, 470, 330);
+        jLabel5.setBounds(0, 0, 700, 500);
 
         jTabbedPane1.addTab("Request Details", jPanel5);
 
+        progressbar.setBackground(new java.awt.Color(255, 255, 255));
         progressbar.setLayout(null);
 
         CheckStatusBtn.setBackground(new java.awt.Color(255, 255, 255));
@@ -144,18 +143,8 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         JP_Progress.setBackground(new java.awt.Color(255, 255, 255));
         JP_Progress.setForeground(new java.awt.Color(255, 255, 255));
         JP_Progress.setLayout(null);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/progress bar.jpg"))); // NOI18N
-        JP_Progress.add(jLabel2);
-        jLabel2.setBounds(-10, -20, 480, 250);
-
         progressbar.add(JP_Progress);
-        JP_Progress.setBounds(10, 100, 460, 230);
-
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/progress bar.jpg"))); // NOI18N
-        progressbar.add(jLabel6);
-        jLabel6.setBounds(0, 0, 480, 350);
+        JP_Progress.setBounds(90, 90, 460, 240);
 
         jTabbedPane1.addTab("Progress Bar", progressbar);
 
@@ -215,11 +204,9 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton OverthecounterBtn;
     private javax.swing.JPanel Rightpaneldashboard;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
