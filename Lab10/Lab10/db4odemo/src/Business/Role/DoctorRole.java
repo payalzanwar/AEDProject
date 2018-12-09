@@ -9,9 +9,10 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import userinterface.DoctorRole.DoctorWorkAreaJPanel;
+import userinterface.DoctorRole.HospitalAdminWorkAreaJPanel;
 import javax.swing.JPanel;
 import userinterface.DoctorRole.DoctorLoginFormJPanel;
+import userinterface.DoctorRole.DoctorWorkAreaJPanel;
 
 /**
  *
@@ -21,7 +22,7 @@ public class DoctorRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new DoctorWorkAreaJPanel(userProcessContainer, account, (DoctorOrganization)organization, enterprise);
+        return new DoctorWorkAreaJPanel(userProcessContainer, (DoctorOrganization) organization,account, enterprise);
     }
     
     

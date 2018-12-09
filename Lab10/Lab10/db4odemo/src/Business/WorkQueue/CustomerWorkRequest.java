@@ -4,6 +4,11 @@
  */
 package Business.WorkQueue;
 
+import Business.Employee.Employee;
+import Business.Medicine.Medicine;
+import java.util.ArrayList;
+import java.util.HashSet;
+
 /**
  *
  * @author raunak
@@ -11,7 +16,9 @@ package Business.WorkQueue;
 public class CustomerWorkRequest extends WorkRequest{
     
     private String MedicineOrder;
+    
 
+    
     public String getTestResult() {
         return MedicineOrder;
     }
