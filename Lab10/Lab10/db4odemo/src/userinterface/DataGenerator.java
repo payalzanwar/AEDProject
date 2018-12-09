@@ -54,8 +54,22 @@ public class DataGenerator {
        file = new File(COMMENT_FILE_PATH);
        reader = new BufferedReader(new FileReader(file));
         generateCommentFile(reader);
-      
-        
+       writer = new FileWriter(file,true);
+            bw = new BufferedWriter(writer);
+             out = new PrintWriter(bw);
+             
+            // writer.append(USER_HEADER);
+        try {
+                writer.flush();
+                writer.close();
+                if(bw!=null)
+               bw.close();
+               if(out!=null)
+               out.close();
+            } catch (IOException e) {
+                System.out.println("Error while flushing/closing fileWriter !!!");
+                e.printStackTrace();
+            }
     }
     
     public static DataGenerator getInstance() throws IOException{
@@ -80,11 +94,13 @@ public class DataGenerator {
             System.out.println(b);
         }
             
+             
 
             System.out.println("New Comment File Created");
          
         }finally{
             System.out.println("in try");
+            
         }
         
       

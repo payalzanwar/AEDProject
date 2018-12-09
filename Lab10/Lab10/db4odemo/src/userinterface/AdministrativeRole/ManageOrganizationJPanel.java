@@ -8,6 +8,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -21,14 +22,16 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     private OrganizationDirectory directory;
     private JPanel userProcessContainer;
     private Enterprise enterprise;
+    private UserAccount account;
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public ManageOrganizationJPanel(JPanel userProcessContainer,OrganizationDirectory directory,Enterprise enterprise) {
+    public ManageOrganizationJPanel(JPanel userProcessContainer,OrganizationDirectory directory,Enterprise enterprise,UserAccount account) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.directory = directory;
         this.enterprise=enterprise;
+        this.account=account;
      //   populateTable();
         populateCombo();
         

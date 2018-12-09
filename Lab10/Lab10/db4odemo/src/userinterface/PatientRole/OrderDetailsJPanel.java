@@ -16,7 +16,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import userinterface.DoctorRole.DoctorWorkAreaJPanel;
+import userinterface.DoctorRole.HospitalAdminWorkAreaJPanel;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**

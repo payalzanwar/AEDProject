@@ -11,6 +11,7 @@ package Business.Employee;
 public class Employee {
     
     private String name;
+
     private String speciality;
 
     public String getSpeciality() {

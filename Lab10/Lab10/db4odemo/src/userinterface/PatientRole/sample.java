@@ -1,49 +1,36 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.DoctorRole;
+package userinterface.PatientRole;
 
-
-import Business.Employee.Employee;
-import Business.Enterprise.Enterprise;
-import Business.Medicine.Medicine;
-import Business.Organization.DoctorOrganization;
+import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.CustomerWorkRequest;
 import Business.WorkQueue.WorkRequest;
-import java.awt.CardLayout;
-import java.awt.Component;
-import java.util.HashSet;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Vaishali Tripathi
+ * @author Payal Zanwar
  */
-public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
+public class sample extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
-   private DoctorOrganization organization;
-   private UserAccount account;
-   private Enterprise enterprise;
     /**
-     * Creates new form DoctorProcessWorkRequestJPanel
+     * Creates new form sample
      */
-   
-
-    public DoctorWorkAreaJPanel(JPanel userProcessContainer, DoctorOrganization doctorOrganization, UserAccount account, Enterprise enterprise) {
-         initComponents();
-        this.userProcessContainer = userProcessContainer;
-       this.enterprise = enterprise;
-       this.account=account;
-        System.out.println("account in doc work area"+account);
-       this.organization=doctorOrganization;
-       populateTable();
+    private UserAccount account;
+    private EcoSystem system;
+    public sample(JPanel Rightpaneldashboard,UserAccount account,EcoSystem system) {
+        initComponents();
+        this.account=account;
+        this.system=system;
+        populateTable();
     }
 
-   public void populateTable(){
+    
+    public void populateTable(){
         DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
         
         model.setRowCount(0);
@@ -59,8 +46,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,20 +55,17 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
         refreshJButton = new javax.swing.JButton();
-        assignJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         viewtxt = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-
-        setLayout(null);
 
         jPanel2.setLayout(null);
 
@@ -127,16 +109,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jPanel2.add(refreshJButton);
         refreshJButton.setBounds(600, 50, 85, 29);
 
-        assignJButton.setText("Disapprove");
-        assignJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignJButtonActionPerformed(evt);
-            }
-        });
-        jPanel2.add(assignJButton);
-        assignJButton.setBounds(430, 550, 200, 29);
-
-        jLabel1.setText("        Doctor Work Area");
+        jLabel1.setText("            Customer Work Area");
         jPanel2.add(jLabel1);
         jLabel1.setBounds(260, 30, 281, 29);
 
@@ -160,111 +133,78 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(60, 310, 270, 30);
 
-        jButton2.setText("Approve");
+        jButton2.setText("Order Medicines");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         jPanel2.add(jButton2);
-        jButton2.setBounds(160, 550, 190, 29);
+        jButton2.setBounds(300, 550, 190, 29);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 882, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 852, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 741, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        add(jPanel3);
-        jPanel3.setBounds(10, 10, 870, 730);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
-        populateTable();
+        //populateTable();
     }//GEN-LAST:event_refreshJButtonActionPerformed
-
-    private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
- int selectedRow = workRequestJTable.getSelectedRow();
-
-        if (selectedRow < 0){
-            return;
-        }
-
-        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        
-        request.setStatus("Disapproved");
-         request.setMessage("Alternative Prescription Disapproved");
-      populateTable();
-
-    }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        viewtxt.setText("");
-        String output = "Hello Doctor\n I need consultation regarding the Alternative medicines I found.\n ";
-        
-        HashSet<Medicine> m = new HashSet<Medicine>();
-        int selectedRow = workRequestJTable.getSelectedRow();
-
-        if (selectedRow < 0){
-            return;
-        }
-        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        
-       int i=1;
-       
-        for(Medicine med : request.getAlternativelist()) {
-            output= output + i+ med.getBrand()+" "+med.getSaltname()+" "+med.getSaltComposition1()+" "+med.getSaltComposition2()+" "+med.getSaltComposition3()+" "
-             +" for Disease "+" "+med.getDisease() +   "\n";
-        viewtxt.setText(output);
-        viewtxt.setEditable(false);
-        i++;
-        
-        }
-        
         
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         int selectedRow = workRequestJTable.getSelectedRow();
+       
 
-        if (selectedRow < 0){
-            return;
-        }
-
-        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-
-        request.setStatus("Approved");
-         request.setMessage("Alternative Prescription Approved");
-        populateTable();
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton assignJButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton refreshJButton;

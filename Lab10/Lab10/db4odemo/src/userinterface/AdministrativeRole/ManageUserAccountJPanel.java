@@ -6,9 +6,14 @@ package userinterface.AdministrativeRole;
 
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Organization.DoctorOrganization;
+import Business.Organization.ManufacturingManagerOrganization;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
+import Business.Organization.PharmacistOrganization;
+import Business.Organization.SupplyManagerOrganization;
 import Business.Role.Role;
+import Business.Role.Role.RoleType;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -302,41 +307,36 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         Employee employee = (Employee) employeeJComboBox.getSelectedItem();
-        Role role = (Role) roleJComboBox.getSelectedItem();
-       
+        
+       Role role = (Role) roleJComboBox.getSelectedItem();
         String user = usernametxt.getText();
         String pswd = passwordtxt.getText();
         String confirmpswd = confirmpswdtxt.getText();
-     //   System.out.println(Organization.Type.values());
-   
-        for (Type type : Organization.Type.values()) {
-            if (type.getValue().equals(Type.Pharmacist.getValue())) {      //  organizationJComboBox.addItem(type);
+        
+      if(organization instanceof DoctorOrganization){
+      organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
+    JOptionPane.showMessageDialog(container, "Doctor created successfully!");
+      }
+    else if(organization instanceof PharmacistOrganization)
+    {
+      organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
+    JOptionPane.showMessageDialog(container, "Pharmacist created successfully!");
+    }
+   else if(organization instanceof SupplyManagerOrganization)
+   {
+      organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
+    JOptionPane.showMessageDialog(container, "Supply Manager created successfully!");
+   }
+   else if(organization instanceof ManufacturingManagerOrganization){
+      organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
+    JOptionPane.showMessageDialog(container, "Manufacturer created successfully!");
+   }
 
-                
-                
-        organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
-        JOptionPane.showMessageDialog(container, "Pharmacy created successfully!");
-               
-            }
-            else if(type.getValue().equals(Type.Doctor.getValue()))
-            {
-             organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
-        JOptionPane.showMessageDialog(container, "Dcotor created successfully!");
-            }
-            else if(type.getValue().equals(Type.SupplyManager.getValue()))
-            {
-                 organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
-        JOptionPane.showMessageDialog(container, "Supplier created successfully!");   
-                    }
-            else if(type.getValue().equals(Type.ManufacturingManager.getValue()))
-            {
-                organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
-        JOptionPane.showMessageDialog(container, " created successfully!");   
-                    }
-            
+      popData();
+
 
     }//GEN-LAST:event_createUserJButtonActionPerformed
-    }
+    
     private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed
         // TODO add your handling code here:
         container.remove(this);

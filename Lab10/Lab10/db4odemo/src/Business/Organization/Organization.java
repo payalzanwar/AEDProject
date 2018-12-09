@@ -8,6 +8,7 @@ import Business.Employee.EmployeeDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 /**
@@ -37,6 +38,7 @@ public abstract class Organization {
         
     }
 
+    
     public Organization(String name,String entloc) {
         this.name = name;
         this.org_name=org_name;
