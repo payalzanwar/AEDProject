@@ -12,7 +12,7 @@ package Business.Medicine;
 public class Medicine {
  int med_id;
  String saltname;
- int price;
+ float price;
  String SaltComposition1;
  String SaltComposition2;
 
@@ -94,11 +94,11 @@ private static int cnt = 1;
         this.saltname = saltname;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

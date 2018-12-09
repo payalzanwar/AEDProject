@@ -22,6 +22,7 @@ import Business.Supplier.Supplier;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.MedicineSupplyWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -93,17 +94,18 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         for (WorkRequest request : user.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[10];
+            Object[] row = new Object[11];
             row[0] = ((MedicineSupplyWorkRequest) request);
             row[1] = ((MedicineSupplyWorkRequest) request).getBrand();
             row[2] = ((MedicineSupplyWorkRequest) request).getQuantity();
             row[3] = ((MedicineSupplyWorkRequest) request).getPrice();
             row[4] = ((MedicineSupplyWorkRequest) request).getSaltc1();
-            row[5] = ((MedicineSupplyWorkRequest) request).getSaltc3();
+            row[5] = ((MedicineSupplyWorkRequest) request).getSaltc2();
             row[6] = ((MedicineSupplyWorkRequest) request).getSaltc3();
-            row[7] = ((MedicineSupplyWorkRequest) request).getDiseaseName();
-            row[8] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[9] = request.getStatus();
+            row[7] = ((MedicineSupplyWorkRequest) request).getMedType();
+            row[8] = ((MedicineSupplyWorkRequest) request).getDiseaseName();
+            row[9] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[10] = request.getStatus();
                         
             model.addRow(row);
         }
@@ -146,6 +148,8 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         TypeCombo = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         enterpriseList = new javax.swing.JComboBox<>();
+        orgCombo = new javax.swing.JComboBox<>();
+        addToInventoryBtn = new javax.swing.JButton();
 
         jLabel1.setText("Request For Supply");
 
@@ -165,20 +169,20 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Medicine Name", "Brand", "Quantity", "Price", "Salt 1", "Salt 2", "Salt 3", "Disease", "Receiver", "Status"
+                "Medicine Name", "Brand", "Quantity", "Price", "Salt 1", "Salt 2", "Salt 3", "Type", "Disease", "Receiver", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -246,6 +250,25 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
 
         jLabel9.setText("Number of Units");
 
+        enterpriseList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enterpriseListActionPerformed(evt);
+            }
+        });
+
+        orgCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orgComboActionPerformed(evt);
+            }
+        });
+
+        addToInventoryBtn.setText("Add to Inventory");
+        addToInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addToInventoryBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -262,55 +285,56 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(279, 279, 279)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(53, 53, 53)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(111, 111, 111)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel8))
+                                        .addGap(46, 46, 46)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(Noofunitstxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(TypeCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 184, Short.MAX_VALUE)
+                                            .addComponent(composition2Txt, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(PriceTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(SaltNameCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(brandNameCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(diseasename)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(composition1Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel6)
+                                .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(53, 53, 53)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(111, 111, 111)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel8))
-                                                .addGap(46, 46, 46)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addComponent(Noofunitstxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(TypeCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 184, Short.MAX_VALUE)
-                                                    .addComponent(composition2Txt, javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(PriceTxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(SaltNameCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(brandNameCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(diseasename)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addGap(40, 40, 40)
-                                                .addComponent(composition1Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(backBtn)
+                                        .addGap(126, 126, 126)
+                                        .addComponent(placeMedSuppReqBtn))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(24, 24, 24)
-                                        .addComponent(jLabel6)
-                                        .addGap(30, 30, 30)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(backBtn)
-                                                .addGap(126, 126, 126)
-                                                .addComponent(placeMedSuppReqBtn))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(netowrkListCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(49, 49, 49)
-                                                .addComponent(enterpriseList, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(medNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(brandNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(composition3Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addComponent(netowrkListCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(49, 49, 49)
+                                        .addComponent(enterpriseList, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(medNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(brandNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(composition3Txt, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                            .addComponent(orgCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(279, 279, 279)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addToInventoryBtn)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -321,7 +345,9 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addToInventoryBtn))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -358,7 +384,8 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(netowrkListCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enterpriseList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(enterpriseList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(placeMedSuppReqBtn)
@@ -422,29 +449,29 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         request.setSaltc1(saltc1);
         request.setSaltc2(saltc2);
         request.setSaltc3(saltc3);
+        request.setMedType(type);
         request.setSender(user);
         request.setStatus("Sent");
-                System.out.println("chal yaha tak to aaya");
 
         Organization org = null;
         Enterprise e = (Enterprise) enterpriseList.getSelectedItem();
+        Organization o = (Organization) orgCombo.getSelectedItem();
         for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
             
-            if(this.org instanceof PharmacistOrganization && organization instanceof SupplyManagerOrganization)
+            if(this.org instanceof PharmacistOrganization && o instanceof SupplyManagerOrganization)
             
 //            if (organization instanceof SupplyManagerOrganization)
             {
-                org = organization;
-                System.out.println("Yeah bitches!!");
+                org = o;
                 JOptionPane.showMessageDialog(TypeCombo, "Order Placed!");
                 break;
             }
-            else if(this.org instanceof SupplyManagerOrganization && organization instanceof ManufacturingManagerOrganization)
+            else if(this.org instanceof SupplyManagerOrganization && o instanceof ManufacturingManagerOrganization)
                 
 //                if(organization instanceof ManufacturingManagerOrganization)
                 {
-                org = organization;
-                System.out.println("Yeah bitches!!");
+                org = o;
+                //System.out.println("Yeah bitches!!");
                 JOptionPane.showMessageDialog(TypeCombo, "Order Placed!");
                 break;
             }
@@ -523,12 +550,199 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_brandNameTxtActionPerformed
 
+    private void enterpriseListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseListActionPerformed
+        // TODO add your handling code here:
+        Enterprise e =  (Enterprise) enterpriseList.getSelectedItem();
+        for(Organization ent : e.getOrganizationDirectory().getOrganizationList()){
+             orgCombo.addItem(ent);
+             }
+    }//GEN-LAST:event_enterpriseListActionPerformed
+
+    private void orgComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orgComboActionPerformed
+        // TODO add your handling code here:
+//        Organization o = (Organization) orgCombo.getSelectedItem();
+        
+    }//GEN-LAST:event_orgComboActionPerformed
+
+    private void addToInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToInventoryBtnActionPerformed
+        // TODO add your handling code here:
+        
+         try {
+             
+             WorkRequest SaltName =   (WorkRequest) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 0);
+             
+             if(SaltName.getStatus().equalsIgnoreCase("added"))
+             { JOptionPane.showMessageDialog(TypeCombo,"This order is already added to the inventory");
+                 return;}
+             
+             
+            String brand = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 1);
+             int units = (int) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 2);
+            float Price = (float) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 3);
+            
+
+            String saltc1 = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 4);
+            String saltc2 = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 5);
+            String saltc3 = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 6);
+
+            String type = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 7);
+            
+            String disease = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 8);
+             System.out.println("SaltName: "+SaltName);
+             System.out.println("brand: "+brand);
+             System.out.println("units: "+units);
+             System.out.println("Price: "+Price);
+             System.out.println("saltc1: "+saltc1);
+             System.out.println("saltc2: "+saltc2);
+             System.out.println("saltc3: "+saltc3);
+             System.out.println("type: "+type);
+             System.out.println("disease: "+disease);
+
+            String[] s = new String[9];
+
+            s[0] = brand;
+            s[1] = String.valueOf(SaltName);
+            s[2] = saltc1;
+            s[3] = saltc2;
+            s[4] = saltc3;
+            s[5] = type;
+            s[6] = disease;
+            s[7] = String.valueOf(units);
+            s[8] = String.valueOf(Price);
+            
+            for(int i = 0; i<9;i++)
+               System.out.println("String s: "+s[i]);
+               
+            for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof SupplyManagerOrganization) {
+                    System.out.println("Entered condition for SupplyManagerOrganization");
+                    boolean flag = false;
+                    
+                    for (Medicine m : b.getSupplierMedicineList()) {
+                        System.out.println("Entered for1");
+                        if (m.getBrand().equalsIgnoreCase(brand)
+                                && m.getSaltComposition1().equalsIgnoreCase(saltc1)
+                                && m.getSaltComposition2().equalsIgnoreCase(saltc2)
+                                && m.getSaltComposition3().equalsIgnoreCase(saltc3)
+                                && m.getSaltname().equalsIgnoreCase(String.valueOf(SaltName))
+                                && m.getDisease().equalsIgnoreCase(disease)
+                                && m.getType().equalsIgnoreCase(type)
+                                && m.getPrice() == (Price)) {
+                                m.setUnits(m.getUnits() + units);
+                                JOptionPane.showMessageDialog(this, "Units Updated");
+                                SaltName.setStatus("Added");
+                                populateTable();
+                                flag = true;
+                                break;
+                            }}
+                    if (flag == false){
+                    for (Medicine m : b.getSupplierMedicineList()) {
+                        System.out.println("Entered for2");
+                        if (m.getBrand().equalsIgnoreCase(brand)
+                                && m.getSaltComposition1().equalsIgnoreCase(saltc1)
+                                && m.getSaltComposition2().equalsIgnoreCase(saltc2)
+                                && m.getSaltComposition3().equalsIgnoreCase(saltc3)
+                                && m.getSaltname().equalsIgnoreCase(String.valueOf(SaltName))
+                                && m.getDisease().equalsIgnoreCase(disease)
+                                && m.getType().equalsIgnoreCase(type)
+                                && m.getPrice() != (Price)) {int selectionButton = JOptionPane.YES_NO_OPTION;
+                             int selectionResult = JOptionPane.showConfirmDialog(null, "Price has been changed. Do you want to update the inventory price?","Warning",selectionButton);
+                            if (selectionResult == JOptionPane.YES_OPTION) {
+                                m.setUnits(m.getUnits() + units);
+                                m.setPrice(Price);
+                                JOptionPane.showMessageDialog(this, "Units and price updated");
+                                SaltName.setStatus("Added");
+                                populateTable();
+                                flag = true;    
+                            }
+                            break;
+                            }}}
+                    if(flag==false){
+                        System.out.println("Entered 3");
+                        b.AddSupplierMedicine(s);
+                        JOptionPane.showMessageDialog(this, "Medicines added successfully!");
+                        SaltName.setStatus("Added");
+                                populateTable();
+                    break;
+                        
+                    }
+                    
+                    }
+                    
+                    
+
+                 else if (organization instanceof PharmacistOrganization) {
+                    
+                    boolean flag = false;
+                    for (Medicine m : b.getMedicineList()) {
+
+                        if (m.getBrand().equalsIgnoreCase(brand)
+                                && m.getSaltComposition1().equalsIgnoreCase(saltc1)
+                                && m.getSaltComposition2().equalsIgnoreCase(saltc2)
+                                && m.getSaltComposition3().equalsIgnoreCase(saltc3)
+                                && m.getSaltname().equalsIgnoreCase(String.valueOf(SaltName))
+                                && m.getDisease().equalsIgnoreCase(disease)
+                                && m.getType().equalsIgnoreCase(type)
+                                && m.getPrice() == (Price)) {
+
+                            
+                                m.setUnits(m.getUnits() + units);
+
+                                JOptionPane.showMessageDialog(this, "Units Updated");
+                                SaltName.setStatus("Added");
+                                populateTable();
+                                flag = true;
+                                break;
+                            }}
+                    if (flag == false){
+                    for (Medicine m : b.getMedicineList()) {
+                        if (m.getBrand().equalsIgnoreCase(brand)
+                                && m.getSaltComposition1().equalsIgnoreCase(saltc1)
+                                && m.getSaltComposition2().equalsIgnoreCase(saltc2)
+                                && m.getSaltComposition3().equalsIgnoreCase(saltc3)
+                                && m.getSaltname().equalsIgnoreCase(String.valueOf(SaltName))
+                                && m.getDisease().equalsIgnoreCase(disease)
+                                && m.getType().equalsIgnoreCase(type)
+                                && m.getPrice() != (Price)) {int selectionButton = JOptionPane.YES_NO_OPTION;
+                             int selectionResult = JOptionPane.showConfirmDialog(null, "Price has been changed. Do you want to update the inventory price?","Warning",selectionButton);
+                            if (selectionResult == JOptionPane.YES_OPTION) {
+                                m.setUnits(m.getUnits() + units);
+                                m.setPrice(Price);
+                                JOptionPane.showMessageDialog(this, "Units and price updated");
+                                SaltName.setStatus("Added");
+                                populateTable();
+                                flag = true;    
+                            }
+                            break;
+                            }}}
+                    if(flag==false){
+                        b.AddMedicine(s);
+                        JOptionPane.showMessageDialog(this, "Medicines added successfully!");
+                        SaltName.setStatus("Added");
+                                populateTable();
+                    break;
+                        
+                    }
+                    
+                    
+                }
+            }
+
+        } catch (NumberFormatException e) {
+            
+            JOptionPane.showMessageDialog(TypeCombo, "Please check the input format.");
+
+        }
+        
+    }//GEN-LAST:event_addToInventoryBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Noofunitstxt;
     private javax.swing.JTextField PriceTxt;
     private javax.swing.JComboBox<Object> SaltNameCombo;
     private javax.swing.JComboBox TypeCombo;
+    private javax.swing.JButton addToInventoryBtn;
     private javax.swing.JButton backBtn;
     private javax.swing.JComboBox<String> brandNameCombo;
     private javax.swing.JTextField brandNameTxt;
@@ -549,6 +763,7 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField medNameTxt;
     private javax.swing.JComboBox<Object> netowrkListCombo;
+    private javax.swing.JComboBox<Object> orgCombo;
     private javax.swing.JButton placeMedSuppReqBtn;
     private javax.swing.JLabel suppliernametxt;
     private javax.swing.JTable workRequestJTable;

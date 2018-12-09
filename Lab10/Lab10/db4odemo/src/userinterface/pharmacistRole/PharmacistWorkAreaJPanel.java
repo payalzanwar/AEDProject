@@ -58,8 +58,8 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
           //   RegionCombo.addItem(network);
            for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
                Enterprise.EnterpriseType  type =e.getEnterpriseType();
-           if(type.equals(type.Pharmacy))
-           enterpriseCombo.addItem(e);
+//           if(type.equals(type.Pharmacy))
+          // enterpriseCombo.addItem(e);
            }
        }
        
@@ -99,12 +99,9 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         assignJButton = new javax.swing.JButton();
         processJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         pharmacynametxt = new javax.swing.JTextField();
         requestMedBtn = new javax.swing.JButton();
-        regionCombo = new javax.swing.JComboBox<>();
-        enterpriseCombo = new javax.swing.JComboBox<>();
         viewInventoryBtn = new javax.swing.JButton();
 
         container.setLayout(new java.awt.CardLayout());
@@ -160,13 +157,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("           Pharmacist Work Area");
 
-        jButton1.setText("Add Medicines");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Pharmacy");
 
         pharmacynametxt.addActionListener(new java.awt.event.ActionListener() {
@@ -181,10 +171,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                 requestMedBtnActionPerformed(evt);
             }
         });
-
-        regionCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        enterpriseCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         viewInventoryBtn.setText("View Inventory");
         viewInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -211,8 +197,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(refreshJButton))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jButton1)
-                            .addGap(42, 42, 42)
                             .addComponent(requestMedBtn)
                             .addGap(57, 57, 57)
                             .addComponent(viewInventoryBtn))
@@ -224,12 +208,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(processJButton)
                 .addGap(102, 102, 102))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(regionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(enterpriseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(292, 292, 292))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,13 +233,8 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(requestMedBtn)
-                    .addComponent(jButton1)
                     .addComponent(viewInventoryBtn))
-                .addGap(93, 93, 93)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(regionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enterpriseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addContainerGap(370, Short.MAX_VALUE))
         );
 
         container.add(jPanel2, "card2");
@@ -329,22 +302,13 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_processJButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-      
-        AddToInventoryJPanel managemed = new AddToInventoryJPanel(userProcessContainer, this.organization, enterprise, med);
-        userProcessContainer.add("processWorkRequestJPanel", managemed);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void pharmacynametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pharmacynametxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pharmacynametxtActionPerformed
 
     private void requestMedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestMedBtnActionPerformed
         // TODO add your handling code here:
-         RequestMedicineSupplyJPanel managemed = new RequestMedicineSupplyJPanel(userProcessContainer, system, enterprise, med, system, userAccount);
+         RequestMedicineSupplyJPanel managemed = new RequestMedicineSupplyJPanel(userProcessContainer, organization, enterprise, med, system, userAccount);
         userProcessContainer.add("processWorkRequestJPanel", managemed);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -352,7 +316,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInventoryBtnActionPerformed
         // TODO add your handling code here:
-        ViewMedicineInventoryPage managemed = new ViewMedicineInventoryPage(userProcessContainer, this.system, this.enterprise,med);
+        ViewMedicineInventoryPage managemed = new ViewMedicineInventoryPage(userProcessContainer, organization, this.enterprise,med);
         userProcessContainer.add("processWorkRequestJPanel", managemed);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -362,8 +326,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
     private javax.swing.JPanel container;
-    private javax.swing.JComboBox<Object> enterpriseCombo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
@@ -371,7 +333,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField pharmacynametxt;
     private javax.swing.JButton processJButton;
     private javax.swing.JButton refreshJButton;
-    private javax.swing.JComboBox<Object> regionCombo;
     private javax.swing.JButton requestMedBtn;
     private javax.swing.JButton viewInventoryBtn;
     private javax.swing.JTable workRequestJTable;

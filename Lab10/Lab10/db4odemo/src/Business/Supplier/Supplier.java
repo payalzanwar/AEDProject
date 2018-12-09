@@ -17,12 +17,11 @@ public class Supplier {
     private String supplierLocation;
     private static int count = 1;
     private MedicineDirectory Med;
-    
 
     public Supplier(){
         this.supplierID = this.count;
         count++;
-        //Med = new MedicineDirectory();
+        Med = new MedicineDirectory();
     }
     public MedicineDirectory getMed() {
         return Med;

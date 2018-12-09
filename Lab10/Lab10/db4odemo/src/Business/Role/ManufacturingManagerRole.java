@@ -23,7 +23,7 @@ public class ManufacturingManagerRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new ManufacturingManagerWorkAreaJPanel(userProcessContainer, account, (ManufacturingManagerOrganization) organization, enterprise);
+        return new ManufacturingManagerWorkAreaJPanel(userProcessContainer, account, (ManufacturingManagerOrganization) organization, enterprise,business);
     }
     
 }
