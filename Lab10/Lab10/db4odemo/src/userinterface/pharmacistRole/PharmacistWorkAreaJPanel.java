@@ -316,7 +316,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInventoryBtnActionPerformed
         // TODO add your handling code here:
-        ViewMedicineInventoryPage managemed = new ViewMedicineInventoryPage(userProcessContainer, this.system, this.enterprise,med);
+        ViewMedicineInventoryPage managemed = new ViewMedicineInventoryPage(userProcessContainer, organization, this.enterprise,med);
         userProcessContainer.add("processWorkRequestJPanel", managemed);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

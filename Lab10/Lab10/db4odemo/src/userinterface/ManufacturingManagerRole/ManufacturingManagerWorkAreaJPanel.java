@@ -3,6 +3,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Enterprise.EnterpriseType;
 import Business.Manufacturer.Manufacturer;
+import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
 import Business.Organization.ManufacturingManagerOrganization;
 import Business.UserAccount.UserAccount;
@@ -49,7 +50,7 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = account;
         
-       man=new Manufacturer();
+      // man=new Manufacturer();
        manufacturernametxt.setText(enterprise.getName());
        
        populateTable();
@@ -291,8 +292,41 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
         if(request.getReceiver()==null)
             JOptionPane.showMessageDialog(container,"The request is unassigned");
         else
-        request.setStatus("Completed");
+         
+        {System.out.println("man med list: "+med.getManufacturerMedicineList().size());
+            
+            for (Medicine m : med.getManufacturerMedicineList()) {
+
+                        if (m.getBrand().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getBrand())
+                                && m.getSaltComposition1().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getSaltc1())
+                                && m.getSaltComposition2().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getSaltc2())
+                                && m.getSaltComposition3().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getSaltc3())
+                                && m.getSaltname().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getMedName())
+                                && m.getDisease().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getDiseaseName())
+                                && m.getType().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getMedType())) {
+                                System.out.println("if me aaya");
+                                
+                                
+                                if(m.getUnits() >= ((MedicineSupplyWorkRequest) request).getQuantity())
+                                {
+                                    m.setUnits(m.getUnits()-((MedicineSupplyWorkRequest) request).getQuantity());
+                                    request.setStatus("Completed");
+                                    JOptionPane.showMessageDialog(this, "Units Updated In Inventory");
+                                break;}
+                                else
+                                    
+                                {JOptionPane.showMessageDialog(container,"Insufficient stock in the inventory");
+                                break;}
+                        }
+//                                else{
+//                                JOptionPane.showMessageDialog(this, "Out of Stock. Please request supply from manufacturer.");
+//                                break;
+//                                }
+                            }
+            System.out.println("populate hoga table ab");
         populateTable();
+        
+        }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(container, "Bhak! ye sab galat hai");
         }
@@ -312,7 +346,7 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewInvenBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInvenBtnActionPerformed
         // TODO add your handling code here:
-        ViewMedicineInventoryPage view = new ViewMedicineInventoryPage(userProcessContainer, system, enterprise, med);
+        ViewMedicineInventoryPage view = new ViewMedicineInventoryPage(userProcessContainer, organization, enterprise, med);
         userProcessContainer.add("ViewProductDetailJPanelSupplier", view);
    CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

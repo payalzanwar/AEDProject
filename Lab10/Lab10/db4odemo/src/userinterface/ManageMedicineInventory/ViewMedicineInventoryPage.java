@@ -42,6 +42,7 @@ public class ViewMedicineInventoryPage extends javax.swing.JPanel {
        this.e = e;
       this.med = med;
         populateTable();
+        System.out.println("org:"+org);
     }
 
     public void populateTable()
@@ -50,9 +51,9 @@ public class ViewMedicineInventoryPage extends javax.swing.JPanel {
 DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
        model.setRowCount(0);
-        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof ManufacturingManagerOrganization){
-                System.out.println(med.getManufacturerMedicineList().size());
+       // for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
+            if (org instanceof ManufacturingManagerOrganization){
+                System.out.println("The "+org+" size: "+med.getManufacturerMedicineList().size());
                   for(Medicine medi : med.getManufacturerMedicineList())
             
             {
@@ -73,11 +74,11 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
                       model.addRow(row);
             }
                 System.out.println("Yeah bitches!!");
-                break;
+              //  break;
             }
             
-            else if (organization instanceof SupplyManagerOrganization){
-                System.out.println(med.getSupplierMedicineList().size());
+            else if (org instanceof SupplyManagerOrganization){
+                System.out.println("The "+org+" size: "+med.getSupplierMedicineList().size());
                   for(Medicine medi : med.getSupplierMedicineList())
             
             {
@@ -98,13 +99,14 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
                       model.addRow(row);
             }
                 System.out.println("Yeah bitches!!");
-                break;
+             //   break;
             }
             
             
             
-            else if(organization instanceof PharmacistOrganization)
+            else if(org instanceof PharmacistOrganization)
             {
+                System.out.println("The "+org+" size: "+med.getSupplierMedicineList().size());
                 for(Medicine medi : med.getMedicineList())
             
             {
@@ -124,9 +126,9 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
                       model.addRow(row);
             }
-                break;
+           //     break;
             }
-        }
+       // }
         
     }
   

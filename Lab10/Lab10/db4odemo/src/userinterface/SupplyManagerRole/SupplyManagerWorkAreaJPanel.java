@@ -342,7 +342,7 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void viewInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInventoryBtnActionPerformed
         // TODO add your handling code here:
-        ViewMedicineInventoryPage view = new ViewMedicineInventoryPage(userProcessContainer, system, enterprise, med);
+        ViewMedicineInventoryPage view = new ViewMedicineInventoryPage(userProcessContainer, organization, enterprise, med);
         userProcessContainer.add("ViewProductDetailJPanelSupplier", view);
    CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
