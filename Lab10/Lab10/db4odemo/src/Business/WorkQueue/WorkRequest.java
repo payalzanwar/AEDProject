@@ -6,6 +6,7 @@ package Business.WorkQueue;
 
 import Business.Employee.Employee;
 import Business.Medicine.Medicine;
+import Business.Order.Order;
 import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,7 +26,15 @@ public abstract class WorkRequest {
     private Date resolveDate;
     private HashSet<Medicine> alternativelist = new HashSet<>();
     private ArrayList<Employee> Doctorlist = new ArrayList<Employee>();
+     private ArrayList<Order> Orderlist = new ArrayList<Order>();
 
+    public ArrayList<Order> getOrderlist() {
+        return Orderlist;
+    }
+
+    public void setOrderlist(ArrayList<Order> Orderlist) {
+        this.Orderlist = Orderlist;
+    }
     public HashSet<Medicine> getAlternativelist() {
         return alternativelist;
     }

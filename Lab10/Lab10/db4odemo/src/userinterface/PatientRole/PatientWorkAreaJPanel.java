@@ -12,6 +12,8 @@ import Business.Medicine.MedicineDirectory;
 import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JPanel;
 
@@ -32,7 +34,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private EcoSystem system;
     
   //  public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
-     public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account,EcoSystem system){ 
+     public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system){ 
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;
@@ -53,7 +55,6 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         Rightpaneldashboard = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
         AlternateMedicinesBtn = new javax.swing.JButton();
         OverthecounterBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -99,7 +100,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         Rightpaneldashboard.add(OverthecounterBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 414, 73));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/dashboard.jpg"))); // NOI18N
-        Rightpaneldashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 490, 390));
+        Rightpaneldashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -60, 730, 530));
 
         jTabbedPane1.addTab("Dashboard", Rightpaneldashboard);
 

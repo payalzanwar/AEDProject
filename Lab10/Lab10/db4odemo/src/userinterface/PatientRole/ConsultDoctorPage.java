@@ -474,64 +474,7 @@ public void populateDoctorTable(ArrayList<Employee> a)
 
             JOptionPane.showMessageDialog(null, "Request sent!");
         }
-
-
-    }//GEN-LAST:event_RequestDoctorApprovalBtnActionPerformed
-
-    private void ViewDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewDoctorsActionPerformed
-        // TODO add your handling code here:
-         ArrayList<Employee> a = new ArrayList<>();
-        int row = HospitalListTable.getSelectedRow();
-        if(row<0) {
-            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        Enterprise e = (Enterprise)HospitalListTable.getValueAt(row, 0);
-        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof DoctorOrganization){
-                org = organization;
-                
-                break;
-            }
-        }
-        
-        System.out.println("enterprise :"+ e);
-        
-        
-         UserAccount u=null;
-       for(UserAccount user : e.getUserAccountDirectory().getUserAccountList()){
-          if(user.getEmployee().getName().equals("HospAdmin"))
-           
-            {
-                u=user;
-                request.setReceiver(u);
-                System.out.println("useracc"+u);
-                break;
-            }
-       }
-        request.setReceiver(u);
-        if (u!=null){
-        
-            //org.getWorkQueue().getWorkRequestList().add(request);
-           u.getWorkQueue().getWorkRequestList().add(request);
-           
-            JOptionPane.showMessageDialog(null, "Request sent!");
-        }
-        
-    
-        
-       
-//        
-//        HospitalAdminWorkAreaJPanel docconst = new HospitalAdminWorkAreaJPanel(rightPanel,list,finallist,account,enterprise);
-//        rightPanel.add("AlternateMedicinePageJpanel", docconst);
-//        CardLayout layout = (CardLayout)rightPanel.getLayout();
-//        layout.next(rightPanel);
-        
-    
-        
-        //--
-        
+          
         String Subject = subject_text.getText();
         String Message = message_text.getText();
         
@@ -569,9 +512,19 @@ public void populateDoctorTable(ArrayList<Employee> a)
             JOptionPane.showMessageDialog(null, c);
 
         }
-                       
+                  
+
     }//GEN-LAST:event_RequestDoctorApprovalBtnActionPerformed
 
+   
+        
+        
+    
+        
+       
+//        
+//        HospitalAdminWorkAreaJPanel docconst = new HospitalAdminWorkAreaJPanel(rightPanel,list,finallist,account,enterprise);
+//    
     private void ViewDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewDoctorsActionPerformed
         // TODO add your handling code here:
          ArrayList<Employee> a = new ArrayList<>();

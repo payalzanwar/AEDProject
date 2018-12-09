@@ -20,7 +20,6 @@ import java.util.HashSet;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import userinterface.pharmacistRole.ProcessWorkRequestJPanel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
