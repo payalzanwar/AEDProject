@@ -35,8 +35,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-//import userinterface.DoctorRole.HospitalAdminWorkAreaJPanel;
-
+import userinterface.DoctorRole.HospitalAdminWorkAreaJPanel;
 
 /**
  *
@@ -293,6 +292,10 @@ public void populateDoctorTable(ArrayList<Employee> a)
             }
         });
         jScrollPane3.setViewportView(DoctorTable);
+        if (DoctorTable.getColumnModel().getColumnCount() > 0) {
+            DoctorTable.getColumnModel().getColumn(0).setResizable(false);
+            DoctorTable.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 551, 640, 139));
 
@@ -406,7 +409,7 @@ public void populateDoctorTable(ArrayList<Employee> a)
         RequestDoctorApprovalBtn.setText("Request Doctor's Approval");
         RequestDoctorApprovalBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RequestDoctorApprovalBtnActionPerformed(evt);
+                ViewDoctorsActionPerformed(evt);
             }
         });
         jPanel1.add(RequestDoctorApprovalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 1150, 263, 60));
@@ -431,9 +434,10 @@ public void populateDoctorTable(ArrayList<Employee> a)
 
     private void RequestDoctorApprovalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestDoctorApprovalBtnActionPerformed
         // TODO add your handling code here:
+       
         String message = "Alternative Prescription";
         int row = HospitalListTable.getSelectedRow();
-         Enterprise e = (Enterprise)HospitalListTable.getValueAt(row, 0);
+        Enterprise e = (Enterprise) HospitalListTable.getValueAt(row, 0);
         CustomerWorkRequest request = new CustomerWorkRequest();
         request.setAlternativelist(list);
         request.setDoctorlist(doclist);
@@ -441,15 +445,49 @@ public void populateDoctorTable(ArrayList<Employee> a)
         request.setSender(account);
         request.setStatus("Sent");
         request.setMessage(message);
-       
-//        Enterprise ent = null;
-//                Enterprise.EnterpriseType  type =e.getEnterpriseType();
-//            if(type.equals(type.Hospital))
-//            ent=e;
-       
-            
-        
+
         Organization org = null;
+        for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof DoctorOrganization) {
+                org = organization;
+
+                break;
+            }
+        }
+
+        System.out.println("enterprise :" + e);
+
+        UserAccount u = null;
+        for (UserAccount user : e.getUserAccountDirectory().getUserAccountList()) {
+            if (user.getEmployee().getName().equals("HospAdmin")) {
+                u = user;
+                request.setReceiver(u);
+                System.out.println("useracc" + u);
+                break;
+            }
+        }
+        request.setReceiver(u);
+        if (u != null) {
+
+            //org.getWorkQueue().getWorkRequestList().add(request);
+            u.getWorkQueue().getWorkRequestList().add(request);
+
+            JOptionPane.showMessageDialog(null, "Request sent!");
+        }
+
+
+    }//GEN-LAST:event_RequestDoctorApprovalBtnActionPerformed
+
+    private void ViewDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewDoctorsActionPerformed
+        // TODO add your handling code here:
+         ArrayList<Employee> a = new ArrayList<>();
+        int row = HospitalListTable.getSelectedRow();
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Enterprise e = (Enterprise)HospitalListTable.getValueAt(row, 0);
         for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
             if (organization instanceof DoctorOrganization){
                 org = organization;

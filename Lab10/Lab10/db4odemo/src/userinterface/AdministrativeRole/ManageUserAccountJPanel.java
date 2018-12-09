@@ -6,9 +6,16 @@ package userinterface.AdministrativeRole;
 
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Organization.DeliveryManagerOrganization;
+import Business.Organization.DoctorOrganization;
+import Business.Organization.ManufacturingManagerOrganization;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
+import Business.Organization.PharmacistOrganization;
+import Business.Organization.ShipmentManagerOrganization;
+import Business.Organization.SupplyManagerOrganization;
 import Business.Role.Role;
+import Business.Role.Role.RoleType;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -35,12 +42,11 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 
     public ManageUserAccountJPanel(JPanel container, Enterprise enterprise) {
         initComponents();
-        this.setSize(1680, 1050);
         this.enterprise = enterprise;
         this.container = container;
 
         popOrganizationComboBox();
-       // employeeJComboBox.removeAllItems();
+        // employeeJComboBox.removeAllItems();
         popData();
     }
 
@@ -51,23 +57,21 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             organizationJComboBox.addItem(organization);
         }
     }
-    
 
-    public void populateEmployeeComboBox(Organization organization){
+    public void populateEmployeeComboBox(Organization organization) {
         employeeJComboBox.removeAllItems();
-        
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
+
+        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
             employeeJComboBox.addItem(employee);
         }
     }
 
-    private void populateRoleComboBox(Organization organization){
+    private void populateRoleComboBox(Organization organization) {
         roleJComboBox.removeAllItems();
-        for (Role role : organization.getSupportedRole()){
+        for (Role role : organization.getSupportedRole()) {
             roleJComboBox.addItem(role);
         }
     }
-
 
     public void popData() {
 
@@ -244,6 +248,92 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(364, 364, 364)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(backjButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(208, 208, 208)
+                        .addComponent(createUserJButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(293, 293, 293)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(roleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(employeeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(50, 50, 50)
+                                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CredJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(276, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(employeeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CredJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(backjButton1)
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(createUserJButton)
+                        .addGap(46, 46, 46))))
+        );
+        CredJPanelLayout.setVerticalGroup(
+            CredJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CredJPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(CredJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(CredJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(CredJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmpswdtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         add(CredJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 387, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -251,41 +341,44 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         Employee employee = (Employee) employeeJComboBox.getSelectedItem();
-        Role role = (Role) roleJComboBox.getSelectedItem();
-       
+        
+       Role role = (Role) roleJComboBox.getSelectedItem();
         String user = usernametxt.getText();
         String pswd = passwordtxt.getText();
         String confirmpswd = confirmpswdtxt.getText();
-     //   System.out.println(Organization.Type.values());
-   
-        for (Type type : Organization.Type.values()) {
-            if (type.getValue().equals(Type.Pharmacist.getValue())) {      //  organizationJComboBox.addItem(type);
+        
+      if(organization instanceof DoctorOrganization){
+      organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
+    JOptionPane.showMessageDialog(container, "Doctor created successfully!");
+      }
+    else if(organization instanceof PharmacistOrganization)
+    {
+      organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
+    JOptionPane.showMessageDialog(container, "Pharmacist created successfully!");
+    }
+   else if(organization instanceof SupplyManagerOrganization)
+   {
+      organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
+    JOptionPane.showMessageDialog(container, "Supply Manager created successfully!");
+   }
+   else if(organization instanceof ManufacturingManagerOrganization){
+      organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
+    JOptionPane.showMessageDialog(container, "Manufacturer created successfully!");
+   }
+      else if(organization instanceof ShipmentManagerOrganization){
+      organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
+    JOptionPane.showMessageDialog(container, "Shipment Manager created successfully!");
+   }
+      else if(organization instanceof DeliveryManagerOrganization){
+      organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
+    JOptionPane.showMessageDialog(container, "Delivery Manager created successfully!");
+   }
 
-                
-                
-        organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
-        JOptionPane.showMessageDialog(container, "Pharmacy created successfully!");
-               
-            }
-            else if(type.getValue().equals(Type.Doctor.getValue()))
-            {
-             organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
-        JOptionPane.showMessageDialog(container, "Dcotor created successfully!");
-            }
-            else if(type.getValue().equals(Type.SupplyManager.getValue()))
-            {
-                 organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
-        JOptionPane.showMessageDialog(container, "Supplier created successfully!");   
-                    }
-            else if(type.getValue().equals(Type.ManufacturingManager.getValue()))
-            {
-                organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
-        JOptionPane.showMessageDialog(container, " created successfully!");   
-                    }
-            
+      popData();
+
 
     }//GEN-LAST:event_createUserJButtonActionPerformed
-    }
+    
     private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed
         // TODO add your handling code here:
         container.remove(this);

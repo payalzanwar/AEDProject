@@ -40,11 +40,10 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
  
     public AlternateMedicinePage(JPanel Rightpaneldashboard,UserAccount account,EcoSystem system) {
         initComponents();
-        this.setSize(1680, 1050);
         this.RightPaneldashboard = Rightpaneldashboard;
        this.account = account;
          this.system=system;
-       //  phar = new Pharmacy();
+         phar = new Pharmacy();
        list = new ArrayList<Medicine>();
        
        

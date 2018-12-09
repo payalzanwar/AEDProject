@@ -7,10 +7,12 @@ package userinterface.PatientRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Medicine.MedicineDirectory;
+//import Business.Organization.PatientOrganization;
+import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JPanel;
 
 /**
@@ -20,23 +22,23 @@ import javax.swing.JPanel;
 public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form PatientWorkAreaJPanel
+     * Creates new form test
      */
-    AlternateMedicinePage alternateMedicinePage;
-    private EcoSystem system;
+    private JPanel userProcessContainer;
+   
+   
     private UserAccount account;
-    private Enterprise enterprise;
-
-    //JPanel Rightpaneldashboard;
-
-    public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem system) {
+   // private PatientOrganization organization;
+    private EcoSystem system;
+    
+  //  public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
+     public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account,EcoSystem system){ 
         initComponents();
-        this.setSize(1680, 1050);
-        this.Rightpaneldashboard = userProcessContainer;
-        this.account = account;
-        this.enterprise = enterprise;
-        this.alternateMedicinePage = alternateMedicinePage;
-        this.system = system;
+        this.userProcessContainer=userProcessContainer;
+        this.account=account;
+       
+        this.system=system;
+                
     }
 
     /**
@@ -51,6 +53,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         Rightpaneldashboard = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         AlternateMedicinesBtn = new javax.swing.JButton();
         OverthecounterBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();

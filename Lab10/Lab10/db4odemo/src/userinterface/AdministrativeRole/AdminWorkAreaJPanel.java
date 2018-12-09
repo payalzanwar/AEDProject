@@ -7,8 +7,9 @@ import static Business.Enterprise.Enterprise.EnterpriseType.Pharmacy;
 import Business.WorkQueue.MedicineSupplyWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
+import userinterface.DoctorRole.HospitalAdminWorkAreaJPanel;
 
 /**
  *
@@ -18,14 +19,18 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     Enterprise enterprise;
+    private UserAccount account;
     /** Creates new form AdminWorkAreaJPanel */
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, UserAccount account) {
         initComponents();
         this.setSize(1680, 1050);
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
+        this.account = account;
         valueLabel.setText(enterprise.getName());
-
+        Enterprise.EnterpriseType  type =enterprise.getEnterpriseType();
+            if(!(type.equals(type.Hospital)))
+            workassgnbtn.setEnabled(false);
     }
 
     
@@ -43,6 +48,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         manageOrganizationJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
+        workassgnbtn = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -56,7 +62,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 150, -1));
+        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 170, -1));
 
         manageEmployeeJButton.setText("Manage Employee");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +70,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageEmployeeJButtonActionPerformed(evt);
             }
         });
-        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 150, -1));
+        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 180, -1));
 
         manageOrganizationJButton.setText("Manage Organization");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +85,15 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 120, 30));
 
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 130, -1));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));
+
+        workassgnbtn.setText("Manage Work Assignments");
+        workassgnbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                workassgnbtnActionPerformed(evt);
+            }
+        });
+        add(workassgnbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 250, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
@@ -103,11 +117,32 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
 
-        ManageOrganizationJPanel manageOrganizationJPanel = new ManageOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),enterprise);
+        ManageOrganizationJPanel manageOrganizationJPanel = new ManageOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),enterprise,account);
         userProcessContainer.add("manageOrganizationJPanel", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
+
+    private void workassgnbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workassgnbtnActionPerformed
+        // TODO add your handling code here:
+        Organization org=null;
+      for( Organization o: enterprise.getOrganizationDirectory().getOrganizationList())
+          if(o instanceof DoctorOrganization){
+              org=o;
+              break;
+          }
+          if(org!=null){
+         HospitalAdminWorkAreaJPanel hospitalwork = new HospitalAdminWorkAreaJPanel(userProcessContainer, org,account,enterprise);
+        userProcessContainer.add("hospitalworkarea", hospitalwork);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+          }
+          else
+          {
+              JOptionPane.showMessageDialog(null,"No work assignments" );
+          
+          }
+    }//GEN-LAST:event_workassgnbtnActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -117,6 +152,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton manageOrganizationJButton;
     private javax.swing.JButton userJButton;
     private javax.swing.JLabel valueLabel;
+    private javax.swing.JButton workassgnbtn;
     // End of variables declaration//GEN-END:variables
     
 }

@@ -8,6 +8,7 @@ import Business.Employee.EmployeeDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +27,7 @@ public abstract class Organization {
     private static int counter=1;
     
     public enum Type{
-      Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization"),Pharmacist("Pharmacist Organizantion"),SupplyManager("Supply Manager Organization"), ManufacturingManager("Manufacturing Manager Organization");
+      Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization"),Pharmacist("Pharmacist Organizantion"),SupplyManager("Supply Manager Organization"), ManufacturingManager("Manufacturing Manager Organization"),ShipmentManager("Shipment Manager Organization"), DeliveryManager("Delivery Manager Organization");
         private String value;
         private Type(String value) {
             this.value = value;
@@ -37,6 +38,7 @@ public abstract class Organization {
         
     }
 
+    
     public Organization(String name,String entloc) {
         this.name = name;
         this.org_name=org_name;
