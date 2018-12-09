@@ -21,12 +21,10 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import userinterface.DoctorRole.DoctorLoginFormJPanel;
-import userinterface.ManufacturingManagerRole.ManufacturingManagerLoginFormJPanel;
 import userinterface.PatientRole.PatientLoginFormJPanel;
-import userinterface.SupplyManagerRole.SupplyManagerLoginFormJPanel;
 
-import userinterface.pharmacistRole.PharmacistLoginFormJPanel;
+
+
 
 /**
  *

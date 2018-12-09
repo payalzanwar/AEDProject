@@ -284,6 +284,11 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+//        ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, hashlist,account,enterprise,system);
+//        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
+//        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
+//        layout.next(RightPaneldashboard);
+        
         ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, hashlist,account,enterprise,system);
         RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
         CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
