@@ -425,6 +425,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Add to Inventory"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addToInventoryBtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

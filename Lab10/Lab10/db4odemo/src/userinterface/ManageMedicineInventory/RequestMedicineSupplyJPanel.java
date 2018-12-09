@@ -22,6 +22,7 @@ import Business.Supplier.Supplier;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.MedicineSupplyWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -99,7 +100,7 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
             row[2] = ((MedicineSupplyWorkRequest) request).getQuantity();
             row[3] = ((MedicineSupplyWorkRequest) request).getPrice();
             row[4] = ((MedicineSupplyWorkRequest) request).getSaltc1();
-            row[5] = ((MedicineSupplyWorkRequest) request).getSaltc3();
+            row[5] = ((MedicineSupplyWorkRequest) request).getSaltc2();
             row[6] = ((MedicineSupplyWorkRequest) request).getSaltc3();
             row[7] = ((MedicineSupplyWorkRequest) request).getMedType();
             row[8] = ((MedicineSupplyWorkRequest) request).getDiseaseName();
@@ -262,6 +263,11 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         });
 
         addToInventoryBtn.setText("Add to Inventory");
+        addToInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addToInventoryBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -446,19 +452,17 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         request.setMedType(type);
         request.setSender(user);
         request.setStatus("Sent");
-                System.out.println("chal yaha tak to aaya "+this.org);
 
         Organization org = null;
         Enterprise e = (Enterprise) enterpriseList.getSelectedItem();
         Organization o = (Organization) orgCombo.getSelectedItem();
         for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
             
-            if(this.org instanceof PharmacistOrganization && organization instanceof SupplyManagerOrganization)
+            if(this.org instanceof PharmacistOrganization && o instanceof SupplyManagerOrganization)
             
 //            if (organization instanceof SupplyManagerOrganization)
             {
-                org = organization;
-                System.out.println("Yeah bitches!!");
+                org = o;
                 JOptionPane.showMessageDialog(TypeCombo, "Order Placed!");
                 break;
             }
@@ -559,6 +563,178 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
 //        Organization o = (Organization) orgCombo.getSelectedItem();
         
     }//GEN-LAST:event_orgComboActionPerformed
+
+    private void addToInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToInventoryBtnActionPerformed
+        // TODO add your handling code here:
+        
+         try {
+             
+             WorkRequest SaltName =   (WorkRequest) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 0);
+             
+             if(SaltName.getStatus().equalsIgnoreCase("added"))
+             { JOptionPane.showMessageDialog(TypeCombo,"This order is already added to the inventory");
+                 return;}
+             
+             
+            String brand = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 1);
+             int units = (int) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 2);
+            float Price = (float) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 3);
+            
+
+            String saltc1 = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 4);
+            String saltc2 = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 5);
+            String saltc3 = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 6);
+
+            String type = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 7);
+            
+            String disease = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 8);
+             System.out.println("SaltName: "+SaltName);
+             System.out.println("brand: "+brand);
+             System.out.println("units: "+units);
+             System.out.println("Price: "+Price);
+             System.out.println("saltc1: "+saltc1);
+             System.out.println("saltc2: "+saltc2);
+             System.out.println("saltc3: "+saltc3);
+             System.out.println("type: "+type);
+             System.out.println("disease: "+disease);
+
+            String[] s = new String[9];
+
+            s[0] = brand;
+            s[1] = String.valueOf(SaltName);
+            s[2] = saltc1;
+            s[3] = saltc2;
+            s[4] = saltc3;
+            s[5] = type;
+            s[6] = disease;
+            s[7] = String.valueOf(units);
+            s[8] = String.valueOf(Price);
+            
+            for(int i = 0; i<9;i++)
+               System.out.println("String s: "+s[i]);
+               
+            for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof SupplyManagerOrganization) {
+                    System.out.println("Entered condition for SupplyManagerOrganization");
+                    boolean flag = false;
+                    
+                    for (Medicine m : b.getSupplierMedicineList()) {
+                        System.out.println("Entered for1");
+                        if (m.getBrand().equalsIgnoreCase(brand)
+                                && m.getSaltComposition1().equalsIgnoreCase(saltc1)
+                                && m.getSaltComposition2().equalsIgnoreCase(saltc2)
+                                && m.getSaltComposition3().equalsIgnoreCase(saltc3)
+                                && m.getSaltname().equalsIgnoreCase(String.valueOf(SaltName))
+                                && m.getDisease().equalsIgnoreCase(disease)
+                                && m.getType().equalsIgnoreCase(type)
+                                && m.getPrice() == (Price)) {
+                                m.setUnits(m.getUnits() + units);
+                                JOptionPane.showMessageDialog(this, "Units Updated");
+                                SaltName.setStatus("Added");
+                                populateTable();
+                                flag = true;
+                                break;
+                            }}
+                    if (flag == false){
+                    for (Medicine m : b.getSupplierMedicineList()) {
+                        System.out.println("Entered for2");
+                        if (m.getBrand().equalsIgnoreCase(brand)
+                                && m.getSaltComposition1().equalsIgnoreCase(saltc1)
+                                && m.getSaltComposition2().equalsIgnoreCase(saltc2)
+                                && m.getSaltComposition3().equalsIgnoreCase(saltc3)
+                                && m.getSaltname().equalsIgnoreCase(String.valueOf(SaltName))
+                                && m.getDisease().equalsIgnoreCase(disease)
+                                && m.getType().equalsIgnoreCase(type)
+                                && m.getPrice() != (Price)) {int selectionButton = JOptionPane.YES_NO_OPTION;
+                             int selectionResult = JOptionPane.showConfirmDialog(null, "Price has been changed. Do you want to update the inventory price?","Warning",selectionButton);
+                            if (selectionResult == JOptionPane.YES_OPTION) {
+                                m.setUnits(m.getUnits() + units);
+                                m.setPrice(Price);
+                                JOptionPane.showMessageDialog(this, "Units and price updated");
+                                SaltName.setStatus("Added");
+                                populateTable();
+                                flag = true;    
+                            }
+                            break;
+                            }}}
+                    if(flag==false){
+                        System.out.println("Entered 3");
+                        b.AddSupplierMedicine(s);
+                        JOptionPane.showMessageDialog(this, "Medicines added successfully!");
+                        SaltName.setStatus("Added");
+                                populateTable();
+                    break;
+                        
+                    }
+                    
+                    }
+                    
+                    
+
+                 else if (organization instanceof PharmacistOrganization) {
+                    
+                    boolean flag = false;
+                    for (Medicine m : b.getMedicineList()) {
+
+                        if (m.getBrand().equalsIgnoreCase(brand)
+                                && m.getSaltComposition1().equalsIgnoreCase(saltc1)
+                                && m.getSaltComposition2().equalsIgnoreCase(saltc2)
+                                && m.getSaltComposition3().equalsIgnoreCase(saltc3)
+                                && m.getSaltname().equalsIgnoreCase(String.valueOf(SaltName))
+                                && m.getDisease().equalsIgnoreCase(disease)
+                                && m.getType().equalsIgnoreCase(type)
+                                && m.getPrice() == (Price)) {
+
+                            
+                                m.setUnits(m.getUnits() + units);
+
+                                JOptionPane.showMessageDialog(this, "Units Updated");
+                                SaltName.setStatus("Added");
+                                populateTable();
+                                flag = true;
+                                break;
+                            }}
+                    if (flag == false){
+                    for (Medicine m : b.getMedicineList()) {
+                        if (m.getBrand().equalsIgnoreCase(brand)
+                                && m.getSaltComposition1().equalsIgnoreCase(saltc1)
+                                && m.getSaltComposition2().equalsIgnoreCase(saltc2)
+                                && m.getSaltComposition3().equalsIgnoreCase(saltc3)
+                                && m.getSaltname().equalsIgnoreCase(String.valueOf(SaltName))
+                                && m.getDisease().equalsIgnoreCase(disease)
+                                && m.getType().equalsIgnoreCase(type)
+                                && m.getPrice() != (Price)) {int selectionButton = JOptionPane.YES_NO_OPTION;
+                             int selectionResult = JOptionPane.showConfirmDialog(null, "Price has been changed. Do you want to update the inventory price?","Warning",selectionButton);
+                            if (selectionResult == JOptionPane.YES_OPTION) {
+                                m.setUnits(m.getUnits() + units);
+                                m.setPrice(Price);
+                                JOptionPane.showMessageDialog(this, "Units and price updated");
+                                SaltName.setStatus("Added");
+                                populateTable();
+                                flag = true;    
+                            }
+                            break;
+                            }}}
+                    if(flag==false){
+                        b.AddMedicine(s);
+                        JOptionPane.showMessageDialog(this, "Medicines added successfully!");
+                        SaltName.setStatus("Added");
+                                populateTable();
+                    break;
+                        
+                    }
+                    
+                    
+                }
+            }
+
+        } catch (NumberFormatException e) {
+            
+            JOptionPane.showMessageDialog(TypeCombo, "Please check the input format.");
+
+        }
+        
+    }//GEN-LAST:event_addToInventoryBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

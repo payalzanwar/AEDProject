@@ -19,7 +19,7 @@ public class Item {
     public void setProduct_name(String product_name) {
         this.product_name = product_name;
     }
-    int salesPrice;
+    float salesPrice;
     int quantity;
    
     
@@ -29,11 +29,11 @@ public class Item {
     }
    
 
-    public int getSalesPrice() {
+    public float getSalesPrice() {
         return salesPrice;
     }
 
-    public void setSalesPrice(int salesPrice) {
+    public void setSalesPrice(float salesPrice) {
         this.salesPrice = salesPrice;
     }
 

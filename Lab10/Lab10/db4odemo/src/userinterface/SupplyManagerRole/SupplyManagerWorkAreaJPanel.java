@@ -71,7 +71,7 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
             row[2] = ((MedicineSupplyWorkRequest) request).getQuantity();
             row[3] = ((MedicineSupplyWorkRequest) request).getPrice();
             row[4] = ((MedicineSupplyWorkRequest) request).getSaltc1();
-            row[5] = ((MedicineSupplyWorkRequest) request).getSaltc3();
+            row[5] = ((MedicineSupplyWorkRequest) request).getSaltc2();
             row[6] = ((MedicineSupplyWorkRequest) request).getSaltc3();
             row[7] = ((MedicineSupplyWorkRequest) request).getMedType();
             row[8] = ((MedicineSupplyWorkRequest) request).getDiseaseName();
@@ -322,6 +322,7 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
                                     
                                 {JOptionPane.showMessageDialog(container,"Insufficient stock in the inventory");
                                 break;}
+                                
                         }
 //                                else{
 //                                JOptionPane.showMessageDialog(this, "Out of Stock. Please request supply from manufacturer.");

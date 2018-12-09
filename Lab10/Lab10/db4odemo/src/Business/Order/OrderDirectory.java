@@ -22,7 +22,7 @@ public class OrderDirectory {
     public void setOrderList(ArrayList<Order> OrderList) {
         this.OrderList = OrderList;
     }
-     public Order AddOrder(String medname,int Price, int units){
+     public Order AddOrder(String medname,float Price, int units){
         Order o = new Order();
         o.getItem().setProduct_name(medname);
         o.getItem().setQuantity(units);

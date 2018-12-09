@@ -36,7 +36,7 @@ public class MedicineDirectory {
         Medicine med = new Medicine();
         med.setBrand(metadata[0]);
         med.setSaltname(metadata[1]);
-        int p = Integer.parseInt(metadata[8]);
+        float p = Float.parseFloat(metadata[8]);
         med.setPrice(p);
         med.setSaltComposition1(metadata[2]);
         med.setSaltComposition2(metadata[3]);
@@ -52,7 +52,7 @@ public class MedicineDirectory {
         Medicine med = new Medicine();
         med.setBrand(metadata[0]);
         med.setSaltname(metadata[1]);
-        int p = Integer.parseInt(metadata[8]);
+        Float p = Float.parseFloat(metadata[8]);
         med.setPrice(p);
         med.setSaltComposition1(metadata[2]);
         med.setSaltComposition2(metadata[3]);
@@ -68,7 +68,7 @@ public class MedicineDirectory {
         Medicine med = new Medicine();
         med.setBrand(metadata[0]);
         med.setSaltname(metadata[1]);
-        int p = Integer.parseInt(metadata[8]);
+        float p = Float.parseFloat(metadata[8]);
         med.setPrice(p);
         med.setSaltComposition1(metadata[2]);
         med.setSaltComposition2(metadata[3]);
