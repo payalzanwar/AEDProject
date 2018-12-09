@@ -43,7 +43,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = account;
         
-       doc=new DoctorOrganization();
+       //doc=new DoctorOrganization();
        
        populateTable();
     }

@@ -14,17 +14,17 @@ import java.util.ArrayList;
 public class HospitalDirectory {
     
     
-    private ArrayList<Hospital> hospitalList;
+    private static ArrayList<Hospital> hospitalList;
 
     public HospitalDirectory() {
         hospitalList= new ArrayList();
     }
 
-    public ArrayList<Hospital> gethospitalList() {
+    public static ArrayList<Hospital> gethospitalList() {
         return hospitalList;
     }
     
-    public Hospital createHospital(String name,String hospLoc, String EmailId, String zip){
+    public static Hospital createHospital(String name,String hospLoc, String EmailId, String zip){
         Hospital hosp = new Hospital();
         hosp.setHospital_name(name);
         hosp.setLocation(hospLoc);
