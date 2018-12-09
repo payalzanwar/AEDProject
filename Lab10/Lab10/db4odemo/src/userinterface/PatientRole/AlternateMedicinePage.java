@@ -236,22 +236,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
         layout.next(RightPaneldashboard);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void ViewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewDetailsBtnActionPerformed
-        // TODO add your handling code here:
-        int row = AlternateMedicineTable.getSelectedRow();
-        if(row<0) {
-            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        Medicine s = (Medicine)AlternateMedicineTable.getValueAt(row, 1);
-        
-        ViewMedicineDetailsPage vs = new ViewMedicineDetailsPage(RightPaneldashboard, s);
-        RightPaneldashboard.add("ViewSupplier", vs);
-        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
-        layout.next(RightPaneldashboard);
-    }//GEN-LAST:event_ViewDetailsBtnActionPerformed
+                                              
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO adald your handling code here:

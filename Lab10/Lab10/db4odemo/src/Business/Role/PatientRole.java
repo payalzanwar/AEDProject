@@ -12,8 +12,6 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.DoctorRole.DoctorWorkAreaJPanel;
-import userinterface.PatientRole.PatientWorkAreaJPanel1;
-import userinterface.PatientRole.PatientWorkAreaJPane2l;
 import userinterface.PatientRole.PatientWorkAreaJPanel;
 
 public class PatientRole extends Role{

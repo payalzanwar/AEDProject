@@ -28,7 +28,7 @@ public class OrderDirectory {
     {
         OrderList= new ArrayList<>();
     }
-     public Order AddOrder(String medname,int Price, int units){
+     public Order AddOrder(String medname,float Price, int units){
         Order o = new Order();
         o.setItem(new Item());
         o.getItem().setProduct_name(medname);

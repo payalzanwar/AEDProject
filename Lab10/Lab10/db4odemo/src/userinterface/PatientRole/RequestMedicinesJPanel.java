@@ -295,7 +295,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     private void AddtoCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddtoCartActionPerformed
         // TODO add your handling code here:
-         int Price = 0, updatedPrice = 0;
+         float Price = 0, updatedPrice = 0;
        //  ArrayList<String> list = new ArrayList<>();
 
         Medicine m = (Medicine) ChooseMedCombo.getSelectedItem();
@@ -326,7 +326,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     private void BuyNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyNowActionPerformed
         // TODO add your handling code here:
-        int Price=0;
+        float Price=0;
         finallist =new ArrayList<>();
         try{
         Medicine m = (Medicine) ChooseMedCombo.getSelectedItem();
@@ -364,7 +364,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         Medicine medicine= (Medicine) ChooseMedCombo.getSelectedItem();
-        int Price=0;
+        float Price=0;
          for(Medicine medi : med.getMedicineList())
          {
              if(medicine.getSaltname().equals(medi.getSaltname())){

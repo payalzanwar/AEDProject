@@ -44,7 +44,7 @@ public class EnterpriseDirectory {
             enterpriseList.add(enterprise);
         }
         else if(type==Enterprise.EnterpriseType.Supply){
-            enterprise=new SupplyEnterprise(name);
+            enterprise=new SupplyEnterprise(name, location);
             enterpriseList.add(enterprise);
         }
         return enterprise;
