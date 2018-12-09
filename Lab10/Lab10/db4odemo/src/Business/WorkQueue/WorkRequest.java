@@ -4,8 +4,12 @@
  */
 package Business.WorkQueue;
 
+import Business.Employee.Employee;
+import Business.Medicine.Medicine;
 import Business.UserAccount.UserAccount;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 
 /**
  *
@@ -19,6 +23,24 @@ public abstract class WorkRequest {
     private String status;
     private Date requestDate;
     private Date resolveDate;
+    private HashSet<Medicine> alternativelist = new HashSet<>();
+    private ArrayList<Employee> Doctorlist = new ArrayList<Employee>();
+
+    public HashSet<Medicine> getAlternativelist() {
+        return alternativelist;
+    }
+
+    public void setAlternativelist(HashSet<Medicine> alternativelist) {
+        this.alternativelist = alternativelist;
+    }
+
+    public ArrayList<Employee> getDoctorlist() {
+        return Doctorlist;
+    }
+
+    public void setDoctorlist(ArrayList<Employee> Doctorlist) {
+        this.Doctorlist = Doctorlist;
+    }
     
     public WorkRequest(){
         requestDate = new Date();
@@ -66,6 +88,11 @@ public abstract class WorkRequest {
 
     public Date getResolveDate() {
         return resolveDate;
+    }
+
+    @Override
+    public String toString() {
+        return message;
     }
 
     public void setResolveDate(Date resolveDate) {

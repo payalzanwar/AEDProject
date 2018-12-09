@@ -62,7 +62,6 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        DisplayNameTxt = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         DiseaseListComboBox = new javax.swing.JComboBox();
@@ -76,28 +75,49 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(DisplayNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 204, 41));
+        setLayout(null);
 
+        jLabel1.setBackground(null);
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Search For Alternate Medicine");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 30, 525, 55));
+        jLabel1.setAutoscrolls(true);
+        add(jLabel1);
+        jLabel1.setBounds(0, 0, 800, 130);
 
+        jLabel2.setBackground(null);
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText(" Disease");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 142, 102, 33));
+        add(jLabel2);
+        jLabel2.setBounds(30, 120, 102, 33);
 
+        DiseaseListComboBox.setBackground(null);
+        DiseaseListComboBox.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DiseaseListComboBox.setForeground(new java.awt.Color(0, 51, 102));
         DiseaseListComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "ColdNflu", "Malaria", "Typhoid", "Cancer" }));
         DiseaseListComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DiseaseListComboBoxActionPerformed(evt);
             }
         });
-        add(DiseaseListComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 142, 105, 33));
+        add(DiseaseListComboBox);
+        DiseaseListComboBox.setBounds(30, 150, 105, 40);
 
+        jLabel3.setBackground(null);
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Search By Salt or Medicine Name");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 103, 249, 33));
+        add(jLabel3);
+        jLabel3.setBounds(340, 120, 249, 33);
 
+        AlternateMedicineTable.setAutoCreateRowSorter(true);
+        AlternateMedicineTable.setBackground(new java.awt.Color(0, 51, 102));
+        AlternateMedicineTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AlternateMedicineTable.setForeground(new java.awt.Color(255, 255, 255));
         AlternateMedicineTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -116,57 +136,91 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(AlternateMedicineTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 273, 836, 234));
+        add(jScrollPane1);
+        jScrollPane1.setBounds(20, 260, 760, 260);
 
+        ViewDetailsBtn.setBackground(null);
+        ViewDetailsBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ViewDetailsBtn.setForeground(new java.awt.Color(0, 51, 102));
         ViewDetailsBtn.setText("View Details");
         ViewDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ViewDetailsBtnActionPerformed(evt);
             }
         });
-        add(ViewDetailsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 547, 185, 48));
+        add(ViewDetailsBtn);
+        ViewDetailsBtn.setBounds(430, 540, 160, 48);
 
+        ConsultDoctorBtn.setBackground(null);
+        ConsultDoctorBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ConsultDoctorBtn.setForeground(new java.awt.Color(0, 51, 102));
         ConsultDoctorBtn.setText("Request Pharmacist");
         ConsultDoctorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConsultDoctorBtnActionPerformed(evt);
             }
         });
-        add(ConsultDoctorBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 547, 171, 48));
+        add(ConsultDoctorBtn);
+        ConsultDoctorBtn.setBounds(20, 540, 170, 48);
 
+        SearchSaltOrMedicineTxt.setBackground(null);
+        SearchSaltOrMedicineTxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        SearchSaltOrMedicineTxt.setForeground(new java.awt.Color(0, 51, 102));
         SearchSaltOrMedicineTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchSaltOrMedicineTxtActionPerformed(evt);
             }
         });
-        add(SearchSaltOrMedicineTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 142, 249, 33));
+        add(SearchSaltOrMedicineTxt);
+        SearchSaltOrMedicineTxt.setBounds(340, 150, 249, 40);
 
+        jButton1.setBackground(null);
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 102));
         jButton1.setText("Search");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(782, 193, -1, -1));
+        add(jButton1);
+        jButton1.setBounds(620, 150, 120, 40);
 
+        jButton2.setBackground(null);
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 51, 102));
         jButton2.setText("Consult Doctor");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(672, 547, 185, 48));
+        add(jButton2);
+        jButton2.setBounds(620, 540, 160, 48);
 
+        jButton3.setBackground(null);
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 51, 102));
         jButton3.setText("Save list of Alternatives");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 547, 171, 48));
+        add(jButton3);
+        jButton3.setBounds(210, 540, 200, 48);
 
+        jLabel4.setBackground(null);
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("                      Please select the rows of Alternative Medicines you searched for and Save the list!");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 233, 756, -1));
+        add(jLabel4);
+        jLabel4.setBounds(10, 210, 680, 17);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/back.jpg"))); // NOI18N
+        jLabel5.setAutoscrolls(true);
+        add(jLabel5);
+        jLabel5.setBounds(-10, -10, 1120, 1050);
     }// </editor-fold>//GEN-END:initComponents
     
 
@@ -237,7 +291,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         layout.next(RightPaneldashboard);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void ViewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewDetailsBtnActionPerformed
+    private void ViewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
         int row = AlternateMedicineTable.getSelectedRow();
         if(row<0) {
@@ -251,7 +305,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         RightPaneldashboard.add("ViewSupplier", vs);
         CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
         layout.next(RightPaneldashboard);
-    }//GEN-LAST:event_ViewDetailsBtnActionPerformed
+    }                                              
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO adald your handling code here:
@@ -273,31 +327,16 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
              JOptionPane.showMessageDialog(null, "Please select a row");
         }
        hashlist = new HashSet<Medicine>(list);
-       
+      
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void ViewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewDetailsBtnActionPerformed
-        // TODO add your handling code here:
-        int row = AlternateMedicineTable.getSelectedRow();
-        if(row<0) {
-            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        Medicine s = (Medicine)AlternateMedicineTable.getValueAt(row, 1);
-        
-        ViewMedicineDetailsPage vs = new ViewMedicineDetailsPage(RightPaneldashboard, s);
-        RightPaneldashboard.add("ViewSupplier", vs);
-        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
-        layout.next(RightPaneldashboard);
-    }//GEN-LAST:event_ViewDetailsBtnActionPerformed
+                                                  
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AlternateMedicineTable;
     private javax.swing.JButton ConsultDoctorBtn;
     private javax.swing.JComboBox DiseaseListComboBox;
-    private javax.swing.JLabel DisplayNameTxt;
     private javax.swing.JTextField SearchSaltOrMedicineTxt;
     private javax.swing.JButton ViewDetailsBtn;
     private javax.swing.JButton jButton1;
@@ -307,6 +346,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

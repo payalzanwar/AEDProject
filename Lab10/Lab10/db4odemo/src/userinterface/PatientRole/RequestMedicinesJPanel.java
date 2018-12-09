@@ -116,43 +116,96 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         Pricetxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setLayout(null);
+
+        jLabel4.setBackground(null);
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("                      Order Medicines");
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(-70, 0, 770, 48);
 
+        RegionCombo.setBackground(null);
+        RegionCombo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        RegionCombo.setForeground(new java.awt.Color(0, 51, 102));
+        jPanel2.add(RegionCombo);
+        RegionCombo.setBounds(138, 59, 90, 30);
+
+        jLabel2.setBackground(null);
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Region");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(48, 59, 80, 30);
 
+        jLabel3.setBackground(null);
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("EnterPrise");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(500, 59, 90, 30);
 
+        enterpriseCombo.setBackground(null);
+        enterpriseCombo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        enterpriseCombo.setForeground(new java.awt.Color(0, 51, 102));
         enterpriseCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterpriseComboActionPerformed(evt);
             }
         });
+        jPanel2.add(enterpriseCombo);
+        enterpriseCombo.setBounds(617, 59, 110, 30);
 
+        backJButton.setBackground(null);
+        backJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(0, 51, 102));
         backJButton.setText("<<Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(backJButton);
+        backJButton.setBounds(38, 462, 87, 37);
 
+        requestTestJButton.setBackground(null);
+        requestTestJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        requestTestJButton.setForeground(new java.awt.Color(0, 51, 102));
         requestTestJButton.setText("View Cart");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(requestTestJButton);
+        requestTestJButton.setBounds(628, 462, 99, 37);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("MedicineDetails"));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 32), "MedicineDetails", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
+        ChooseMedCombo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ChooseMedCombo.setForeground(new java.awt.Color(0, 51, 102));
         ChooseMedCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", " " }));
 
+        Medicinetxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Medicinetxt.setForeground(new java.awt.Color(255, 255, 255));
         Medicinetxt.setText("Choose Medicine");
 
+        Quantitytxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Quantitytxt.setForeground(new java.awt.Color(255, 255, 255));
         Quantitytxt.setText("Quantity");
 
+        Qtyxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Qtyxt.setForeground(new java.awt.Color(255, 255, 255));
+
+        AddtoCart.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AddtoCart.setForeground(new java.awt.Color(0, 51, 102));
         AddtoCart.setText("Add to Cart");
         AddtoCart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +213,8 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
             }
         });
 
+        BuyNow.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BuyNow.setForeground(new java.awt.Color(0, 51, 102));
         BuyNow.setText("Buy Now");
         BuyNow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,8 +222,15 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Price");
 
+        Pricetxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Pricetxt.setForeground(new java.awt.Color(255, 255, 255));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 102));
         jButton1.setText("Price Check");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,7 +253,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Quantitytxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Medicinetxt, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(ChooseMedCombo, 0, 1, Short.MAX_VALUE)
@@ -225,55 +287,14 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
                 .addGap(24, 24, 24))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(RegionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(enterpriseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(backJButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(requestTestJButton))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(43, 43, 43))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(189, 189, 189))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(enterpriseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(RegionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(backJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(requestTestJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(63, Short.MAX_VALUE))
-        );
+        jPanel2.add(jPanel1);
+        jPanel1.setBounds(38, 123, 689, 328);
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 730, 540));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/3d_dna-1680x1050.jpg"))); // NOI18N
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(0, 0, 770, 610);
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 540));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
@@ -295,7 +316,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     private void AddtoCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddtoCartActionPerformed
         // TODO add your handling code here:
-         int Price = 0, updatedPrice = 0;
+         float Price = 0, updatedPrice = 0;
        //  ArrayList<String> list = new ArrayList<>();
 
         Medicine m = (Medicine) ChooseMedCombo.getSelectedItem();
@@ -326,7 +347,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     private void BuyNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyNowActionPerformed
         // TODO add your handling code here:
-        int Price=0;
+        float Price=0;
         finallist =new ArrayList<>();
         try{
         Medicine m = (Medicine) ChooseMedCombo.getSelectedItem();
@@ -364,7 +385,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         Medicine medicine= (Medicine) ChooseMedCombo.getSelectedItem();
-        int Price=0;
+        float Price=0;
          for(Medicine medi : med.getMedicineList())
          {
              if(medicine.getSaltname().equals(medi.getSaltname())){
@@ -394,6 +415,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton requestTestJButton;

@@ -52,7 +52,7 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
     {
     
         DefaultTableModel model = (DefaultTableModel) OrderTable.getModel();
-        int Price=0;
+        float Price=0;
         model.setRowCount(0);
         for (Order order : o) {
 
