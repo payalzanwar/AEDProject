@@ -50,82 +50,149 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         Rightpaneldashboard = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         AlternateMedicinesBtn = new javax.swing.JButton();
         OverthecounterBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        progressbar = new javax.swing.JPanel();
+        CheckStatusBtn = new javax.swing.JButton();
+        JP_Progress = new ProgressBar.CustomPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
-        Rightpaneldashboard.setLayout(new java.awt.CardLayout());
+        setLayout(new java.awt.CardLayout());
 
+        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(1680, 1050));
+
+        Rightpaneldashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        AlternateMedicinesBtn.setBackground(new java.awt.Color(255, 255, 255));
+        AlternateMedicinesBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AlternateMedicinesBtn.setForeground(new java.awt.Color(0, 51, 153));
         AlternateMedicinesBtn.setText("Shop for Alternate Medicines");
         AlternateMedicinesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AlternateMedicinesBtnActionPerformed(evt);
             }
         });
+        Rightpaneldashboard.add(AlternateMedicinesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 414, 73));
 
+        OverthecounterBtn.setBackground(new java.awt.Color(255, 255, 255));
+        OverthecounterBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        OverthecounterBtn.setForeground(new java.awt.Color(0, 51, 153));
         OverthecounterBtn.setText("Shop for Over The Counter Medicines");
         OverthecounterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OverthecounterBtnActionPerformed(evt);
             }
         });
+        Rightpaneldashboard.add(OverthecounterBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 414, 73));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(OverthecounterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AlternateMedicinesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(75, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(AlternateMedicinesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(OverthecounterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/dashboard.jpg"))); // NOI18N
+        Rightpaneldashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 490, 390));
 
-        Rightpaneldashboard.add(jPanel3, "card2");
+        jTabbedPane1.addTab("Dashboard", Rightpaneldashboard);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jPanel2.setLayout(null);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/dashboard.jpg"))); // NOI18N
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(0, 0, 480, 330);
+
+        jTabbedPane1.addTab("Account Details", jPanel2);
+
+        jPanel3.setLayout(null);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/dashboard.jpg"))); // NOI18N
+        jPanel3.add(jLabel4);
+        jLabel4.setBounds(0, 0, 480, 330);
+
+        jTabbedPane1.addTab("Order Details", jPanel3);
+
+        jPanel5.setLayout(null);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/dashboard.jpg"))); // NOI18N
+        jPanel5.add(jLabel5);
+        jLabel5.setBounds(0, 0, 470, 330);
+
+        jTabbedPane1.addTab("Request Details", jPanel5);
+
+        progressbar.setLayout(null);
+
+        CheckStatusBtn.setBackground(new java.awt.Color(255, 255, 255));
+        CheckStatusBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        CheckStatusBtn.setForeground(new java.awt.Color(0, 51, 153));
+        CheckStatusBtn.setText("Check Application Status");
+        CheckStatusBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                CheckStatusBtnActionPerformed(evt);
             }
         });
+        progressbar.add(CheckStatusBtn);
+        CheckStatusBtn.setBounds(10, 10, 216, 52);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(Rightpaneldashboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(jButton1)))
-                .addContainerGap(1344, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(Rightpaneldashboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(jButton1)
-                .addContainerGap(364, Short.MAX_VALUE))
-        );
+        JP_Progress.setBackground(new java.awt.Color(255, 255, 255));
+        JP_Progress.setForeground(new java.awt.Color(255, 255, 255));
+        JP_Progress.setLayout(null);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/progress bar.jpg"))); // NOI18N
+        JP_Progress.add(jLabel2);
+        jLabel2.setBounds(-10, -20, 480, 250);
+
+        progressbar.add(JP_Progress);
+        JP_Progress.setBounds(10, 100, 460, 230);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/progress bar.jpg"))); // NOI18N
+        progressbar.add(jLabel6);
+        jLabel6.setBounds(0, 0, 480, 350);
+
+        jTabbedPane1.addTab("Progress Bar", progressbar);
+
+        jScrollPane2.setViewportView(jTabbedPane1);
+
+        add(jScrollPane2, "card2");
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CheckStatusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckStatusBtnActionPerformed
+        // TODO add your handling code here:
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                for (int num = 1; num <= 100; num++) {
+
+                    try {
+                        JP_Progress.UpdateProgress(num);
+                        JP_Progress.repaint();
+                        Thread.sleep(50);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(PatientWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+
+            }
+        }).start();
+    }//GEN-LAST:event_CheckStatusBtnActionPerformed
+
+    private void OverthecounterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverthecounterBtnActionPerformed
+        // TODO add your handling code here:
+        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(Rightpaneldashboard, account, system);
+        Rightpaneldashboard.add("ViewProductDetailJPanelSupplier", pmed);
+        CardLayout layout1 = (CardLayout) Rightpaneldashboard.getLayout();
+        layout1.next(Rightpaneldashboard);
+    }//GEN-LAST:event_OverthecounterBtnActionPerformed
 
     private void AlternateMedicinesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlternateMedicinesBtnActionPerformed
         // TODO add your handling code here:
@@ -134,35 +201,30 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         //       CardLayout layout = (CardLayout)container.getLayout();
         //       layout.next(container);
 
-        AlternateMedicinePage alternateMedicinePage = new AlternateMedicinePage(Rightpaneldashboard,account,system);
+        AlternateMedicinePage alternateMedicinePage = new AlternateMedicinePage(Rightpaneldashboard, account, system);
         Rightpaneldashboard.add("AlternateMedicinePageJpanel", alternateMedicinePage);
-        CardLayout layout = (CardLayout)Rightpaneldashboard.getLayout();
+        CardLayout layout = (CardLayout) Rightpaneldashboard.getLayout();
         layout.next(Rightpaneldashboard);
-
     }//GEN-LAST:event_AlternateMedicinesBtnActionPerformed
-
-    private void OverthecounterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverthecounterBtnActionPerformed
-        // TODO add your handling code here:
-        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(Rightpaneldashboard,account,system);
-        Rightpaneldashboard.add("ViewProductDetailJPanelSupplier", pmed);
-        CardLayout layout1 = (CardLayout)Rightpaneldashboard.getLayout();
-        layout1.next(Rightpaneldashboard);
-    }//GEN-LAST:event_OverthecounterBtnActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here
-         sample s = new sample(Rightpaneldashboard,account,system);
-        Rightpaneldashboard.add("ViewProductDetailJPanelSupplier", s);
-        CardLayout layout1 = (CardLayout)Rightpaneldashboard.getLayout();
-        layout1.next(Rightpaneldashboard);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AlternateMedicinesBtn;
+    private javax.swing.JButton CheckStatusBtn;
+    private ProgressBar.CustomPanel JP_Progress;
     private javax.swing.JButton OverthecounterBtn;
     private javax.swing.JPanel Rightpaneldashboard;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel progressbar;
     // End of variables declaration//GEN-END:variables
 }

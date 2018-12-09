@@ -44,7 +44,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         for (Network network : system.getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
-                    Object[] row = new Object[3];
+                    Object[] row = new Object[4];
                     row[0] = enterprise.getName();
                     row[1] = network.getName();
                     row[2] = userAccount.getUsername();

@@ -121,40 +121,90 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setLayout(null);
+
+        jLabel4.setBackground(null);
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("                      Order Medicines");
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(-70, 0, 770, 48);
 
+        RegionCombo.setBackground(null);
+        RegionCombo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        RegionCombo.setForeground(new java.awt.Color(0, 51, 102));
+        jPanel2.add(RegionCombo);
+        RegionCombo.setBounds(138, 59, 90, 30);
+
+        jLabel2.setBackground(null);
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Region");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(48, 59, 80, 30);
 
+        jLabel3.setBackground(null);
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("EnterPrise");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(500, 59, 90, 30);
 
+        enterpriseCombo.setBackground(null);
+        enterpriseCombo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        enterpriseCombo.setForeground(new java.awt.Color(0, 51, 102));
         enterpriseCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterpriseComboActionPerformed(evt);
             }
         });
+        jPanel2.add(enterpriseCombo);
+        enterpriseCombo.setBounds(617, 59, 110, 30);
 
+        backJButton.setBackground(null);
+        backJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(0, 51, 102));
         backJButton.setText("<<Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(backJButton);
+        backJButton.setBounds(38, 462, 87, 37);
 
+        requestTestJButton.setBackground(null);
+        requestTestJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        requestTestJButton.setForeground(new java.awt.Color(0, 51, 102));
         requestTestJButton.setText("View Cart");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(requestTestJButton);
+        requestTestJButton.setBounds(628, 462, 99, 37);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("MedicineDetails"));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 32), "MedicineDetails", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
+        ChooseMedCombo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ChooseMedCombo.setForeground(new java.awt.Color(0, 51, 102));
         ChooseMedCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", " " }));
 
         Medicinetxt.setText("Medicine");
 
+        Quantitytxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Quantitytxt.setForeground(new java.awt.Color(255, 255, 255));
         Quantitytxt.setText("Quantity");
 
+        Qtyxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Qtyxt.setForeground(new java.awt.Color(255, 255, 255));
+
+        AddtoCart.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AddtoCart.setForeground(new java.awt.Color(0, 51, 102));
         AddtoCart.setText("Add to Cart");
         AddtoCart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +212,8 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
             }
         });
 
+        BuyNow.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BuyNow.setForeground(new java.awt.Color(0, 51, 102));
         BuyNow.setText("Buy Now");
         BuyNow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,8 +221,15 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Price");
 
+        Pricetxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Pricetxt.setForeground(new java.awt.Color(255, 255, 255));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 102));
         jButton1.setText("Price Check");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,7 +347,11 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
                         .addGap(24, 24, 24))))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 730, 540));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/3d_dna-1680x1050.jpg"))); // NOI18N
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(0, 0, 770, 610);
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 540));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
@@ -310,7 +373,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     private void AddtoCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddtoCartActionPerformed
         // TODO add your handling code here:
-         int Price = 0, updatedPrice = 0;
+         float Price = 0, updatedPrice = 0;
        //  ArrayList<String> list = new ArrayList<>();
 
         Medicine m = (Medicine) ChooseMedCombo.getSelectedItem();
@@ -341,7 +404,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     private void BuyNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyNowActionPerformed
         // TODO add your handling code here:
-        int Price=0;
+        float Price=0;
         finallist =new ArrayList<>();
         try{
         Medicine m = (Medicine) ChooseMedCombo.getSelectedItem();
@@ -379,7 +442,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         Medicine medicine= (Medicine) ChooseMedCombo.getSelectedItem();
-        int Price=0;
+        float Price=0;
          for(Medicine medi : med.getMedicineList())
          {
              if(medicine.getSaltname().equals(medi.getSaltname())){
@@ -411,6 +474,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton requestTestJButton;
