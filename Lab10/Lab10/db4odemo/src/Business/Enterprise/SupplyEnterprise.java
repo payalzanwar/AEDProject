@@ -13,8 +13,8 @@ import java.util.ArrayList;
  * @author Vaishali Tripathi
  */
 public class SupplyEnterprise extends Enterprise{
-    public SupplyEnterprise(String name){
-        super(name,Enterprise.EnterpriseType.Supply);
+    public SupplyEnterprise(String name,String location){
+        super(name,Enterprise.EnterpriseType.Supply,location);
     }
     @Override
     public ArrayList<Role> getSupportedRole() {

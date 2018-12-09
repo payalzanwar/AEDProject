@@ -163,6 +163,11 @@ public class MainJFrame extends javax.swing.JFrame {
         // Get Password
         char[] passwordCharArray = passwordField.getPassword();
         String password = String.valueOf(passwordCharArray);
+        try {
+            DataGenerator generator = DataGenerator.getInstance();
+        } catch (IOException ex) {
+            Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         //Step1: Check in the system admin user account directory if you have the user
         UserAccount userAccount=system.getUserAccountDirectory().authenticateUser(userName, password);
@@ -250,9 +255,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        userNameJTextField.setEnabled(false);
-        passwordField.setEnabled(false);
-        loginJButton.setEnabled(false);
         PatientLoginFormJPanel createAccountPage = new PatientLoginFormJPanel(container,system);
                container.add("CreateAccountPageJPanel",createAccountPage);
                CardLayout layout = (CardLayout)container.getLayout();

@@ -30,6 +30,7 @@ public class DoctorConsultationFormPage extends javax.swing.JPanel {
     private Enterprise enterprise;
     public DoctorConsultationFormPage(JPanel rightPanel,ArrayList<Medicine> list,UserAccount account,Enterprise enterprise) {
         initComponents();
+        this.setSize(1680, 1050);
         this.rightPanel=rightPanel;
         this.list=list;
         this.account=account;
@@ -49,13 +50,17 @@ public class DoctorConsultationFormPage extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         requestDoctorBtn = new javax.swing.JButton();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         Messagetxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MessagetxtActionPerformed(evt);
             }
         });
+        add(Messagetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 69, 165, -1));
 
         jLabel1.setText("Alternative Medicines");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 69, -1, 20));
 
         requestDoctorBtn.setText("Request");
         requestDoctorBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -63,33 +68,7 @@ public class DoctorConsultationFormPage extends javax.swing.JPanel {
                 requestDoctorBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(jLabel1)
-                .addGap(63, 63, 63)
-                .addComponent(Messagetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(251, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(requestDoctorBtn)
-                .addGap(274, 274, 274))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Messagetxt)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(49, 49, 49)
-                .addComponent(requestDoctorBtn)
-                .addContainerGap(288, Short.MAX_VALUE))
-        );
+        add(requestDoctorBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(298, 138, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void MessagetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MessagetxtActionPerformed

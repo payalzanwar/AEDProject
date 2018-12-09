@@ -11,6 +11,26 @@ package Business.Employee;
 public class Employee {
     
     private String name;
+    private String speciality;
+
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
+
+ 
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    private String location;
     private int id;
     private static int count = 1;
 
