@@ -53,6 +53,14 @@ public class OrganizationDirectory {
             organization = new ManufacturingManagerOrganization(loc);
             organizationList.add(organization);     
         }
+        else if (type.getValue().equals(Type.ShipmentManager.getValue())){
+            organization = new ShipmentManagerOrganization(loc);
+            organizationList.add(organization);     
+        }
+        else if (type.getValue().equals(Type.DeliveryManager.getValue())){
+            organization = new DeliveryManagerOrganization(loc);
+            organizationList.add(organization);     
+        }
         return organization;
     }   
 }
