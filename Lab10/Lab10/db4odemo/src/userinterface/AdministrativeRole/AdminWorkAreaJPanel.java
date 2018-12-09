@@ -3,9 +3,9 @@
 package userinterface.AdministrativeRole;
 
 import Business.Enterprise.Enterprise;
-import Business.Organization.DoctorOrganization;
-import Business.Organization.Organization;
-import Business.UserAccount.UserAccount;
+import static Business.Enterprise.Enterprise.EnterpriseType.Pharmacy;
+import Business.WorkQueue.MedicineSupplyWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,6 +23,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     /** Creates new form AdminWorkAreaJPanel */
     public AdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, UserAccount account) {
         initComponents();
+        this.setSize(1680, 1050);
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.account = account;
@@ -31,6 +32,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             if(!(type.equals(type.Hospital)))
             workassgnbtn.setEnabled(false);
     }
+
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -76,11 +78,11 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageOrganizationJButtonActionPerformed(evt);
             }
         });
-        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
+        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 120, 30));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 120, 30));
 
         valueLabel.setText("<value>");
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));

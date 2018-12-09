@@ -6,11 +6,13 @@ package userinterface.AdministrativeRole;
 
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Organization.DeliveryManagerOrganization;
 import Business.Organization.DoctorOrganization;
 import Business.Organization.ManufacturingManagerOrganization;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.PharmacistOrganization;
+import Business.Organization.ShipmentManagerOrganization;
 import Business.Organization.SupplyManagerOrganization;
 import Business.Role.Role;
 import Business.Role.Role.RoleType;
@@ -115,12 +117,15 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         createUserJButton.setText("Create User");
         createUserJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createUserJButtonActionPerformed(evt);
             }
         });
+        add(createUserJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 593, -1, -1));
 
         userJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,9 +156,13 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             userJTable.getColumnModel().getColumn(1).setResizable(false);
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 87, 549, 179));
+
         jLabel3.setText("Employee");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 318, 102, 26));
 
         employeeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(employeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 321, 158, -1));
 
         backjButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         backjButton1.setText("<< Back");
@@ -162,8 +171,10 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 backjButton1ActionPerformed(evt);
             }
         });
+        add(backjButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 607, 112, -1));
 
         jLabel5.setText("Organization");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 284, 102, 23));
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -171,12 +182,16 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 organizationJComboBoxActionPerformed(evt);
             }
         });
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 285, 158, -1));
 
         jLabel4.setText("Role");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 350, 102, 26));
 
         roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 353, 158, -1));
 
         jLabel1.setText("                 User Accounts");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(364, 8, 255, 73));
 
         CredJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Credentials"));
 
@@ -301,6 +316,25 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                         .addComponent(createUserJButton)
                         .addGap(46, 46, 46))))
         );
+        CredJPanelLayout.setVerticalGroup(
+            CredJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CredJPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(CredJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(CredJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(CredJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmpswdtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        add(CredJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 387, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
@@ -330,6 +364,14 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
    else if(organization instanceof ManufacturingManagerOrganization){
       organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
     JOptionPane.showMessageDialog(container, "Manufacturer created successfully!");
+   }
+      else if(organization instanceof ShipmentManagerOrganization){
+      organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
+    JOptionPane.showMessageDialog(container, "Shipment Manager created successfully!");
+   }
+      else if(organization instanceof DeliveryManagerOrganization){
+      organization.getUserAccountDirectory().createUserAccount(user, pswd, employee, role);
+    JOptionPane.showMessageDialog(container, "Delivery Manager created successfully!");
    }
 
       popData();

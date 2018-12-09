@@ -13,13 +13,12 @@ import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.DoctorRole.HospitalAdminWorkAreaJPanel;
 import userinterface.PatientRole.PatientWorkAreaJPanel;
-import userinterface.PatientRole.dashboard;
 
 public class PatientRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new PatientWorkAreaJPanel(userProcessContainer, account,business);
+        return new PatientWorkAreaJPanel(userProcessContainer,account,enterprise,business);
     }
     
     

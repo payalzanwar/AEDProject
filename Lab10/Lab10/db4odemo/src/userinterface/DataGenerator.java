@@ -90,8 +90,8 @@ public class DataGenerator {
              readBooksFromCSV(bok,med,reader);
 
         // let's print all the person read SSVfrom CSV file
-        for (Medicine b : med.getMedicineList()) {
-            System.out.println(b);
+        for (Medicine b : med.getManufacturerMedicineList()) {
+            System.out.println("med : "+b);
         }
             
              
@@ -130,10 +130,12 @@ try{
                 // the file, using a comma as the delimiter
                 String[] attributes = line.split(",");
                 for(int i=0;i<1;i++){
-                    System.out.println("attribute 1"+attributes[i]);
+                   // System.out.println("attribute 1"+attributes[i]);
                     if(!(attributes[i].equalsIgnoreCase("Brand"))){
                
               b.AddMedicine(attributes);
+              b.AddSupplierMedicine(attributes);
+              b.AddManufacturerMedicine(attributes);
                     }
                 }
                 // adding book into ArrayList

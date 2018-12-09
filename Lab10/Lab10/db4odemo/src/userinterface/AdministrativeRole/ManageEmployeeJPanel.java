@@ -25,6 +25,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
      */
     public ManageEmployeeJPanel(JPanel userProcessContainer,OrganizationDirectory organizationDir) {
         initComponents();
+        this.setSize(1680, 1050);
         this.userProcessContainer = userProcessContainer;
         this.organizationDir = organizationDir;
         
@@ -84,6 +85,8 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         specialitytxt = new javax.swing.JTextField();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -116,12 +119,15 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             organizationJTable.getColumnModel().getColumn(1).setResizable(false);
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 60, 480, 92));
+
         addJButton.setText("Create Employee");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addJButtonActionPerformed(evt);
             }
         });
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(487, 334, -1, -1));
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -129,8 +135,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 organizationJComboBoxActionPerformed(evt);
             }
         });
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 34, 81, -1));
 
         jLabel1.setText("Organization");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 37, -1, -1));
 
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -138,8 +146,11 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 334, -1, -1));
 
         jLabel2.setText("Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 218, -1, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 215, 126, -1));
 
         organizationEmpJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationEmpJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -147,8 +158,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 organizationEmpJComboBoxActionPerformed(evt);
             }
         });
+        add(organizationEmpJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 177, 81, -1));
 
         jLabel3.setText("Organization");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 180, -1, -1));
 
         jLabel4.setText("Speciality");
 

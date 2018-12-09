@@ -14,8 +14,8 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-//import userinterface.ManageMedicineInventory.AddToInventoryJPanel;
-//import userinterface.ManageMedicineInventory.ViewMedicineInventoryPage;
+import userinterface.ManageMedicineInventory.AddToInventoryJPanel;
+import userinterface.ManageMedicineInventory.ViewMedicineInventoryPage;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -68,7 +68,7 @@ public class ManufacturingManagerWorkAreaJPanel extends javax.swing.JPanel {
             row[2] = ((MedicineSupplyWorkRequest) request).getQuantity();
             row[3] = ((MedicineSupplyWorkRequest) request).getPrice();
             row[4] = ((MedicineSupplyWorkRequest) request).getSaltc1();
-            row[5] = ((MedicineSupplyWorkRequest) request).getSaltc3();
+            row[5] = ((MedicineSupplyWorkRequest) request).getSaltc2();
             row[6] = ((MedicineSupplyWorkRequest) request).getSaltc3();
             row[7] = ((MedicineSupplyWorkRequest) request).getDiseaseName();
             row[8] = request.getSender();

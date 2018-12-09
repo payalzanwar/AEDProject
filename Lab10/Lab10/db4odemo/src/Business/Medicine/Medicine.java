@@ -12,10 +12,28 @@ package Business.Medicine;
 public class Medicine {
  int med_id;
  String saltname;
- int price;
+ float price;
  String SaltComposition1;
  String SaltComposition2;
 
+ public enum MedicineType{
+        Tablet("Tablet"),
+        Syrup("Syrup"),
+        Capsule("Capsule"),
+        Injection("Injection");
+
+        
+        private String value;
+        
+        private MedicineType(String value){
+            this.value=value;
+        }
+        public String getValue() {
+            return value;
+        }
+    }
+ 
+ 
     public String getSaltComposition2() {
         return SaltComposition2;
     }
@@ -76,11 +94,11 @@ private static int cnt = 1;
         this.saltname = saltname;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

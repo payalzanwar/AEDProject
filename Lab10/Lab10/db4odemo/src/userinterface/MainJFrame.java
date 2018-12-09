@@ -35,10 +35,20 @@ public class MainJFrame extends javax.swing.JFrame {
 
     public MainJFrame() throws IOException {
         initComponents();
+        userNameJTextField.setEnabled(true);
+        passwordField.setEnabled(true);
+        loginJButton.setEnabled(true);
         system = dB4OUtil.retrieveSystem();
         this.setSize(1680, 1050);
-      
+        DataGenerator generator = DataGenerator.getInstance();
+       
         
+    }
+    public void resetPage(){
+    userNameJTextField.setEnabled(true);
+        passwordField.setEnabled(true);
+        loginJButton.setEnabled(true);
+        system = dB4OUtil.retrieveSystem();
     }
 
     /**
@@ -83,7 +93,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Create Account");
+        jButton1.setText("Create Customer Account");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
