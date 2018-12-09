@@ -56,4 +56,6 @@ public abstract class Enterprise extends Organization{
         this.loc = location;
         organizationDirectory=new OrganizationDirectory();
     }
+    
+
 }

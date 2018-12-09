@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author mantr
+ * @author Vaishali Tripathi
  */
 public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
@@ -123,7 +123,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         CheckStatusBtn = new javax.swing.JButton();
         JP_Progress = new ProgressBar.CustomPanel();
 
-        setLayout(new java.awt.CardLayout());
+        Rightpaneldashboard.setLayout(new java.awt.CardLayout());
 
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(1680, 1050));
 

@@ -40,7 +40,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         this.container = container;
 
         popOrganizationComboBox();
-        // employeeJComboBox.removeAllItems();
+       // employeeJComboBox.removeAllItems();
         popData();
     }
 
@@ -51,21 +51,23 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             organizationJComboBox.addItem(organization);
         }
     }
+    
 
-    public void populateEmployeeComboBox(Organization organization) {
+    public void populateEmployeeComboBox(Organization organization){
         employeeJComboBox.removeAllItems();
-
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
+        
+        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
             employeeJComboBox.addItem(employee);
         }
     }
 
-    private void populateRoleComboBox(Organization organization) {
+    private void populateRoleComboBox(Organization organization){
         roleJComboBox.removeAllItems();
-        for (Role role : organization.getSupportedRole()) {
+        for (Role role : organization.getSupportedRole()){
             roleJComboBox.addItem(role);
         }
     }
+
 
     public void popData() {
 

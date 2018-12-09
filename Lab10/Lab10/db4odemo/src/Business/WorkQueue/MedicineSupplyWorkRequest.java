@@ -11,25 +11,62 @@ package Business.WorkQueue;
  */
 public class MedicineSupplyWorkRequest extends WorkRequest{
     
-    private String saltName;
-       private String composition;
+    private String brand;
+       private String medName;
+       private float price;
+       private String saltc1;
+       private String saltc2;
+       private String saltc3;
        private String medType;
        private int quantity;
+       private String diseaseName;
 
-    public String getSaltName() {
-        return saltName;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setSaltName(String saltName) {
-        this.saltName = saltName;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
-    public String getComposition() {
-        return composition;
+    public String getMedName() {
+        return medName;
     }
 
-    public void setComposition(String composition) {
-        this.composition = composition;
+    public void setMedName(String medName) {
+        this.medName = medName;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public String getSaltc1() {
+        return saltc1;
+    }
+
+    public void setSaltc1(String saltc1) {
+        this.saltc1 = saltc1;
+    }
+
+    public String getSaltc2() {
+        return saltc2;
+    }
+
+    public void setSaltc2(String saltc2) {
+        this.saltc2 = saltc2;
+    }
+
+    public String getSaltc3() {
+        return saltc3;
+    }
+
+    public void setSaltc3(String saltc3) {
+        this.saltc3 = saltc3;
     }
 
     public String getMedType() {
@@ -48,9 +85,19 @@ public class MedicineSupplyWorkRequest extends WorkRequest{
         this.quantity = quantity;
     }
 
+    public String getDiseaseName() {
+        return diseaseName;
+    }
+
+    public void setDiseaseName(String diseaseName) {
+        this.diseaseName = diseaseName;
+    }
+
+    
+
     @Override
     public String toString() {
-        return saltName ;
+        return medName;
     }
 
     
