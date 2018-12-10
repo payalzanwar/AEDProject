@@ -100,7 +100,7 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
             row[2] = ((MedicineSupplyWorkRequest) request).getQuantity();
             row[3] = ((MedicineSupplyWorkRequest) request).getPrice();
             row[4] = ((MedicineSupplyWorkRequest) request).getSaltc1();
-            row[5] = ((MedicineSupplyWorkRequest) request).getSaltc3();
+            row[5] = ((MedicineSupplyWorkRequest) request).getSaltc2();
             row[6] = ((MedicineSupplyWorkRequest) request).getSaltc3();
             row[7] = ((MedicineSupplyWorkRequest) request).getMedType();
             row[8] = ((MedicineSupplyWorkRequest) request).getDiseaseName();
@@ -452,19 +452,17 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         request.setMedType(type);
         request.setSender(user);
         request.setStatus("Sent");
-                System.out.println("chal yaha tak to aaya "+this.org);
 
         Organization org = null;
         Enterprise e = (Enterprise) enterpriseList.getSelectedItem();
         Organization o = (Organization) orgCombo.getSelectedItem();
         for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
             
-            if(this.org instanceof PharmacistOrganization && organization instanceof SupplyManagerOrganization)
+            if(this.org instanceof PharmacistOrganization && o instanceof SupplyManagerOrganization)
             
 //            if (organization instanceof SupplyManagerOrganization)
             {
-                org = organization;
-                System.out.println("Yeah bitches!!");
+                org = o;
                 JOptionPane.showMessageDialog(TypeCombo, "Order Placed!");
                 break;
             }
@@ -570,10 +568,17 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
          try {
-             String SaltName = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 0);
+             
+             WorkRequest SaltName =   (WorkRequest) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 0);
+             
+             if(SaltName.getStatus().equalsIgnoreCase("added"))
+             { JOptionPane.showMessageDialog(TypeCombo,"This order is already added to the inventory");
+                 return;}
+             
+             
             String brand = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 1);
              int units = (int) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 2);
-            int Price = (int) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 3);
+            float Price = (float) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 3);
             
 
             String saltc1 = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 4);
@@ -583,12 +588,20 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
             String type = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 7);
             
             String disease = (String) workRequestJTable.getValueAt(workRequestJTable.getSelectedRow(), 8);
-            
+             System.out.println("SaltName: "+SaltName);
+             System.out.println("brand: "+brand);
+             System.out.println("units: "+units);
+             System.out.println("Price: "+Price);
+             System.out.println("saltc1: "+saltc1);
+             System.out.println("saltc2: "+saltc2);
+             System.out.println("saltc3: "+saltc3);
+             System.out.println("type: "+type);
+             System.out.println("disease: "+disease);
 
             String[] s = new String[9];
 
             s[0] = brand;
-            s[1] = SaltName;
+            s[1] = String.valueOf(SaltName);
             s[2] = saltc1;
             s[3] = saltc2;
             s[4] = saltc3;
@@ -596,32 +609,40 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
             s[6] = disease;
             s[7] = String.valueOf(units);
             s[8] = String.valueOf(Price);
-
+            
+            for(int i = 0; i<9;i++)
+               System.out.println("String s: "+s[i]);
+               
             for (Organization organization : e.getOrganizationDirectory().getOrganizationList()) {
                 if (organization instanceof SupplyManagerOrganization) {
+                    System.out.println("Entered condition for SupplyManagerOrganization");
                     boolean flag = false;
+                    
                     for (Medicine m : b.getSupplierMedicineList()) {
-
+                        System.out.println("Entered for1");
                         if (m.getBrand().equalsIgnoreCase(brand)
                                 && m.getSaltComposition1().equalsIgnoreCase(saltc1)
                                 && m.getSaltComposition2().equalsIgnoreCase(saltc2)
                                 && m.getSaltComposition3().equalsIgnoreCase(saltc3)
-                                && m.getSaltname().equalsIgnoreCase(SaltName)
+                                && m.getSaltname().equalsIgnoreCase(String.valueOf(SaltName))
                                 && m.getDisease().equalsIgnoreCase(disease)
                                 && m.getType().equalsIgnoreCase(type)
                                 && m.getPrice() == (Price)) {
                                 m.setUnits(m.getUnits() + units);
                                 JOptionPane.showMessageDialog(this, "Units Updated");
+                                SaltName.setStatus("Added");
+                                populateTable();
                                 flag = true;
                                 break;
                             }}
                     if (flag == false){
                     for (Medicine m : b.getSupplierMedicineList()) {
+                        System.out.println("Entered for2");
                         if (m.getBrand().equalsIgnoreCase(brand)
                                 && m.getSaltComposition1().equalsIgnoreCase(saltc1)
                                 && m.getSaltComposition2().equalsIgnoreCase(saltc2)
                                 && m.getSaltComposition3().equalsIgnoreCase(saltc3)
-                                && m.getSaltname().equalsIgnoreCase(SaltName)
+                                && m.getSaltname().equalsIgnoreCase(String.valueOf(SaltName))
                                 && m.getDisease().equalsIgnoreCase(disease)
                                 && m.getType().equalsIgnoreCase(type)
                                 && m.getPrice() != (Price)) {int selectionButton = JOptionPane.YES_NO_OPTION;
@@ -630,13 +651,18 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                                 m.setUnits(m.getUnits() + units);
                                 m.setPrice(Price);
                                 JOptionPane.showMessageDialog(this, "Units and price updated");
+                                SaltName.setStatus("Added");
+                                populateTable();
                                 flag = true;    
                             }
                             break;
                             }}}
                     if(flag==false){
+                        System.out.println("Entered 3");
                         b.AddSupplierMedicine(s);
                         JOptionPane.showMessageDialog(this, "Medicines added successfully!");
+                        SaltName.setStatus("Added");
+                                populateTable();
                     break;
                         
                     }
@@ -654,7 +680,7 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                                 && m.getSaltComposition1().equalsIgnoreCase(saltc1)
                                 && m.getSaltComposition2().equalsIgnoreCase(saltc2)
                                 && m.getSaltComposition3().equalsIgnoreCase(saltc3)
-                                && m.getSaltname().equalsIgnoreCase(SaltName)
+                                && m.getSaltname().equalsIgnoreCase(String.valueOf(SaltName))
                                 && m.getDisease().equalsIgnoreCase(disease)
                                 && m.getType().equalsIgnoreCase(type)
                                 && m.getPrice() == (Price)) {
@@ -663,6 +689,8 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                                 m.setUnits(m.getUnits() + units);
 
                                 JOptionPane.showMessageDialog(this, "Units Updated");
+                                SaltName.setStatus("Added");
+                                populateTable();
                                 flag = true;
                                 break;
                             }}
@@ -672,7 +700,7 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                                 && m.getSaltComposition1().equalsIgnoreCase(saltc1)
                                 && m.getSaltComposition2().equalsIgnoreCase(saltc2)
                                 && m.getSaltComposition3().equalsIgnoreCase(saltc3)
-                                && m.getSaltname().equalsIgnoreCase(SaltName)
+                                && m.getSaltname().equalsIgnoreCase(String.valueOf(SaltName))
                                 && m.getDisease().equalsIgnoreCase(disease)
                                 && m.getType().equalsIgnoreCase(type)
                                 && m.getPrice() != (Price)) {int selectionButton = JOptionPane.YES_NO_OPTION;
@@ -681,6 +709,8 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                                 m.setUnits(m.getUnits() + units);
                                 m.setPrice(Price);
                                 JOptionPane.showMessageDialog(this, "Units and price updated");
+                                SaltName.setStatus("Added");
+                                populateTable();
                                 flag = true;    
                             }
                             break;
@@ -688,6 +718,8 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                     if(flag==false){
                         b.AddMedicine(s);
                         JOptionPane.showMessageDialog(this, "Medicines added successfully!");
+                        SaltName.setStatus("Added");
+                                populateTable();
                     break;
                         
                     }
@@ -697,11 +729,7 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
             }
 
         } catch (NumberFormatException e) {
-            if (medNameTxt.getText().equals("") || brandNameTxt.getText().equals("") || PriceTxt.getText().equals("") || composition1Txt.getText().equals("")
-                    || composition2Txt.getText().equals("") || composition3Txt.getText().equals("") || Noofunitstxt.getText().equals("") || diseasename.getText().equals("")) {
-                JOptionPane.showMessageDialog(TypeCombo, "All the details are required.");
-                return;
-            }
+            
             JOptionPane.showMessageDialog(TypeCombo, "Please check the input format.");
 
         }
