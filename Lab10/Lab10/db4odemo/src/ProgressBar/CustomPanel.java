@@ -42,7 +42,7 @@ public class CustomPanel extends JPanel  {
         Arc2D.Float arc = new Arc2D.Float(Arc2D.PIE);
         Ellipse2D circle = new Ellipse2D.Float(0, 0, 110, 110);
         arc.setFrameFromCenter(new Point(0, 0), new Point(120, 120));
-        circle.setFrameFromCenter(new Point(0, 0), new Point(110, 110));
+        circle.setFrameFromCenter(new Point(0, 0), new Point(100, 100));
         arc.setAngleStart(1);
         arc.setAngleExtent(-progress*3.6); //(360/100)--we devided 360 into 100 parts for finishing 100%
         g2.setColor(Color.blue);

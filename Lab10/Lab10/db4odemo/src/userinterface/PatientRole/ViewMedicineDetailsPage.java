@@ -73,29 +73,53 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
         jScrollPane2 = new javax.swing.JScrollPane();
         PharmacyTable = new javax.swing.JTable();
         BuyNowBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 102));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Medicine Details");
+        add(jLabel1);
+        jLabel1.setBounds(0, 0, 845, 59);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 102));
         jLabel3.setText("Salt Composition");
+        add(jLabel3);
+        jLabel3.setBounds(10, 76, 205, 37);
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 51, 102));
         jLabel8.setText("Available In");
+        add(jLabel8);
+        jLabel8.setBounds(10, 271, 118, 37);
 
+        AddToCartBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AddToCartBtn.setForeground(new java.awt.Color(0, 51, 102));
         AddToCartBtn.setText("Add to Cart");
         AddToCartBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddToCartBtnActionPerformed(evt);
             }
         });
+        add(AddToCartBtn);
+        AddToCartBtn.setBounds(331, 452, 150, 43);
 
+        BackBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BackBtn.setForeground(new java.awt.Color(0, 51, 102));
         BackBtn.setText("Back");
         BackBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackBtnActionPerformed(evt);
             }
         });
+        add(BackBtn);
+        BackBtn.setBounds(108, 452, 109, 43);
 
+        SaltTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        SaltTable.setForeground(new java.awt.Color(0, 51, 102));
         SaltTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -131,6 +155,11 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
             SaltTable.getColumnModel().getColumn(7).setResizable(false);
         }
 
+        add(jScrollPane1);
+        jScrollPane1.setBounds(10, 116, 825, 137);
+
+        PharmacyTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        PharmacyTable.setForeground(new java.awt.Color(0, 51, 102));
         PharmacyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -156,59 +185,23 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
         });
         jScrollPane2.setViewportView(PharmacyTable);
 
+        add(jScrollPane2);
+        jScrollPane2.setBounds(10, 314, 825, 110);
+
+        BuyNowBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BuyNowBtn.setForeground(new java.awt.Color(0, 51, 102));
         BuyNowBtn.setText("Buy Now");
         BuyNowBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuyNowBtnActionPerformed(evt);
             }
         });
+        add(BuyNowBtn);
+        BuyNowBtn.setBounds(604, 452, 150, 43);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AddToCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(132, 132, 132)
-                .addComponent(BuyNowBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 892, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(138, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AddToCartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BuyNowBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(146, 146, 146))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
+        add(jLabel2);
+        jLabel2.setBounds(0, -30, 850, 670);
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddToCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddToCartBtnActionPerformed
@@ -234,6 +227,7 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
     private javax.swing.JTable PharmacyTable;
     private javax.swing.JTable SaltTable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;

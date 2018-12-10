@@ -6,12 +6,19 @@
 package userinterface.PatientRole;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.Medicine.Medicine;
+import Business.Network.Network;
 import Business.Order.Order;
 import Business.Order.OrderDirectory;
+import Business.Organization.DoctorOrganization;
+import Business.Organization.Organization;
+import Business.Organization.PharmacistOrganization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CustomerWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -33,8 +40,8 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
     
     private UserAccount account;
     private EcoSystem system;
-    private List<Order> o;
-    public OrderDetailsJPanel(JPanel userProcessContainer,List<Order> o,UserAccount userAccount,EcoSystem system) {
+    private ArrayList<Order> o;
+    public OrderDetailsJPanel(JPanel userProcessContainer,ArrayList<Order> o,UserAccount userAccount,EcoSystem system) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         
@@ -90,7 +97,10 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
         Removebtn = new javax.swing.JButton();
         PlaceOrderlabel = new javax.swing.JLabel();
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setText("                   Order Details");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 36, 297, -1));
 
         OrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,7 +128,11 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
             OrderTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 86, 630, 129));
+
         jLabel2.setText("Total Price");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(496, 269, 95, -1));
+        jPanel2.add(TotalPricetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 266, 81, -1));
 
         jButton1.setText("Place Order");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -126,13 +140,15 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(553, 327, 145, -1));
 
-        jButton2.setText(">>Back");
+        jButton2.setText("<<Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 327, -1, -1));
 
         Removebtn.setText("Remove");
         Removebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -140,57 +156,10 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
                 RemovebtnActionPerformed(evt);
             }
         });
+        jPanel2.add(Removebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 265, -1, -1));
 
         PlaceOrderlabel.setText("Your order has been placed. Thank you!");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(228, 228, 228))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Removebtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(TotalPricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(64, 64, 64))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(PlaceOrderlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(215, 215, 215))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel1)
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(TotalPricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Removebtn))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(PlaceOrderlabel)
-                .addGap(44, 44, 44))
-        );
+        jPanel2.add(PlaceOrderlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 387, 309, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -254,10 +223,51 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_RemovebtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
         PlaceOrderlabel.setEnabled(true);
         OrderTable.setEnabled(false);
         Removebtn.setEnabled(false);
+        
+        String message = "Order Request";
+        CustomerWorkRequest request = new CustomerWorkRequest();
+        request.setOrderlist(o);
+        
+        request.setMessage(message);
+        request.setSender(account);
+        request.setStatus("Sent");
+        request.setMessage(message);
+
+        Enterprise ent = null;
+        for (Network network : system.getNetworkList()) {
+           //   RegionCombo.addItem(network);
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                Enterprise.EnterpriseType  type =enterprise.getEnterpriseType();
+            if(type.equals(type.Pharmacy))
+             ent=enterprise;
+            break;
+            }
+        }
+        Organization org = null;
+        for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof PharmacistOrganization) {
+                org = organization;
+
+                break;
+            }
+        }
+
+        
+
+        
+        
+        if (org != null) {
+
+            org.getWorkQueue().getWorkRequestList().add(request);
+            account.getWorkQueue().getWorkRequestList().add(request);
+
+            JOptionPane.showMessageDialog(null, "Request sent!");
+        }
+          
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

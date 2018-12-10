@@ -62,7 +62,6 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        DisplayNameTxt = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         DiseaseListComboBox = new javax.swing.JComboBox();
@@ -75,24 +74,49 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
 
+        setLayout(null);
+
+        jLabel1.setBackground(null);
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Search For Alternate Medicine");
+        jLabel1.setAutoscrolls(true);
+        add(jLabel1);
+        jLabel1.setBounds(0, 0, 800, 130);
 
+        jLabel2.setBackground(null);
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText(" Disease");
+        add(jLabel2);
+        jLabel2.setBounds(30, 120, 102, 33);
 
-        DiseaseListComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ColdNflu", "Malaria", "Typhoid", "Cancer" }));
+        DiseaseListComboBox.setBackground(null);
+        DiseaseListComboBox.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DiseaseListComboBox.setForeground(new java.awt.Color(0, 51, 102));
+        DiseaseListComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "ColdNflu", "Malaria", "Typhoid", "Cancer" }));
         DiseaseListComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DiseaseListComboBoxActionPerformed(evt);
             }
         });
+        add(DiseaseListComboBox);
+        DiseaseListComboBox.setBounds(30, 150, 105, 40);
 
+        jLabel3.setBackground(null);
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Search By Salt or Medicine Name");
+        add(jLabel3);
+        jLabel3.setBounds(340, 120, 249, 33);
 
+        AlternateMedicineTable.setAutoCreateRowSorter(true);
+        AlternateMedicineTable.setBackground(new java.awt.Color(0, 51, 102));
+        AlternateMedicineTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AlternateMedicineTable.setForeground(new java.awt.Color(255, 255, 255));
         AlternateMedicineTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -111,140 +135,91 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(AlternateMedicineTable);
 
+        add(jScrollPane1);
+        jScrollPane1.setBounds(20, 260, 760, 260);
+
+        ViewDetailsBtn.setBackground(null);
+        ViewDetailsBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ViewDetailsBtn.setForeground(new java.awt.Color(0, 51, 102));
         ViewDetailsBtn.setText("View Details");
         ViewDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ViewDetailsBtnActionPerformed(evt);
             }
         });
+        add(ViewDetailsBtn);
+        ViewDetailsBtn.setBounds(430, 540, 160, 48);
 
+        ConsultDoctorBtn.setBackground(null);
+        ConsultDoctorBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ConsultDoctorBtn.setForeground(new java.awt.Color(0, 51, 102));
+        ConsultDoctorBtn.setText("Request Pharmacist");
+        ConsultDoctorBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultDoctorBtnActionPerformed(evt);
+            }
+        });
+        add(ConsultDoctorBtn);
+        ConsultDoctorBtn.setBounds(20, 540, 170, 48);
+
+        SearchSaltOrMedicineTxt.setBackground(null);
+        SearchSaltOrMedicineTxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        SearchSaltOrMedicineTxt.setForeground(new java.awt.Color(0, 51, 102));
         SearchSaltOrMedicineTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchSaltOrMedicineTxtActionPerformed(evt);
             }
         });
+        add(SearchSaltOrMedicineTxt);
+        SearchSaltOrMedicineTxt.setBounds(340, 150, 249, 40);
 
+        jButton1.setBackground(null);
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 102));
         jButton1.setText("Search");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1);
+        jButton1.setBounds(620, 150, 120, 40);
 
+        jButton2.setBackground(null);
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 51, 102));
         jButton2.setText("Consult Doctor");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2);
+        jButton2.setBounds(620, 540, 160, 48);
 
+        jButton3.setBackground(null);
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 51, 102));
         jButton3.setText("Save list of Alternatives");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
+        add(jButton3);
+        jButton3.setBounds(210, 540, 200, 48);
 
+        jLabel4.setBackground(null);
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("                      Please select the rows of Alternative Medicines you searched for and Save the list!");
+        add(jLabel4);
+        jLabel4.setBounds(10, 210, 680, 17);
 
-        jButton4.setText("Save list of Alternatives");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("                      Please select the rows of Alternative Medicines you searched for and Save the list!");
-
-        jButton5.setText("Back");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(197, 197, 197)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(DisplayNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ViewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 836, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jButton5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)))
-                        .addContainerGap(28, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(DiseaseListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                            .addComponent(SearchSaltOrMedicineTxt))
-                        .addGap(38, 38, 38))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(51, 51, 51))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DisplayNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SearchSaltOrMedicineTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DiseaseListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(131, 131, 131)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(111, 111, 111))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(85, 85, 85))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ViewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(201, 201, 201))))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/back.jpg"))); // NOI18N
+        jLabel5.setAutoscrolls(true);
+        add(jLabel5);
+        jLabel5.setBounds(-10, -10, 1120, 1050);
     }// </editor-fold>//GEN-END:initComponents
     
 
@@ -296,13 +271,18 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+//        ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, hashlist,account,enterprise,system);
+//        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
+//        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
+//        layout.next(RightPaneldashboard);
+        
         ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, hashlist,account,enterprise,system);
         RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
         CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
         layout.next(RightPaneldashboard);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void ViewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewDetailsBtnActionPerformed
+    private void ViewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
         int row = AlternateMedicineTable.getSelectedRow();
         if(row<0) {
@@ -316,7 +296,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         RightPaneldashboard.add("ViewSupplier", vs);
         CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
         layout.next(RightPaneldashboard);
-    }//GEN-LAST:event_ViewDetailsBtnActionPerformed
+    }                                              
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO adald your handling code here:
@@ -338,8 +318,10 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
              JOptionPane.showMessageDialog(null, "Please select a row");
         }
        hashlist = new HashSet<Medicine>(list);
-       
+      
     }//GEN-LAST:event_jButton3ActionPerformed
+
+                                                  
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -353,7 +335,6 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AlternateMedicineTable;
     private javax.swing.JComboBox DiseaseListComboBox;
-    private javax.swing.JLabel DisplayNameTxt;
     private javax.swing.JTextField SearchSaltOrMedicineTxt;
     private javax.swing.JButton ViewDetailsBtn;
     private javax.swing.JButton jButton1;
