@@ -306,7 +306,9 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
-        
+//        if(finallist.size() == 0){
+//        JOptionPane.showMessageDialog(RegionCombo, "The cart is empty");
+//        }
          OrderDetailsJPanel orderDetail = new OrderDetailsJPanel(userProcessContainer,finallist,userAccount,system);
         userProcessContainer.add("OrderDetailsPanel", orderDetail);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
@@ -328,7 +330,12 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
        //  ArrayList<String> list = new ArrayList<>();
 
         Medicine m = (Medicine) ChooseMedCombo.getSelectedItem();
-
+//        if(enterpriseCombo.getSelectedItem().equals("") 
+//                || Qtyxt.getText().equals("")
+//                || Pricetxt.getText().equals("")){
+//        JOptionPane.showMessageDialog(RegionCombo, "Please complete the details.");
+//        return;
+//        }
         int qty = Integer.parseInt(Qtyxt.getText());
         for (Medicine medi : med.getMedicineList()) {
             if (m.getSaltname().equals(medi.getSaltname())) {

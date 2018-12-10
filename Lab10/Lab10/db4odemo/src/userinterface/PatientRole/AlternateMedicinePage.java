@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import static jdk.nashorn.internal.objects.NativeString.trim;
 
 /**
  *
@@ -68,7 +69,6 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         AlternateMedicineTable = new javax.swing.JTable();
         ViewDetailsBtn = new javax.swing.JButton();
-        ConsultDoctorBtn = new javax.swing.JButton();
         SearchSaltOrMedicineTxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -224,19 +224,6 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     
 
     
-    private void ConsultDoctorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultDoctorBtnActionPerformed
-        // TODO add your handling code here:
-//        ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, list,account,enterprise);
-//        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
-//        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
-//        layout.next(RightPaneldashboard);
-        
-        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(RightPaneldashboard,account,system);
-        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", pmed);
-        CardLayout layout1 = (CardLayout)RightPaneldashboard.getLayout();
-        layout1.next(RightPaneldashboard);
-    }//GEN-LAST:event_ConsultDoctorBtnActionPerformed
-
     private void SearchSaltOrMedicineTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSaltOrMedicineTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchSaltOrMedicineTxtActionPerformed
@@ -252,7 +239,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         model.setRowCount(0);
         
          for(Medicine medi : med.getMedicineList()){
-             if(medname.equals(medi.getSaltname())||(medname.equals(medi.getSaltComposition1())||(medname.equals(medi.getSaltComposition2())||(medname.equals(medi.getSaltComposition3()))))){
+             if(medname.equalsIgnoreCase(trim(medi.getSaltname()))||(medname.equalsIgnoreCase(trim(medi.getSaltComposition1()))||(medname.equalsIgnoreCase(trim(medi.getSaltComposition2()))||(medname.equalsIgnoreCase(trim(medi.getSaltComposition3())))))){
                  if(disease.equals(medi.getDisease()))
              {
                 Object[] row = new Object[7];
@@ -336,16 +323,25 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 
                                                   
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        RightPaneldashboard.remove(this);
+
+       CardLayout layout = (CardLayout) RightPaneldashboard.getLayout();
+       layout.previous(RightPaneldashboard);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AlternateMedicineTable;
-    private javax.swing.JButton ConsultDoctorBtn;
     private javax.swing.JComboBox DiseaseListComboBox;
     private javax.swing.JTextField SearchSaltOrMedicineTxt;
     private javax.swing.JButton ViewDetailsBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

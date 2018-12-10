@@ -15,6 +15,7 @@ import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.HashSet;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -116,7 +117,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(workRequestJTable);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(60, 90, 620, 130);
+        jScrollPane1.setBounds(60, 90, 770, 130);
 
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +126,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(refreshJButton);
-        refreshJButton.setBounds(600, 50, 85, 29);
+        refreshJButton.setBounds(740, 50, 85, 29);
 
         assignJButton.setText("Disapprove");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -150,11 +151,12 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jButton1.setBounds(60, 260, 170, 29);
 
         viewtxt.setColumns(20);
+        viewtxt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         viewtxt.setRows(5);
         jScrollPane2.setViewportView(viewtxt);
 
         jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(60, 360, 630, 150);
+        jScrollPane2.setBounds(60, 360, 760, 150);
 
         jLabel2.setText("Detailed Message ");
         jPanel2.add(jLabel2);
@@ -200,15 +202,20 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
  int selectedRow = workRequestJTable.getSelectedRow();
-
+    
         if (selectedRow < 0){
             return;
         }
 
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        
+        if(!(request.getStatus().equalsIgnoreCase("Completed"))){
         request.setStatus("Disapproved");
          request.setMessage("Alternative Prescription Disapproved");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Request is already completed!");
+        }
       populateTable();
 
     }//GEN-LAST:event_assignJButtonActionPerformed
@@ -216,7 +223,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         viewtxt.setText("");
-        String output = "Hello Doctor\n I need consultation regarding the Alternative medicines I found.\n ";
+        String output = "Hello Doctor\nFollowing are the alternative medicines.\n";
         
         HashSet<Medicine> m = new HashSet<Medicine>();
         int selectedRow = workRequestJTable.getSelectedRow();
@@ -229,13 +236,14 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
        int i=1;
        
         for(Medicine med : request.getAlternativelist()) {
-            output= output + i+ med.getBrand()+" "+med.getSaltname()+" "+med.getSaltComposition1()+" "+med.getSaltComposition2()+" "+med.getSaltComposition3()+" "
-             +" for Disease "+" "+med.getDisease() +   "\n";
+            output= output + i+"]  "+ med.getBrand()+"  "+med.getSaltname()+"  "+med.getSaltComposition1()+"  "+med.getSaltComposition2()+"  "+med.getSaltComposition3()+"  "
+             +"for"+"  "+med.getDisease() +"\n";
         viewtxt.setText(output);
         viewtxt.setEditable(false);
         i++;
         
         }
+        viewtxt.setText(output+"Please approve them if they are fine to take!\n\nThank you.");
         
         
 
@@ -250,9 +258,14 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         }
 
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-
+        if(!(request.getStatus().equalsIgnoreCase("Completed"))){
         request.setStatus("Approved");
          request.setMessage("Alternative Prescription Approved");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Request is already completed!");
+        }
         populateTable();
         
     }//GEN-LAST:event_jButton2ActionPerformed

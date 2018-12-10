@@ -229,13 +229,25 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         String message = "Alternative Medicine List";
         int selectedRow = workRequestJTable.getSelectedRow();
         if (selectedRow < 0){
+            JOptionPane.showMessageDialog(DoctorCombo, "Please select a row");
             return;
         }
+        
+        
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
         
-        
-      //  HospitalWorkRequest req = new HospitalWorkRequest();
-         Employee e = (Employee) DoctorCombo.getSelectedItem();
+        //if((request.getReceiver().equals(userAccount))){
+             Employee e = (Employee) DoctorCombo.getSelectedItem();
+//        if((request.getStatus().equalsIgnoreCase("Pending"))){
+//        JOptionPane.showMessageDialog(null,"Request is already processed");}
+            
+//        HospitalWorkRequest req = new HospitalWorkRequest();
+        // Employee e = (Employee) DoctorCombo.getSelectedItem();
+//         if(request.getReceiver().getEmployee().equals(e))
+         if(!request.getStatus().equalsIgnoreCase("sent"))
+                JOptionPane.showMessageDialog(null,"Request is already processed");
+         else
+         {
           request.setAlternativelist(request.getAlternativelist());
         System.out.println("size of altenative list:"+request.getAlternativelist().size());  
         request.setMessage(message);
@@ -274,13 +286,15 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
              System.out.println("size :"+u.getWorkQueue().getWorkRequestList().size());
             JOptionPane.showMessageDialog(null, "Request sent!");
         }
+        }
+        
          
-         
+        
         
         populateTable();
         
    
-
+        
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
@@ -291,12 +305,14 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
         
-
+        
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-     
+        if(request.getStatus().equalsIgnoreCase("approved")){
         request.setStatus("Completed");
         populateTable();
-        request.getSender().getWorkQueue().getWorkRequestList().add(request);
+        request.getSender().getWorkQueue().getWorkRequestList().add(request);}
+        else{JOptionPane.showMessageDialog(DoctorCombo, "This request is not eligible to be processed");}
+    
        
        
     }//GEN-LAST:event_processJButtonActionPerformed
