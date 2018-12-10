@@ -68,14 +68,16 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         RegionCombo.removeAllItems();
         enterpriseCombo.removeAllItems();
         ChooseMedCombo.removeAllItems();
+        BrandComboBox.removeAllItems();
         int Price=0;
         for (Network network : system.getNetworkList()) {
             RegionCombo.addItem(network);
         }
-
+        
         
         for(Medicine medi : med.getMedicineList()){
              ChooseMedCombo.addItem(medi);
+             BrandComboBox.addItem(medi.getBrand());
              }
         
 
@@ -237,8 +239,6 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Brand");
 
-        BrandComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -391,6 +391,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         
         Medicine medicine= (Medicine) ChooseMedCombo.getSelectedItem();
         float Price=0;

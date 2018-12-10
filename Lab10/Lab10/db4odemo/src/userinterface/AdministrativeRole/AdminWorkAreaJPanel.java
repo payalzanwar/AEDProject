@@ -33,7 +33,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         valueLabel.setText(enterprise.getName());
         Enterprise.EnterpriseType  type =enterprise.getEnterpriseType();
             if(!(type.equals(type.Hospital)))
-            workassgnbtn.setEnabled(false);
+            workassgnbtn.setVisible(false);
     }
 
     
@@ -65,7 +65,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 170, -1));
+        add(userJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 170, -1));
 
         manageEmployeeJButton.setText("Manage Employee");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +73,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageEmployeeJButtonActionPerformed(evt);
             }
         });
-        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 180, -1));
+        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 180, -1));
 
         manageOrganizationJButton.setText("Manage Organization");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -81,14 +81,14 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageOrganizationJButtonActionPerformed(evt);
             }
         });
-        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
+        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, -1, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 120, 30));
 
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 130, -1));
 
         workassgnbtn.setText("Manage Work Assignments");
         workassgnbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +96,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 workassgnbtnActionPerformed(evt);
             }
         });
-        add(workassgnbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 250, -1));
+        add(workassgnbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 250, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed

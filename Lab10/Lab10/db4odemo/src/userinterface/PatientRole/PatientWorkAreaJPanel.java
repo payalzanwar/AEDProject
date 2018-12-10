@@ -24,12 +24,10 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
      */
     AlternateMedicinePage alternateMedicinePage;
     private EcoSystem system;
-    private UserAccount account;
-    private Enterprise enterprise;
-
-    //JPanel Rightpaneldashboard;
-
-    public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem system) {
+   private UserAccount account;
+   private Enterprise enterprise;
+  //  public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PatientOrganization organization, Enterprise enterprise) {
+     public PatientWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system){ 
         initComponents();
         this.setSize(1680, 1050);
         this.Rightpaneldashboard = userProcessContainer;
@@ -96,8 +94,8 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         });
         Rightpaneldashboard.add(OverthecounterBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 414, 73));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
-        Rightpaneldashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 700, 520));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/dashboard.jpg"))); // NOI18N
+        Rightpaneldashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -60, 730, 530));
 
         jTabbedPane1.addTab("Dashboard", Rightpaneldashboard);
 
