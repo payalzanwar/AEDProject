@@ -97,7 +97,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         Rightpaneldashboard.add(OverthecounterBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 414, 73));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
-        Rightpaneldashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 700, 520));
+        Rightpaneldashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 700, 530));
 
         jTabbedPane1.addTab("Dashboard", Rightpaneldashboard);
 

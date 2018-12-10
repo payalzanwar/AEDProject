@@ -82,17 +82,18 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         viewtxt = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
-        setLayout(null);
+        setLayout(new java.awt.CardLayout());
 
+        jPanel2.setForeground(new java.awt.Color(0, 51, 102));
         jPanel2.setLayout(null);
 
+        workRequestJTable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        workRequestJTable.setForeground(new java.awt.Color(0, 51, 102));
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Message", "Sender", "Receiver", "Status"
@@ -116,8 +117,11 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(workRequestJTable);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(60, 90, 620, 130);
+        jScrollPane1.setBounds(50, 80, 620, 130);
 
+        refreshJButton.setBackground(new java.awt.Color(255, 255, 255));
+        refreshJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        refreshJButton.setForeground(new java.awt.Color(0, 51, 102));
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,8 +129,11 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(refreshJButton);
-        refreshJButton.setBounds(600, 50, 85, 29);
+        refreshJButton.setBounds(550, 30, 120, 40);
 
+        assignJButton.setBackground(new java.awt.Color(255, 255, 255));
+        assignJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        assignJButton.setForeground(new java.awt.Color(0, 51, 102));
         assignJButton.setText("Disapprove");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,12 +141,18 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(assignJButton);
-        assignJButton.setBounds(430, 550, 200, 29);
+        assignJButton.setBounds(430, 560, 200, 50);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("        Doctor Work Area");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(260, 30, 281, 29);
+        jLabel1.setBounds(0, 0, 710, 50);
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 102));
         jButton1.setText("View Details");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,19 +160,27 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(60, 260, 170, 29);
+        jButton1.setBounds(50, 220, 170, 50);
 
         viewtxt.setColumns(20);
+        viewtxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        viewtxt.setForeground(new java.awt.Color(0, 51, 102));
         viewtxt.setRows(5);
         jScrollPane2.setViewportView(viewtxt);
 
         jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(60, 360, 630, 150);
+        jScrollPane2.setBounds(60, 400, 630, 150);
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 102));
         jLabel2.setText("Detailed Message ");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(60, 310, 270, 30);
+        jLabel2.setBounds(60, 360, 230, 30);
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 51, 102));
         jButton2.setText("Approve");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,83 +188,33 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(jButton2);
-        jButton2.setBounds(160, 550, 190, 29);
+        jButton2.setBounds(150, 560, 190, 50);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/DoctorRole/doccc.jpg"))); // NOI18N
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(0, -80, 710, 780);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 882, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 852, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 741, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
-        add(jPanel3);
-        jPanel3.setBounds(10, 10, 870, 730);
+        add(jPanel3, "card2");
     }// </editor-fold>//GEN-END:initComponents
-
-    private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
-        populateTable();
-    }//GEN-LAST:event_refreshJButtonActionPerformed
-
-    private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
- int selectedRow = workRequestJTable.getSelectedRow();
-
-        if (selectedRow < 0){
-            return;
-        }
-
-        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        
-        request.setStatus("Disapproved");
-         request.setMessage("Alternative Prescription Disapproved");
-      populateTable();
-
-    }//GEN-LAST:event_assignJButtonActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        viewtxt.setText("");
-        String output = "Hello Doctor\n I need consultation regarding the Alternative medicines I found.\n ";
-        
-        HashSet<Medicine> m = new HashSet<Medicine>();
-        int selectedRow = workRequestJTable.getSelectedRow();
-
-        if (selectedRow < 0){
-            return;
-        }
-        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        
-       int i=1;
-       
-        for(Medicine med : request.getAlternativelist()) {
-            output= output + i+ med.getBrand()+" "+med.getSaltname()+" "+med.getSaltComposition1()+" "+med.getSaltComposition2()+" "+med.getSaltComposition3()+" "
-             +" for Disease "+" "+med.getDisease() +   "\n";
-        viewtxt.setText(output);
-        viewtxt.setEditable(false);
-        i++;
-        
-        }
-        
-        
-
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         int selectedRow = workRequestJTable.getSelectedRow();
+        int selectedRow = workRequestJTable.getSelectedRow();
 
         if (selectedRow < 0){
             return;
@@ -252,10 +223,54 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
 
         request.setStatus("Approved");
-         request.setMessage("Alternative Prescription Approved");
+        request.setMessage("Alternative Prescription Approved");
         populateTable();
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        viewtxt.setText("");
+        String output = "Hello Doctor\n I need consultation regarding the Alternative medicines I found.\n ";
+
+        HashSet<Medicine> m = new HashSet<Medicine>();
+        int selectedRow = workRequestJTable.getSelectedRow();
+
+        if (selectedRow < 0){
+            return;
+        }
+        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+
+        int i=1;
+
+        for(Medicine med : request.getAlternativelist()) {
+            output= output + i+ med.getBrand()+" "+med.getSaltname()+" "+med.getSaltComposition1()+" "+med.getSaltComposition2()+" "+med.getSaltComposition3()+" "
+            +" for Disease "+" "+med.getDisease() +   "\n";
+            viewtxt.setText(output);
+            viewtxt.setEditable(false);
+            i++;
+
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
+        int selectedRow = workRequestJTable.getSelectedRow();
+
+        if (selectedRow < 0){
+            return;
+        }
+
+        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+
+        request.setStatus("Disapproved");
+        request.setMessage("Alternative Prescription Disapproved");
+        populateTable();
+    }//GEN-LAST:event_assignJButtonActionPerformed
+
+    private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
+        populateTable();
+    }//GEN-LAST:event_refreshJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
@@ -263,6 +278,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;

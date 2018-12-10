@@ -159,7 +159,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         enterpriseCombo.setBounds(570, 60, 110, 30);
 
         backJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        backJButton.setForeground(new java.awt.Color(0, 51, 102));
+        backJButton.setForeground(new java.awt.Color(0, 51, 51));
         backJButton.setText("<<Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,7 +170,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         backJButton.setBounds(38, 462, 87, 37);
 
         requestTestJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        requestTestJButton.setForeground(new java.awt.Color(0, 51, 102));
+        requestTestJButton.setForeground(new java.awt.Color(0, 51, 51));
         requestTestJButton.setText("View Cart");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,7 +185,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         ChooseMedCombo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ChooseMedCombo.setForeground(new java.awt.Color(0, 51, 102));
+        ChooseMedCombo.setForeground(new java.awt.Color(0, 51, 51));
         ChooseMedCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", " " }));
 
         Medicinetxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -197,10 +197,10 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         Quantitytxt.setText("Quantity");
 
         Qtyxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Qtyxt.setForeground(new java.awt.Color(255, 255, 255));
+        Qtyxt.setForeground(new java.awt.Color(0, 51, 51));
 
         AddtoCart.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        AddtoCart.setForeground(new java.awt.Color(0, 51, 102));
+        AddtoCart.setForeground(new java.awt.Color(0, 51, 51));
         AddtoCart.setText("Add to Cart");
         AddtoCart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +209,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         });
 
         BuyNow.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        BuyNow.setForeground(new java.awt.Color(0, 51, 102));
+        BuyNow.setForeground(new java.awt.Color(0, 51, 51));
         BuyNow.setText("Buy Now");
         BuyNow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,10 +222,10 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         jLabel1.setText("Price");
 
         Pricetxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Pricetxt.setForeground(new java.awt.Color(255, 255, 255));
+        Pricetxt.setForeground(new java.awt.Color(0, 51, 51));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 51, 102));
+        jButton1.setForeground(new java.awt.Color(0, 51, 51));
         jButton1.setText("Price Check");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +237,8 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Brand");
 
+        BrandComboBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BrandComboBox.setForeground(new java.awt.Color(0, 51, 51));
         BrandComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
