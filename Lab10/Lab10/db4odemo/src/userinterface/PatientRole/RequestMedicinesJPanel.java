@@ -149,8 +149,6 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("MedicineDetails"));
 
-        ChooseMedCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", " " }));
-
         Medicinetxt.setText("Medicine");
 
         Quantitytxt.setText("Quantity");
@@ -179,8 +177,6 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         });
 
         Medicinetxt1.setText("Brand");
-
-        ChooseMedCombo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", " " }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -292,7 +288,9 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
-        
+//        if(finallist.size() == 0){
+//        JOptionPane.showMessageDialog(RegionCombo, "The cart is empty");
+//        }
          OrderDetailsJPanel orderDetail = new OrderDetailsJPanel(userProcessContainer,finallist,userAccount,system);
         userProcessContainer.add("OrderDetailsPanel", orderDetail);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
@@ -310,11 +308,16 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     private void AddtoCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddtoCartActionPerformed
         // TODO add your handling code here:
-         int Price = 0, updatedPrice = 0;
+         float Price = 0, updatedPrice = 0;
        //  ArrayList<String> list = new ArrayList<>();
 
         Medicine m = (Medicine) ChooseMedCombo.getSelectedItem();
-
+//        if(enterpriseCombo.getSelectedItem().equals("") 
+//                || Qtyxt.getText().equals("")
+//                || Pricetxt.getText().equals("")){
+//        JOptionPane.showMessageDialog(RegionCombo, "Please complete the details.");
+//        return;
+//        }
         int qty = Integer.parseInt(Qtyxt.getText());
         for (Medicine medi : med.getMedicineList()) {
             if (m.getSaltname().equals(medi.getSaltname())) {
@@ -341,7 +344,13 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     private void BuyNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyNowActionPerformed
         // TODO add your handling code here:
-        int Price=0;
+//        if(enterpriseCombo.getSelectedItem().equals("") 
+//                || Qtyxt.getText().equals("")
+//                || Pricetxt.getText().equals("")){
+//        JOptionPane.showMessageDialog(RegionCombo, "Please complete the details.");
+//        return;
+//        }
+        float Price=0;
         finallist =new ArrayList<>();
         try{
         Medicine m = (Medicine) ChooseMedCombo.getSelectedItem();
@@ -377,9 +386,15 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+//        if(enterpriseCombo.getSelectedItem().equals("") 
+//                || Qtyxt.getText().equals("")
+//                || Pricetxt.getText().equals("")){
+//        JOptionPane.showMessageDialog(RegionCombo, "Please complete the details.");
+//        return;
+//        }
+//        
         Medicine medicine= (Medicine) ChooseMedCombo.getSelectedItem();
-        int Price=0;
+        float Price=0;
          for(Medicine medi : med.getMedicineList())
          {
              if(medicine.getSaltname().equals(medi.getSaltname())){
