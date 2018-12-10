@@ -68,14 +68,16 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         RegionCombo.removeAllItems();
         enterpriseCombo.removeAllItems();
         ChooseMedCombo.removeAllItems();
+        BrandComboBox.removeAllItems();
         int Price=0;
         for (Network network : system.getNetworkList()) {
             RegionCombo.addItem(network);
         }
-
+        
         
         for(Medicine medi : med.getMedicineList()){
              ChooseMedCombo.addItem(medi);
+             BrandComboBox.addItem(medi.getBrand());
              }
         
 
@@ -116,6 +118,8 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         Pricetxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        BrandComboBox = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -125,12 +129,12 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Request Medicine");
+        jLabel4.setText("Request Medicines");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(-70, 0, 840, 48);
+        jLabel4.setBounds(0, 0, 730, 48);
 
         RegionCombo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        RegionCombo.setForeground(new java.awt.Color(0, 51, 102));
+        RegionCombo.setForeground(new java.awt.Color(0, 51, 51));
         jPanel2.add(RegionCombo);
         RegionCombo.setBounds(138, 59, 90, 30);
 
@@ -144,17 +148,17 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("EnterPrise");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(500, 59, 90, 30);
+        jLabel3.setBounds(460, 60, 90, 30);
 
         enterpriseCombo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        enterpriseCombo.setForeground(new java.awt.Color(0, 51, 102));
+        enterpriseCombo.setForeground(new java.awt.Color(0, 51, 51));
         enterpriseCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterpriseComboActionPerformed(evt);
             }
         });
         jPanel2.add(enterpriseCombo);
-        enterpriseCombo.setBounds(617, 59, 110, 30);
+        enterpriseCombo.setBounds(570, 60, 110, 30);
 
         backJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         backJButton.setForeground(new java.awt.Color(0, 51, 102));
@@ -176,10 +180,10 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(requestTestJButton);
-        requestTestJButton.setBounds(628, 462, 99, 37);
+        requestTestJButton.setBounds(600, 460, 99, 37);
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 32), "MedicineDetails", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3), "MedicineDetails", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         ChooseMedCombo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -188,7 +192,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
         Medicinetxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Medicinetxt.setForeground(new java.awt.Color(255, 255, 255));
-        Medicinetxt.setText("Choose Medicine");
+        Medicinetxt.setText("Medicine");
 
         Quantitytxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Quantitytxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -231,6 +235,10 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Brand");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -242,38 +250,45 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
                         .addComponent(BuyNow))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(92, 92, 92)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Quantitytxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Medicinetxt, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Quantitytxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Medicinetxt, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(ChooseMedCombo, 0, 1, Short.MAX_VALUE)
                         .addComponent(Qtyxt, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
                     .addComponent(AddtoCart, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Pricetxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(Pricetxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BrandComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(32, 32, 32))
+                .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ChooseMedCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BrandComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Medicinetxt)
+                    .addComponent(ChooseMedCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Quantitytxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Qtyxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Pricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddtoCart)
                     .addComponent(BuyNow))
@@ -281,7 +296,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         );
 
         jPanel2.add(jPanel1);
-        jPanel1.setBounds(38, 123, 689, 328);
+        jPanel1.setBounds(20, 120, 689, 328);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/3d_dna-1680x1050.jpg"))); // NOI18N
         jPanel2.add(jLabel5);
@@ -377,6 +392,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
+        
         Medicine medicine= (Medicine) ChooseMedCombo.getSelectedItem();
         float Price=0;
          for(Medicine medi : med.getMedicineList())
@@ -394,6 +410,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddtoCart;
+    private javax.swing.JComboBox BrandComboBox;
     private javax.swing.JButton BuyNow;
     private javax.swing.JComboBox ChooseMedCombo;
     private javax.swing.JLabel Medicinetxt;
@@ -409,6 +426,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton requestTestJButton;
