@@ -4,10 +4,14 @@ import userinterface.ManageMedicineInventory.RequestMedicineSupplyJPanel;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.Enterprise.EnterpriseType;
+import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
 import Business.Network.Network;
+import Business.Order.Order;
 import Business.Organization.DoctorOrganization;
+import Business.Organization.Organization;
 import Business.Organization.PharmacistOrganization;
+import Business.Organization.ShipmentManagerOrganization;
 import Business.Pharmacy.Pharmacy;
 import Business.Pharmacy.PharmacyDirectory;
 import Business.UserAccount.UserAccount;
@@ -74,10 +78,9 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         for(WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
             Object[] row = new Object[4];
             row[0] = request;
-            row[1] = request.getSender().getEmployee().getName();
-            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[1] = request.getSender().getUsername();
+            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName(); 
             row[3] = request.getStatus();
-            
             model.addRow(row);
         }
     }
@@ -286,15 +289,68 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
         WorkRequest request1 = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        CustomerWorkRequest request = (CustomerWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+         
+        
         if (!request1.getReceiver().equals(userAccount)){
             JOptionPane.showMessageDialog(container, "This order is not assigned to you yet.");
             return;
         }
 
-        CustomerWorkRequest request = (CustomerWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        
+        for(Order order :request.getOrderlist())
+        {
+ 
+            for (Medicine m : med.getMedicineList()) {
 
-        request.setStatus("Ready For Shipping");
+                        if (m.getBrand().equalsIgnoreCase(order.getItem().getBrand())
 
+                                && m.getSaltname().equalsIgnoreCase(order.getItem().getProduct_name())
+                                && request.getStatus().equalsIgnoreCase("pending")) {
+                                System.out.println("if me aaya");
+                                
+                                
+                                if(m.getUnits() >= (order.getItem().getQuantity()))
+                                {
+                                    m.setUnits(m.getUnits()-((order.getItem().getQuantity())));
+                                    
+                                    Organization org = null;
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof ShipmentManagerOrganization) {
+                org = organization;
+
+                break;
+            }
+        }
+
+                                    request.setStatus("Ready To Ship");
+                                    org.getWorkQueue().getWorkRequestList().add(request);
+                                    
+                                    JOptionPane.showMessageDialog(this, "Units Updated In Inventory");
+                                break;}
+                                else
+                                    
+                                {JOptionPane.showMessageDialog(container,"Insufficient stock in the inventory");
+                                break;}
+                                
+                        }
+                         else
+                                  if(!request.getStatus().equalsIgnoreCase("pending"))  
+                                  {
+                                  JOptionPane.showMessageDialog(container, "Order not eligible for shipment");
+                                  break;
+                                  }
+                        else
+                                {JOptionPane.showMessageDialog(container,"Out of stock");
+                                break;}
+            
+            
+            
+        }
+       
+        
+        
+        }
 
     }//GEN-LAST:event_processJButtonActionPerformed
 

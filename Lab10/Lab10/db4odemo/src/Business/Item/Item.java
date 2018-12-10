@@ -11,7 +11,15 @@ package Business.Item;
  */
 public class Item {
      String product_name;
+     String Brand;
 
+    public String getBrand() {
+        return Brand;
+    }
+
+    public void setBrand(String Brand) {
+        this.Brand = Brand;
+    }
     public String getProduct_name() {
         return product_name;
     }

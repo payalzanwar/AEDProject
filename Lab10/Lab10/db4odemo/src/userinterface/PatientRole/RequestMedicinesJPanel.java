@@ -68,14 +68,16 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         RegionCombo.removeAllItems();
         enterpriseCombo.removeAllItems();
         ChooseMedCombo.removeAllItems();
+        BrandComboBox.removeAllItems();
         int Price=0;
         for (Network network : system.getNetworkList()) {
             RegionCombo.addItem(network);
         }
-
+        
         
         for(Medicine medi : med.getMedicineList()){
              ChooseMedCombo.addItem(medi);
+             BrandComboBox.addItem(medi.getBrand());
              }
         
 
@@ -259,13 +261,12 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
                                 .addComponent(Quantitytxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Medicinetxt, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(ChooseMedCombo, 0, 1, Short.MAX_VALUE)
-                        .addComponent(Qtyxt, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
-                    .addComponent(AddtoCart, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Pricetxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BrandComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ChooseMedCombo, 0, 1, Short.MAX_VALUE)
+                    .addComponent(Qtyxt, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                    .addComponent(Pricetxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                    .addComponent(BrandComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 146, Short.MAX_VALUE)
+                    .addComponent(AddtoCart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(41, 41, 41))
@@ -302,13 +303,15 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/3d_dna-1680x1050.jpg"))); // NOI18N
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(0, 0, 770, 610);
+        jLabel5.setBounds(0, 0, 770, 540);
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 540));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
-        
+//        if(finallist.size() == 0){
+//        JOptionPane.showMessageDialog(RegionCombo, "The cart is empty");
+//        }
          OrderDetailsJPanel orderDetail = new OrderDetailsJPanel(userProcessContainer,finallist,userAccount,system);
         userProcessContainer.add("OrderDetailsPanel", orderDetail);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
@@ -327,19 +330,26 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     private void AddtoCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddtoCartActionPerformed
         // TODO add your handling code here:
          float Price = 0, updatedPrice = 0;
+         String Brand ="";
        //  ArrayList<String> list = new ArrayList<>();
 
         Medicine m = (Medicine) ChooseMedCombo.getSelectedItem();
-
+//        if(enterpriseCombo.getSelectedItem().equals("") 
+//                || Qtyxt.getText().equals("")
+//                || Pricetxt.getText().equals("")){
+//        JOptionPane.showMessageDialog(RegionCombo, "Please complete the details.");
+//        return;
+//        }
         int qty = Integer.parseInt(Qtyxt.getText());
         for (Medicine medi : med.getMedicineList()) {
             if (m.getSaltname().equals(medi.getSaltname())) {
                 Price = medi.getPrice() * qty;
                 Pricetxt.setText(String.valueOf(Price) + "$");
                 Pricetxt.setEnabled(false);
+                Brand = (String) BrandComboBox.getSelectedItem();
             }
         }
-        Order order = orderD.AddOrder(m.getSaltname(), Price, qty);
+        Order order = orderD.AddOrder(m.getSaltname(), Price, qty,Brand);
 
         o.add(order);
         for (int i = 0; i < o.size(); i++) {
@@ -358,6 +368,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     private void BuyNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyNowActionPerformed
         // TODO add your handling code here:
         float Price=0;
+        String Brand = "";
         finallist =new ArrayList<>();
         try{
         Medicine m = (Medicine) ChooseMedCombo.getSelectedItem();
@@ -366,12 +377,13 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         for (Medicine medi : med.getMedicineList()) {
             if (m.getSaltname().equals(medi.getSaltname())) {
                 Price = medi.getPrice() * qty;
+                Brand = (String) BrandComboBox.getSelectedItem();
                // Pricetxt.setText(String.valueOf(Price) + "$");
                 //Pricetxt.setEnabled(false);
             }
         }
         
-        Order order = orderD.AddOrder(m.getSaltname(), Price, qty);
+        Order order = orderD.AddOrder(m.getSaltname(), Price, qty,Brand);
 
         finallist.add(order);
 
@@ -393,6 +405,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         
         Medicine medicine= (Medicine) ChooseMedCombo.getSelectedItem();
         float Price=0;

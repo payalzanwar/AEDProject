@@ -5,10 +5,16 @@
  */
 package userinterface.PatientRole;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
+import Business.Network.Network;
+import Business.Organization.Organization;
+import Business.Organization.PharmacistOrganization;
 import Business.Pharmacy.Pharmacy;
 import java.awt.CardLayout;
+import java.util.HashSet;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,37 +28,46 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
      * Creates new form ViewMedicineDetailsJPanel
      */
     private JPanel userProcessContainer;
-    private Medicine med;
-  public ViewMedicineDetailsPage(JPanel userProcessContainer, Medicine med) {
+    private EcoSystem system;
+    private HashSet<Medicine> med ;
+  public ViewMedicineDetailsPage(JPanel userProcessContainer, EcoSystem system,HashSet<Medicine> med) {
     
         initComponents();
         this.userProcessContainer = userProcessContainer;
-       this.med=med;
-      
+     this.system = system;
+     this.med=med;
+       populateCombobox();
         populateTable();
     }
-
+   public void populateCombobox()
+   {
+  for (Network network : system.getNetworkList()) {
+            RegionCombo.addItem(network);
+        }
+   }
     public void populateTable()
     {
     
 DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
        model.setRowCount(0);
-       
-                
-               Object[] row = new Object[7];
-           row[0] = med.getSaltname();
-           row[1] = med.getSaltComposition1();
+       Object[] row = new Object[10];
+                for(Medicine m : med)
+                {
+                    row[0]=m.getBrand();
+           row[1] = m;
+           row[2] = m.getSaltComposition1();
         
-            row[2]= med.getSaltComposition2();
-            row[3]=med.getSaltComposition3();
-           row[4]=med.getPrice();
-           row[5]=med.getType();
-           row[6]=med.getDisease();
+            row[3]= m.getSaltComposition2();
+            row[4]=m.getSaltComposition3();
+           row[5]=m.getPrice();
+           row[6]=m.getType();
+           row[7]=m.getDisease();
           
                       model.addRow(row);
-            
+                }
     }
+  
   
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,7 +78,7 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         AddToCartBtn = new javax.swing.JButton();
@@ -73,28 +88,27 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
         jScrollPane2 = new javax.swing.JScrollPane();
         PharmacyTable = new javax.swing.JTable();
         BuyNowBtn = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        RegionCombo = new javax.swing.JComboBox();
+        showPharmaBtn = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
+        jLabel2.setText("Re");
 
         setLayout(null);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 51, 102));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Medicine Details");
-        add(jLabel1);
-        jLabel1.setBounds(0, 0, 845, 59);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 102));
         jLabel3.setText("Salt Composition");
         add(jLabel3);
-        jLabel3.setBounds(10, 76, 205, 37);
+        jLabel3.setBounds(20, 140, 205, 37);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 51, 102));
         jLabel8.setText("Available In");
         add(jLabel8);
-        jLabel8.setBounds(10, 271, 118, 37);
+        jLabel8.setBounds(20, 330, 118, 37);
 
         AddToCartBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         AddToCartBtn.setForeground(new java.awt.Color(0, 51, 102));
@@ -105,7 +119,7 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
             }
         });
         add(AddToCartBtn);
-        AddToCartBtn.setBounds(331, 452, 150, 43);
+        AddToCartBtn.setBounds(330, 520, 150, 43);
 
         BackBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         BackBtn.setForeground(new java.awt.Color(0, 51, 102));
@@ -116,7 +130,7 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
             }
         });
         add(BackBtn);
-        BackBtn.setBounds(108, 452, 109, 43);
+        BackBtn.setBounds(110, 520, 109, 43);
 
         SaltTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         SaltTable.setForeground(new java.awt.Color(0, 51, 102));
@@ -156,7 +170,7 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
         }
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(10, 116, 825, 137);
+        jScrollPane1.setBounds(10, 190, 825, 137);
 
         PharmacyTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         PharmacyTable.setForeground(new java.awt.Color(0, 51, 102));
@@ -165,14 +179,14 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
             },
             new String [] {
-                "Pharmacy Name", "Location", "Price"
+                "Pharmacy Name", "Location"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true
+                false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -186,7 +200,7 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
         jScrollPane2.setViewportView(PharmacyTable);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(10, 314, 825, 110);
+        jScrollPane2.setBounds(20, 390, 825, 110);
 
         BuyNowBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         BuyNowBtn.setForeground(new java.awt.Color(0, 51, 102));
@@ -197,11 +211,29 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
             }
         });
         add(BuyNowBtn);
-        BuyNowBtn.setBounds(604, 452, 150, 43);
+        BuyNowBtn.setBounds(610, 520, 150, 43);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
-        add(jLabel2);
-        jLabel2.setBounds(0, -30, 850, 670);
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("Region ");
+        add(jLabel4);
+        jLabel4.setBounds(20, 90, 100, 30);
+
+        add(RegionCombo);
+        RegionCombo.setBounds(160, 80, 110, 40);
+
+        showPharmaBtn.setText("Show Pharmacies");
+        showPharmaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPharmaBtnActionPerformed(evt);
+            }
+        });
+        add(showPharmaBtn);
+        showPharmaBtn.setBounds(340, 340, 170, 29);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        add(jLabel7);
+        jLabel7.setBounds(0, 0, 850, 620);
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddToCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddToCartBtnActionPerformed
@@ -219,18 +251,42 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_BackBtnActionPerformed
 
+    private void showPharmaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPharmaBtnActionPerformed
+        // TODO add your handling code here:
+         DefaultTableModel model = (DefaultTableModel) PharmacyTable.getModel();
+        Network n = (Network) RegionCombo.getSelectedItem();
+        
+        
+         model.setRowCount(0);
+              Object[] row = new Object[10];
+        for(Enterprise ent : n.getEnterpriseDirectory().getEnterpriseList()){
+            if(ent.getEnterpriseType().equals(Enterprise.EnterpriseType.Pharmacy)){
+                
+               
+                    row[0]=ent.getName();
+                    row[1] = ent.getEntloc();
+                      model.addRow(row);
+                     }
+                
+            
+        }
+    }//GEN-LAST:event_showPharmaBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddToCartBtn;
     private javax.swing.JButton BackBtn;
     private javax.swing.JButton BuyNowBtn;
     private javax.swing.JTable PharmacyTable;
+    private javax.swing.JComboBox RegionCombo;
     private javax.swing.JTable SaltTable;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton showPharmaBtn;
     // End of variables declaration//GEN-END:variables
 }

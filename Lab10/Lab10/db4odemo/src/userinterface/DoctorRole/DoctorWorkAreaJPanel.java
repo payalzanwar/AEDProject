@@ -15,6 +15,7 @@ import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.HashSet;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -212,6 +213,59 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         add(jPanel3, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
+    private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
+        populateTable();
+    }//GEN-LAST:event_refreshJButtonActionPerformed
+
+    private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
+ int selectedRow = workRequestJTable.getSelectedRow();
+    
+        if (selectedRow < 0){
+            return;
+        }
+
+        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        if(!(request.getStatus().equalsIgnoreCase("Completed"))){
+        request.setStatus("Disapproved");
+         request.setMessage("Alternative Prescription Disapproved");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Request is already completed!");
+        }
+      populateTable();
+
+    }//GEN-LAST:event_assignJButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        viewtxt.setText("");
+        String output = "Hello Doctor\nFollowing are the alternative medicines.\n";
+        
+        HashSet<Medicine> m = new HashSet<Medicine>();
+        int selectedRow = workRequestJTable.getSelectedRow();
+
+        if (selectedRow < 0){
+            return;
+        }
+        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        
+       int i=1;
+       
+        for(Medicine med : request.getAlternativelist()) {
+            output= output + i+"]  "+ med.getBrand()+"  "+med.getSaltname()+"  "+med.getSaltComposition1()+"  "+med.getSaltComposition2()+"  "+med.getSaltComposition3()+"  "
+             +"for"+"  "+med.getDisease() +"\n";
+        viewtxt.setText(output);
+        viewtxt.setEditable(false);
+        i++;
+        
+        }
+        viewtxt.setText(output+"Please approve them if they are fine to take!\n\nThank you.");
+        
+        
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         int selectedRow = workRequestJTable.getSelectedRow();
@@ -221,9 +275,14 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         }
 
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-
+        if(!(request.getStatus().equalsIgnoreCase("Completed"))){
         request.setStatus("Approved");
-        request.setMessage("Alternative Prescription Approved");
+         request.setMessage("Alternative Prescription Approved");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Request is already completed!");
+        }
         populateTable();
 
     }//GEN-LAST:event_jButton2ActionPerformed

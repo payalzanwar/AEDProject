@@ -33,7 +33,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         valueLabel.setText(enterprise.getName());
         Enterprise.EnterpriseType  type =enterprise.getEnterpriseType();
             if(!(type.equals(type.Hospital)))
-            workassgnbtn.setEnabled(false);
+            workassgnbtn.setVisible(false);
     }
 
     

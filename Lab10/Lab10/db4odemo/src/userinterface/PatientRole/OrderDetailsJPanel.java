@@ -6,12 +6,19 @@
 package userinterface.PatientRole;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.Medicine.Medicine;
+import Business.Network.Network;
 import Business.Order.Order;
 import Business.Order.OrderDirectory;
+import Business.Organization.DoctorOrganization;
+import Business.Organization.Organization;
+import Business.Organization.PharmacistOrganization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CustomerWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -33,8 +40,8 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
     
     private UserAccount account;
     private EcoSystem system;
-    private List<Order> o;
-    public OrderDetailsJPanel(JPanel userProcessContainer,List<Order> o,UserAccount userAccount,EcoSystem system) {
+    private ArrayList<Order> o;
+    public OrderDetailsJPanel(JPanel userProcessContainer,ArrayList<Order> o,UserAccount userAccount,EcoSystem system) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         
@@ -208,6 +215,54 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
         }
     }//GEN-LAST:event_RemovebtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            // TODO add your handling code here:
+        PlaceOrderlabel.setEnabled(true);
+        OrderTable.setEnabled(false);
+        Removebtn.setEnabled(false);
+        
+        String message = "Order Request";
+        CustomerWorkRequest request = new CustomerWorkRequest();
+        request.setOrderlist(o);
+        
+        request.setMessage(message);
+        request.setSender(account);
+        request.setStatus("Order Received");
+        request.setMessage(message);
+
+        Enterprise ent = null;
+        for (Network network : system.getNetworkList()) {
+           //   RegionCombo.addItem(network);
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                Enterprise.EnterpriseType  type =enterprise.getEnterpriseType();
+            if(type.equals(type.Pharmacy))
+             ent=enterprise;
+            break;
+            }
+        }
+        Organization org = null;
+        for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof PharmacistOrganization) {
+                org = organization;
+
+                break;
+            }
+        }
+
+        
+
+        
+        
+        if (org != null) {
+
+            org.getWorkQueue().getWorkRequestList().add(request);
+            account.getWorkQueue().getWorkRequestList().add(request);
+
+            JOptionPane.showMessageDialog(null, "Request sent!");
+        }
+          
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -24,8 +24,6 @@ import javax.swing.table.DefaultTableModel;
 import userinterface.PatientRole.PatientLoginFormJPanel;
 
 
-
-
 /**
  *
  * @author Administrator
