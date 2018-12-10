@@ -83,12 +83,6 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
-                              <Component id="jLabel10" min="-2" pref="69" max="-2" attributes="0"/>
-                              <EmptySpace min="34" pref="34" max="-2" attributes="0"/>
-                              <Component id="jScrollPane4" min="-2" pref="420" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
                               <Component id="jLabel3" min="-2" pref="103" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -120,15 +114,31 @@
                               <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" pref="146" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                      <Component id="jLabel10" min="-2" pref="69" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="jButton3" min="-2" pref="125" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="34" pref="34" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane4" min="-2" pref="420" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
+                                      <Component id="RequestDoctorApprovalBtn" min="-2" pref="263" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
                       <EmptySpace pref="198" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
-                      <Component id="RequestDoctorApprovalBtn" min="-2" pref="263" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -202,9 +212,9 @@
                           </Group>
                       </Group>
                       <EmptySpace pref="27" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="RequestDoctorApprovalBtn" min="-2" pref="60" max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RequestDoctorApprovalBtn" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="jButton3" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
@@ -258,9 +268,6 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="HospitalListTable">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="66" green="33" red="0" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="1"/>
                     </Property>
@@ -289,9 +296,6 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="MedicineTable">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="66" green="33" red="0" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="1"/>
                     </Property>
@@ -335,9 +339,6 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="DoctorTable">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="66" green="33" red="0" type="rgb"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="1"/>
                     </Property>
@@ -564,6 +565,12 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="33" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&gt;&gt;Back"/>
               </Properties>
               <Events>

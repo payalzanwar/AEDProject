@@ -287,49 +287,8 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        viewtxt.setText("");
-        String output = "Hello Doctor\n I need consultation regarding the Alternative medicines I found.\n ";
-
-        HashSet<Medicine> m = new HashSet<Medicine>();
-        int selectedRow = workRequestJTable.getSelectedRow();
-
-        if (selectedRow < 0){
-            return;
-        }
-        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-
-        int i=1;
-
-        for(Medicine med : request.getAlternativelist()) {
-            output= output + i+ med.getBrand()+" "+med.getSaltname()+" "+med.getSaltComposition1()+" "+med.getSaltComposition2()+" "+med.getSaltComposition3()+" "
-            +" for Disease "+" "+med.getDisease() +   "\n";
-            viewtxt.setText(output);
-            viewtxt.setEditable(false);
-            i++;
-
-        }
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
-        int selectedRow = workRequestJTable.getSelectedRow();
-
-        if (selectedRow < 0){
-            return;
-        }
-
-        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-
-        request.setStatus("Disapproved");
-        request.setMessage("Alternative Prescription Disapproved");
-        populateTable();
-    }//GEN-LAST:event_assignJButtonActionPerformed
-
-    private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
-        populateTable();
-    }//GEN-LAST:event_refreshJButtonActionPerformed
+   //GEN-LAST:event_assignJButtonActionPerformed
+//GEN-LAST:event_refreshJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;

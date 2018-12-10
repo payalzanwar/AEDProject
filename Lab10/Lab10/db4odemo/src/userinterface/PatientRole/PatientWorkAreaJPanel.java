@@ -9,10 +9,12 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,6 +26,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
      * Creates new form PatientWorkAreaJPanel
      */
     AlternateMedicinePage alternateMedicinePage;
+   
     private EcoSystem system;
    private UserAccount account;
    private Enterprise enterprise;
@@ -33,11 +36,27 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         this.setSize(1680, 1050);
         this.Rightpaneldashboard = userProcessContainer;
         this.account = account;
-        this.enterprise = enterprise;
-        this.alternateMedicinePage = alternateMedicinePage;
+        
+     
         this.system = system;
+        populateTable();
     }
+public void populateTable(){
+       DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
 
+       model.setRowCount(0);
+       System.out.println("size"+account.getWorkQueue().getWorkRequestList().size());
+       for(WorkRequest request : account.getWorkQueue().getWorkRequestList()){
+           Object[] row = new Object[4];
+           row[0] = request;
+           row[1] = request.getSender().getUsername();
+
+         row[2]= account;
+           row[3] = request.getStatus();
+
+           model.addRow(row);
+       }
+   }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,10 +82,6 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         workRequestJTable = new javax.swing.JTable();
         refreshJButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        viewtxt = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
@@ -165,7 +180,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(workRequestJTable);
 
         jPanel4.add(jScrollPane1);
-        jScrollPane1.setBounds(60, 90, 620, 130);
+        jScrollPane1.setBounds(50, 170, 620, 130);
 
         refreshJButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         refreshJButton.setText("Refresh");
@@ -175,34 +190,12 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel4.add(refreshJButton);
-        refreshJButton.setBounds(600, 50, 95, 29);
+        refreshJButton.setBounds(570, 120, 95, 29);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel6.setText("            Customer Work Area");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(230, 30, 281, 29);
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton1.setText("View Details");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton1);
-        jButton1.setBounds(60, 260, 170, 29);
-
-        viewtxt.setColumns(20);
-        viewtxt.setRows(5);
-        jScrollPane3.setViewportView(viewtxt);
-
-        jPanel4.add(jScrollPane3);
-        jScrollPane3.setBounds(60, 360, 630, 150);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Detailed Message ");
-        jPanel4.add(jLabel2);
-        jLabel2.setBounds(60, 310, 270, 30);
+        jLabel6.setBounds(210, 60, 370, 29);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton2.setText("Order Medicines");
@@ -231,11 +224,12 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
+        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(Rightpaneldashboard, account, system);
+       Rightpaneldashboard.add("ViewProductDetailJPanelSupplier", pmed);
+       CardLayout layout1 = (CardLayout) Rightpaneldashboard.getLayout();
+       layout1.next(Rightpaneldashboard);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
         //populateTable();
@@ -290,10 +284,8 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private ProgressBar.CustomPanel JP_Progress;
     private javax.swing.JButton OverthecounterBtn;
     private javax.swing.JPanel Rightpaneldashboard;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -301,11 +293,9 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel progressbar;
     private javax.swing.JButton refreshJButton;
-    private javax.swing.JTextArea viewtxt;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

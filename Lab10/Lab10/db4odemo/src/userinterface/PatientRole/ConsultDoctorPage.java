@@ -213,7 +213,6 @@ public void populateDoctorTable(ArrayList<Employee> a)
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Region");
 
-        HospitalListTable.setBackground(new java.awt.Color(0, 51, 102));
         HospitalListTable.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         HospitalListTable.setForeground(new java.awt.Color(0, 51, 102));
         HospitalListTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -241,7 +240,6 @@ public void populateDoctorTable(ArrayList<Employee> a)
         });
         jScrollPane5.setViewportView(HospitalListTable);
 
-        MedicineTable.setBackground(new java.awt.Color(0, 51, 102));
         MedicineTable.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         MedicineTable.setForeground(new java.awt.Color(0, 51, 102));
         MedicineTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -266,7 +264,6 @@ public void populateDoctorTable(ArrayList<Employee> a)
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Selected List of Alternatives ");
 
-        DoctorTable.setBackground(new java.awt.Color(0, 51, 102));
         DoctorTable.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         DoctorTable.setForeground(new java.awt.Color(0, 51, 102));
         DoctorTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -385,6 +382,8 @@ public void populateDoctorTable(ArrayList<Employee> a)
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 51, 102));
         jButton3.setText(">>Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -429,11 +428,6 @@ public void populateDoctorTable(ArrayList<Employee> a)
                         .addComponent(subject_text, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(518, 518, 518)
@@ -456,14 +450,24 @@ public void populateDoctorTable(ArrayList<Employee> a)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(142, 142, 142)
+                                .addComponent(RequestDoctorApprovalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(198, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(240, 240, 240)
-                .addComponent(RequestDoctorApprovalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(77, 77, 77))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -522,9 +526,9 @@ public void populateDoctorTable(ArrayList<Employee> a)
                         .addGap(299, 299, 299)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RequestDoctorApprovalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
 
