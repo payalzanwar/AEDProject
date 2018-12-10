@@ -95,7 +95,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         container = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
         refreshJButton = new javax.swing.JButton();
@@ -106,8 +105,11 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         pharmacynametxt = new javax.swing.JTextField();
         requestMedBtn = new javax.swing.JButton();
         viewInventoryBtn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
-        container.setLayout(new java.awt.CardLayout());
+        setLayout(new java.awt.CardLayout());
+
+        container.setLayout(null);
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,127 +139,96 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workRequestJTable);
 
+        container.add(jScrollPane1);
+        jScrollPane1.setBounds(57, 169, 610, 130);
+
+        refreshJButton.setBackground(new java.awt.Color(255, 255, 255));
+        refreshJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        refreshJButton.setForeground(new java.awt.Color(0, 51, 102));
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshJButtonActionPerformed(evt);
             }
         });
+        container.add(refreshJButton);
+        refreshJButton.setBounds(537, 106, 130, 25);
 
+        assignJButton.setBackground(new java.awt.Color(255, 255, 255));
+        assignJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        assignJButton.setForeground(new java.awt.Color(0, 51, 102));
         assignJButton.setText("Assign to me");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignJButtonActionPerformed(evt);
             }
         });
+        container.add(assignJButton);
+        assignJButton.setBounds(10, 320, 157, 47);
 
+        processJButton.setBackground(new java.awt.Color(255, 255, 255));
+        processJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        processJButton.setForeground(new java.awt.Color(0, 51, 102));
         processJButton.setText("Ready To Ship");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processJButtonActionPerformed(evt);
             }
         });
+        container.add(processJButton);
+        processJButton.setBounds(180, 320, 116, 47);
 
-        jLabel1.setText("           Pharmacist Work Area");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Pharmacist Work Area");
+        container.add(jLabel1);
+        jLabel1.setBounds(0, 0, 733, 40);
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Pharmacy");
+        container.add(jLabel2);
+        jLabel2.setBounds(57, 100, 97, 29);
 
         pharmacynametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pharmacynametxtActionPerformed(evt);
             }
         });
+        container.add(pharmacynametxt);
+        pharmacynametxt.setBounds(164, 97, 128, 32);
 
+        requestMedBtn.setBackground(new java.awt.Color(255, 255, 255));
+        requestMedBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        requestMedBtn.setForeground(new java.awt.Color(0, 51, 102));
         requestMedBtn.setText("Request Mediciene Supply");
         requestMedBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestMedBtnActionPerformed(evt);
             }
         });
+        container.add(requestMedBtn);
+        requestMedBtn.setBounds(310, 320, 211, 48);
 
+        viewInventoryBtn.setBackground(new java.awt.Color(255, 255, 255));
+        viewInventoryBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        viewInventoryBtn.setForeground(new java.awt.Color(0, 51, 102));
         viewInventoryBtn.setText("View Inventory");
         viewInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewInventoryBtnActionPerformed(evt);
             }
         });
+        container.add(viewInventoryBtn);
+        viewInventoryBtn.setBounds(540, 320, 139, 51);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(pharmacynametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 332, Short.MAX_VALUE)
-                        .addComponent(refreshJButton))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(requestMedBtn)
-                            .addGap(57, 57, 57)
-                            .addComponent(viewInventoryBtn))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(103, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(215, 215, 215)
-                .addComponent(assignJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(processJButton)
-                .addGap(102, 102, 102))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pharmacynametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(refreshJButton)))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(assignJButton)
-                    .addComponent(processJButton))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(requestMedBtn)
-                    .addComponent(viewInventoryBtn))
-                .addContainerGap(370, Short.MAX_VALUE))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/pharmacistRole/medicine.png"))); // NOI18N
+        container.add(jLabel3);
+        jLabel3.setBounds(-10, -6, 750, 520);
 
-        container.add(jPanel2, "card2");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        add(container, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
@@ -277,7 +248,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         request.setReceiver(userAccount);
         request.setStatus("Pending");
         populateTable();
-
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
@@ -290,68 +260,60 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         }
         WorkRequest request1 = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
         CustomerWorkRequest request = (CustomerWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-         
-        
+
         if (!request1.getReceiver().equals(userAccount)){
             JOptionPane.showMessageDialog(container, "This order is not assigned to you yet.");
             return;
         }
 
-        
         for(Order order :request.getOrderlist())
         {
- 
+
             for (Medicine m : med.getMedicineList()) {
 
-                        if (m.getBrand().equalsIgnoreCase(order.getItem().getBrand())
+                if (m.getBrand().equalsIgnoreCase(order.getItem().getBrand())
 
-                                && m.getSaltname().equalsIgnoreCase(order.getItem().getProduct_name())
-                                && request.getStatus().equalsIgnoreCase("pending")) {
-                                System.out.println("if me aaya");
-                                
-                                
-                                if(m.getUnits() >= (order.getItem().getQuantity()))
-                                {
-                                    m.setUnits(m.getUnits()-((order.getItem().getQuantity())));
-                                    
-                                    Organization org = null;
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            if (organization instanceof ShipmentManagerOrganization) {
-                org = organization;
+                    && m.getSaltname().equalsIgnoreCase(order.getItem().getProduct_name())
+                    && request.getStatus().equalsIgnoreCase("pending")) {
+                    System.out.println("if me aaya");
 
-                break;
-            }
-        }
+                    if(m.getUnits() >= (order.getItem().getQuantity()))
+                    {
+                        m.setUnits(m.getUnits()-((order.getItem().getQuantity())));
 
-                                    request.setStatus("Ready To Ship");
-                                    org.getWorkQueue().getWorkRequestList().add(request);
-                                    
-                                    JOptionPane.showMessageDialog(this, "Units Updated In Inventory");
-                                break;}
-                                else
-                                    
-                                {JOptionPane.showMessageDialog(container,"Insufficient stock in the inventory");
-                                break;}
-                                
+                        Organization org = null;
+                        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                            if (organization instanceof ShipmentManagerOrganization) {
+                                org = organization;
+
+                                break;
+                            }
                         }
-                         else
-                                  if(!request.getStatus().equalsIgnoreCase("pending"))  
-                                  {
-                                  JOptionPane.showMessageDialog(container, "Order not eligible for shipment");
-                                  break;
-                                  }
-                        else
-                                {JOptionPane.showMessageDialog(container,"Out of stock");
-                                break;}
-            
-            
-            
-        }
-       
-        
-        
-        }
 
+                        request.setStatus("Ready To Ship");
+                        org.getWorkQueue().getWorkRequestList().add(request);
+
+                        JOptionPane.showMessageDialog(this, "Units Updated In Inventory");
+                        break;}
+                    else
+
+                    {JOptionPane.showMessageDialog(container,"Insufficient stock in the inventory");
+                        break;}
+
+                }
+                else
+                if(!request.getStatus().equalsIgnoreCase("pending"))
+                {
+                    JOptionPane.showMessageDialog(container, "Order not eligible for shipment");
+                    break;
+                }
+                else
+                {JOptionPane.showMessageDialog(container,"Out of stock");
+                    break;}
+
+            }
+
+        }
     }//GEN-LAST:event_processJButtonActionPerformed
 
     private void pharmacynametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pharmacynametxtActionPerformed
@@ -360,7 +322,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void requestMedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestMedBtnActionPerformed
         // TODO add your handling code here:
-         RequestMedicineSupplyJPanel managemed = new RequestMedicineSupplyJPanel(userProcessContainer, organization, enterprise, med, system, userAccount);
+        RequestMedicineSupplyJPanel managemed = new RequestMedicineSupplyJPanel(userProcessContainer, organization, enterprise, med, system, userAccount);
         userProcessContainer.add("processWorkRequestJPanel", managemed);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -380,7 +342,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField pharmacynametxt;
     private javax.swing.JButton processJButton;

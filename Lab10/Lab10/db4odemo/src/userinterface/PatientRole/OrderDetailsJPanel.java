@@ -157,7 +157,7 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(jButton2);
-        jButton2.setBounds(180, 300, 180, 50);
+        jButton2.setBounds(140, 310, 180, 50);
 
         Removebtn.setBackground(new java.awt.Color(255, 255, 255));
         Removebtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -178,30 +178,23 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/med.jpg"))); // NOI18N
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(0, 0, 850, 450);
+        jLabel3.setBounds(-20, 0, 850, 450);
 
         add(jPanel2, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        PlaceOrderlabel.setEnabled(true);
-        OrderTable.setEnabled(false);
-        Removebtn.setEnabled(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
-
+         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void RemovebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemovebtnActionPerformed
         // TODO add your handling code here:
-
-        int selectedRow = OrderTable.getSelectedRow();
+        
+         int selectedRow = OrderTable.getSelectedRow();
         if(selectedRow>=0){
             int selectionButton = JOptionPane.YES_NO_OPTION;
             int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??","Warning",selectionButton);
@@ -228,12 +221,13 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
         
         request.setMessage(message);
         request.setSender(account);
-        request.setStatus("Order Received");
+        request.setStatus("Sent");
         request.setMessage(message);
 
         Enterprise ent = null;
         for (Network network : system.getNetworkList()) {
            //   RegionCombo.addItem(network);
+            System.out.println(network);
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 Enterprise.EnterpriseType  type =enterprise.getEnterpriseType();
             if(type.equals(type.Pharmacy))

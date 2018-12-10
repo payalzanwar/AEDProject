@@ -6,15 +6,22 @@
 package userinterface.PatientRole;
 
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Medicine.Medicine;
 import Business.Medicine.MedicineDirectory;
 import Business.Network.Network;
+import Business.Order.Order;
+import Business.Order.OrderDirectory;
 import Business.Organization.Organization;
 import Business.Organization.PharmacistOrganization;
 import Business.Pharmacy.Pharmacy;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CustomerWorkRequest;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import java.util.HashSet;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,7 +37,11 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     private HashSet<Medicine> med ;
-  public ViewMedicineDetailsPage(JPanel userProcessContainer, EcoSystem system,HashSet<Medicine> med) {
+    private HashSet<Medicine> medlist;
+    private OrderDirectory orderD;
+    private ArrayList<Order> o = new ArrayList<>();
+    private UserAccount user;
+  public ViewMedicineDetailsPage(JPanel userProcessContainer, EcoSystem system,HashSet<Medicine> med,UserAccount user) {
     
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -38,6 +49,8 @@ public class ViewMedicineDetailsPage extends javax.swing.JPanel {
      this.med=med;
        populateCombobox();
         populateTable();
+        this.user = user;
+        orderD = new OrderDirectory();
     }
    public void populateCombobox()
    {
@@ -87,7 +100,6 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
         SaltTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         PharmacyTable = new javax.swing.JTable();
-        BuyNowBtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         RegionCombo = new javax.swing.JComboBox();
         showPharmaBtn = new javax.swing.JButton();
@@ -202,17 +214,6 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
         add(jScrollPane2);
         jScrollPane2.setBounds(20, 390, 825, 110);
 
-        BuyNowBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        BuyNowBtn.setForeground(new java.awt.Color(0, 51, 102));
-        BuyNowBtn.setText("Buy Now");
-        BuyNowBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuyNowBtnActionPerformed(evt);
-            }
-        });
-        add(BuyNowBtn);
-        BuyNowBtn.setBounds(610, 520, 150, 43);
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Region ");
         add(jLabel4);
@@ -238,11 +239,81 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
 
     private void AddToCartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddToCartBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AddToCartBtnActionPerformed
+        medlist = new HashSet<>();
+        String brand="";
+        String medname="";
+        int qty=0;
+        float price=0;
+         int[] selectedrows = SaltTable.getSelectedRows();
+        if (selectedrows.length != -1) {
+          
+            
+            for (int i = 0; i < selectedrows.length; i++)
+            {
+                
+               Medicine m= (Medicine) SaltTable.getValueAt(selectedrows[i], 1);
+              medname=m.getSaltname();
+               brand=m.getBrand();
+               qty=m.getUnits();
+               price=m.getPrice();
+               
+               Order order = orderD.AddOrder(medname, price, qty,brand);
+               
+                o.add(order);
+                
+            }
+           
+        } else {
+             JOptionPane.showMessageDialog(null, "Please select a row");
+        }
+        
+        
+        String message = "Order Request";
+        CustomerWorkRequest request = new CustomerWorkRequest();
+        request.setOrderlist(o);
+        
+        request.setMessage(message);
+        request.setSender(user);
+        request.setStatus("Sent");
+        request.setMessage(message);
 
-    private void BuyNowBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyNowBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BuyNowBtnActionPerformed
+        Enterprise ent = null;
+        for (Network network : system.getNetworkList()) {
+           //   RegionCombo.addItem(network);
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                Enterprise.EnterpriseType  type =enterprise.getEnterpriseType();
+            if(type.equals(type.Pharmacy))
+             ent=enterprise;
+            break;
+            }
+        }
+        Organization org = null;
+        for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof PharmacistOrganization) {
+                org = organization;
+
+                break;
+            }
+        }
+        
+        
+
+        
+        
+        if (org != null) {
+
+            org.getWorkQueue().getWorkRequestList().add(request);
+            user.getWorkQueue().getWorkRequestList().add(request);
+
+           // JOptionPane.showMessageDialog(null, "Add to cart!");
+            
+        }
+        
+        OrderDetailsJPanel orderDetail = new OrderDetailsJPanel(userProcessContainer,o,user,system);
+        userProcessContainer.add("OrderDetailsPanel", orderDetail);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_AddToCartBtnActionPerformed
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
         // TODO add your handling code here:
@@ -276,7 +347,6 @@ DefaultTableModel model = (DefaultTableModel) SaltTable.getModel();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddToCartBtn;
     private javax.swing.JButton BackBtn;
-    private javax.swing.JButton BuyNowBtn;
     private javax.swing.JTable PharmacyTable;
     private javax.swing.JComboBox RegionCombo;
     private javax.swing.JTable SaltTable;
