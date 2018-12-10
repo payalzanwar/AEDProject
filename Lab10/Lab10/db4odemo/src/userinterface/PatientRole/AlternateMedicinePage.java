@@ -305,7 +305,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         
         Medicine s = (Medicine)AlternateMedicineTable.getValueAt(row, 1);
         
-        ViewMedicineDetailsPage vs = new ViewMedicineDetailsPage(RightPaneldashboard, s);
+        ViewMedicineDetailsPage vs = new ViewMedicineDetailsPage(RightPaneldashboard, system, hashlist);
         RightPaneldashboard.add("ViewSupplier", vs);
         CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
         layout.next(RightPaneldashboard);

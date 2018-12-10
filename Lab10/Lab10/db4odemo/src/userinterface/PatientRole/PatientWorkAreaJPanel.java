@@ -47,21 +47,30 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         Rightpaneldashboard = new javax.swing.JPanel();
         AlternateMedicinesBtn = new javax.swing.JButton();
         OverthecounterBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         progressbar = new javax.swing.JPanel();
         CheckStatusBtn = new javax.swing.JButton();
         JP_Progress = new ProgressBar.CustomPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        workRequestJTable = new javax.swing.JTable();
+        refreshJButton = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        viewtxt = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
 
         setLayout(new java.awt.CardLayout());
 
@@ -95,34 +104,10 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         });
         Rightpaneldashboard.add(OverthecounterBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 414, 73));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/dashboard.jpg"))); // NOI18N
-        Rightpaneldashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -60, 730, 530));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
+        Rightpaneldashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 700, 520));
 
         jTabbedPane1.addTab("Dashboard", Rightpaneldashboard);
-
-        jPanel2.setLayout(null);
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(0, -10, 690, 510);
-
-        jTabbedPane1.addTab("Account Details", jPanel2);
-
-        jPanel3.setLayout(null);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
-        jPanel3.add(jLabel4);
-        jLabel4.setBounds(0, 0, 690, 500);
-
-        jTabbedPane1.addTab("Order Details", jPanel3);
-
-        jPanel5.setLayout(null);
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
-        jPanel5.add(jLabel5);
-        jLabel5.setBounds(0, 0, 700, 500);
-
-        jTabbedPane1.addTab("Request Details", jPanel5);
 
         progressbar.setBackground(new java.awt.Color(255, 255, 255));
         progressbar.setLayout(null);
@@ -147,10 +132,114 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Progress Bar", progressbar);
 
+        jPanel5.setLayout(null);
+
+        jPanel4.setLayout(null);
+
+        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Message", "Sender", "Receiver", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(workRequestJTable);
+
+        jPanel4.add(jScrollPane1);
+        jScrollPane1.setBounds(60, 90, 620, 130);
+
+        refreshJButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        refreshJButton.setText("Refresh");
+        refreshJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshJButtonActionPerformed(evt);
+            }
+        });
+        jPanel4.add(refreshJButton);
+        refreshJButton.setBounds(600, 50, 95, 29);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel6.setText("            Customer Work Area");
+        jPanel4.add(jLabel6);
+        jLabel6.setBounds(230, 30, 281, 29);
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton1.setText("View Details");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton1);
+        jButton1.setBounds(60, 260, 170, 29);
+
+        viewtxt.setColumns(20);
+        viewtxt.setRows(5);
+        jScrollPane3.setViewportView(viewtxt);
+
+        jPanel4.add(jScrollPane3);
+        jScrollPane3.setBounds(60, 360, 630, 150);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setText("Detailed Message ");
+        jPanel4.add(jLabel2);
+        jLabel2.setBounds(60, 310, 270, 30);
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton2.setText("Order Medicines");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton2);
+        jButton2.setBounds(300, 550, 190, 29);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/blue.jpg"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        jPanel4.add(jLabel7);
+        jLabel7.setBounds(0, 0, 790, 610);
+
+        jPanel5.add(jPanel4);
+        jPanel4.setBounds(0, 0, 800, 610);
+
+        jTabbedPane1.addTab("Request Details", jPanel5);
+
         jScrollPane2.setViewportView(jTabbedPane1);
 
         add(jScrollPane2, "card2");
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
+        //populateTable();
+    }//GEN-LAST:event_refreshJButtonActionPerformed
 
     private void CheckStatusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckStatusBtnActionPerformed
         // TODO add your handling code here:
@@ -201,15 +290,22 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private ProgressBar.CustomPanel JP_Progress;
     private javax.swing.JButton OverthecounterBtn;
     private javax.swing.JPanel Rightpaneldashboard;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel progressbar;
+    private javax.swing.JButton refreshJButton;
+    private javax.swing.JTextArea viewtxt;
+    private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }
