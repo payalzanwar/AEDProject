@@ -11,7 +11,6 @@ import Business.Organization.Organization;
 import Business.Organization.PharmacistOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.PatientRole.PatientWorkAreaJPanel1;
 
 /**
  *
