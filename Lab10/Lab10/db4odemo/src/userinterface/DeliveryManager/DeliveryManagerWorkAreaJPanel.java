@@ -50,12 +50,6 @@ public class DeliveryManagerWorkAreaJPanel extends javax.swing.JPanel {
        //phar=new Pharmacy();
        pharmacynametxt.setText(enterprise.getName());
        
-       for (Network network : system.getNetworkList()) {
-           for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
-               Enterprise.EnterpriseType  type =e.getEnterpriseType();
-
-           }
-       }
        
        populateTable();
     }
@@ -64,12 +58,13 @@ public class DeliveryManagerWorkAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
         
         model.setRowCount(0);
+        Object[] row = new Object[4];
         
         for(WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
+            
             row[0] = request;
-            row[1] = request.getSender().getEmployee().getName();
-            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[1] = request.getSender().getUsername();
+          row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
             row[3] = request.getStatus();
             
             model.addRow(row);
@@ -254,17 +249,16 @@ public class DeliveryManagerWorkAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(container, "Please select an order");
             return;
         }
-        WorkRequest request1 = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        if (!request1.getReceiver().equals(userAccount)){
+        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        if (!request.getReceiver().equals(userAccount)){
             JOptionPane.showMessageDialog(container, "This order is not assigned to you yet.");
             return;
         }
 
-        CustomerWorkRequest request = (CustomerWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-
+        
         request.setStatus("Delivered");
 
-
+        populateTable();
     }//GEN-LAST:event_processJButtonActionPerformed
 
     private void pharmacynametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pharmacynametxtActionPerformed

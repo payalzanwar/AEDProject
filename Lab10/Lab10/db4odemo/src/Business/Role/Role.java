@@ -21,7 +21,9 @@ public abstract class Role {
         Doctor("Doctor"),
         Pharmacist("Pharmacist"),
         Patient("Patient"),
-        SupplyManager("Supply Manager");
+        SupplyManager("Supply Manager"),
+        ShippingManager("Shipping Manager"),
+        DeliveryManager("Delivery Manager");
         private String value;
         private RoleType(String value){
             this.value = value;
@@ -47,6 +49,7 @@ public abstract class Role {
     public String toString() {
         return this.getClass().getName();
     }
+    
     
     
 }

@@ -28,13 +28,13 @@ public class OrderDirectory {
     {
         OrderList= new ArrayList<>();
     }
-     public Order AddOrder(String medname,float Price, int units){
+     public Order AddOrder(String medname,float Price, int units,String Brand){
         Order o = new Order();
         o.setItem(new Item());
         o.getItem().setProduct_name(medname);
         o.getItem().setQuantity(units);
         o.getItem().setSalesPrice(Price);
-     
+        o.getItem().setBrand(Brand);
         OrderList.add(o);
         return o;
     }

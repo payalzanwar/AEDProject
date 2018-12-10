@@ -234,7 +234,7 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
         
         request.setMessage(message);
         request.setSender(account);
-        request.setStatus("Sent");
+        request.setStatus("Order Received");
         request.setMessage(message);
 
         Enterprise ent = null;
