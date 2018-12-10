@@ -6,6 +6,8 @@ import Business.Enterprise.Enterprise;
 import Business.Enterprise.Enterprise.EnterpriseType;
 import Business.Medicine.MedicineDirectory;
 import Business.Network.Network;
+import Business.Organization.DeliveryManagerOrganization;
+import Business.Organization.Organization;
 import Business.Organization.ShipmentManagerOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CustomerWorkRequest;
@@ -49,28 +51,23 @@ public class ShipmentManagerWorkAreaJPanel extends javax.swing.JPanel {
        //phar=new Pharmacy();
        //pharmacynametxt.setText(enterprise.getName());
        
-       for (Network network : system.getNetworkList()) {
-           for (Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()) {
-               Enterprise.EnterpriseType  type =e.getEnterpriseType();
-
-           }
-       }
+        System.out.println("Org: "+this.organization);
        
        populateTable();
     }
 
     public void populateTable(){
-        DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
+          DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
         
         model.setRowCount(0);
-        
+        System.out.println("organization.getWorkQueue().getWorkRequestList().size(): "+organization.getWorkQueue().getWorkRequestList().size());
         for(WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
+            
             Object[] row = new Object[4];
             row[0] = request;
-            row[1] = request.getSender().getEmployee().getName();
-            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[1] = request.getSender().getUsername();
+            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName(); 
             row[3] = request.getStatus();
-            
             model.addRow(row);
         }
     }
@@ -218,7 +215,7 @@ public class ShipmentManagerWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
 
-        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        CustomerWorkRequest request = (CustomerWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
         request.setReceiver(userAccount);
         request.setStatus("Pending");
         populateTable();
@@ -233,17 +230,28 @@ public class ShipmentManagerWorkAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(container, "Please select an order");
             return;
         }
-        WorkRequest request1 = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        if (!request1.getReceiver().equals(userAccount)){
+        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        if (!request.getReceiver().equals(userAccount)){
             JOptionPane.showMessageDialog(container, "This order is not assigned to you yet.");
             return;
         }
+        Organization org = null;
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (organization instanceof DeliveryManagerOrganization) {
+                org = organization;
 
-        CustomerWorkRequest request = (CustomerWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-
-        request.setStatus("Out For Delivery");
-
-
+                break;
+            }
+        }
+                
+                                     request.setStatus("Out For Delivery");
+                                    org.getWorkQueue().getWorkRequestList().add(request);
+                                    
+                                    JOptionPane.showMessageDialog(this, "Request sent");
+        
+                                    populateTable();
+       
+        
     }//GEN-LAST:event_processJButtonActionPerformed
 
 

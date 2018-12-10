@@ -199,7 +199,6 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         Quantitytxt.setText("Quantity");
 
         Qtyxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Qtyxt.setForeground(new java.awt.Color(255, 255, 255));
 
         AddtoCart.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         AddtoCart.setForeground(new java.awt.Color(0, 51, 102));
@@ -224,7 +223,6 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         jLabel1.setText("Price");
 
         Pricetxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Pricetxt.setForeground(new java.awt.Color(255, 255, 255));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 51, 102));
@@ -326,6 +324,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     private void AddtoCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddtoCartActionPerformed
         // TODO add your handling code here:
          float Price = 0, updatedPrice = 0;
+         String Brand ="";
        //  ArrayList<String> list = new ArrayList<>();
 
         Medicine m = (Medicine) ChooseMedCombo.getSelectedItem();
@@ -341,9 +340,10 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
                 Price = medi.getPrice() * qty;
                 Pricetxt.setText(String.valueOf(Price) + "$");
                 Pricetxt.setEnabled(false);
+                Brand = (String) BrandComboBox.getSelectedItem();
             }
         }
-        Order order = orderD.AddOrder(m.getSaltname(), Price, qty);
+        Order order = orderD.AddOrder(m.getSaltname(), Price, qty,Brand);
 
         o.add(order);
         for (int i = 0; i < o.size(); i++) {
@@ -362,6 +362,7 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
     private void BuyNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyNowActionPerformed
         // TODO add your handling code here:
         float Price=0;
+        String Brand = "";
         finallist =new ArrayList<>();
         try{
         Medicine m = (Medicine) ChooseMedCombo.getSelectedItem();
@@ -370,12 +371,13 @@ public class RequestMedicinesJPanel extends javax.swing.JPanel {
         for (Medicine medi : med.getMedicineList()) {
             if (m.getSaltname().equals(medi.getSaltname())) {
                 Price = medi.getPrice() * qty;
+                Brand = (String) BrandComboBox.getSelectedItem();
                // Pricetxt.setText(String.valueOf(Price) + "$");
                 //Pricetxt.setEnabled(false);
             }
         }
         
-        Order order = orderD.AddOrder(m.getSaltname(), Price, qty);
+        Order order = orderD.AddOrder(m.getSaltname(), Price, qty,Brand);
 
         finallist.add(order);
 

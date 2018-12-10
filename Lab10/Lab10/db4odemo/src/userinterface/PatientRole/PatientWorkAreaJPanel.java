@@ -8,6 +8,7 @@ package userinterface.PatientRole;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CustomerWorkRequest;
 import java.awt.CardLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -247,7 +248,6 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
             @Override
             public void run() {
                 for (int num = 1; num <= 100; num++) {
-
                     try {
                         JP_Progress.UpdateProgress(num);
                         JP_Progress.repaint();
