@@ -19,7 +19,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import static jdk.nashorn.internal.objects.NativeString.trim;
 
 /**
  *
@@ -72,13 +71,14 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         ConsultDoctorBtn = new javax.swing.JButton();
         SearchSaltOrMedicineTxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        consultDocBtn = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setLayout(null);
 
+        jLabel1.setBackground(null);
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -87,12 +87,14 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 130);
 
+        jLabel2.setBackground(null);
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText(" Disease");
         add(jLabel2);
         jLabel2.setBounds(30, 120, 102, 33);
 
+        DiseaseListComboBox.setBackground(null);
         DiseaseListComboBox.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         DiseaseListComboBox.setForeground(new java.awt.Color(0, 51, 102));
         DiseaseListComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "ColdNflu", "Malaria", "Typhoid", "Cancer" }));
@@ -104,6 +106,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         add(DiseaseListComboBox);
         DiseaseListComboBox.setBounds(30, 150, 105, 40);
 
+        jLabel3.setBackground(null);
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Search By Salt or Medicine Name");
@@ -135,6 +138,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         add(jScrollPane1);
         jScrollPane1.setBounds(20, 260, 760, 260);
 
+        ViewDetailsBtn.setBackground(null);
         ViewDetailsBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ViewDetailsBtn.setForeground(new java.awt.Color(0, 51, 102));
         ViewDetailsBtn.setText("View Details");
@@ -146,6 +150,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         add(ViewDetailsBtn);
         ViewDetailsBtn.setBounds(430, 540, 160, 48);
 
+        ConsultDoctorBtn.setBackground(null);
         ConsultDoctorBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ConsultDoctorBtn.setForeground(new java.awt.Color(0, 51, 102));
         ConsultDoctorBtn.setText("Request Pharmacist");
@@ -157,6 +162,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         add(ConsultDoctorBtn);
         ConsultDoctorBtn.setBounds(20, 540, 170, 48);
 
+        SearchSaltOrMedicineTxt.setBackground(null);
         SearchSaltOrMedicineTxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         SearchSaltOrMedicineTxt.setForeground(new java.awt.Color(0, 51, 102));
         SearchSaltOrMedicineTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -167,6 +173,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         add(SearchSaltOrMedicineTxt);
         SearchSaltOrMedicineTxt.setBounds(340, 150, 249, 40);
 
+        jButton1.setBackground(null);
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 51, 102));
         jButton1.setText("Search");
@@ -178,17 +185,19 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         add(jButton1);
         jButton1.setBounds(620, 150, 120, 40);
 
-        consultDocBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        consultDocBtn.setForeground(new java.awt.Color(0, 51, 102));
-        consultDocBtn.setText("Consult Doctor");
-        consultDocBtn.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setBackground(null);
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 51, 102));
+        jButton2.setText("Consult Doctor");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultDocBtnActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-        add(consultDocBtn);
-        consultDocBtn.setBounds(620, 540, 160, 48);
+        add(jButton2);
+        jButton2.setBounds(620, 540, 160, 48);
 
+        jButton3.setBackground(null);
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 51, 102));
         jButton3.setText("Save list of Alternatives");
@@ -200,6 +209,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         add(jButton3);
         jButton3.setBounds(210, 540, 200, 48);
 
+        jLabel4.setBackground(null);
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("                      Please select the rows of Alternative Medicines you searched for and Save the list!");
@@ -214,6 +224,19 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     
 
     
+    private void ConsultDoctorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultDoctorBtnActionPerformed
+        // TODO add your handling code here:
+//        ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, list,account,enterprise);
+//        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
+//        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
+//        layout.next(RightPaneldashboard);
+        
+        RequestMedicinesJPanel pmed = new RequestMedicinesJPanel(RightPaneldashboard,account,system);
+        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", pmed);
+        CardLayout layout1 = (CardLayout)RightPaneldashboard.getLayout();
+        layout1.next(RightPaneldashboard);
+    }//GEN-LAST:event_ConsultDoctorBtnActionPerformed
+
     private void SearchSaltOrMedicineTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSaltOrMedicineTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchSaltOrMedicineTxtActionPerformed
@@ -229,7 +252,7 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
         model.setRowCount(0);
         
          for(Medicine medi : med.getMedicineList()){
-             if(medname.equalsIgnoreCase(trim(medi.getSaltname()))||(medname.equalsIgnoreCase(trim(medi.getSaltComposition1()))||(medname.equalsIgnoreCase(trim(medi.getSaltComposition2()))||(medname.equalsIgnoreCase(trim(medi.getSaltComposition3())))))){
+             if(medname.equals(medi.getSaltname())||(medname.equals(medi.getSaltComposition1())||(medname.equals(medi.getSaltComposition2())||(medname.equals(medi.getSaltComposition3()))))){
                  if(disease.equals(medi.getDisease()))
              {
                 Object[] row = new Object[7];
@@ -258,6 +281,19 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     private void DiseaseListComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiseaseListComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DiseaseListComboBoxActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+//        ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, hashlist,account,enterprise,system);
+//        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
+//        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
+//        layout.next(RightPaneldashboard);
+        
+        ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, hashlist,account,enterprise,system);
+        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
+        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
+        layout.next(RightPaneldashboard);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void ViewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
@@ -300,27 +336,6 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
 
                                                   
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        RightPaneldashboard.remove(this);
-
-       CardLayout layout = (CardLayout) RightPaneldashboard.getLayout();
-       layout.previous(RightPaneldashboard);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void consultDocBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultDocBtnActionPerformed
-        // TODO add your handling code here:
-        //        ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, hashlist,account,enterprise,system);
-        //        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
-        //        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
-        //        layout.next(RightPaneldashboard);
-
-        ConsultDoctorPage consult = new ConsultDoctorPage(RightPaneldashboard, hashlist,account,enterprise,system);
-        RightPaneldashboard.add("ViewProductDetailJPanelSupplier", consult);
-        CardLayout layout = (CardLayout)RightPaneldashboard.getLayout();
-        layout.next(RightPaneldashboard);
-    }//GEN-LAST:event_consultDocBtnActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AlternateMedicineTable;
@@ -328,8 +343,8 @@ public class AlternateMedicinePage extends javax.swing.JPanel {
     private javax.swing.JComboBox DiseaseListComboBox;
     private javax.swing.JTextField SearchSaltOrMedicineTxt;
     private javax.swing.JButton ViewDetailsBtn;
-    private javax.swing.JButton consultDocBtn;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
