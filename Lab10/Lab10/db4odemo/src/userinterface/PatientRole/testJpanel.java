@@ -33,16 +33,15 @@ public class testJpanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(885, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(1160, Short.MAX_VALUE)
                 .addComponent(loginJLabel))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(1424, Short.MAX_VALUE)
                 .addComponent(loginJLabel)
-                .addGap(0, 401, Short.MAX_VALUE))
+                .addGap(0, 1825, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

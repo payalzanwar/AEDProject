@@ -127,14 +127,14 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         suppliernametxt = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
-        netowrkListCombo = new javax.swing.JComboBox<>();
+        netowrkListCombo = new javax.swing.JComboBox<Object>();
         jLabel6 = new javax.swing.JLabel();
         medNameTxt = new javax.swing.JTextField();
         diseasename = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        SaltNameCombo = new javax.swing.JComboBox<>();
+        SaltNameCombo = new javax.swing.JComboBox<Object>();
         jLabel8 = new javax.swing.JLabel();
-        brandNameCombo = new javax.swing.JComboBox<>();
+        brandNameCombo = new javax.swing.JComboBox<String>();
         composition1Txt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         composition2Txt = new javax.swing.JTextField();
@@ -147,32 +147,54 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         Noofunitstxt = new javax.swing.JTextField();
         TypeCombo = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
-        enterpriseList = new javax.swing.JComboBox<>();
-        orgCombo = new javax.swing.JComboBox<>();
+        enterpriseList = new javax.swing.JComboBox<Object>();
+        orgCombo = new javax.swing.JComboBox<Object>();
         addToInventoryBtn = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
 
+        setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Request For Supply");
+        add(jLabel1);
+        jLabel1.setBounds(0, 0, 950, 59);
 
+        placeMedSuppReqBtn.setBackground(new java.awt.Color(255, 255, 255));
+        placeMedSuppReqBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        placeMedSuppReqBtn.setForeground(new java.awt.Color(0, 51, 102));
         placeMedSuppReqBtn.setText("Place Request");
         placeMedSuppReqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 placeMedSuppReqBtnActionPerformed(evt);
             }
         });
+        add(placeMedSuppReqBtn);
+        placeMedSuppReqBtn.setBounds(470, 610, 129, 47);
 
+        backBtn.setBackground(new java.awt.Color(255, 255, 255));
+        backBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        backBtn.setForeground(new java.awt.Color(0, 51, 102));
         backBtn.setText("<<Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
             }
         });
+        add(backBtn);
+        backBtn.setBounds(310, 610, 96, 47);
 
+        suppliernametxt.setBackground(new java.awt.Color(255, 255, 255));
+        suppliernametxt.setForeground(new java.awt.Color(0, 51, 102));
+        add(suppliernametxt);
+        suppliernametxt.setBounds(10, 70, 212, 41);
+
+        workRequestJTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        workRequestJTable.setForeground(new java.awt.Color(0, 51, 102));
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Medicine Name", "Brand", "Quantity", "Price", "Salt 1", "Salt 2", "Salt 3", "Type", "Disease", "Receiver", "Status"
@@ -195,25 +217,48 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workRequestJTable);
 
+        add(jScrollPane1);
+        jScrollPane1.setBounds(10, 120, 930, 130);
+
         netowrkListCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 netowrkListComboActionPerformed(evt);
             }
         });
+        add(netowrkListCombo);
+        netowrkListCombo.setBounds(130, 560, 194, 30);
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 51, 102));
         jLabel6.setText("From Network");
+        add(jLabel6);
+        jLabel6.setBounds(0, 550, 130, 44);
 
         medNameTxt.setText("Other");
+        add(medNameTxt);
+        medNameTxt.setBounds(620, 320, 150, 30);
+        add(diseasename);
+        diseasename.setBounds(360, 520, 184, 30);
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 102));
         jLabel7.setText("Disease Name");
+        add(jLabel7);
+        jLabel7.setBounds(150, 520, 154, 20);
 
         SaltNameCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SaltNameComboActionPerformed(evt);
             }
         });
+        add(SaltNameCombo);
+        SaltNameCombo.setBounds(360, 320, 184, 30);
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 51, 102));
         jLabel8.setText("Brand");
+        add(jLabel8);
+        jLabel8.setBounds(150, 280, 154, 30);
 
         brandNameCombo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -221,10 +266,10 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
             }
         });
         brandNameCombo.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 brandNameComboInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         brandNameCombo.addActionListener(new java.awt.event.ActionListener() {
@@ -232,10 +277,28 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                 brandNameComboActionPerformed(evt);
             }
         });
+        add(brandNameCombo);
+        brandNameCombo.setBounds(360, 280, 184, 30);
+        add(composition1Txt);
+        composition1Txt.setBounds(150, 400, 154, 30);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 102));
         jLabel2.setText("Medicine Name ");
+        add(jLabel2);
+        jLabel2.setBounds(150, 320, 154, 30);
+        add(composition2Txt);
+        composition2Txt.setBounds(360, 400, 184, 30);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 102));
         jLabel3.setText("Salt Composition ");
+        add(jLabel3);
+        jLabel3.setBounds(0, 410, 125, 20);
+        add(composition3Txt);
+        composition3Txt.setBounds(620, 360, 151, 30);
+        add(PriceTxt);
+        PriceTxt.setBounds(360, 360, 184, 30);
 
         brandNameTxt.setText("Other");
         brandNameTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -243,155 +306,63 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
                 brandNameTxtActionPerformed(evt);
             }
         });
+        add(brandNameTxt);
+        brandNameTxt.setBounds(620, 280, 150, 30);
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 102));
         jLabel4.setText("Price Per Medicine");
+        add(jLabel4);
+        jLabel4.setBounds(150, 360, 154, 30);
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 102));
         jLabel5.setText("Type");
+        add(jLabel5);
+        jLabel5.setBounds(150, 440, 154, 30);
+        add(Noofunitstxt);
+        Noofunitstxt.setBounds(360, 480, 184, 30);
 
+        add(TypeCombo);
+        TypeCombo.setBounds(360, 440, 184, 30);
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 51, 102));
         jLabel9.setText("Number of Units");
+        add(jLabel9);
+        jLabel9.setBounds(150, 480, 154, 30);
 
         enterpriseList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterpriseListActionPerformed(evt);
             }
         });
+        add(enterpriseList);
+        enterpriseList.setBounds(360, 560, 184, 30);
 
         orgCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orgComboActionPerformed(evt);
             }
         });
+        add(orgCombo);
+        orgCombo.setBounds(610, 560, 160, 30);
 
+        addToInventoryBtn.setBackground(new java.awt.Color(255, 255, 255));
+        addToInventoryBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        addToInventoryBtn.setForeground(new java.awt.Color(0, 51, 102));
         addToInventoryBtn.setText("Add to Inventory");
         addToInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addToInventoryBtnActionPerformed(evt);
             }
         });
+        add(addToInventoryBtn);
+        addToInventoryBtn.setBounds(780, 80, 160, 40);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(suppliernametxt, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                .addGap(533, 533, 533))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(111, 111, 111)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel8))
-                                        .addGap(46, 46, 46)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(Noofunitstxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(TypeCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 184, Short.MAX_VALUE)
-                                            .addComponent(composition2Txt, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(PriceTxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(SaltNameCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(brandNameCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(diseasename)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(40, 40, 40)
-                                        .addComponent(composition1Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabel6)
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(backBtn)
-                                        .addGap(126, 126, 126)
-                                        .addComponent(placeMedSuppReqBtn))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(netowrkListCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(49, 49, 49)
-                                        .addComponent(enterpriseList, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(medNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(brandNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(composition3Txt, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                            .addComponent(orgCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(279, 279, 279)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addToInventoryBtn)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(suppliernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addToInventoryBtn))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(brandNameCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(brandNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SaltNameCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(medNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(composition1Txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(composition2Txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(composition3Txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Noofunitstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(diseasename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(netowrkListCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enterpriseList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(placeMedSuppReqBtn)
-                    .addComponent(backBtn))
-                .addGap(58, 58, 58))
-        );
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/ManufacturingManagerRole/testtubes.jpg"))); // NOI18N
+        add(jLabel10);
+        jLabel10.setBounds(-10, 0, 1150, 1100);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -752,6 +723,7 @@ public class RequestMedicineSupplyJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField diseasename;
     private javax.swing.JComboBox<Object> enterpriseList;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

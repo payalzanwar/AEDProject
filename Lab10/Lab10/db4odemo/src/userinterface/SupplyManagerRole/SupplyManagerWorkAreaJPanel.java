@@ -95,7 +95,6 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         container = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
         refreshJButton = new javax.swing.JButton();
         assignJButton = new javax.swing.JButton();
         supplyBtn = new javax.swing.JButton();
@@ -106,60 +105,94 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
         reqSupplyFromManufacturerBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
 
-        container.setLayout(new java.awt.CardLayout());
+        setLayout(new java.awt.CardLayout());
 
+        container.setLayout(null);
+
+        refreshJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        refreshJButton.setForeground(new java.awt.Color(0, 51, 102));
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshJButtonActionPerformed(evt);
             }
         });
+        container.add(refreshJButton);
+        refreshJButton.setBounds(784, 170, 102, 32);
 
+        assignJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        assignJButton.setForeground(new java.awt.Color(0, 51, 102));
         assignJButton.setText("Assign to me");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignJButtonActionPerformed(evt);
             }
         });
+        container.add(assignJButton);
+        assignJButton.setBounds(36, 370, 145, 58);
 
+        supplyBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        supplyBtn.setForeground(new java.awt.Color(0, 51, 102));
         supplyBtn.setText("Supply");
         supplyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 supplyBtnActionPerformed(evt);
             }
         });
+        container.add(supplyBtn);
+        supplyBtn.setBounds(728, 370, 139, 58);
 
-        jLabel1.setText("           Supply Manager Work Area");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Supply Manager Work Area");
+        container.add(jLabel1);
+        jLabel1.setBounds(0, 0, 886, 60);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 102));
         jLabel2.setText("Supplier ");
+        container.add(jLabel2);
+        jLabel2.setBounds(41, 124, 98, 33);
 
+        suppliernametxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         suppliernametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 suppliernametxtActionPerformed(evt);
             }
         });
+        container.add(suppliernametxt);
+        suppliernametxt.setBounds(170, 122, 301, 37);
 
+        viewInventoryBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        viewInventoryBtn.setForeground(new java.awt.Color(0, 51, 102));
         viewInventoryBtn.setText("View Inventory");
         viewInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewInventoryBtnActionPerformed(evt);
             }
         });
+        container.add(viewInventoryBtn);
+        viewInventoryBtn.setBounds(234, 370, 160, 58);
 
+        reqSupplyFromManufacturerBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        reqSupplyFromManufacturerBtn.setForeground(new java.awt.Color(0, 51, 102));
         reqSupplyFromManufacturerBtn.setText("Request Supply from Manufacturer");
         reqSupplyFromManufacturerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reqSupplyFromManufacturerBtnActionPerformed(evt);
             }
         });
+        container.add(reqSupplyFromManufacturerBtn);
+        reqSupplyFromManufacturerBtn.setBounds(454, 370, 275, 58);
 
+        workRequestJTable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        workRequestJTable.setForeground(new java.awt.Color(0, 51, 102));
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Medicine Name", "Brand", "Quantity", "Price", "Salt 1", "Salt 2", "Type", "Salt 3", "Disease", "Sender", "Receiver", "Status"
@@ -182,87 +215,14 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workRequestJTable);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(suppliernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
-                .addComponent(refreshJButton)
-                .addContainerGap(86, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(199, 199, 199)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(reqSupplyFromManufacturerBtn)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(assignJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(supplyBtn)
-                        .addGap(102, 102, 102))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(viewInventoryBtn)
-                .addGap(556, 556, 556))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(suppliernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(refreshJButton)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(assignJButton)
-                    .addComponent(supplyBtn))
-                .addGap(28, 28, 28)
-                .addComponent(viewInventoryBtn)
-                .addGap(36, 36, 36)
-                .addComponent(reqSupplyFromManufacturerBtn)
-                .addContainerGap(306, Short.MAX_VALUE))
-        );
+        container.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 213, 876, 130);
 
-        container.add(jPanel2, "card2");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SupplyManagerRole/testtubes.jpg"))); // NOI18N
+        container.add(jLabel3);
+        jLabel3.setBounds(-6, -6, 910, 510);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        add(container, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
@@ -278,60 +238,58 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
         }
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
         if(request.getStatus().equalsIgnoreCase("completed"))
-            JOptionPane.showMessageDialog(container, "The request has already been completed");
+        JOptionPane.showMessageDialog(container, "The request has already been completed");
         else
         {request.setReceiver(userAccount);
-        request.setStatus("Pending");
-        populateTable();}
-
+            request.setStatus("Pending");
+            populateTable();}
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void supplyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplyBtnActionPerformed
         try {
-            
-        int selectedRow = workRequestJTable.getSelectedRow();
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(container, "Please select an order");
-            return;}
-        MedicineSupplyWorkRequest request = (MedicineSupplyWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        if(request.getReceiver()==null)
-            JOptionPane.showMessageDialog(container,"The request is unassigned");
-        else
-        { 
-            System.out.println("supplier med list: "+med.getSupplierMedicineList().size());
-            
-            for (Medicine m : med.getSupplierMedicineList()) {
 
-                        if (m.getBrand().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getBrand())
-                                && m.getSaltComposition1().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getSaltc1())
-                                && m.getSaltComposition2().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getSaltc2())
-                                && m.getSaltComposition3().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getSaltc3())
-                                && m.getSaltname().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getMedName())
-                                && m.getDisease().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getDiseaseName())
-                                && m.getType().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getMedType())) {
-                                System.out.println("if me aaya");
-                                
-                                
-                                if(m.getUnits() >= ((MedicineSupplyWorkRequest) request).getQuantity())
-                                {
-                                    m.setUnits(m.getUnits()-((MedicineSupplyWorkRequest) request).getQuantity());
-                                    request.setStatus("Completed");
-                                    JOptionPane.showMessageDialog(this, "Units Updated In Inventory");
-                                break;}
-                                else
-                                    
-                                {JOptionPane.showMessageDialog(container,"Insufficient stock in the inventory");
-                                break;}
-                                
-                        }
-//                                else{
-//                                JOptionPane.showMessageDialog(this, "Out of Stock. Please request supply from manufacturer.");
-//                                break;
-//                                }
-                            }
-            System.out.println("populate hoga table ab");
-        populateTable();
-        }
+            int selectedRow = workRequestJTable.getSelectedRow();
+            if (selectedRow < 0){
+                JOptionPane.showMessageDialog(container, "Please select an order");
+                return;}
+            MedicineSupplyWorkRequest request = (MedicineSupplyWorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+            if(request.getReceiver()==null)
+            JOptionPane.showMessageDialog(container,"The request is unassigned");
+            else
+            {
+                System.out.println("supplier med list: "+med.getSupplierMedicineList().size());
+
+                for (Medicine m : med.getSupplierMedicineList()) {
+
+                    if (m.getBrand().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getBrand())
+                        && m.getSaltComposition1().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getSaltc1())
+                        && m.getSaltComposition2().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getSaltc2())
+                        && m.getSaltComposition3().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getSaltc3())
+                        && m.getSaltname().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getMedName())
+                        && m.getDisease().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getDiseaseName())
+                        && m.getType().equalsIgnoreCase(((MedicineSupplyWorkRequest) request).getMedType())) {
+                        System.out.println("if me aaya");
+
+                        if(m.getUnits() >= ((MedicineSupplyWorkRequest) request).getQuantity())
+                        {
+                            m.setUnits(m.getUnits()-((MedicineSupplyWorkRequest) request).getQuantity());
+                            request.setStatus("Completed");
+                            JOptionPane.showMessageDialog(this, "Units Updated In Inventory");
+                            break;}
+                        else
+
+                        {JOptionPane.showMessageDialog(container,"Insufficient stock in the inventory");
+                            break;}
+
+                    }
+                    //                                else{
+                        //                                JOptionPane.showMessageDialog(this, "Out of Stock. Please request supply from manufacturer.");
+                        //                                break;
+                        //                                }
+                }
+                System.out.println("populate hoga table ab");
+                populateTable();
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(container, "Bhak! ye sab galat hai");
         }
@@ -345,7 +303,7 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         ViewMedicineInventoryPage view = new ViewMedicineInventoryPage(userProcessContainer, organization, enterprise, med);
         userProcessContainer.add("ViewProductDetailJPanelSupplier", view);
-   CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_viewInventoryBtnActionPerformed
 
@@ -363,7 +321,7 @@ public class SupplyManagerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refreshJButton;
     private javax.swing.JButton reqSupplyFromManufacturerBtn;

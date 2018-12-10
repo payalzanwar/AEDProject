@@ -105,17 +105,17 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         viewtxt = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         container.setLayout(new java.awt.CardLayout());
 
         jPanel2.setLayout(null);
 
+        workRequestJTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        workRequestJTable.setForeground(new java.awt.Color(0, 51, 102));
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Message", "Sender", "Receiver", "Status"
@@ -139,8 +139,11 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(workRequestJTable);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(60, 90, 620, 130);
+        jScrollPane1.setBounds(60, 130, 620, 130);
 
+        refreshJButton.setBackground(new java.awt.Color(255, 255, 255));
+        refreshJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        refreshJButton.setForeground(new java.awt.Color(0, 51, 102));
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,8 +151,11 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(refreshJButton);
-        refreshJButton.setBounds(600, 50, 85, 29);
+        refreshJButton.setBounds(570, 100, 110, 25);
 
+        assignJButton.setBackground(new java.awt.Color(255, 255, 255));
+        assignJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        assignJButton.setForeground(new java.awt.Color(0, 51, 102));
         assignJButton.setText("Assign Request to Doctor");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,8 +163,11 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(assignJButton);
-        assignJButton.setBounds(460, 410, 240, 29);
+        assignJButton.setBounds(460, 410, 240, 25);
 
+        processJButton.setBackground(new java.awt.Color(255, 255, 255));
+        processJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        processJButton.setForeground(new java.awt.Color(0, 51, 102));
         processJButton.setText("Process");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,12 +175,18 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(processJButton);
-        processJButton.setBounds(520, 260, 160, 29);
+        processJButton.setBounds(520, 270, 160, 25);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("          Hospital Work Area");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(260, 30, 281, 29);
+        jLabel1.setBounds(1, -1, 740, 60);
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 102));
         jButton1.setText("View Details");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,26 +194,36 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(60, 260, 170, 29);
+        jButton1.setBounds(60, 270, 170, 25);
 
+        DoctorCombo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DoctorCombo.setForeground(new java.awt.Color(0, 51, 102));
         DoctorCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DoctorComboActionPerformed(evt);
             }
         });
         jPanel2.add(DoctorCombo);
-        DoctorCombo.setBounds(460, 360, 230, 26);
+        DoctorCombo.setBounds(460, 360, 230, 23);
 
         viewtxt.setColumns(20);
+        viewtxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        viewtxt.setForeground(new java.awt.Color(0, 51, 102));
         viewtxt.setRows(5);
         jScrollPane2.setViewportView(viewtxt);
 
         jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(60, 360, 350, 96);
+        jScrollPane2.setBounds(60, 360, 350, 91);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 102));
         jLabel2.setText("Detailed Message ");
         jPanel2.add(jLabel2);
         jLabel2.setBounds(60, 310, 270, 30);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/DoctorRole/testtubes.jpg"))); // NOI18N
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(0, 0, 750, 610);
 
         container.add(jPanel2, "card2");
 
@@ -353,6 +378,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
